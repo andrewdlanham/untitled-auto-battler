@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo0a8ka7a7v1r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3nclh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xenq4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_3nclh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_xenq4")
