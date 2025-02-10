@@ -1,42 +1,44 @@
 extends Node3D
 
-const RAY_LENGTH = 500
+const RAY_LENGTH = 1000
 
 @onready var camera: Camera3D = %Camera3D
 
-var isDraggingObject
-var objectToDrag
+var is_dragging
+var dragged_object
 
 func _process(delta):
-	if isDraggingObject:
-		var newPosition = get_raycast_intersect().position
-		if newPosition == null : return
-		newPosition.y = objectToDrag.global_position.y
-		objectToDrag.global_position = newPosition
+	if is_dragging: update_dragged_object_position()
 
 func _input(event):
-	var result = get_raycast_intersect()
 	if Input.is_action_just_pressed("LeftClick"):
 		print("Left click detected")
-		if !result.is_empty():
-			print(result.collider)
-			objectToDrag = result["collider"].get_node("CollisionShape3D")
-
-			print(objectToDrag)
-			isDraggingObject = true
+		var ray_intersect_dict = get_raycast_intersect()
+		if !ray_intersect_dict.is_empty():
+			dragged_object = ray_intersect_dict["collider"].get_node("CollisionShape3D")
+			is_dragging = true
 	elif Input.is_action_just_released("LeftClick"):
 		print("Left click released")
-		isDraggingObject = false
-		objectToDrag = null
+		dragged_object = null
+		is_dragging = false
 
+ 
 func get_raycast_intersect():
+	# TODO : Rename / refactor this function
 	var space_state = get_world_3d().direct_space_state
-	var mousepos = get_viewport().get_mouse_position()
-
-	var origin = camera.project_ray_origin(mousepos)
-	var end = origin + camera.project_ray_normal(mousepos) * RAY_LENGTH
+	var mouse_position = get_viewport().get_mouse_position()
+	var origin = camera.project_ray_origin(mouse_position)
+	var end = origin + camera.project_ray_normal(mouse_position) * RAY_LENGTH
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_areas = true
 
-	var result = space_state.intersect_ray(query)
-	return result
+	return space_state.intersect_ray(query)
+	
+func update_dragged_object_position():
+	var updated_position = get_raycast_intersect().position
+	if updated_position:
+		dragged_object.global_position = Vector3(
+			updated_position.x,
+			dragged_object.global_position.y,
+			updated_position.z
+		)
