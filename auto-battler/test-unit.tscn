@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvsvkjwkngxk6"]
+[gd_scene load_steps=5 format=3 uid="uid://cvsvkjwkngxk6"]
+
+[ext_resource type="Script" path="res://unit.gd" id="1_v3j0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvgc6"]
 
@@ -10,7 +12,14 @@ material = SubResource("StandardMaterial3D_txxls")
 radius = 0.25
 height = 1.0
 
-[node name="Test-unit" type="Node3D"]
+[node name="Test Unit" type="Node3D"]
+script = ExtResource("1_v3j0k")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.903327, 0)
+text = "100"
+font_size = 80
+outline_size = 30
 
 [node name="Area3D" type="Area3D" parent="."]
 

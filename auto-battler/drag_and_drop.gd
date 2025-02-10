@@ -15,7 +15,8 @@ func _input(event):
 		print("Left click detected")
 		var ray_intersect_dict = get_raycast_intersect()
 		if !ray_intersect_dict.is_empty():
-			dragged_object = ray_intersect_dict["collider"].get_node("CollisionShape3D")
+			# "../." is the path of the Area3D's parent Node3D node
+			dragged_object = ray_intersect_dict["collider"].get_node("../.")
 			is_dragging = true
 	elif Input.is_action_just_released("LeftClick"):
 		print("Left click released")
