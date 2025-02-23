@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://unit.gd" id="1_v3j0k"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvgc6"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ammrf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txxls"]
 albedo_color = Color(1, 0.498039, 1, 1)
@@ -15,19 +15,19 @@ height = 1.0
 [node name="Test Unit" type="Node3D"]
 script = ExtResource("1_v3j0k")
 
-[node name="HealthLabel" type="Label3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ammrf")
+
+[node name="HealthLabel" type="Label3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.903327, 0)
 text = "100"
 font_size = 80
 outline_size = 30
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_tvgc6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
-transform = Transform3D(1.66667, 0, 0, 0, 1.66667, 0, 0, 0, 1.66667, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 mesh = SubResource("CapsuleMesh_1bk63")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
