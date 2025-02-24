@@ -23,8 +23,8 @@ func _input(event):
 		var raycast_collision_info = get_raycast_collision_info()
 		print(raycast_collision_info)
 		if !raycast_collision_info.is_empty():
-			dragged_object = raycast_collision_info["collider"]
-			print("Dragging: " + dragged_object.get_parent().name)
+			dragged_object = raycast_collision_info["collider"].get_node("../.")
+			print("Dragging: " + dragged_object.name)
 			dragged_object_collision_shape = dragged_object.find_child("CollisionShape3D")
 			dragged_object_collision_shape.set_disabled(true)
 			raycast_collision_mask = FLOOR_MASK
