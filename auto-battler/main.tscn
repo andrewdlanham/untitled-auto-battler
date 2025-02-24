@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://csn7bknrr6t3c"]
 
-[ext_resource type="PackedScene" uid="uid://bua6l5ydbtl31" path="res://hex.glb" id="1_ox25j"]
 [ext_resource type="PackedScene" uid="uid://cvsvkjwkngxk6" path="res://test-unit.tscn" id="2_ti2v6"]
 [ext_resource type="Script" path="res://drag_and_drop.gd" id="3_ep364"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://floor.tscn" id="4_luv8w"]
 [ext_resource type="Script" path="res://test_mesh.gd" id="5_0sv74"]
+[ext_resource type="PackedScene" uid="uid://brtlqyif7qbwc" path="res://hex.tscn" id="5_ylrse"]
 
 [node name="Main" type="Node3D"]
 
@@ -23,28 +23,17 @@ transform = Transform3D(-0.474196, -0.738925, 0.478673, 0, 0.543687, 0.839288, -
 
 [node name="ActiveBoard" type="Node" parent="."]
 
-[node name="hex" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
+[node name="Hex" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="hex2" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.95539)
+[node name="Hex2" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.96157)
 
-[node name="hex3" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.89691)
-
-[node name="hex4" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.68564, 0, 0.938522)
-
-[node name="hex5" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.69739, 0, 0.955482)
-
-[node name="hex6" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.72349, 0, -0.956992)
-
-[node name="hex7" parent="ActiveBoard" instance=ExtResource("1_ox25j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.76901, 0, -1.04521)
+[node name="Hex3" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2.04687)
 
 [node name="Test-unit" parent="." instance=ExtResource("2_ti2v6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58507, 0.523812, 0)
 health = 250.0
 
 [node name="Floor" parent="." instance=ExtResource("4_luv8w")]
