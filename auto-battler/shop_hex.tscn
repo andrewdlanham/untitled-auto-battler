@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://clqif3kperjc0"]
+
+[ext_resource type="Script" path="res://hex.gd" id="1_uqx3j"]
+[ext_resource type="PackedScene" uid="uid://dx0tog233a03y" path="res://hex2.glb" id="2_1elfn"]
+
+[node name="ShopHex" type="Node3D"]
+script = ExtResource("1_uqx3j")
+
+[node name="Snap Point" type="Node3D" parent="." groups=["Snap Points"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625998, 0)
+
+[node name="hex2" parent="." instance=ExtResource("2_1elfn")]
