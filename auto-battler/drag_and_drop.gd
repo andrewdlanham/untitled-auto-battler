@@ -78,4 +78,10 @@ func snap_object_to_nearest_space(object_to_snap):
 			closest_snap_distance = distance_to_snap_point
 			closest_snap_point = snap_point
 		
+	# Snap to hex
 	object_to_snap.position = closest_snap_point.global_transform.origin
+	
+	# Set reference to unit on hex
+	object_to_snap.current_hex.unit_on_hex = null
+	closest_snap_point.get_parent().unit_on_hex = object_to_snap
+	object_to_snap.current_hex = closest_snap_point.get_parent()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=6 format=3 uid="uid://csn7bknrr6t3c"]
 
 [ext_resource type="Script" path="res://shop_manager.gd" id="2_040jo"]
-[ext_resource type="PackedScene" uid="uid://cvsvkjwkngxk6" path="res://test-unit.tscn" id="2_ti2v6"]
 [ext_resource type="Script" path="res://drag_and_drop.gd" id="3_ep364"]
 [ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://shop_hex.tscn" id="3_m7c5a"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://floor.tscn" id="4_luv8w"]
@@ -57,18 +56,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.7301
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.41756, 0, 1.95449)
 
 [node name="ShopHex3" parent="ShopHexes" instance=ExtResource("3_m7c5a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.39583, 0, 3.89281)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.76478, 0, 2.98589)
 
-[node name="Test-unit" parent="." instance=ExtResource("2_ti2v6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95937, 0.523812, 0)
-health = 250.0
+[node name="ShopHex4" parent="ShopHexes" instance=ExtResource("3_m7c5a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.46315, 0, 1.92876)
 
 [node name="Floor" parent="." instance=ExtResource("4_luv8w")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.2, 0)
 
 [node name="RollShopButton" type="Button" parent="."]
-offset_right = 357.0
-offset_bottom = 225.0
+offset_left = 1556.0
+offset_top = 852.0
+offset_right = 1913.0
+offset_bottom = 1077.0
 text = "REROLL
 "
 
