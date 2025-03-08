@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvsvkjwkngxk6"]
 
-[ext_resource type="Script" path="res://Units/unit.gd" id="1_v3j0k"]
+[ext_resource type="Script" path="res://Units/unit.gd" id="1_xj3mh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ammrf"]
 
@@ -13,7 +13,8 @@ radius = 0.25
 height = 1.0
 
 [node name="Test Unit" type="Node3D"]
-script = ExtResource("1_v3j0k")
+script = ExtResource("1_xj3mh")
+unit_name = "test_unit"
 
 [node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87589, 0)

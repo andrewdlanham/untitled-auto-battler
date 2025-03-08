@@ -5,8 +5,6 @@ const UNIT_MASK = 1
 const FLOOR_MASK = 2
 const UNIT_FLOOR_MASK = 3	# Enables both layers 1 and 2
 
-@onready var camera: Camera3D = %Camera3D
-
 var is_dragging
 var dragged_object
 var dragged_object_collision_shape
@@ -35,7 +33,7 @@ func _input(event):
 		if is_dragging: 
 			raycast_collision_mask = UNIT_MASK
 			is_dragging = false
-			snap_object_to_nearest_space(dragged_object)
+			dragged_object.snap_to_nearest_hex()
 			dragged_object_collision_shape.set_disabled(false)
 			dragged_object = null
 			dragged_object_collision_shape = null
@@ -46,8 +44,8 @@ func get_raycast_collision_info():
 	var space_state = get_world_3d().direct_space_state
 	var mouse_position = get_viewport().get_mouse_position()
 
-	var ray_start_point = camera.project_ray_origin(mouse_position)
-	var ray_end_point = ray_start_point + camera.project_ray_normal(mouse_position) * RAY_LENGTH
+	var ray_start_point = %MainCamera.project_ray_origin(mouse_position)
+	var ray_end_point = ray_start_point + %MainCamera.project_ray_normal(mouse_position) * RAY_LENGTH
 	var ray_query = PhysicsRayQueryParameters3D.create(ray_start_point, ray_end_point)
 	ray_query.collide_with_areas = true
 	ray_query.collide_with_bodies = true
@@ -67,21 +65,3 @@ func update_dragged_object_position():
 			dragged_object.global_position.y,
 			updated_position.z
 		)
-
-func snap_object_to_nearest_space(object_to_snap):
-	var closest_snap_point = null
-	var closest_snap_distance = INF
-	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
-		var snap_point_origin = snap_point.global_transform.origin
-		var distance_to_snap_point = object_to_snap.position.distance_to(snap_point_origin)
-		if distance_to_snap_point < closest_snap_distance:
-			closest_snap_distance = distance_to_snap_point
-			closest_snap_point = snap_point
-		
-	# Snap to hex
-	object_to_snap.position = closest_snap_point.global_transform.origin
-	
-	# Set reference to unit on hex
-	object_to_snap.current_hex.unit_on_hex = null
-	closest_snap_point.get_parent().unit_on_hex = object_to_snap
-	object_to_snap.current_hex = closest_snap_point.get_parent()

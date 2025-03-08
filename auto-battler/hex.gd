@@ -3,6 +3,7 @@ class_name Hex
 
 @onready var snap_point: Node3D = $"Snap Point"
 var unit_on_hex : Unit
+@export var hex_id : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,3 +15,4 @@ func _process(delta: float) -> void:
 	
 func free_unit_on_hex():
 	if unit_on_hex != null: unit_on_hex.queue_free()
+	

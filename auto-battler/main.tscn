@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=7 format=3 uid="uid://csn7bknrr6t3c"]
 
+[ext_resource type="Script" path="res://data_manager.gd" id="1_vrtvw"]
 [ext_resource type="Script" path="res://shop_manager.gd" id="2_040jo"]
 [ext_resource type="Script" path="res://drag_and_drop.gd" id="3_ep364"]
 [ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://shop_hex.tscn" id="3_m7c5a"]
@@ -8,13 +9,101 @@
 
 [node name="Main" type="Node3D"]
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
+[node name="DataManager" type="Node" parent="."]
+script = ExtResource("1_vrtvw")
+
 [node name="DragDropManager" type="Node3D" parent="."]
 script = ExtResource("3_ep364")
 
 [node name="ShopManager" type="Node" parent="."]
 script = ExtResource("2_040jo")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="PlayerUnits" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Hexes" type="Node" parent="."]
+
+[node name="PlayerHexes" type="Node" parent="Hexes"]
+unique_name_in_owner = true
+
+[node name="HexA" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2)
+hex_id = "A"
+
+[node name="HexB" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -1)
+hex_id = "B"
+
+[node name="HexC" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+hex_id = "C"
+
+[node name="HexD" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, -1)
+hex_id = "D"
+
+[node name="HexE" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, 1)
+hex_id = "E"
+
+[node name="HexF" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2)
+hex_id = "F"
+
+[node name="HexG" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, 1)
+hex_id = "G"
+
+[node name="EnemyHexes" type="Node" parent="Hexes"]
+unique_name_in_owner = true
+
+[node name="HexA" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -0.00118667, 0, -4.21583)
+hex_id = "A"
+
+[node name="HexB" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 1.74941, 0, -5.21479)
+hex_id = "B"
+
+[node name="HexC" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 0, 0, -6.21583)
+hex_id = "C"
+
+[node name="HexD" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -1.75059, 0, -5.21687)
+hex_id = "D"
+
+[node name="HexE" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 1.75059, 0, -7.21479)
+hex_id = "E"
+
+[node name="HexF" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 0.00118667, 0, -8.21583)
+hex_id = "F"
+
+[node name="HexG" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -1.74941, 0, -7.21687)
+hex_id = "G"
+
+[node name="ShopHexes" type="Node" parent="Hexes"]
+unique_name_in_owner = true
+
+[node name="ShopHex" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73018, 0, 2.96599)
+
+[node name="ShopHex2" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.41756, 0, 1.95449)
+
+[node name="ShopHex3" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.76478, 0, 2.98589)
+
+[node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.46315, 0, 1.92876)
+
+[node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 6, 6.5)
 
@@ -24,52 +113,34 @@ transform = Transform3D(1, 0, 0, 0, 0.543687, 0.839288, 0, -0.839288, 0.543687, 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.474196, -0.738925, 0.478673, 0, 0.543687, 0.839288, -0.880419, 0.397987, -0.257814, -2.60183, 3.68417, 6.09888)
 
-[node name="ActiveBoard" type="Node" parent="."]
-
-[node name="Hex" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="Hex2" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2)
-
-[node name="Hex3" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2)
-
-[node name="Hex4" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, -1)
-
-[node name="Hex5" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, 1)
-
-[node name="Hex6" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -1)
-
-[node name="Hex7" parent="ActiveBoard" instance=ExtResource("5_ylrse")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, 1)
-
-[node name="ShopHexes" type="Node" parent="."]
-
-[node name="ShopHex" parent="ShopHexes" instance=ExtResource("3_m7c5a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73018, 0, 2.96599)
-
-[node name="ShopHex2" parent="ShopHexes" instance=ExtResource("3_m7c5a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.41756, 0, 1.95449)
-
-[node name="ShopHex3" parent="ShopHexes" instance=ExtResource("3_m7c5a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.76478, 0, 2.98589)
-
-[node name="ShopHex4" parent="ShopHexes" instance=ExtResource("3_m7c5a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.46315, 0, 1.92876)
-
 [node name="Floor" parent="." instance=ExtResource("4_luv8w")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.2, 0)
 
-[node name="RollShopButton" type="Button" parent="."]
-offset_left = 1556.0
-offset_top = 852.0
+[node name="StoreTeamInDB" type="Button" parent="."]
+offset_left = 1577.0
+offset_top = 4.0
 offset_right = 1913.0
-offset_bottom = 1077.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 30
+text = "Save team to DB"
+
+[node name="LoadRandomTeam" type="Button" parent="."]
+offset_left = 1579.0
+offset_top = 254.0
+offset_right = 1916.0
+offset_bottom = 498.0
+theme_override_font_sizes/font_size = 30
+text = "Load Random Team"
+
+[node name="RollShopButton" type="Button" parent="."]
+offset_left = 1579.0
+offset_top = 503.0
+offset_right = 1915.0
+offset_bottom = 728.0
+theme_override_font_sizes/font_size = 30
 text = "REROLL
 "
 
+[connection signal="pressed" from="StoreTeamInDB" to="DataManager" method="_on_store_team_in_db_pressed"]
+[connection signal="pressed" from="LoadRandomTeam" to="DataManager" method="_on_load_random_team_pressed"]
 [connection signal="pressed" from="RollShopButton" to="ShopManager" method="_on_roll_shop_button_pressed"]
