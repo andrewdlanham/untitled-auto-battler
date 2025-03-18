@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbkdyuqojlsfs"]
+
+[ext_resource type="Script" path="res://Units/unit.gd" id="1_5dp7x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ammrf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txxls"]
+albedo_color = Color(0.237811, 0.572897, 0.268502, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bk63"]
+material = SubResource("StandardMaterial3D_txxls")
+radius = 0.25
+height = 1.0
+
+[node name="Test Unit" type="Node3D"]
+script = ExtResource("1_5dp7x")
+unit_name = "test_unit"
+rarity = 2
+health = 50.0
+armor = 5.0
+magic_resistance = 5.0
+attack_damage = 20.0
+magic_damage = 0.0
+attack_range = 2
+attack_speed = 1.5
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87589, 0)
+visible = false
+text = "100"
+font_size = 80
+outline_size = 30
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ammrf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("CapsuleMesh_1bk63")
+skeleton = NodePath("../..")

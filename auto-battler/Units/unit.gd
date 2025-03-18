@@ -2,11 +2,22 @@ extends Node3D
 class_name Unit
 
 @export var unit_name : String
-@export var health : float = 100.00
 @export var cost : int = 1
 @export var rarity : int = 1
-@export var attack_range : int = 1
 @onready var health_label: Label3D = $HealthLabel
+
+# Combat stats
+@export var health : float = 100.00
+@export var armor : float = 10.00
+@export var magic_resistance : float = 10.00
+
+@export var attack_damage : float = 10.00
+@export var magic_damage : float = 10.00
+
+@export var attack_range : int = 1
+@export var attack_speed : float = 1.00
+
+
 
 var current_hex : Hex
 
