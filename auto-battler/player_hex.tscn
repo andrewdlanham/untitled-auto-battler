@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bua6l5ydbtl31" path="res://hex.glb" id="1_cqeoj"]
 [ext_resource type="Script" path="res://hex.gd" id="1_kob6q"]
 
-[node name="Hex" type="Node3D"]
+[node name="Player Hex" type="Node3D"]
 script = ExtResource("1_kob6q")
+hex_type = "PLAYER"
 
 [node name="Snap Point" type="Node3D" parent="." groups=["Snap Points"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625998, 0)
 
-[node name="hex" parent="." instance=ExtResource("1_cqeoj")]
+[node name="Player Hex Mesh" parent="." instance=ExtResource("1_cqeoj")]

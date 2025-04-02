@@ -5,8 +5,9 @@
 
 [node name="ShopHex" type="Node3D"]
 script = ExtResource("1_uqx3j")
+hex_type = "SHOP"
 
 [node name="Snap Point" type="Node3D" parent="." groups=["Snap Points"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625998, 0)
 
-[node name="hex2" parent="." instance=ExtResource("2_1elfn")]
+[node name="Shop Hex Mesh" parent="." instance=ExtResource("2_1elfn")]

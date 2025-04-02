@@ -5,6 +5,7 @@ class_name Unit
 @export var cost : int = 1
 @export var rarity : int = 1
 @onready var health_label: Label3D = $HealthLabel
+var current_hex : Hex
 
 # Combat stats
 @export var health : float = 100.00
@@ -18,9 +19,6 @@ class_name Unit
 @export var attack_speed : float = 1.00
 
 
-
-var current_hex : Hex
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_label.text = str(health)
@@ -30,6 +28,8 @@ func _process(_delta: float) -> void:
 	pass
 
 func snap_to_nearest_hex():
+	
+	# Get closest snap point
 	var closest_snap_point = null
 	var closest_snap_distance = INF
 	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
@@ -39,7 +39,14 @@ func snap_to_nearest_hex():
 			closest_snap_distance = distance_to_snap_point
 			closest_snap_point = snap_point
 		
-	# Snap to hex
+	# Prevent drag from player hex to shop hex
+	if current_hex.hex_type == 'PLAYER':
+		if closest_snap_point.get_parent().hex_type == 'SHOP':	# Parent of snap point should always be a hex
+			# Snap back to current hex
+			self.position = current_hex.snap_point.global_transform.origin
+			return
+	
+	# Snap to closest snap point
 	self.position = closest_snap_point.global_transform.origin
 	
 	# Set reference to unit on hex

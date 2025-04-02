@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # DB
 auto-battler/Database/db_functions.gd
+
+# TODO List
+auto-battler/_todo.txt
