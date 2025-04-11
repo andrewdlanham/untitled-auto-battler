@@ -1,28 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=8 format=3 uid="uid://csn7bknrr6t3c"]
 
 [ext_resource type="Script" path="res://data_manager.gd" id="1_vrtvw"]
 [ext_resource type="Script" path="res://shop_manager.gd" id="2_040jo"]
 [ext_resource type="Script" path="res://drag_and_drop.gd" id="3_ep364"]
 [ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://shop_hex.tscn" id="3_m7c5a"]
+[ext_resource type="Script" path="res://gold_manager.gd" id="3_w8ipa"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://floor.tscn" id="4_luv8w"]
 [ext_resource type="PackedScene" uid="uid://brtlqyif7qbwc" path="res://player_hex.tscn" id="5_ylrse"]
 
 [node name="Main" type="Node3D"]
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-unique_name_in_owner = true
-
 [node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 6, 6.5)
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
 [node name="DataManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_vrtvw")
 
 [node name="DragDropManager" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_ep364")
 
+[node name="GoldManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_w8ipa")
+
 [node name="ShopManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_040jo")
 
 [node name="PlayerUnits" type="Node" parent="."]

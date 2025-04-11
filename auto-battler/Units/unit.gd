@@ -39,12 +39,11 @@ func snap_to_nearest_hex():
 			closest_snap_distance = distance_to_snap_point
 			closest_snap_point = snap_point
 		
-	# Prevent drag from player hex to shop hex
-	if current_hex.hex_type == 'PLAYER':
-		if closest_snap_point.get_parent().hex_type == 'SHOP':	# Parent of snap point should always be a hex
-			# Snap back to current hex
-			self.position = current_hex.snap_point.global_transform.origin
-			return
+	# Prevent drag onto shop hex
+	if closest_snap_point.get_parent().hex_type == 'SHOP':	# Parent of snap point should always be a hex
+		# Snap back to current hex
+		self.position = current_hex.snap_point.global_transform.origin
+		return
 	
 	# Snap to closest snap point
 	self.position = closest_snap_point.global_transform.origin
