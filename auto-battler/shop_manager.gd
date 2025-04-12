@@ -1,8 +1,11 @@
 extends Node
 
-var test_unit = preload("res://Units/test_unit.tscn")
+var possible_units = [
+	preload("res://Units/test_unit.tscn"),
+	preload("res://Units/archer.tscn")
+]
 
-signal attempt_shop_roll
+signal shop_roll_requested
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +18,7 @@ func _process(delta: float) -> void:
 
 func _on_roll_shop_button_pressed() -> void:
 	print("Attempting shop roll...")
-	attempt_shop_roll.emit()
+	shop_roll_requested.emit()
 		
 func _on_roll_shop_approved():
 	print("Rolling shop...")
@@ -23,7 +26,9 @@ func _on_roll_shop_approved():
 		# Remove previous unit
 		shop_hex.free_unit_on_hex()
 		# Add new random unit
-		var new_unit = test_unit.instantiate()
+		var rng = RandomNumberGenerator.new()
+		var random_unit_index = rng.randi_range(0, possible_units.size() - 1)
+		var new_unit = possible_units[random_unit_index].instantiate()
 		new_unit.position = shop_hex.snap_point.global_transform.origin
 		shop_hex.unit_on_hex = new_unit
 		new_unit.current_hex = shop_hex

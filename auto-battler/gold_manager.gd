@@ -6,14 +6,14 @@ var player_gold = 10
 signal shop_roll_approved
 
 func _ready() -> void:
-	%ShopManager.attempt_shop_roll.connect(approve_shop_roll_attempt)
+	%ShopManager.shop_roll_requested.connect(_on_shop_roll_requested)
 	update_gold_count_text()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func approve_shop_roll_attempt():
+func _on_shop_roll_requested():
 	print("Approving shop roll attempt...")
 	if (player_gold >= 2):
 		shop_roll_approved.emit()
