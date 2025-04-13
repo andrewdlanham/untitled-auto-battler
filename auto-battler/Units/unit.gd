@@ -27,29 +27,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-func snap_to_nearest_hex():
-	
-	# Get closest snap point
-	var closest_snap_point = null
-	var closest_snap_distance = INF
-	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
-		var snap_point_origin = snap_point.global_transform.origin
-		var distance_to_snap_point = self.position.distance_to(snap_point_origin)
-		if distance_to_snap_point < closest_snap_distance:
-			closest_snap_distance = distance_to_snap_point
-			closest_snap_point = snap_point
-		
-	# Prevent drag onto shop hex
-	if closest_snap_point.get_parent().hex_type == 'SHOP':	# Parent of snap point should always be a hex
-		# Snap back to current hex
-		self.position = current_hex.snap_point.global_transform.origin
-		return
-	
-	# Snap to closest snap point
-	self.position = closest_snap_point.global_transform.origin
-	
-	# Set reference to unit on hex
-	self.current_hex.unit_on_hex = null
-	closest_snap_point.get_parent().unit_on_hex = self
-	self.current_hex = closest_snap_point.get_parent()

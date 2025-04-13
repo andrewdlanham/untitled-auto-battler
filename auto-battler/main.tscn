@@ -36,6 +36,9 @@ script = ExtResource("2_040jo")
 [node name="PlayerUnits" type="Node" parent="."]
 unique_name_in_owner = true
 
+[node name="ShopUnits" type="Node" parent="."]
+unique_name_in_owner = true
+
 [node name="Hexes" type="Node" parent="."]
 
 [node name="PlayerHexes" type="Node" parent="Hexes"]

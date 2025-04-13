@@ -12,9 +12,10 @@ material = SubResource("StandardMaterial3D_txxls")
 radius = 0.25
 height = 1.0
 
-[node name="Test Unit" type="Node3D"]
+[node name="Archer" type="Node3D"]
 script = ExtResource("1_5dp7x")
-unit_name = "test_unit"
+unit_name = "archer"
+cost = 3
 rarity = 2
 health = 50.0
 armor = 5.0

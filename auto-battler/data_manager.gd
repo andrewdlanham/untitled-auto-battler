@@ -74,7 +74,7 @@ func store_team_in_db():
 func construct_enemy_team(team_string):
 	print("construct_enemy_team()")
 	var team = JSON.parse_string(team_string)
-	var team_data = team[0]
+	var team_data = team[0]		# TODO: Figure out error w/ this line
 	var units_array = team_data["units"]
 
 	for unit in units_array:
@@ -86,4 +86,5 @@ func construct_enemy_team(team_string):
 				new_unit.position = enemy_hex.position
 				get_tree().get_root().add_child(new_unit)
 				print(str(unit) + " added to the scene!")
-				new_unit.snap_to_nearest_hex()
+				# TODO: Implement this logic again
+				#new_unit.snap_to_nearest_hex()

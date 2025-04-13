@@ -9,8 +9,10 @@ signal shop_roll_requested
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var GoldManager = %GoldManager
-	GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
+	_connect_signals()
+	
+func _connect_signals():
+	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,4 +34,4 @@ func _on_roll_shop_approved():
 		new_unit.position = shop_hex.snap_point.global_transform.origin
 		shop_hex.unit_on_hex = new_unit
 		new_unit.current_hex = shop_hex
-		%PlayerUnits.add_child(new_unit)
+		%ShopUnits.add_child(new_unit)
