@@ -14,7 +14,8 @@ signal unit_purchase_requested(unit: Unit)
 
 func _ready() -> void:
 	%GoldManager.unit_purchase_approved.connect(_on_unit_purchase_approved)
-
+	%GoldManager.unit_purchase_denied.connect(_on_unit_purchase_denied)
+	
 func _process(_delta):
 	if is_dragging: update_dragged_object_position()
 
@@ -47,7 +48,7 @@ func _input(event):
 				elif dropped_hex.hex_type == 'PLAYER':
 					snap_to_nearest_hex(dragged_object)
 				elif dropped_hex.hex_type == 'SHOP':
-					dragged_object.position = dragged_object.current_hex.snap_point.global_transform.origin
+					snap_unit_to_connected_hex(dragged_object)
 				dragged_object.find_child("CollisionShape3D").set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
@@ -104,6 +105,9 @@ func _on_unit_purchase_approved(unit: Unit):
 	snap_to_nearest_hex(unit)
 	%ShopUnits.remove_child(unit)
 	%PlayerUnits.add_child(unit)
+
+func _on_unit_purchase_denied(unit: Unit):
+	snap_unit_to_connected_hex(unit)
 	
 
 func get_hex_nearest_to_unit(unit: Unit):
@@ -119,3 +123,6 @@ func get_hex_nearest_to_unit(unit: Unit):
 			closest_snap_point = snap_point
 	
 	return closest_snap_point.get_parent()
+
+func snap_unit_to_connected_hex(unit: Unit):
+	unit.position = unit.current_hex.snap_point.global_transform.origin

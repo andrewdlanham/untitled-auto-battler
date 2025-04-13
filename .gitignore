@@ -20,5 +20,8 @@ auto-battler/Database/db_functions.gd
 # TODO List
 auto-battler/_todo.txt
 
+# Sound assets
+auto-battler/Sounds/*
+
 # Asset credits
 auto-battler/_credits.txt

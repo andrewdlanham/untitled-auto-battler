@@ -6,6 +6,7 @@ var reroll_cost = 2
 
 signal shop_roll_approved
 signal unit_purchase_approved(unit: Unit)
+signal unit_purchase_denied(unit: Unit)
 
 func _ready() -> void:
 	%ShopManager.shop_roll_requested.connect(_on_shop_roll_requested)
@@ -29,8 +30,8 @@ func _on_unit_purchase_requested(unit: Unit):
 	if player_gold >= unit.cost:
 		subtract_gold(unit.cost)
 		unit_purchase_approved.emit(unit)
-		
-	pass
+	else:
+		unit_purchase_denied.emit(unit)
 
 func add_gold(amount):
 	player_gold += amount
