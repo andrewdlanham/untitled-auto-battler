@@ -17,11 +17,8 @@ mono_crash.*.json
 # DB
 auto-battler/Database/db_functions.gd
 
-# TODO List
-auto-battler/_todo.txt
-
 # Sound assets
 auto-battler/Sounds/*
 
-# Asset credits
-auto-battler/_credits.txt
+# Documents such as TODO list, asset credits, etc.
+auto-battler/_docs/*

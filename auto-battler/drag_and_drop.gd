@@ -43,12 +43,15 @@ func _input(event):
 			if dragged_object is Unit:
 				# Check if Unit is being purchased from shop
 				var dropped_hex = get_hex_nearest_to_unit(dragged_object)
-				if dropped_hex.hex_type == 'PLAYER' and dragged_object.current_hex.hex_type == 'SHOP':
+				if dropped_hex.unit_on_hex != null:
+					snap_unit_to_current_hex(dragged_object)
+				elif dropped_hex.hex_type == 'PLAYER' and dragged_object.current_hex.hex_type == 'SHOP':
 					unit_purchase_requested.emit(dragged_object)
 				elif dropped_hex.hex_type == 'PLAYER':
 					snap_to_nearest_hex(dragged_object)
 				elif dropped_hex.hex_type == 'SHOP':
-					snap_unit_to_connected_hex(dragged_object)
+					snap_unit_to_current_hex(dragged_object)
+					
 				dragged_object.find_child("CollisionShape3D").set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
@@ -107,9 +110,8 @@ func _on_unit_purchase_approved(unit: Unit):
 	%PlayerUnits.add_child(unit)
 
 func _on_unit_purchase_denied(unit: Unit):
-	snap_unit_to_connected_hex(unit)
+	snap_unit_to_current_hex(unit)
 	
-
 func get_hex_nearest_to_unit(unit: Unit):
 	# TODO: Clean up this logic
 	# Get closest snap point
@@ -124,5 +126,5 @@ func get_hex_nearest_to_unit(unit: Unit):
 	
 	return closest_snap_point.get_parent()
 
-func snap_unit_to_connected_hex(unit: Unit):
+func snap_unit_to_current_hex(unit: Unit):
 	unit.position = unit.current_hex.snap_point.global_transform.origin
