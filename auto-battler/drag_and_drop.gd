@@ -4,6 +4,7 @@ const RAY_LENGTH = 100
 const UNIT_MASK = 1
 const FLOOR_MASK = 2
 const UNIT_FLOOR_MASK = 3	# Enables both layers 1 and 2
+const MAX_SNAP_DISTANCE = 1
 
 var is_dragging
 var dragged_object
@@ -43,7 +44,9 @@ func _input(event):
 			if dragged_object is Unit:
 				# Check if Unit is being purchased from shop
 				var dropped_hex = get_hex_nearest_to_unit(dragged_object)
-				if dropped_hex.unit_on_hex != null:
+				if (dropped_hex == null):
+					snap_unit_to_current_hex(dragged_object)
+				elif dropped_hex.unit_on_hex != null:
 					snap_unit_to_current_hex(dragged_object)
 				elif dropped_hex.hex_type == 'PLAYER' and dragged_object.current_hex.hex_type == 'SHOP':
 					unit_purchase_requested.emit(dragged_object)
@@ -57,6 +60,46 @@ func _input(event):
 				dragged_object_collision_shape = null
 
  
+
+func snap_to_nearest_hex(unit: Unit):
+
+	var nearest_hex = get_hex_nearest_to_unit(unit)
+		
+	# Snap to closest snap point
+	unit.position = nearest_hex.snap_point.global_transform.origin
+	
+	# Set reference to unit on hex
+	unit.current_hex.unit_on_hex = null
+	nearest_hex.unit_on_hex = unit
+	unit.current_hex = nearest_hex
+
+func get_hex_nearest_to_unit(unit: Unit):
+	# Get closest snap point
+	var closest_snap_point = null
+	var closest_snap_distance = INF
+	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
+		var snap_point_origin = snap_point.global_transform.origin
+		var distance_to_snap_point = unit.position.distance_to(snap_point_origin)
+		if distance_to_snap_point < closest_snap_distance:
+			closest_snap_distance = distance_to_snap_point
+			closest_snap_point = snap_point
+	
+	if closest_snap_distance > MAX_SNAP_DISTANCE:
+		return null
+	
+	return closest_snap_point.get_parent()
+
+func _on_unit_purchase_approved(unit: Unit):
+	snap_to_nearest_hex(unit)
+	%ShopUnits.remove_child(unit)
+	%PlayerUnits.add_child(unit)
+
+func _on_unit_purchase_denied(unit: Unit):
+	snap_unit_to_current_hex(unit)
+
+func snap_unit_to_current_hex(unit: Unit):
+	unit.position = unit.current_hex.snap_point.global_transform.origin
+
 func get_raycast_collision_info():
 	
 	var space_state = get_world_3d().direct_space_state
@@ -83,48 +126,3 @@ func update_dragged_object_position():
 			dragged_object.global_position.y,
 			updated_position.z
 		)
-
-func snap_to_nearest_hex(unit: Unit):
-
-	# Get closest snap point
-	var closest_snap_point = null
-	var closest_snap_distance = INF
-	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
-		var snap_point_origin = snap_point.global_transform.origin
-		var distance_to_snap_point = unit.position.distance_to(snap_point_origin)
-		if distance_to_snap_point < closest_snap_distance:
-			closest_snap_distance = distance_to_snap_point
-			closest_snap_point = snap_point
-		
-	# Snap to closest snap point
-	unit.position = closest_snap_point.global_transform.origin
-	
-	# Set reference to unit on hex
-	unit.current_hex.unit_on_hex = null
-	closest_snap_point.get_parent().unit_on_hex = unit
-	unit.current_hex = closest_snap_point.get_parent()
-
-func _on_unit_purchase_approved(unit: Unit):
-	snap_to_nearest_hex(unit)
-	%ShopUnits.remove_child(unit)
-	%PlayerUnits.add_child(unit)
-
-func _on_unit_purchase_denied(unit: Unit):
-	snap_unit_to_current_hex(unit)
-	
-func get_hex_nearest_to_unit(unit: Unit):
-	# TODO: Clean up this logic
-	# Get closest snap point
-	var closest_snap_point = null
-	var closest_snap_distance = INF
-	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
-		var snap_point_origin = snap_point.global_transform.origin
-		var distance_to_snap_point = unit.position.distance_to(snap_point_origin)
-		if distance_to_snap_point < closest_snap_distance:
-			closest_snap_distance = distance_to_snap_point
-			closest_snap_point = snap_point
-	
-	return closest_snap_point.get_parent()
-
-func snap_unit_to_current_hex(unit: Unit):
-	unit.position = unit.current_hex.snap_point.global_transform.origin
