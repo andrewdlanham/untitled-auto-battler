@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dx0tog233a03y"
-path="res://.godot/imported/hex2.glb-cd5993f73d40a1ce7967afc299d19aae.scn"
+path="res://.godot/imported/hex2.glb-7c4ee1d7097cff781ec33c30af163e99.scn"
 
 [deps]
 
-source_file="res://hex2.glb"
-dest_files=["res://.godot/imported/hex2.glb-cd5993f73d40a1ce7967afc299d19aae.scn"]
+source_file="res://Hexes/hex2.glb"
+dest_files=["res://.godot/imported/hex2.glb-7c4ee1d7097cff781ec33c30af163e99.scn"]
 
 [params]
 
