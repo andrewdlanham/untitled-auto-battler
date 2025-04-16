@@ -1,8 +1,8 @@
 extends Node
 
 var possible_units = [
-	preload("res://Units/test_unit.tscn"),
-	preload("res://Units/archer.tscn")
+	preload("res://units/test_unit.tscn"),
+	preload("res://units/archer.tscn")
 ]
 
 signal shop_roll_requested
