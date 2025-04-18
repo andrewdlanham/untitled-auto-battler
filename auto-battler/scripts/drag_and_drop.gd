@@ -12,6 +12,7 @@ var dragged_object_collision_shape
 var raycast_collision_mask = UNIT_MASK
 
 signal unit_purchase_requested(unit: Unit)
+signal new_unit_placed(unit: Unit)
 
 func _ready() -> void:
 	%GoldManager.unit_purchase_approved.connect(_on_unit_purchase_approved)
@@ -22,11 +23,11 @@ func _process(_delta):
 
 func _input(event):
 	if Input.is_action_just_pressed("LeftClick"):
-		print("Left click")
+		#print("Left click")
 		if is_dragging: return
 		raycast_collision_mask = UNIT_MASK
 		var raycast_collision_info = get_raycast_collision_info()
-		print(raycast_collision_info)
+		#print(raycast_collision_info)
 		if !raycast_collision_info.is_empty():
 			dragged_object = raycast_collision_info["collider"].get_node("../.")
 			print("Dragging: " + dragged_object.name)
@@ -37,7 +38,7 @@ func _input(event):
 	
 	# Handle dropping unit on hex
 	elif Input.is_action_just_released("LeftClick"):
-		print("Left click released")
+		#print("Left click released")
 		if is_dragging: 
 			raycast_collision_mask = UNIT_MASK
 			is_dragging = false
@@ -93,6 +94,7 @@ func _on_unit_purchase_approved(unit: Unit):
 	snap_to_nearest_hex(unit)
 	%ShopUnits.remove_child(unit)
 	%PlayerUnits.add_child(unit)
+	new_unit_placed.emit(unit)
 
 func _on_unit_purchase_denied(unit: Unit):
 	snap_unit_to_current_hex(unit)

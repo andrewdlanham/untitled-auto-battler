@@ -6,6 +6,7 @@ var current_hex : Hex
 
 @export var unit_name : String
 @export var cost : int = 1
+@export var level : int = 1
 
 
 # Combat stats

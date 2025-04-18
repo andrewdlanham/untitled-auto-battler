@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=9 format=3 uid="uid://csn7bknrr6t3c"]
 
 [ext_resource type="Script" path="res://db/data_manager.gd" id="1_vrtvw"]
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="2_040jo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://hexes/shop_hex.tscn" id="3_m7c5a"]
 [ext_resource type="Script" path="res://scripts/gold_manager.gd" id="3_w8ipa"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://floor.tscn" id="4_luv8w"]
+[ext_resource type="Script" path="res://scripts/merge_manager.gd" id="5_dlvit"]
 [ext_resource type="PackedScene" uid="uid://brtlqyif7qbwc" path="res://hexes/player_hex.tscn" id="5_ylrse"]
 
 [node name="Main" type="Node3D"]
@@ -32,6 +33,10 @@ script = ExtResource("3_w8ipa")
 [node name="ShopManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_040jo")
+
+[node name="MergeManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_dlvit")
 
 [node name="PlayerUnits" type="Node" parent="."]
 unique_name_in_owner = true
