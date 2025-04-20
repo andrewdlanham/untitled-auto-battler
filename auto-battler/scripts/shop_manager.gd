@@ -7,18 +7,13 @@ var possible_units = [
 
 signal shop_roll_requested
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_connect_signals()
 	
 func _connect_signals():
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_roll_shop_button_pressed() -> void:
+func _on_roll_shop_pressed() -> void:
 	print("Attempting shop roll...")
 	shop_roll_requested.emit()
 		

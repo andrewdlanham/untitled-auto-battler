@@ -1,14 +1,7 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%DragDropManager.new_unit_placed.connect(_on_new_unit_placed)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_new_unit_placed(unit: Unit):
 	handle_unit_merging(unit.unit_name)

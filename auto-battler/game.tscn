@@ -1,42 +1,35 @@
 [gd_scene load_steps=9 format=3 uid="uid://csn7bknrr6t3c"]
 
-[ext_resource type="Script" path="res://db/data_manager.gd" id="1_vrtvw"]
-[ext_resource type="Script" path="res://scripts/shop_manager.gd" id="2_040jo"]
-[ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="3_ep364"]
-[ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://hexes/shop_hex.tscn" id="3_m7c5a"]
-[ext_resource type="Script" path="res://scripts/gold_manager.gd" id="3_w8ipa"]
-[ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://floor.tscn" id="4_luv8w"]
-[ext_resource type="Script" path="res://scripts/merge_manager.gd" id="5_dlvit"]
-[ext_resource type="PackedScene" uid="uid://brtlqyif7qbwc" path="res://hexes/player_hex.tscn" id="5_ylrse"]
+[ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="1_mptox"]
+[ext_resource type="Script" path="res://scripts/gold_manager.gd" id="2_0mslr"]
+[ext_resource type="Script" path="res://scripts/shop_manager.gd" id="3_bc1xf"]
+[ext_resource type="Script" path="res://scripts/merge_manager.gd" id="4_d47jk"]
+[ext_resource type="PackedScene" uid="uid://brtlqyif7qbwc" path="res://hexes/player_hex.tscn" id="5_emem1"]
+[ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://hexes/shop_hex.tscn" id="6_sxuod"]
+[ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://floor.tscn" id="7_n2mwn"]
+[ext_resource type="Script" path="res://scripts/ui_manager.gd" id="8_bh7fc"]
 
-[node name="Main" type="Node3D"]
+[node name="Game" type="Node3D"]
 
 [node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 6, 6.5)
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-unique_name_in_owner = true
-
-[node name="DataManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_vrtvw")
-
 [node name="DragDropManager" type="Node3D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_ep364")
+script = ExtResource("1_mptox")
 
 [node name="GoldManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_w8ipa")
+script = ExtResource("2_0mslr")
 
 [node name="ShopManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("2_040jo")
+script = ExtResource("3_bc1xf")
 
 [node name="MergeManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("5_dlvit")
+script = ExtResource("4_d47jk")
 
 [node name="PlayerUnits" type="Node" parent="."]
 unique_name_in_owner = true
@@ -49,78 +42,78 @@ unique_name_in_owner = true
 [node name="PlayerHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="HexA" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexA" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2)
 hex_id = "A"
 
-[node name="HexB" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexB" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -1)
 hex_id = "B"
 
-[node name="HexC" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexC" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 hex_id = "C"
 
-[node name="HexD" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexD" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, -1)
 hex_id = "D"
 
-[node name="HexE" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexE" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, 1)
 hex_id = "E"
 
-[node name="HexF" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexF" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2)
 hex_id = "F"
 
-[node name="HexG" parent="Hexes/PlayerHexes" instance=ExtResource("5_ylrse")]
+[node name="HexG" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, 1)
 hex_id = "G"
 
 [node name="EnemyHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="HexA" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexA" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -0.00118667, 0, -4.21583)
 hex_id = "A"
 
-[node name="HexB" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexB" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 1.74941, 0, -5.21479)
 hex_id = "B"
 
-[node name="HexC" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexC" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 0, 0, -6.21583)
 hex_id = "C"
 
-[node name="HexD" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexD" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -1.75059, 0, -5.21687)
 hex_id = "D"
 
-[node name="HexE" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexE" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 1.75059, 0, -7.21479)
 hex_id = "E"
 
-[node name="HexF" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexF" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 0.00118667, 0, -8.21583)
 hex_id = "F"
 
-[node name="HexG" parent="Hexes/EnemyHexes" instance=ExtResource("5_ylrse")]
+[node name="HexG" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -1.74941, 0, -7.21687)
 hex_id = "G"
 
 [node name="ShopHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="ShopHex" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+[node name="ShopHex" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73018, 0, 2.96599)
 
-[node name="ShopHex2" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+[node name="ShopHex2" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.41756, 0, 1.95449)
 
-[node name="ShopHex3" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+[node name="ShopHex3" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.76478, 0, 2.98589)
 
-[node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("3_m7c5a")]
+[node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.46315, 0, 1.92876)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -129,10 +122,19 @@ transform = Transform3D(1, 0, 0, 0, 0.543687, 0.839288, 0, -0.839288, 0.543687, 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.474196, -0.738925, 0.478673, 0, 0.543687, 0.839288, -0.880419, 0.397987, -0.257814, -2.60183, 3.68417, 6.09888)
 
-[node name="Floor" parent="." instance=ExtResource("4_luv8w")]
+[node name="Floor" parent="." instance=ExtResource("7_n2mwn")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.2, 0)
 
-[node name="StoreTeamInDB" type="Button" parent="."]
+[node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 620.0
+offset_bottom = 185.0
+script = ExtResource("8_bh7fc")
+
+[node name="StoreTeamButton" type="Button" parent="UI"]
+unique_name_in_owner = true
 offset_left = 1577.0
 offset_top = 4.0
 offset_right = 1913.0
@@ -140,7 +142,8 @@ offset_bottom = 248.0
 theme_override_font_sizes/font_size = 30
 text = "Save team to DB"
 
-[node name="LoadRandomTeam" type="Button" parent="."]
+[node name="LoadRandomTeamButton" type="Button" parent="UI"]
+unique_name_in_owner = true
 offset_left = 1579.0
 offset_top = 254.0
 offset_right = 1916.0
@@ -148,7 +151,8 @@ offset_bottom = 498.0
 theme_override_font_sizes/font_size = 30
 text = "Load Random Team"
 
-[node name="RollShopButton" type="Button" parent="."]
+[node name="RollShopButton" type="Button" parent="UI"]
+unique_name_in_owner = true
 offset_left = 1579.0
 offset_top = 503.0
 offset_right = 1915.0
@@ -156,12 +160,6 @@ offset_bottom = 728.0
 theme_override_font_sizes/font_size = 30
 text = "REROLL
 "
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 620.0
-offset_bottom = 185.0
 
 [node name="GoldCountLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
@@ -172,7 +170,3 @@ theme_override_font_sizes/font_size = 100
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="pressed" from="StoreTeamInDB" to="DataManager" method="_on_store_team_in_db_pressed"]
-[connection signal="pressed" from="LoadRandomTeam" to="DataManager" method="_on_load_random_team_pressed"]
-[connection signal="pressed" from="RollShopButton" to="ShopManager" method="_on_roll_shop_button_pressed"]

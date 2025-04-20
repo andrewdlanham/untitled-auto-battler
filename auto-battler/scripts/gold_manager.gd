@@ -12,10 +12,6 @@ func _ready() -> void:
 	%DragDropManager.unit_purchase_requested.connect(_on_unit_purchase_requested)
 	update_gold_label()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_shop_roll_requested():
 	print("Approving shop roll attempt...")
 	if (player_gold >= reroll_cost):

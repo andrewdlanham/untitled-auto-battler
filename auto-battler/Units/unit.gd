@@ -1,4 +1,5 @@
 extends Node3D
+
 class_name Unit
 
 @onready var health_label: Label3D = $HealthLabel
@@ -8,14 +9,9 @@ var current_hex : Hex
 @export var cost : int = 1
 @export var level : int = 1
 
-
 # Combat stats
 @export var health : float = 100.00
 
-# Signals
-# TODO: Implement hex_change_attempted signal
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_health_label_text()
 
@@ -31,3 +27,9 @@ func subtract_health(amount):
 
 func update_health_label_text():
 	health_label.text = str(health)
+
+func get_info_dict():
+	return {
+		"unit_name" : self.unit_name,
+		"hex_id" : self.current_hex.hex_id
+		}
