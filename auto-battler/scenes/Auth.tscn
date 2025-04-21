@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dof5pa3myt7la"]
+
+[ext_resource type="Script" path="res://db/auth.gd" id="1_2l7py"]
+
+[node name="Auth" type="Node2D"]
+script = ExtResource("1_2l7py")
+
+[node name="EmailInput" type="TextEdit" parent="."]
+offset_left = 587.0
+offset_top = 513.0
+offset_right = 1356.0
+offset_bottom = 615.0
+
+[node name="PasswordInput" type="TextEdit" parent="."]
+offset_left = 587.0
+offset_top = 667.0
+offset_right = 1356.0
+offset_bottom = 769.0
+
+[node name="PlayGameButton" type="Button" parent="."]
+offset_left = 653.0
+offset_top = 272.0
+offset_right = 1290.0
+offset_bottom = 424.0
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="LoginButton" type="Button" parent="."]
+offset_left = 610.0
+offset_top = 827.0
+offset_right = 853.0
+offset_bottom = 920.0
+theme_override_font_sizes/font_size = 30
+text = "LOGIN"
+
+[connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="LoginButton" to="." method="_on_login_button_pressed"]
