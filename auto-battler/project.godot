@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="AutoBattler"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/Auth.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DBFunc="*res://db/db_functions.gd"
-DataManager="*res://DataManager.tscn"
+DataManager="*res://scenes/DataManager.tscn"
 
 [display]
 
