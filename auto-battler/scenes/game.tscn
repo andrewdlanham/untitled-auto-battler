@@ -128,7 +128,7 @@ transform = Transform3D(-0.474196, -0.738925, 0.478673, 0, 0.543687, 0.839288, -
 [node name="Floor" parent="." instance=ExtResource("7_n2mwn")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.2, 0)
 
-[node name="UI" type="Control" parent="."]
+[node name="UI Manager" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
@@ -136,7 +136,7 @@ offset_right = 620.0
 offset_bottom = 185.0
 script = ExtResource("8_bh7fc")
 
-[node name="StoreTeamButton" type="Button" parent="UI"]
+[node name="StoreTeamButton" type="Button" parent="UI Manager"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1408.0
@@ -146,7 +146,7 @@ offset_bottom = 960.0
 theme_override_font_sizes/font_size = 50
 text = "Store Team"
 
-[node name="LoadRandomTeamButton" type="Button" parent="UI"]
+[node name="LoadRandomTeamButton" type="Button" parent="UI Manager"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1408.0
@@ -156,7 +156,7 @@ offset_bottom = 1080.0
 theme_override_font_sizes/font_size = 50
 text = "Load Random Team"
 
-[node name="RollShopButton" type="Button" parent="UI"]
+[node name="RollShopButton" type="Button" parent="UI Manager"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1408.0
@@ -166,7 +166,7 @@ offset_bottom = 832.0
 theme_override_font_sizes/font_size = 50
 text = "Roll Shop"
 
-[node name="GoldCountLabel" type="Label" parent="UI"]
+[node name="GoldCountLabel" type="Label" parent="UI Manager"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 345.0

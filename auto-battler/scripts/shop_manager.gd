@@ -10,15 +10,14 @@ signal shop_roll_requested
 func _ready() -> void:
 	_connect_signals()
 	
-func _connect_signals():
+func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
 
+#region -- Signal Handlers --
 func _on_roll_shop_pressed() -> void:
-	print("Attempting shop roll...")
 	shop_roll_requested.emit()
-		
-func _on_roll_shop_approved():
-	print("Rolling shop...")
+
+func _on_roll_shop_approved() -> void:
 	for shop_hex in %ShopHexes.get_children():
 		# Remove previous unit
 		shop_hex.free_unit_on_hex()
@@ -30,3 +29,4 @@ func _on_roll_shop_approved():
 		shop_hex.unit_on_hex = new_unit
 		new_unit.current_hex = shop_hex
 		%ShopUnits.add_child(new_unit)
+#endregion
