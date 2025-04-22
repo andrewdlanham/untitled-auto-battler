@@ -5,6 +5,9 @@ extends Node3D
 class_name Unit
 
 @onready var health_label: Label3D = $HealthLabel
+@onready var level_label: Label3D = $LevelLabel
+
+
 @export var unit_name : String
 @export var cost : int = 1
 @export var level : int = 1
@@ -16,10 +19,14 @@ var current_hex : Hex
 
 func _ready() -> void:
 	update_health_label_text()
+	update_level_label_text()
 
 #region -- Helpers --
 func update_health_label_text() -> void:
 	health_label.text = str(health)
+
+func update_level_label_text() -> void:
+	level_label.text = "LVL " + str(level)
 
 func add_health(amount) -> void:
 	health += amount
