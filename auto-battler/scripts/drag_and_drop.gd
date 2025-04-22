@@ -1,3 +1,5 @@
+# TODO: Add code regions and compress functions
+
 extends Node3D	# Script must be on Node3D to access get_world_3d()
 
 const RAY_LENGTH = 100
@@ -21,13 +23,11 @@ func _ready() -> void:
 func _process(_delta):
 	if is_dragging: update_dragged_object_position()
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("LeftClick"):
-		#print("Left click")
 		if is_dragging: return
 		raycast_collision_mask = UNIT_MASK
 		var raycast_collision_info = get_raycast_collision_info()
-		#print(raycast_collision_info)
 		if !raycast_collision_info.is_empty():
 			dragged_object = raycast_collision_info["collider"].get_node("../.")
 			print("Dragging: " + dragged_object.name)
@@ -38,7 +38,6 @@ func _input(event):
 	
 	# Handle dropping unit on hex
 	elif Input.is_action_just_released("LeftClick"):
-		#print("Left click released")
 		if is_dragging: 
 			raycast_collision_mask = UNIT_MASK
 			is_dragging = false
