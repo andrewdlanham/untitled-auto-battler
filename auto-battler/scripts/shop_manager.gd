@@ -1,7 +1,7 @@
 extends Node
 
 var possible_units = [
-	preload("res://units/test_unit.tscn"),
+	preload("res://units/base_unit.tscn"),
 	preload("res://units/archer.tscn")
 ]
 

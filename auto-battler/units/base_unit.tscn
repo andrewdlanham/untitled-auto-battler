@@ -1,26 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvsvkjwkngxk6"]
+[gd_scene load_steps=5 format=3 uid="uid://b478g6o8tgv7t"]
 
-[ext_resource type="Script" path="res://units/unit.gd" id="1_xj3mh"]
+[ext_resource type="Script" path="res://units/unit.gd" id="1_p0uky"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ammrf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txxls"]
-albedo_color = Color(0.59709, 0.247503, 0.988957, 1)
+albedo_color = Color(0.369654, 0.380128, 0.384604, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1bk63"]
 material = SubResource("StandardMaterial3D_txxls")
 radius = 0.25
 height = 1.0
 
-[node name="Test Unit" type="Node3D"]
-script = ExtResource("1_xj3mh")
+[node name="Base Unit" type="Node3D"]
+script = ExtResource("1_p0uky")
 unit_name = "test_unit"
 
 [node name="HealthLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87589, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0364, 0)
 visible = false
 text = "100"
 font_size = 80
+outline_size = 30
+
+[node name="LevelLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677896, 0)
+text = "LVL 0"
+font_size = 50
 outline_size = 30
 
 [node name="Area3D" type="Area3D" parent="."]
