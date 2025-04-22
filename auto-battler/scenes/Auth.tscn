@@ -33,5 +33,14 @@ offset_bottom = 920.0
 theme_override_font_sizes/font_size = 30
 text = "LOGIN"
 
+[node name="RegisterButton" type="Button" parent="."]
+offset_left = 955.0
+offset_top = 827.0
+offset_right = 1198.0
+offset_bottom = 920.0
+theme_override_font_sizes/font_size = 30
+text = "REGISTER"
+
 [connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_pressed"]
 [connection signal="pressed" from="LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
