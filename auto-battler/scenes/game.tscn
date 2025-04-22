@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="8_bh7fc"]
 
 [node name="Game" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
 script = ExtResource("1_k84qj")
 
 [node name="MainCamera" type="Camera3D" parent="."]
@@ -138,40 +139,40 @@ script = ExtResource("8_bh7fc")
 [node name="StoreTeamButton" type="Button" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1577.0
-offset_top = 4.0
-offset_right = 1913.0
-offset_bottom = 248.0
-theme_override_font_sizes/font_size = 30
-text = "Save team to DB"
+offset_left = 1408.0
+offset_top = 832.0
+offset_right = 1920.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 50
+text = "Store Team"
 
 [node name="LoadRandomTeamButton" type="Button" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1579.0
-offset_top = 254.0
-offset_right = 1916.0
-offset_bottom = 498.0
-theme_override_font_sizes/font_size = 30
+offset_left = 1408.0
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
 text = "Load Random Team"
 
 [node name="RollShopButton" type="Button" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1579.0
-offset_top = 503.0
-offset_right = 1915.0
-offset_bottom = 728.0
-theme_override_font_sizes/font_size = 30
-text = "REROLL
-"
+offset_left = 1408.0
+offset_top = 704.0
+offset_right = 1920.0
+offset_bottom = 832.0
+theme_override_font_sizes/font_size = 50
+text = "Roll Shop"
 
 [node name="GoldCountLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 586.0
-offset_bottom = 168.0
+offset_right = 345.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.810987, 0.74335, 0.227573, 1)
 theme_override_font_sizes/font_size = 100
-text = "100"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
