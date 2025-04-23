@@ -36,6 +36,10 @@ func subtract_health(amount) -> void:
 	health -= amount
 	update_health_label_text()
 
+func level_up() -> void:
+	level += 1
+	update_level_label_text()
+
 func get_info_dict() -> Dictionary:
 	return {
 		"unit_name" : self.unit_name,

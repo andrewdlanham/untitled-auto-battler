@@ -6,7 +6,9 @@
 albedo_color = Color(0.0651931, 0.64675, 3.65794e-06, 1)
 
 [node name="Archer" instance=ExtResource("1_poik8")]
+unit_name = "archer"
 cost = 2
+level = 2
 health = 80.0
 
 [node name="MeshInstance3D" parent="Area3D" index="1"]

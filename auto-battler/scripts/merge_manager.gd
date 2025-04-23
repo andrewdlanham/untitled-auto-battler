@@ -11,7 +11,7 @@ func handle_unit_merging(match_name: String) -> void:
 	if matching_units.size() == 3:
 		matching_units[0].free()
 		matching_units[1].free()
-		matching_units[2].level += 1
+		matching_units[2].level_up()
 
 #region -- Signal Handlers --
 func _on_new_unit_placed(unit: Unit) -> void:
