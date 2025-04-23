@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbkdyuqojlsfs"]
 
-[ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_63fao"]
+[ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_poik8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6imdf"]
 albedo_color = Color(0.0651931, 0.64675, 3.65794e-06, 1)
 
-[node name="Archer" instance=ExtResource("1_63fao")]
+[node name="Archer" instance=ExtResource("1_poik8")]
 unit_name = "Archer"
 unit_id = "unit_archer"
 cost = 2
