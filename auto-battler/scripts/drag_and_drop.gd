@@ -30,7 +30,6 @@ func _input(_event):
 		var raycast_collision_info = get_raycast_collision_info()
 		if !raycast_collision_info.is_empty():
 			dragged_object = raycast_collision_info["collider"].get_node("../.")
-			print("Dragging: " + dragged_object.name)
 			dragged_object_collision_shape = dragged_object.find_child("CollisionShape3D")
 			dragged_object_collision_shape.set_disabled(true)
 			raycast_collision_mask = FLOOR_MASK
@@ -44,22 +43,18 @@ func _input(_event):
 			if dragged_object is Unit:
 				# Check if Unit is being purchased from shop
 				var dropped_hex = get_hex_nearest_to_unit(dragged_object)
-				if (dropped_hex == null):
-					snap_unit_to_current_hex(dragged_object)
-				elif dropped_hex.unit_on_hex != null:
+				if (dropped_hex == null or dropped_hex.unit_on_hex != null):
 					snap_unit_to_current_hex(dragged_object)
 				elif dropped_hex.hex_type == 'PLAYER' and dragged_object.current_hex.hex_type == 'SHOP':
 					unit_purchase_requested.emit(dragged_object)
 				elif dropped_hex.hex_type == 'PLAYER':
 					snap_to_nearest_hex(dragged_object)
-				elif dropped_hex.hex_type == 'SHOP':
+				elif dropped_hex.hex_type == 'SHOP' or dropped_hex.hex_type == 'ENEMY':
 					snap_unit_to_current_hex(dragged_object)
 					
 				dragged_object.find_child("CollisionShape3D").set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
-
- 
 
 func snap_to_nearest_hex(unit: Unit):
 

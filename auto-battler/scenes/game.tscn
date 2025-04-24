@@ -79,30 +79,37 @@ unique_name_in_owner = true
 [node name="HexA" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -0.00118667, 0, -4.21583)
 hex_id = "A"
+hex_type = "ENEMY"
 
 [node name="HexB" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 1.74941, 0, -5.21479)
 hex_id = "B"
+hex_type = "ENEMY"
 
 [node name="HexC" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 0, 0, -6.21583)
 hex_id = "C"
+hex_type = "ENEMY"
 
 [node name="HexD" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -1.75059, 0, -5.21687)
 hex_id = "D"
+hex_type = "ENEMY"
 
 [node name="HexE" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 1.75059, 0, -7.21479)
 hex_id = "E"
+hex_type = "ENEMY"
 
 [node name="HexF" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, 0.00118667, 0, -8.21583)
 hex_id = "F"
+hex_type = "ENEMY"
 
 [node name="HexG" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
 transform = Transform3D(-0.000593293, 0, -1, 0, 1, 0, 1, 0, -0.000593293, -1.74941, 0, -7.21687)
 hex_id = "G"
+hex_type = "ENEMY"
 
 [node name="ShopHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
