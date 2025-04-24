@@ -7,8 +7,9 @@ class_name Unit
 @onready var health_label: Label3D = $HealthLabel
 @onready var level_label: Label3D = $LevelLabel
 
-
 @export var unit_name : String
+@export var unit_id : String
+
 @export var cost : int = 1
 @export var level : int = 1
 
@@ -43,6 +44,9 @@ func level_up() -> void:
 func get_info_dict() -> Dictionary:
 	return {
 		"unit_name" : self.unit_name,
-		"hex_id" : self.current_hex.hex_id
+		"unit_id" : self.unit_id,
+		"hex_id" : self.current_hex.hex_id,
+		"level" : self.level,
+		"cost" : self.cost
 		}
 #endregion
