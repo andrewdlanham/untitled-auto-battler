@@ -7,20 +7,20 @@ class_name Unit
 @onready var health_label: Label3D = $HealthLabel
 @onready var level_label: Label3D = $LevelLabel
 
-@export var unit_name : String
-@export var unit_id : String
+@export var unit_name: String
+@export var unit_id: String
 
-@export var cost : int = 1
-@export var level : int = 1
+@export var cost: int = 1
+@export var level: int = 1
 
-var current_hex : Hex
+var current_hex: Hex
 
 
 # Combat variables
-var combat_enabled : bool = false
-@export var health : float = 100.00
-@export var attack_range : int = 1
-@export var target_enemy : Unit
+var combat_enabled: bool = false
+@export var health: float = 100.00
+@export var attack_range: int = 1
+@export var target_enemy: Unit
 
 func _ready() -> void:
 	update_health_label_text()

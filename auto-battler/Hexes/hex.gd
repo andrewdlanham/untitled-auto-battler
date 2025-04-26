@@ -3,10 +3,10 @@ extends Node3D
 class_name Hex
 
 @onready var snap_point: Node3D = $"Snap Point"
-@export var hex_id : String
-@export var hex_type : String
-@export var unit_on_hex : Unit
-@export var neighbors : Array[Node3D]
+@export var hex_id: String
+@export var hex_type: String
+@export var unit_on_hex: Unit
+@export var neighbors: Array[Node3D]
 
 
 #region -- Helpers --
