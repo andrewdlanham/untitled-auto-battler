@@ -19,7 +19,7 @@ var current_hex: Hex
 # Combat variables
 var combat_enabled: bool = false
 @export var health: float = 100.00
-@export var attack_range: int = 1
+@export var attack_range: int = 3	# TODO: Tie attack range to hexes
 @export var target_enemy: Unit
 
 # Signals
@@ -31,17 +31,18 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if(combat_enabled):
-		target_enemy = get_tree().root.get_node("Game/EnemyUnits").get_children()[0]	# Temporary target logic
-		if target_enemy == null:
-			# TODO: Target closest enemy
-			pass
-		if !target_is_in_attack_range():
+		if not is_instance_valid(target_enemy):
+			target_closest_enemy()
+		if not target_is_in_attack_range():
 			var hex_to_move_to = get_free_hex_closest_to_unit(target_enemy)
 			# TODO: Implement moving to new hex
 		else:
 				# TODO: Implement attacking logic
 				pass
-		
+	
+	combat_enabled = false
+
+
 #region -- Helpers --
 func update_health_label_text() -> void:
 	health_label.text = str(health)
@@ -83,8 +84,8 @@ func get_free_hex_closest_to_unit(unit: Unit) -> Hex:
 	return closest_hex
 
 func target_is_in_attack_range() -> bool:
-	# TODO: Implement this function
-	return false
+	print(self.global_transform.origin.distance_to(target_enemy.global_transform.origin))
+	return self.global_transform.origin.distance_to(target_enemy.global_transform.origin) <= self.attack_range
 
 func move_to_hex(hex: Hex) -> void:
 	# TODO: Implement this function
@@ -93,3 +94,21 @@ func move_to_hex(hex: Hex) -> void:
 func die() -> void:
 	unit_died.emit(self, self.team)
 	self.queue_free()
+
+func get_closest_enemy() -> Node3D:
+	var closest_enemy: Node = null
+	var closest_distance: float = INF  # Start with infinite distance
+	var enemies
+	if team == 'PLAYER': enemies = get_tree().root.get_node("Game/EnemyUnits").get_children()
+	elif team == 'ENEMY': enemies = get_tree().root.get_node("Game/PlayerUnits").get_children()
+	for enemy in enemies:
+		var distance = self.global_transform.origin.distance_to(enemy.global_transform.origin)
+		
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_enemy = enemy
+	
+	return closest_enemy
+
+func target_closest_enemy() -> void:
+	target_enemy = get_closest_enemy()
