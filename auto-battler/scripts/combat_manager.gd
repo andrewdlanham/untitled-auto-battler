@@ -17,14 +17,14 @@ func _process(delta: float) -> void:
 			end_combat()
 
 func start_combat():
-	print("Starting combat!")
 	num_player_units = player_units.get_children().size()
 	num_enemy_units = enemy_units.get_children().size()
-	print(num_player_units)
 	for unit in player_units.get_children():
 		unit.combat_enabled = true
+		unit.unit_died.connect(_on_unit_died)
 	for unit in enemy_units.get_children():
 		unit.combat_enabled = true
+		unit.unit_died.connect(_on_unit_died)
 
 func end_combat():
 	for unit in player_units.get_children():
@@ -35,3 +35,7 @@ func end_combat():
 
 func _on_start_combat_button_pressed() -> void:
 	start_combat()
+
+func _on_unit_died(unit: Unit, team: String) -> void:
+	if (team == "PLAYER"): num_player_units -= 1
+	if (team == "ENEMY"): num_enemy_units -= 1

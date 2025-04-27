@@ -88,6 +88,7 @@ func _on_unit_purchase_approved(unit: Unit):
 	snap_to_nearest_hex(unit)
 	%ShopUnits.remove_child(unit)
 	%PlayerUnits.add_child(unit)
+	unit.team = "PLAYER"
 	new_unit_placed.emit(unit)
 
 func _on_unit_purchase_denied(unit: Unit):

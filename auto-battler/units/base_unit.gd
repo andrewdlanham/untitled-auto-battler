@@ -13,14 +13,17 @@ class_name Unit
 @export var cost: int = 1
 @export var level: int = 1
 
+var team: String
 var current_hex: Hex
-
 
 # Combat variables
 var combat_enabled: bool = false
 @export var health: float = 100.00
 @export var attack_range: int = 1
 @export var target_enemy: Unit
+
+# Signals
+signal unit_died(unit: Unit, team: String)
 
 func _ready() -> void:
 	update_health_label_text()
@@ -86,3 +89,7 @@ func target_is_in_attack_range() -> bool:
 func move_to_hex(hex: Hex) -> void:
 	# TODO: Implement this function
 	pass
+
+func die() -> void:
+	unit_died.emit(self, self.team)
+	self.queue_free()
