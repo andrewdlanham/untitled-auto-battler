@@ -29,13 +29,13 @@ func _ready() -> void:
 	update_health_label_text()
 	update_level_label_text()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(combat_enabled):
 		if not is_instance_valid(target_enemy):
 			target_closest_enemy()
 		if not target_is_in_attack_range():
-			var hex_to_move_to = get_free_hex_closest_to_unit(target_enemy)
-			# TODO: Implement moving to new hex
+			var open_hex = get_open_hex_towards_unit(target_enemy)
+			move_to_hex(open_hex)
 		else:
 				# TODO: Implement attacking logic
 				pass
@@ -72,11 +72,12 @@ func get_info_dict() -> Dictionary:
 		}
 #endregion
 
-func get_free_hex_closest_to_unit(unit: Unit) -> Hex:
+func get_open_hex_towards_unit(unit: Unit) -> Hex:
 	var closest_hex = null
 	var shortest_distance = INF
 	for neighborHex in current_hex.neighbors:
-		if neighborHex.is_occupied(): continue
+		if neighborHex.is_occupied(): 
+			continue
 		var distance = neighborHex.global_transform.origin.distance_to(unit.global_transform.origin)
 		if distance < shortest_distance:
 			shortest_distance = distance
@@ -84,12 +85,15 @@ func get_free_hex_closest_to_unit(unit: Unit) -> Hex:
 	return closest_hex
 
 func target_is_in_attack_range() -> bool:
-	print(self.global_transform.origin.distance_to(target_enemy.global_transform.origin))
 	return self.global_transform.origin.distance_to(target_enemy.global_transform.origin) <= self.attack_range
 
 func move_to_hex(hex: Hex) -> void:
-	# TODO: Implement this function
-	pass
+	if hex.is_occupied():
+		return
+	hex.unit_on_hex = self
+	current_hex.unit_on_hex = null
+	current_hex = hex
+	self.position = hex.snap_point.global_transform.origin
 
 func die() -> void:
 	unit_died.emit(self, self.team)
