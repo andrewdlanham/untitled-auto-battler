@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 	if(combat_enabled):
 		if not is_instance_valid(target_enemy):
 			target_closest_enemy()
-		if not target_is_in_attack_range():
+		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
 			move_to_hex(open_hex)
 		else:
@@ -78,14 +78,14 @@ func get_open_hex_towards_unit(unit: Unit) -> Hex:
 	for neighborHex in current_hex.neighbors:
 		if neighborHex.is_occupied(): 
 			continue
-		var distance = neighborHex.global_transform.origin.distance_to(unit.global_transform.origin)
+		var distance = neighborHex.global_position.distance_to(unit.global_position)
 		if distance < shortest_distance:
 			shortest_distance = distance
 			closest_hex = neighborHex
 	return closest_hex
 
 func target_is_in_attack_range() -> bool:
-	return self.global_transform.origin.distance_to(target_enemy.global_transform.origin) <= self.attack_range
+	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
 
 func move_to_hex(hex: Hex) -> void:
 	if hex.is_occupied():
@@ -93,7 +93,7 @@ func move_to_hex(hex: Hex) -> void:
 	hex.unit_on_hex = self
 	current_hex.unit_on_hex = null
 	current_hex = hex
-	self.position = hex.snap_point.global_transform.origin
+	self.position = hex.snap_point.global_position
 
 func die() -> void:
 	unit_died.emit(self, self.team)
@@ -106,7 +106,7 @@ func get_closest_enemy() -> Node3D:
 	if team == 'PLAYER': enemies = get_tree().root.get_node("Game/EnemyUnits").get_children()
 	elif team == 'ENEMY': enemies = get_tree().root.get_node("Game/PlayerUnits").get_children()
 	for enemy in enemies:
-		var distance = self.global_transform.origin.distance_to(enemy.global_transform.origin)
+		var distance = self.global_position.distance_to(enemy.global_position)
 		
 		if distance < closest_distance:
 			closest_distance = distance

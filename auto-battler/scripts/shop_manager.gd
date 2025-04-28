@@ -25,7 +25,7 @@ func _on_roll_shop_approved() -> void:
 		var rng = RandomNumberGenerator.new()
 		var random_unit_index = rng.randi_range(0, possible_units.size() - 1)
 		var new_unit = possible_units[random_unit_index].instantiate()
-		new_unit.position = shop_hex.snap_point.global_transform.origin
+		new_unit.position = shop_hex.snap_point.global_position
 		shop_hex.unit_on_hex = new_unit
 		new_unit.current_hex = shop_hex
 		%ShopUnits.add_child(new_unit)

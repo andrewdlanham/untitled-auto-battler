@@ -61,7 +61,7 @@ func snap_to_nearest_hex(unit: Unit):
 	var nearest_hex = get_hex_nearest_to_unit(unit)
 		
 	# Snap to closest snap point
-	unit.position = nearest_hex.snap_point.global_transform.origin
+	unit.position = nearest_hex.snap_point.global_position
 	
 	# Set reference to unit on hex
 	unit.current_hex.unit_on_hex = null
@@ -73,7 +73,7 @@ func get_hex_nearest_to_unit(unit: Unit):
 	var closest_snap_point = null
 	var closest_snap_distance = INF
 	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
-		var snap_point_origin = snap_point.global_transform.origin
+		var snap_point_origin = snap_point.global_position
 		var distance_to_snap_point = unit.position.distance_to(snap_point_origin)
 		if distance_to_snap_point < closest_snap_distance:
 			closest_snap_distance = distance_to_snap_point
@@ -95,7 +95,7 @@ func _on_unit_purchase_denied(unit: Unit):
 	snap_unit_to_current_hex(unit)
 
 func snap_unit_to_current_hex(unit: Unit):
-	unit.position = unit.current_hex.snap_point.global_transform.origin
+	unit.position = unit.current_hex.snap_point.global_position
 
 func get_raycast_collision_info():
 	
