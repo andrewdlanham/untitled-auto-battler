@@ -31,7 +31,6 @@ func _on_unit_purchase_requested(unit: Unit):
 		unit_purchase_denied.emit(unit)
 #endregion
 
-#region -- Helpers --
 func update_gold_label_text():
 	%GoldCountLabel.text = str(player_gold) + " G"
 
@@ -42,4 +41,3 @@ func add_gold(amount):
 func subtract_gold(amount):
 	player_gold -= amount
 	update_gold_label_text()
-#endregion

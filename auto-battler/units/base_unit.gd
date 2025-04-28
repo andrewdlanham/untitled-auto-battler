@@ -43,7 +43,6 @@ func _process(_delta: float) -> void:
 	combat_enabled = false
 
 
-#region -- Helpers --
 func update_health_label_text() -> void:
 	health_label.text = str(health)
 
@@ -70,7 +69,6 @@ func get_info_dict() -> Dictionary:
 		"level" : self.level,
 		"cost" : self.cost
 		}
-#endregion
 
 func get_open_hex_towards_unit(unit: Unit) -> Hex:
 	var closest_hex = null
