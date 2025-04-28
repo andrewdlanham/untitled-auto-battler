@@ -116,3 +116,11 @@ func get_closest_enemy() -> Node3D:
 
 func target_closest_enemy() -> void:
 	target_enemy = get_closest_enemy()
+	
+func enable_combat() -> void:
+	combat_enabled = true
+	health_label.visible = true
+
+func disable_combat() -> void:
+	combat_enabled = false
+	health_label.visible = false

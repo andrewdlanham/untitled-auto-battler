@@ -11,7 +11,7 @@ var num_enemy_units
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (combat_in_progress):
 		if (num_player_units == 0 or num_enemy_units == 0):
 			end_combat()
@@ -19,23 +19,19 @@ func _process(delta: float) -> void:
 func start_combat():
 	num_player_units = player_units.get_children().size()
 	num_enemy_units = enemy_units.get_children().size()
-	for unit in player_units.get_children():
-		unit.combat_enabled = true
-		unit.unit_died.connect(_on_unit_died)
-	for unit in enemy_units.get_children():
-		unit.combat_enabled = true
+	var active_units = player_units.get_children() + enemy_units.get_children()
+	for unit in active_units:
+		unit.enable_combat()
 		unit.unit_died.connect(_on_unit_died)
 
 func end_combat():
-	for unit in player_units.get_children():
-		unit.combat_enabled = false
-	for unit in enemy_units.get_children():
-		unit.combat_enabled = false
-	combat_in_progress = false
+	var active_units = player_units.get_children() + enemy_units.get_children()
+	for unit in active_units:
+		unit.disable_combat()
 
 func _on_start_combat_button_pressed() -> void:
 	start_combat()
 
-func _on_unit_died(unit: Unit, team: String) -> void:
+func _on_unit_died(_unit: Unit, team: String) -> void:
 	if (team == "PLAYER"): num_player_units -= 1
 	if (team == "ENEMY"): num_enemy_units -= 1
