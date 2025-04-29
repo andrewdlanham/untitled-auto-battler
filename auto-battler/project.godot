@@ -13,6 +13,7 @@ config_version=5
 config/name="AutoBattler"
 run/main_scene="res://scenes/Auth.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +26,12 @@ UnitRegistry="*res://units/UnitRegistry.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
 
 [input]
 
