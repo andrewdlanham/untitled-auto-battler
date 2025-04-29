@@ -10,16 +10,20 @@ class_name Unit
 @export var unit_name: String
 @export var unit_id: String
 
-@export var cost: int = 1
+@export var cost: int
 @export var level: int = 1
 
 var team: String
 var current_hex: Hex
 
 # Combat variables
-var combat_enabled: bool = false
-@export var health: float = 100.00
-@export var attack_range: int = 3	# TODO: Tie attack range to hexes
+@export var combat_enabled: bool = false
+@export var health: float
+@export var attack_range: int
+@export var attack_speed: float = 0.1
+var attack_cooldown: float
+@export var attack_damage: float
+
 @export var target_enemy: Unit
 
 # Signals
@@ -28,20 +32,23 @@ signal unit_died(unit: Unit, team: String)
 func _ready() -> void:
 	update_health_label_text()
 	update_level_label_text()
+	attack_cooldown = 1 / attack_speed
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	
+	if health <= 0: die()
+	
+	attack_cooldown -= delta
+	
 	if(combat_enabled):
 		if not is_instance_valid(target_enemy):
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
 			move_to_hex(open_hex)
-		else:
-				# TODO: Implement attacking logic
-				pass
-	
-	combat_enabled = false
-
+		elif attack_cooldown <= 0.00:
+				attack_target_enemy()
+				attack_cooldown = 1 / attack_speed
 
 func update_health_label_text() -> void:
 	health_label.text = str(health)
@@ -122,3 +129,6 @@ func enable_combat() -> void:
 func disable_combat() -> void:
 	combat_enabled = false
 	health_label.visible = false
+
+func attack_target_enemy() -> void:
+	target_enemy.subtract_health(attack_damage)
