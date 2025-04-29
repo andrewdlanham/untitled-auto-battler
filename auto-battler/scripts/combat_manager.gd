@@ -2,6 +2,7 @@ extends Node
 
 @onready var player_units: Node = %PlayerUnits
 @onready var enemy_units: Node = %EnemyUnits
+@onready var combat_label: Label = %CombatLabel
 
 var combat_in_progress: bool = false
 
@@ -17,6 +18,8 @@ func _process(_delta: float) -> void:
 			end_combat()
 
 func start_combat():
+	combat_in_progress = true
+	combat_label.text = "IN COMBAT"
 	num_player_units = player_units.get_children().size()
 	num_enemy_units = enemy_units.get_children().size()
 	var active_units = player_units.get_children() + enemy_units.get_children()
@@ -25,6 +28,8 @@ func start_combat():
 		unit.unit_died.connect(_on_unit_died)
 
 func end_combat():
+	combat_in_progress = false
+	combat_label.text = "OUT OF COMBAT"
 	var active_units = player_units.get_children() + enemy_units.get_children()
 	for unit in active_units:
 		unit.disable_combat()
