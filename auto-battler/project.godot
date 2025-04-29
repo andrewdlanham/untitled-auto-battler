@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 DBFunc="*res://db/db_functions.gd"
 DataManager="*res://db/DataManager.tscn"
 UnitRegistry="*res://units/UnitRegistry.gd"
+FpsCounter="*res://scenes/fps_counter.tscn"
 
 [display]
 

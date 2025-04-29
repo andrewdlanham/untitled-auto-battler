@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf64u7jogr3uc"]
+
+[ext_resource type="Script" path="res://scripts/fps_counter.gd" id="1_2sf0f"]
+
+[node name="FPS Counter" type="Node2D"]
+script = ExtResource("1_2sf0f")
+
+[node name="FPS_Label" type="Label" parent="."]
+offset_left = 640.0
+offset_top = 10.0
+offset_right = 1220.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 30
+text = "TEST"
+horizontal_alignment = 1
+vertical_alignment = 1
