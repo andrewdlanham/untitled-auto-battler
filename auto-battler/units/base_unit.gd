@@ -21,10 +21,16 @@ var current_hex: Hex
 @export var health: float
 @export var attack_range: int
 @export var attack_speed: float = 0.1
-var attack_cooldown: float
+
 @export var attack_damage: float
 
 @export var target_enemy: Unit
+
+var attack_cooldown: float
+var move_cooldown: float = 0.5
+var move_timer: float
+
+var is_moving: bool = false
 
 # Signals
 signal unit_died(unit: Unit, team: String)
@@ -33,12 +39,16 @@ func _ready() -> void:
 	update_health_label_text()
 	update_level_label_text()
 	attack_cooldown = 1 / attack_speed
+	move_timer = 0.00
 
 func _process(delta: float) -> void:
 	
 	if health <= 0: die()
 	
 	attack_cooldown -= delta
+	move_timer -= delta
+	if move_timer <= 0:
+		is_moving = false
 	
 	if(combat_enabled):
 		if not is_instance_valid(target_enemy):
@@ -93,12 +103,18 @@ func target_is_in_attack_range() -> bool:
 	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
 
 func move_to_hex(hex: Hex) -> void:
-	if hex.is_occupied():
+	if is_moving or hex.is_occupied():
 		return
+
 	hex.unit_on_hex = self
 	current_hex.unit_on_hex = null
 	current_hex = hex
-	self.position = hex.snap_point.global_position
+	
+	is_moving = true
+	move_timer = move_cooldown
+
+	var tween := create_tween()
+	tween.tween_property(self, "position", hex.snap_point.global_position, move_cooldown)
 
 func die() -> void:
 	unit_died.emit(self, self.team)
