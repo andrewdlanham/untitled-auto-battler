@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qex5mycnoe1"]
+
+[ext_resource type="Script" path="res://hexes/base_hex.gd" id="1_nb18b"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_epl54"]
+height = 0.1
+radial_segments = 6
+
+[node name="Base Hex" type="Node3D"]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
+script = ExtResource("1_nb18b")
+hex_id = "X"
+hex_type = "BASE"
+
+[node name="SnapPoint" type="Node3D" parent="." groups=["Snap Points"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="HexMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_epl54")

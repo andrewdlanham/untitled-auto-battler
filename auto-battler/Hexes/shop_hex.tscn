@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://clqif3kperjc0"]
+[gd_scene load_steps=3 format=3 uid="uid://b3sbmceqmha5y"]
 
-[ext_resource type="Script" path="res://hexes/hex.gd" id="1_uqx3j"]
-[ext_resource type="PackedScene" uid="uid://dx0tog233a03y" path="res://hexes/hex2.glb" id="2_1elfn"]
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_bys4m"]
 
-[node name="ShopHex" type="Node3D"]
-script = ExtResource("1_uqx3j")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w16vv"]
+albedo_color = Color(0.773998, 0.768554, 7.70092e-07, 1)
+
+[node name="ShopHex" instance=ExtResource("1_bys4m")]
 hex_type = "SHOP"
 
-[node name="Snap Point" type="Node3D" parent="." groups=["Snap Points"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625998, 0)
-
-[node name="Shop Hex Mesh" parent="." instance=ExtResource("2_1elfn")]
+[node name="HexMesh" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000755548, 0.00270018, -3.48091e-05)
+surface_material_override/0 = SubResource("StandardMaterial3D_w16vv")

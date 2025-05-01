@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://scripts/gold_manager.gd" id="2_0mslr"]
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="3_bc1xf"]
 [ext_resource type="Script" path="res://scripts/merge_manager.gd" id="4_d47jk"]
-[ext_resource type="PackedScene" uid="uid://brtlqyif7qbwc" path="res://hexes/player_hex.tscn" id="5_emem1"]
+[ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex.tscn" id="5_emem1"]
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="6_psosy"]
-[ext_resource type="PackedScene" uid="uid://clqif3kperjc0" path="res://hexes/shop_hex.tscn" id="6_sxuod"]
+[ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes/shop_hex.tscn" id="6_sxuod"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="7_n2mwn"]
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="8_bh7fc"]
 
@@ -49,97 +49,90 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Hexes" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="PlayerHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="HexA" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2)
+[node name="PlayerHexA" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, -2)
 hex_id = "A"
-neighbors = [NodePath("../HexB"), NodePath("../HexC"), NodePath("../HexD")]
 
-[node name="HexB" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -1)
+[node name="PlayerHexB" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0, -1)
 hex_id = "B"
-neighbors = [NodePath("../HexA"), NodePath("../HexC"), NodePath("../HexE")]
 
-[node name="HexC" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="PlayerHexC" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
 hex_id = "C"
-neighbors = [NodePath("../HexA"), NodePath("../HexB"), NodePath("../HexD"), NodePath("../HexE"), NodePath("../HexF"), NodePath("../HexG")]
 
-[node name="HexD" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, -1)
+[node name="PlayerHexD" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0, -1)
 hex_id = "D"
-neighbors = [NodePath("../HexA"), NodePath("../HexC"), NodePath("../HexG")]
 
-[node name="HexE" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, 1)
+[node name="PlayerHexE" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0, 1)
 hex_id = "E"
-neighbors = [NodePath("../HexB"), NodePath("../HexC"), NodePath("../HexF")]
 
-[node name="HexF" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2)
+[node name="PlayerHexF" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 2)
 hex_id = "F"
-neighbors = [NodePath("../HexE"), NodePath("../HexC"), NodePath("../HexG")]
 
-[node name="HexG" parent="Hexes/PlayerHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, 1)
+[node name="PlayerHexG" parent="Hexes/PlayerHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0, 1)
 hex_id = "G"
-neighbors = [NodePath("../HexD"), NodePath("../HexC"), NodePath("../HexF")]
 
 [node name="EnemyHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="HexA" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.032636, 0, -4.10153)
+[node name="EnemyHex" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.74846e-07, 0, -4)
 hex_id = "A"
-neighbors = [NodePath("../HexB"), NodePath("../HexC"), NodePath("../HexD")]
+hex_type = "ENEMY"
 
-[node name="HexB" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.76608, 0, -5.12995)
-hex_id = "B"
-neighbors = [NodePath("../HexA"), NodePath("../HexC"), NodePath("../HexE")]
-
-[node name="HexC" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -6.10126)
+[node name="EnemyHex2" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 0, -6)
 hex_id = "C"
-neighbors = [NodePath("../HexA"), NodePath("../HexB"), NodePath("../HexD"), NodePath("../HexE"), NodePath("../HexF"), NodePath("../HexG")]
+hex_type = "ENEMY"
 
-[node name="HexD" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.73345, 0, -5.07284)
+[node name="EnemyHex3" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.75, 0, -5)
+hex_id = "B"
+hex_type = "ENEMY"
+
+[node name="EnemyHex4" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.75, 0, -5)
 hex_id = "D"
-neighbors = [NodePath("../HexA"), NodePath("../HexC"), NodePath("../HexG")]
+hex_type = "ENEMY"
 
-[node name="HexE" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.73345, 0, -7.12969)
+[node name="EnemyHex5" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.75, 0, -7)
 hex_id = "E"
-neighbors = [NodePath("../HexB"), NodePath("../HexC"), NodePath("../HexF")]
+hex_type = "ENEMY"
 
-[node name="HexF" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.032636, 0, -8.101)
+[node name="EnemyHex6" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.74846e-07, 0, -8)
 hex_id = "F"
-neighbors = [NodePath("../HexE"), NodePath("../HexC"), NodePath("../HexG")]
+hex_type = "ENEMY"
 
-[node name="HexG" parent="Hexes/EnemyHexes" node_paths=PackedStringArray("neighbors") instance=ExtResource("5_emem1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.76608, 0, -7.07257)
+[node name="EnemyHex7" parent="Hexes/EnemyHexes" instance=ExtResource("5_emem1")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.75, 0, -7)
 hex_id = "G"
-neighbors = [NodePath("../HexD"), NodePath("../HexC"), NodePath("../HexF")]
+hex_type = "ENEMY"
 
 [node name="ShopHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
 [node name="ShopHex" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73018, 0, 2.96599)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3.5, 0, 2)
 
 [node name="ShopHex2" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.41756, 0, 1.95449)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0, 3)
 
 [node name="ShopHex3" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.76478, 0, 2.98589)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 3.5, 0, 2)
 
 [node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.46315, 0, 1.92876)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0, 3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.543687, 0.839288, 0, -0.839288, 0.543687, 0, 1.69348, 0)
@@ -206,6 +199,18 @@ offset_bottom = 142.0
 theme_override_colors/font_color = Color(0.810987, 0.74335, 0.227573, 1)
 theme_override_font_sizes/font_size = 100
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CombatLabel" type="Label" parent="UI Manager"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 58.0
+offset_right = 1920.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 50
+text = "OUT OF COMBAT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
