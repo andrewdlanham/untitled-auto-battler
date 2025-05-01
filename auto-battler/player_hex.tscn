@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://kqwp41gsq0ff"]
-
-[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_3gght"]
-
-[node name="PlayerHex" instance=ExtResource("1_3gght")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-hex_type = "PLAYER"
