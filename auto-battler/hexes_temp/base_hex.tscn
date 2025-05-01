@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qex5mycnoe1"]
 
-[ext_resource type="Script" path="res://hexes/base_hex.gd" id="1_nb18b"]
+[ext_resource type="Script" path="res://hexes_temp/base_hex.gd" id="1_nb18b"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_epl54"]
 height = 0.1

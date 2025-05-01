@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://scripts/gold_manager.gd" id="2_0mslr"]
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="3_bc1xf"]
 [ext_resource type="Script" path="res://scripts/merge_manager.gd" id="4_d47jk"]
-[ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex.tscn" id="5_emem1"]
+[ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes_temp/player_hex.tscn" id="5_emem1"]
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="6_psosy"]
-[ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes/shop_hex.tscn" id="6_sxuod"]
+[ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes_temp/shop_hex.tscn" id="6_sxuod"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="7_n2mwn"]
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="8_bh7fc"]
 
