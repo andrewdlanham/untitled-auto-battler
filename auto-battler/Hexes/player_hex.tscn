@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_koqoi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcqqg"]
-albedo_color = Color(0.418802, 0.621363, 0.591311, 1)
+albedo_color = Color(0.0906653, 0.228626, 0.364209, 1)
 
 [node name="PlayerHex" instance=ExtResource("1_koqoi")]
 hex_type = "PLAYER"
 
 [node name="HexMesh" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00240636, -0.0023458, -0.0017314)
 surface_material_override/0 = SubResource("StandardMaterial3D_gcqqg")

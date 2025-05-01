@@ -61,7 +61,7 @@ func snap_to_nearest_hex(unit: Unit):
 	var nearest_hex = get_hex_nearest_to_unit(unit)
 		
 	# Snap to closest snap point
-	unit.position = nearest_hex.snap_point.global_position
+	unit.global_position = nearest_hex.snap_point.global_position
 	
 	# Set reference to unit on hex
 	unit.current_hex.unit_on_hex = null

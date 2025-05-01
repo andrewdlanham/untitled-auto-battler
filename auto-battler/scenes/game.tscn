@@ -15,6 +15,10 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
 script = ExtResource("1_k84qj")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 1.68562, 0)
+light_energy = 1.2
+
 [node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 6, 6.5)
@@ -123,25 +127,19 @@ hex_type = "ENEMY"
 unique_name_in_owner = true
 
 [node name="ShopHex" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3.5, 0, 2)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3.5, -0.099467, 2)
 
 [node name="ShopHex2" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0, 3)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, -0.099467, 3)
 
 [node name="ShopHex3" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 3.5, 0, 2)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 3.5, -0.099467, 2)
 
 [node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("6_sxuod")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0, 3)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.543687, 0.839288, 0, -0.839288, 0.543687, 0, 1.69348, 0)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.474196, -0.738925, 0.478673, 0, 0.543687, 0.839288, -0.880419, 0.397987, -0.257814, -2.60183, 3.68417, 6.09888)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, -0.099467, 3)
 
 [node name="Floor" parent="." instance=ExtResource("7_n2mwn")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.2, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.107714, 0)
 
 [node name="UI Manager" type="Control" parent="."]
 unique_name_in_owner = true

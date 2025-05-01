@@ -16,6 +16,11 @@ height = 1.0
 script = ExtResource("1_p0uky")
 unit_name = "Base Unit"
 unit_id = "base_unit"
+cost = 1
+health = 1000.0
+attack_range = 3
+attack_speed = 0.5
+attack_damage = 80.0
 
 [node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0364, 0)

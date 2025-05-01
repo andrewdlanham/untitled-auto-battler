@@ -3,7 +3,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_twbhk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xsqo"]
-albedo_color = Color(0.168627, 0.305882, 0.898039, 1)
+albedo_color = Color(0.273416, 0.46141, 0.388349, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ec08e"]
 material = SubResource("StandardMaterial3D_5xsqo")
@@ -20,5 +20,6 @@ transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0.00329075, 0.00441532, -
 shape = SubResource("BoxShape3D_twbhk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(1.78891, 0, 0, 0, 1, 0, 0, 0, 1.71385, -0.000268135, -0.377239, -0.000490799)
 mesh = SubResource("BoxMesh_ec08e")
 skeleton = NodePath("../../..")

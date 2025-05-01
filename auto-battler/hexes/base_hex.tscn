@@ -6,7 +6,7 @@
 height = 0.1
 radial_segments = 6
 
-[node name="Base Hex" type="Node3D"]
+[node name="BaseHex" type="Node3D"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
 script = ExtResource("1_nb18b")
 hex_id = "X"

@@ -27,7 +27,7 @@ var current_hex: Hex
 @export var target_enemy: Unit
 
 var attack_cooldown: float
-var move_cooldown: float = 0.5
+var move_cooldown: float = 1
 var move_timer: float
 
 var is_moving: bool = false
