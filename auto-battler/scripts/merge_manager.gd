@@ -19,8 +19,8 @@ func handle_unit_merging(match_name: String, match_level: int) -> void:
 
 func merge_units(units) -> void:
 	units[0].level_up()
-	units[1].queue_free()
-	units[2].queue_free()
+	units[1].remove_self()
+	units[2].remove_self()
 
 #region -- Signal Handlers --
 func _on_new_unit_placed(unit: Unit) -> void:
