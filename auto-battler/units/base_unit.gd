@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
-			move_to_hex(open_hex)
+			try_move_to_hex(open_hex)
 		elif attack_cooldown <= 0.00:
 				attack_target_enemy()
 				attack_cooldown = 1 / attack_speed
@@ -93,34 +93,8 @@ func get_info_dict() -> Dictionary:
 		"cost" : self.cost
 		}
 
-func get_open_hex_towards_unit(unit: Unit) -> Hex:
-	var closest_hex = null
-	var shortest_distance = INF
-	for neighborHex in current_hex.neighbors:
-		if neighborHex.is_occupied(): 
-			continue
-		var distance = neighborHex.global_position.distance_to(unit.global_position)
-		if distance < shortest_distance:
-			shortest_distance = distance
-			closest_hex = neighborHex
-	return closest_hex
-
 func target_is_in_attack_range() -> bool:
 	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
-
-func move_to_hex(hex: Hex) -> void:
-	if hex == null or is_moving or hex.is_occupied():
-		return
-
-	hex.unit_on_hex = self
-	current_hex.unit_on_hex = null
-	current_hex = hex
-	
-	is_moving = true
-	move_timer = move_cooldown
-
-	var tween := create_tween()
-	tween.tween_property(self, "position", hex.snap_point.global_position, move_cooldown)
 
 func die() -> void:
 	unit_died.emit(self, self.team)
@@ -159,7 +133,12 @@ func disable_combat() -> void:
 func attack_target_enemy() -> void:
 	target_enemy.subtract_health(attack_damage)
 
-func try_connect_to_hex(hex: Hex) -> bool:
+#region Hex-Related Functions
+func snap_to_current_hex() -> void:
+
+	self.position = current_hex.snap_point.global_position
+
+func try_connect_to_hex(hex: Hex, snap_to_hex: bool = true) -> bool:
 	
 	if (hex.is_occupied()): return false	# Connection failed
 	
@@ -168,12 +147,13 @@ func try_connect_to_hex(hex: Hex) -> bool:
 	current_hex = hex
 	current_hex.unit_on_hex = self
 	
-	snap_to_current_hex()
+	if (snap_to_hex): snap_to_current_hex()
 	
 	return true		# Connection successful
 
-func snap_to_current_hex() -> void:
-	self.position = current_hex.snap_point.global_position
+func try_connect_to_nearest_hex() -> bool:
+
+	return try_connect_to_hex(get_nearest_hex())
 
 func get_nearest_hex() -> Hex:
 
@@ -191,5 +171,26 @@ func get_nearest_hex() -> Hex:
 	
 	return closest_snap_point.get_parent()
 
-func try_connect_to_nearest_hex() -> bool:
-	return try_connect_to_hex(get_nearest_hex())
+func try_move_to_hex(hex: Hex) -> void:
+	
+	if is_moving or hex == null or hex.is_occupied(): return
+
+	try_connect_to_hex(hex, false)
+	
+	is_moving = true
+	move_timer = move_cooldown
+
+	var tween := create_tween()
+	tween.tween_property(self, "position", hex.snap_point.global_position, move_cooldown)
+
+func get_open_hex_towards_unit(unit: Unit) -> Hex:
+	var closest_hex = null
+	var shortest_distance = INF
+	for neighborHex in current_hex.neighbors:
+		if neighborHex.is_occupied(): continue	# Skip occupied hexes
+		var distance = neighborHex.global_position.distance_to(unit.global_position)
+		if distance < shortest_distance:
+			shortest_distance = distance
+			closest_hex = neighborHex
+	return closest_hex
+#endregion
