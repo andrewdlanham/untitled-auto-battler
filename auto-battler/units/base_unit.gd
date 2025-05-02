@@ -174,3 +174,22 @@ func try_connect_to_hex(hex: Hex) -> bool:
 
 func snap_to_current_hex() -> void:
 	self.position = current_hex.snap_point.global_position
+
+func get_nearest_hex() -> Hex:
+
+	var closest_snap_point = null
+	var closest_snap_distance = INF
+	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
+		var snap_point_position = snap_point.global_position
+		var distance_to_snap_point = self.position.distance_to(snap_point_position)
+		if distance_to_snap_point < closest_snap_distance:
+			closest_snap_distance = distance_to_snap_point
+			closest_snap_point = snap_point
+	
+	if closest_snap_distance > 1:	# 1 is a temporary value for MAX_SNAP_DISTANCE
+		return null
+	
+	return closest_snap_point.get_parent()
+
+func try_connect_to_nearest_hex() -> bool:
+	return try_connect_to_hex(get_nearest_hex())

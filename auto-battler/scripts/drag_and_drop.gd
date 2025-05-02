@@ -6,7 +6,6 @@ const RAY_LENGTH = 100
 const UNIT_MASK = 1
 const FLOOR_MASK = 2
 const UNIT_FLOOR_MASK = 3	# Enables both layers 1 and 2
-const MAX_SNAP_DISTANCE = 1
 
 var is_dragging
 var dragged_object
@@ -28,53 +27,34 @@ func _input(_event):
 		if is_dragging: return
 		raycast_collision_mask = UNIT_MASK
 		var raycast_collision_info = get_raycast_collision_info()
-		if !raycast_collision_info.is_empty():
+		if not raycast_collision_info.is_empty():
 			dragged_object = raycast_collision_info["collider"].get_node("../.")
 			dragged_object_collision_shape = dragged_object.find_child("CollisionShape3D")
 			dragged_object_collision_shape.set_disabled(true)
 			raycast_collision_mask = FLOOR_MASK
 			is_dragging = true
 	
-	# Handle dropping unit on hex
 	elif Input.is_action_just_released("LeftClick"):
 		if is_dragging: 
 			raycast_collision_mask = UNIT_MASK
 			is_dragging = false
 			if dragged_object is Unit:
-				# Check if Unit is being purchased from shop
-				var dropped_hex = get_hex_nearest_to_unit(dragged_object)
-				if (dropped_hex == null or dropped_hex.unit_on_hex != null):
+				var dropped_hex = dragged_object.get_nearest_hex()
+				if (dropped_hex == null or dropped_hex.is_occupied()):
 					dragged_object.snap_to_current_hex()
-				elif dropped_hex.hex_type == 'PLAYER' and dragged_object.current_hex.hex_type == 'SHOP':
+				elif dropped_hex.is_player_hex() and dragged_object.current_hex.is_shop_hex():
 					unit_purchase_requested.emit(dragged_object)
-				elif dropped_hex.hex_type == 'PLAYER':
-					var nearest_hex = get_hex_nearest_to_unit(dragged_object)
-					dragged_object.try_connect_to_hex(nearest_hex)
-				elif dropped_hex.hex_type == 'SHOP' or dropped_hex.hex_type == 'ENEMY':
+				elif dropped_hex.is_player_hex():
+					dragged_object.try_connect_to_nearest_hex()
+				elif dropped_hex.is_shop_hex() or dropped_hex.is_enemy_hex():
 					dragged_object.snap_to_current_hex()
 
-				dragged_object.find_child("CollisionShape3D").set_disabled(false)
+				dragged_object_collision_shape.set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
 
-func get_hex_nearest_to_unit(unit: Unit):
-	# Get closest snap point
-	var closest_snap_point = null
-	var closest_snap_distance = INF
-	for snap_point in get_tree().get_nodes_in_group("Snap Points"):
-		var snap_point_origin = snap_point.global_position
-		var distance_to_snap_point = unit.position.distance_to(snap_point_origin)
-		if distance_to_snap_point < closest_snap_distance:
-			closest_snap_distance = distance_to_snap_point
-			closest_snap_point = snap_point
-	
-	if closest_snap_distance > MAX_SNAP_DISTANCE:
-		return null
-	
-	return closest_snap_point.get_parent()
-
 func _on_unit_purchase_approved(unit: Unit):
-	unit.try_connect_to_hex(get_hex_nearest_to_unit(unit))
+	unit.try_connect_to_nearest_hex()
 	%ShopUnits.remove_child(unit)
 	%PlayerUnits.add_child(unit)
 	unit.team = "PLAYER"

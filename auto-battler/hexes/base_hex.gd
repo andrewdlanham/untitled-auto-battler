@@ -12,3 +12,12 @@ class_name Hex
 
 func is_occupied() -> bool:
 	return unit_on_hex != null
+
+func is_shop_hex() -> bool:
+	return hex_type == "SHOP"
+
+func is_player_hex() -> bool:
+	return hex_type == "PLAYER"
+
+func is_enemy_hex() -> bool:
+	return hex_type == "ENEMY"
