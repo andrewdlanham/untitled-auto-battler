@@ -8,12 +8,12 @@ class_name Unit
 @onready var level_label: Label3D = $LevelLabel
 @onready var name_label: Label3D = $NameLabel
 
-
 @export var unit_name: String
 @export var unit_id: String
 
 @export var cost: int
 @export var level: int = 1
+@export var rarity: int = 1
 
 var team: String
 var current_hex: Hex
@@ -124,6 +124,10 @@ func move_to_hex(hex: Hex) -> void:
 
 func die() -> void:
 	unit_died.emit(self, self.team)
+	remove_self()
+
+func remove_self() -> void:
+	current_hex.unit_on_hex = null
 	self.queue_free()
 
 func get_closest_enemy() -> Node3D:

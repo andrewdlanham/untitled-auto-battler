@@ -10,10 +10,5 @@ class_name Hex
 @export var unit_on_hex: Unit
 @export var neighbors: Array[Node3D]
 
-
-func free_unit_on_hex() -> void:
-	if unit_on_hex != null: unit_on_hex.queue_free()
-	unit_on_hex = null
-
 func is_occupied() -> bool:
 	return unit_on_hex != null

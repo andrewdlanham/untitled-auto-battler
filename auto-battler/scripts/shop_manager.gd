@@ -1,8 +1,7 @@
 extends Node
 
 var possible_units = [
-	preload("res://units/base_unit.tscn"),
-	preload("res://units/archer.tscn")
+	load(UnitRegistry.get_scene_path("unit_archer"))
 ]
 
 signal shop_roll_requested
@@ -18,9 +17,11 @@ func _on_roll_shop_pressed() -> void:
 	shop_roll_requested.emit()
 
 func _on_roll_shop_approved() -> void:
+	# TODO: Add unit freezing logic
 	for shop_hex in %ShopHexes.get_children():
-		# Remove previous unit
-		shop_hex.free_unit_on_hex()
+		# Remove previous unit if needed
+		if shop_hex.unit_on_hex != null:
+			shop_hex.unit_on_hex.remove_self()
 		# Add new random unit
 		var rng = RandomNumberGenerator.new()
 		var random_unit_index = rng.randi_range(0, possible_units.size() - 1)
