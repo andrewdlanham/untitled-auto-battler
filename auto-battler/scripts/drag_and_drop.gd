@@ -44,29 +44,18 @@ func _input(_event):
 				# Check if Unit is being purchased from shop
 				var dropped_hex = get_hex_nearest_to_unit(dragged_object)
 				if (dropped_hex == null or dropped_hex.unit_on_hex != null):
-					snap_unit_to_current_hex(dragged_object)
+					dragged_object.snap_to_current_hex()
 				elif dropped_hex.hex_type == 'PLAYER' and dragged_object.current_hex.hex_type == 'SHOP':
 					unit_purchase_requested.emit(dragged_object)
 				elif dropped_hex.hex_type == 'PLAYER':
-					snap_to_nearest_hex(dragged_object)
+					var nearest_hex = get_hex_nearest_to_unit(dragged_object)
+					dragged_object.try_connect_to_hex(nearest_hex)
 				elif dropped_hex.hex_type == 'SHOP' or dropped_hex.hex_type == 'ENEMY':
-					snap_unit_to_current_hex(dragged_object)
-					
+					dragged_object.snap_to_current_hex()
+
 				dragged_object.find_child("CollisionShape3D").set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
-
-func snap_to_nearest_hex(unit: Unit):
-
-	var nearest_hex = get_hex_nearest_to_unit(unit)
-		
-	# Snap to closest snap point
-	unit.global_position = nearest_hex.snap_point.global_position
-	
-	# Set reference to unit on hex
-	unit.current_hex.unit_on_hex = null
-	nearest_hex.unit_on_hex = unit
-	unit.current_hex = nearest_hex
 
 func get_hex_nearest_to_unit(unit: Unit):
 	# Get closest snap point
@@ -85,17 +74,14 @@ func get_hex_nearest_to_unit(unit: Unit):
 	return closest_snap_point.get_parent()
 
 func _on_unit_purchase_approved(unit: Unit):
-	snap_to_nearest_hex(unit)
+	unit.try_connect_to_hex(get_hex_nearest_to_unit(unit))
 	%ShopUnits.remove_child(unit)
 	%PlayerUnits.add_child(unit)
 	unit.team = "PLAYER"
 	new_unit_placed.emit(unit)
 
 func _on_unit_purchase_denied(unit: Unit):
-	snap_unit_to_current_hex(unit)
-
-func snap_unit_to_current_hex(unit: Unit):
-	unit.position = unit.current_hex.snap_point.global_position
+	unit.snap_to_current_hex()
 
 func get_raycast_collision_info():
 	

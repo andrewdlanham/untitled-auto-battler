@@ -158,3 +158,19 @@ func disable_combat() -> void:
 
 func attack_target_enemy() -> void:
 	target_enemy.subtract_health(attack_damage)
+
+func try_connect_to_hex(hex: Hex) -> bool:
+	
+	if (hex.is_occupied()): return false	# Connection failed
+	
+	if (current_hex): current_hex.unit_on_hex = null	# Disconnect from old hex
+	
+	current_hex = hex
+	current_hex.unit_on_hex = self
+	
+	snap_to_current_hex()
+	
+	return true		# Connection successful
+
+func snap_to_current_hex() -> void:
+	self.position = current_hex.snap_point.global_position
