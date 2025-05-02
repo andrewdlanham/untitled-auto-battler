@@ -6,6 +6,8 @@ class_name Unit
 
 @onready var health_label: Label3D = $HealthLabel
 @onready var level_label: Label3D = $LevelLabel
+@onready var name_label: Label3D = $NameLabel
+
 
 @export var unit_name: String
 @export var unit_id: String
@@ -38,6 +40,7 @@ signal unit_died(unit: Unit, team: String)
 func _ready() -> void:
 	update_health_label_text()
 	update_level_label_text()
+	update_name_label_text()
 	attack_cooldown = 1 / attack_speed
 	move_timer = 0.00
 
@@ -65,6 +68,9 @@ func update_health_label_text() -> void:
 
 func update_level_label_text() -> void:
 	level_label.text = "LVL " + str(level)
+
+func update_name_label_text() -> void:
+	name_label.text = self.unit_name
 
 func add_health(amount) -> void:
 	health += amount
@@ -103,7 +109,7 @@ func target_is_in_attack_range() -> bool:
 	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
 
 func move_to_hex(hex: Hex) -> void:
-	if is_moving or hex.is_occupied():
+	if hex == null or is_moving or hex.is_occupied():
 		return
 
 	hex.unit_on_hex = self
