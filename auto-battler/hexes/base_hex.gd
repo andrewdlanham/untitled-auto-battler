@@ -4,6 +4,7 @@ class_name Hex
 
 @onready var snap_point: Node3D = $SnapPoint
 @onready var hex_mesh: MeshInstance3D = $HexMesh
+@onready var hex_id_label: Label3D = $HexIDLabel
 
 @export var hex_id: String
 @export var hex_type: String
@@ -13,6 +14,11 @@ class_name Hex
 func _ready() -> void:
 	if is_player_hex() or is_enemy_hex():
 		_connect_to_neighbor_hexes()
+		_set_hex_id_label()
+
+func _set_hex_id_label() -> void:
+	if is_player_hex() or is_enemy_hex():
+		hex_id_label.text = str(hex_id)
 
 func is_occupied() -> bool:
 	return unit_on_hex != null
@@ -25,6 +31,9 @@ func is_player_hex() -> bool:
 
 func is_enemy_hex() -> bool:
 	return hex_type == "ENEMY"
+
+func is_neutral_hex() -> bool:
+	return hex_type == "NEUTRAL"
 
 func _connect_to_neighbor_hexes() -> void:
 	var player_hexes = get_tree().root.get_node("Game/Hexes/PlayerHexes").get_children()
