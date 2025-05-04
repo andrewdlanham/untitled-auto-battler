@@ -27,7 +27,10 @@ func is_enemy_hex() -> bool:
 	return hex_type == "ENEMY"
 
 func _connect_to_neighbor_hexes() -> void:
-	var possible_neighbor_hexes = get_tree().root.get_node("Game/Hexes/PlayerHexes").get_children() + get_tree().root.get_node("Game/Hexes/EnemyHexes").get_children()
+	var player_hexes = get_tree().root.get_node("Game/Hexes/PlayerHexes").get_children()
+	var enemy_hexes = get_tree().root.get_node("Game/Hexes/EnemyHexes").get_children()
+	var neutral_hexes = get_tree().root.get_node("Game/Hexes/NeutralHexes").get_children()
+	var possible_neighbor_hexes =  player_hexes + enemy_hexes + neutral_hexes
 	for hex in possible_neighbor_hexes:
 		if hex.name == self.name: continue
 		var distance = self.position.distance_to(hex.global_position)

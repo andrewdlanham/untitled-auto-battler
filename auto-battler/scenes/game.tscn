@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=12 format=3 uid="uid://csn7bknrr6t3c"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_k84qj"]
 [ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="1_mptox"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex.tscn" id="5_emem1"]
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="6_psosy"]
 [ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes/shop_hex.tscn" id="6_sxuod"]
+[ext_resource type="PackedScene" uid="uid://ban0igh0lgmrq" path="res://hexes/neutral_hex.tscn" id="7_fmudc"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="7_n2mwn"]
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="8_bh7fc"]
 
@@ -54,6 +55,15 @@ unique_name_in_owner = true
 
 [node name="Hexes" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="NeutralHexes" type="Node" parent="Hexes"]
+unique_name_in_owner = true
+
+[node name="NeutralHex" parent="Hexes/NeutralHexes" instance=ExtResource("7_fmudc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0, -3)
+
+[node name="NeutralHex2" parent="Hexes/NeutralHexes" instance=ExtResource("7_fmudc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0, -3)
 
 [node name="PlayerHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
