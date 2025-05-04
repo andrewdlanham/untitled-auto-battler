@@ -6,38 +6,70 @@
 script = ExtResource("1_2l7py")
 
 [node name="EmailInput" type="TextEdit" parent="."]
-offset_left = 587.0
-offset_top = 513.0
-offset_right = 1356.0
-offset_bottom = 615.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 1025.0
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PasswordInput" type="TextEdit" parent="."]
-offset_left = 587.0
-offset_top = 667.0
-offset_right = 1356.0
-offset_bottom = 769.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = 392.0
+offset_right = 1025.0
+offset_bottom = 494.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PlayGameButton" type="Button" parent="."]
-offset_left = 653.0
-offset_top = 272.0
-offset_right = 1290.0
-offset_bottom = 424.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 464.0
+offset_top = 96.0
+offset_right = 834.0
+offset_bottom = 200.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 60
 text = "PLAY"
 
 [node name="LoginButton" type="Button" parent="."]
-offset_left = 610.0
-offset_top = 827.0
-offset_right = 853.0
-offset_bottom = 920.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 560.0
+offset_right = 499.0
+offset_bottom = 653.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "LOGIN"
 
 [node name="RegisterButton" type="Button" parent="."]
-offset_left = 955.0
-offset_top = 827.0
-offset_right = 1198.0
-offset_bottom = 920.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 784.0
+offset_top = 560.0
+offset_right = 1027.0
+offset_bottom = 653.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "REGISTER"
 
