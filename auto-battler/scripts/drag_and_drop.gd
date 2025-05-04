@@ -40,14 +40,12 @@ func _input(_event):
 			is_dragging = false
 			if dragged_object is Unit:
 				var dropped_hex = dragged_object.get_nearest_hex()
-				if (dropped_hex == null or dropped_hex.is_occupied()):
+				if (dropped_hex == null or not dropped_hex.is_player_hex()):
 					dragged_object.snap_to_current_hex()
 				elif dropped_hex.is_player_hex() and dragged_object.current_hex.is_shop_hex():
 					unit_purchase_requested.emit(dragged_object)
 				elif dropped_hex.is_player_hex():
 					dragged_object.try_connect_to_nearest_hex()
-				elif dropped_hex.is_shop_hex() or dropped_hex.is_enemy_hex():
-					dragged_object.snap_to_current_hex()
 
 				dragged_object_collision_shape.set_disabled(false)
 				dragged_object = null
