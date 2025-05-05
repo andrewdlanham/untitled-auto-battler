@@ -4,9 +4,9 @@ extends Node3D
 
 class_name Unit
 
-@onready var health_label: Label3D = $HealthLabel
-@onready var level_label: Label3D = $LevelLabel
-@onready var name_label: Label3D = $NameLabel
+@onready var name_label: Label3D = $Labels/NameLabel
+@onready var health_label: Label3D = $Labels/HealthLabel
+@onready var level_label: Label3D = $Labels/LevelLabel
 
 @export var unit_name: String
 @export var unit_id: String
@@ -67,7 +67,7 @@ func update_health_label_text() -> void:
 	health_label.text = str(health)
 
 func update_level_label_text() -> void:
-	level_label.text = "LVL " + str(level)
+	level_label.text = str(level)
 
 func update_name_label_text() -> void:
 	name_label.text = self.unit_name

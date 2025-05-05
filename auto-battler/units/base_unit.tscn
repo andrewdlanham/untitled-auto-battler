@@ -22,31 +22,37 @@ attack_range = 3
 attack_speed = 0.5
 attack_damage = 80.0
 
-[node name="NameLabel" type="Label3D" parent="."]
+[node name="Labels" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="NameLabel" type="Label3D" parent="Labels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.963844, 0)
+visible = false
+text = "NAME"
 font_size = 30
 outline_size = 40
 
-[node name="HealthLabel" type="Label3D" parent="."]
+[node name="HealthLabel" type="Label3D" parent="Labels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27615, 0)
 visible = false
 text = "100"
 font_size = 80
 outline_size = 30
 
-[node name="LevelLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659182, 0)
-text = "LVL 0"
+[node name="LevelLabel" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0383576, -0.540825, 0.024584)
+text = "-"
 font_size = 30
 outline_size = 30
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Body" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00367665, 0, -0.000395775)
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ammrf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("CapsuleMesh_1bk63")
 skeleton = NodePath("../..")
