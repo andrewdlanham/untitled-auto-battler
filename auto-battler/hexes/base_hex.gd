@@ -12,12 +12,12 @@ class_name Hex
 @export var neighbors: Array[Node3D]
 
 func _ready() -> void:
-	if is_player_hex() or is_enemy_hex():
+	if is_player_hex() or is_enemy_hex() or is_neutral_hex():
 		_connect_to_neighbor_hexes()
 		_set_hex_id_label()
 
 func _set_hex_id_label() -> void:
-	if is_player_hex() or is_enemy_hex():
+	if is_player_hex():
 		hex_id_label.text = str(hex_id)
 
 func is_occupied() -> bool:
