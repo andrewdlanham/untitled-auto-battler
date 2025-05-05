@@ -13,6 +13,7 @@ func _ready() -> void:
 #region -- Signal Handlers --
 func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
+	%RerollButton.reroll_requested.connect(_on_roll_shop_pressed)
 
 func _on_roll_shop_pressed() -> void:
 	shop_roll_requested.emit()
