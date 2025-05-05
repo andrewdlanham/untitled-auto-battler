@@ -1,7 +1,8 @@
 extends Node
 
 var possible_units = [
-	load(UnitRegistry.get_scene_path("unit_archer"))
+	load(UnitRegistry.get_scene_path("unit_archer")),
+	load(UnitRegistry.get_scene_path("unit_warrior"))
 ]
 
 signal shop_roll_requested
