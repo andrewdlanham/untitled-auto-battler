@@ -1,10 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://qex5mycnoe1"]
 
 [ext_resource type="Script" path="res://hexes/base_hex.gd" id="1_nb18b"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_epl54"]
-height = 0.1
-radial_segments = 6
+[ext_resource type="CylinderMesh" uid="uid://es8nqupkl2bd" path="res://hexes/hex_mesh.tres" id="2_wp5e1"]
 
 [node name="BaseHex" type="Node3D"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
@@ -16,7 +13,7 @@ hex_type = "BASE"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
 [node name="HexMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_epl54")
+mesh = ExtResource("2_wp5e1")
 
 [node name="HexIDLabel" type="Label3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -3.82137e-15, 4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -0.359193, 0.0564748, 0.206741)
