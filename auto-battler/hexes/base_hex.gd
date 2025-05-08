@@ -13,7 +13,6 @@ class_name Hex
 
 func _ready() -> void:
 	if is_player_hex() or is_enemy_hex() or is_neutral_hex():
-		_connect_to_neighbor_hexes()
 		_set_hex_id_label()
 
 func _set_hex_id_label() -> void:
@@ -35,10 +34,10 @@ func is_enemy_hex() -> bool:
 func is_neutral_hex() -> bool:
 	return hex_type == "NEUTRAL"
 
-func _connect_to_neighbor_hexes() -> void:
-	var player_hexes = get_tree().root.get_node("Game/Hexes/PlayerHexes").get_children()
-	var enemy_hexes = get_tree().root.get_node("Game/Hexes/EnemyHexes").get_children()
-	var neutral_hexes = get_tree().root.get_node("Game/Hexes/NeutralHexes").get_children()
+func connect_to_neighbor_hexes() -> void:
+	var player_hexes = get_tree().root.get_node("CombatScene/Hexes/PlayerHexes").get_children()
+	var enemy_hexes = get_tree().root.get_node("CombatScene/Hexes/EnemyHexes").get_children()
+	var neutral_hexes = get_tree().root.get_node("CombatScene/Hexes/NeutralHexes").get_children()
 	var possible_neighbor_hexes =  player_hexes + enemy_hexes + neutral_hexes
 	for hex in possible_neighbor_hexes:
 		if hex.name == self.name: continue

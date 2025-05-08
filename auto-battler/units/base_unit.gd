@@ -1,5 +1,3 @@
-# TODO: Upgrade unit stats on level-up
-
 extends Node3D
 
 class_name Unit
@@ -17,6 +15,9 @@ class_name Unit
 
 var team: String
 var current_hex: Hex
+var current_hex_id
+
+var connection_hex_id
 
 # Combat variables
 @export var combat_enabled: bool = false
@@ -43,17 +44,19 @@ func _ready() -> void:
 	update_name_label_text()
 	attack_cooldown = 1 / attack_speed
 	move_timer = 0.00
+	combat_enabled = false
 
 func _process(delta: float) -> void:
-	
-	if health <= 0: die()
-	
-	attack_cooldown -= delta
-	move_timer -= delta
-	if move_timer <= 0:
-		is_moving = false
-	
+
 	if(combat_enabled):
+		
+		if health <= 0: die()
+	
+		attack_cooldown -= delta
+		move_timer -= delta
+		if move_timer <= 0:
+			is_moving = false
+		
 		if not is_instance_valid(target_enemy):
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
@@ -108,8 +111,8 @@ func get_closest_enemy() -> Node3D:
 	var closest_enemy: Node = null
 	var closest_distance: float = INF  # Start with infinite distance
 	var enemies
-	if team == 'PLAYER': enemies = get_tree().root.get_node("Game/EnemyUnits").get_children()
-	elif team == 'ENEMY': enemies = get_tree().root.get_node("Game/PlayerUnits").get_children()
+	if team == 'PLAYER': enemies = get_tree().root.get_node("CombatScene/EnemyUnits").get_children()
+	elif team == 'ENEMY': enemies = get_tree().root.get_node("CombatScene/PlayerUnits").get_children()
 	for enemy in enemies:
 		var distance = self.global_position.distance_to(enemy.global_position)
 		
@@ -135,7 +138,6 @@ func attack_target_enemy() -> void:
 
 #region Hex-Related Functions
 func snap_to_current_hex() -> void:
-
 	self.position = current_hex.snap_point.global_position
 
 func try_connect_to_hex(hex: Hex, snap_to_hex: bool = true) -> bool:
@@ -145,6 +147,7 @@ func try_connect_to_hex(hex: Hex, snap_to_hex: bool = true) -> bool:
 	if (current_hex): current_hex.unit_on_hex = null	# Disconnect from old hex
 	
 	current_hex = hex
+	current_hex_id = current_hex.hex_id
 	current_hex.unit_on_hex = self
 	
 	if (snap_to_hex): snap_to_current_hex()
