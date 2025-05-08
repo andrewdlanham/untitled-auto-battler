@@ -14,7 +14,7 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hjr8"]
 albedo_color = Color(0.846389, 0.24647, 0.330911, 1)
 
-[node name="Base Unit" instance=ExtResource("1_gq4qk")]
+[node name="Warrior" instance=ExtResource("1_gq4qk")]
 unit_name = "Warrior"
 unit_id = "unit_warrior"
 
