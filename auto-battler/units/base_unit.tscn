@@ -1,6 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b478g6o8tgv7t"]
+[gd_scene load_steps=8 format=3 uid="uid://b478g6o8tgv7t"]
 
 [ext_resource type="Script" path="res://units/base_unit.gd" id="1_p0uky"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nsxjv"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s08ob"]
+bg_color = Color(0.894118, 0.239216, 0.282353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5c24"]
+bg_color = Color(0.0319146, 0.72616, 0.145515, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ammrf"]
 
@@ -32,18 +41,31 @@ text = "NAME"
 font_size = 30
 outline_size = 40
 
-[node name="HealthLabel" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27615, 0)
-visible = false
-text = "100"
-font_size = 80
-outline_size = 30
-
 [node name="LevelLabel" type="Label3D" parent="Labels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0383576, -0.540825, 0.024584)
 text = "-"
 font_size = 30
 outline_size = 30
+
+[node name="HealthBar" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841822, 0)
+
+[node name="HealthBarSprite" type="Sprite3D" parent="HealthBar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0950941, 0)
+texture = SubResource("ViewportTexture_nsxjv")
+
+[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+transparent_bg = true
+size = Vector2i(100, 20)
+render_target_update_mode = 4
+
+[node name="HealthProgressBar" type="ProgressBar" parent="HealthBar/SubViewport"]
+offset_right = 100.0
+offset_bottom = 20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_s08ob")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v5c24")
+value = 100.0
+show_percentage = false
 
 [node name="Body" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00367665, 0, -0.000395775)

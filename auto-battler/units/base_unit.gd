@@ -3,8 +3,10 @@ extends Node3D
 class_name Unit
 
 @onready var name_label: Label3D = $Labels/NameLabel
-@onready var health_label: Label3D = $Labels/HealthLabel
 @onready var level_label: Label3D = $Labels/LevelLabel
+
+@onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
+
 
 @export var unit_name: String
 @export var unit_id: String
@@ -39,7 +41,8 @@ var is_moving: bool = false
 signal unit_died(unit: Unit, team: String)
 
 func _ready() -> void:
-	update_health_label_text()
+	health_progress_bar.max_value = health
+	update_health_bar()
 	update_level_label_text()
 	update_name_label_text()
 	attack_cooldown = 1 / attack_speed
@@ -66,8 +69,8 @@ func _process(delta: float) -> void:
 				attack_target_enemy()
 				attack_cooldown = 1 / attack_speed
 
-func update_health_label_text() -> void:
-	health_label.text = str(health)
+func update_health_bar() -> void:
+	health_progress_bar.value = health
 
 func update_level_label_text() -> void:
 	level_label.text = str(level)
@@ -77,11 +80,11 @@ func update_name_label_text() -> void:
 
 func add_health(amount) -> void:
 	health += amount
-	update_health_label_text()
+	update_health_bar()
 
 func subtract_health(amount) -> void:
 	health -= amount
-	update_health_label_text()
+	update_health_bar()
 
 func level_up() -> void:
 	level += 1
@@ -94,7 +97,7 @@ func get_info_dict() -> Dictionary:
 		"hex_id" : self.current_hex.hex_id,
 		"level" : self.level,
 		"cost" : self.cost
-		}
+	}
 
 func target_is_in_attack_range() -> bool:
 	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
@@ -127,11 +130,11 @@ func target_closest_enemy() -> void:
 	
 func enable_combat() -> void:
 	combat_enabled = true
-	health_label.visible = true
+	health_progress_bar.visible = true
 
 func disable_combat() -> void:
 	combat_enabled = false
-	health_label.visible = false
+	health_progress_bar.visible = false
 
 func attack_target_enemy() -> void:
 	target_enemy.subtract_health(attack_damage)
