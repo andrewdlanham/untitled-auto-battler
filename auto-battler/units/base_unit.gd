@@ -112,13 +112,14 @@ func remove_self() -> void:
 
 func get_closest_enemy() -> Node3D:
 	var closest_enemy: Node = null
-	var closest_distance: float = INF  # Start with infinite distance
+	var closest_distance: float = INF
 	var enemies
-	if team == 'PLAYER': enemies = get_tree().root.get_node("CombatScene/EnemyUnits").get_children()
-	elif team == 'ENEMY': enemies = get_tree().root.get_node("CombatScene/PlayerUnits").get_children()
+	if team == 'PLAYER': 
+		enemies = GameManager.combat_scene.get_node("EnemyUnits").get_children()
+	elif team == 'ENEMY': 
+		enemies = GameManager.combat_scene.get_node("PlayerUnits").get_children()
 	for enemy in enemies:
 		var distance = self.global_position.distance_to(enemy.global_position)
-		
 		if distance < closest_distance:
 			closest_distance = distance
 			closest_enemy = enemy

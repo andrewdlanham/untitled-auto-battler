@@ -60,6 +60,7 @@ size = Vector2i(100, 20)
 render_target_update_mode = 4
 
 [node name="HealthProgressBar" type="ProgressBar" parent="HealthBar/SubViewport"]
+visible = false
 offset_right = 100.0
 offset_bottom = 20.0
 theme_override_styles/background = SubResource("StyleBoxFlat_s08ob")

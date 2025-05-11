@@ -37,7 +37,8 @@ func end_combat():
 	var active_units = player_units.get_children() + enemy_units.get_children()
 	for unit in active_units:
 		unit.disable_combat()
-		unit.unit_died.disconnect(_on_unit_died)
+		if unit.unit_died.is_connected(_on_unit_died):
+			unit.unit_died.disconnect(_on_unit_died)
 
 func _on_unit_died(_unit: Unit, team: String) -> void:
 	if (team == "PLAYER"): num_player_units -= 1

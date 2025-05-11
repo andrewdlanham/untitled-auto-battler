@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4y0is4f1weo2"]
+[gd_scene load_steps=8 format=3 uid="uid://4y0is4f1weo2"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_gq4qk"]
 
@@ -6,6 +6,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxnsw"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oj742"]
+viewport_path = NodePath("HealthBar/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mx8nm"]
 
@@ -29,6 +32,9 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.155836, 0.262224, 
 mesh = SubResource("CapsuleMesh_shark")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_yxnsw")
+
+[node name="HealthBarSprite" parent="HealthBar" index="0"]
+texture = SubResource("ViewportTexture_oj742")
 
 [node name="CollisionShape3D" parent="Body" index="0"]
 shape = SubResource("BoxShape3D_mx8nm")

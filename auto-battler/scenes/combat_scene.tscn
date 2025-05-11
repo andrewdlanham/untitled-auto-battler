@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://8mdmou5bvqyh"]
 
-[ext_resource type="Texture2D" uid="uid://c7m1h5n5jv7cl" path="res://images/sky.jpg" id="2_0m3dk"]
-[ext_resource type="Script" path="res://scenes/hex_manager.gd" id="3_fyqgg"]
-[ext_resource type="Script" path="res://scripts/combat_manager.gd" id="6_agmu0"]
-[ext_resource type="PackedScene" uid="uid://ban0igh0lgmrq" path="res://hexes/neutral_hex.tscn" id="8_0wlt2"]
-[ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex.tscn" id="9_vjme2"]
+[ext_resource type="Texture2D" uid="uid://c7m1h5n5jv7cl" path="res://images/sky.jpg" id="1_71bu6"]
+[ext_resource type="Script" path="res://scripts/combat_manager.gd" id="2_djnry"]
+[ext_resource type="Script" path="res://scenes/hex_manager.gd" id="3_b8f1b"]
+[ext_resource type="PackedScene" uid="uid://ban0igh0lgmrq" path="res://hexes/neutral_hex.tscn" id="4_f6l8m"]
+[ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex.tscn" id="5_fw1dp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8mkin"]
-panorama = ExtResource("2_0m3dk")
+panorama = ExtResource("1_71bu6")
 
 [sub_resource type="Sky" id="Sky_wjo7w"]
 sky_material = SubResource("PanoramaSkyMaterial_8mkin")
@@ -35,7 +35,7 @@ fov = 60.0
 
 [node name="CombatManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("6_agmu0")
+script = ExtResource("2_djnry")
 
 [node name="PlayerUnits" type="Node" parent="."]
 unique_name_in_owner = true
@@ -45,82 +45,82 @@ unique_name_in_owner = true
 
 [node name="Hexes" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_fyqgg")
+script = ExtResource("3_b8f1b")
 
 [node name="NeutralHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="NeutralHex" parent="Hexes/NeutralHexes" instance=ExtResource("8_0wlt2")]
+[node name="NeutralHex" parent="Hexes/NeutralHexes" instance=ExtResource("4_f6l8m")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0, -3)
 
-[node name="NeutralHex2" parent="Hexes/NeutralHexes" instance=ExtResource("8_0wlt2")]
+[node name="NeutralHex2" parent="Hexes/NeutralHexes" instance=ExtResource("4_f6l8m")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0, -3)
 
 [node name="PlayerHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="PlayerHexA" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexA" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0.0716362, -2)
 hex_id = "A"
 
-[node name="PlayerHexB" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexB" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0.0716362, -1)
 hex_id = "B"
 
-[node name="PlayerHexC" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexC" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0.0716362, 0)
 hex_id = "C"
 
-[node name="PlayerHexD" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexD" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0.0716362, -1)
 hex_id = "D"
 
-[node name="PlayerHexE" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexE" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.75, 0.0716362, 1)
 hex_id = "E"
 
-[node name="PlayerHexF" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexF" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0.0716362, 2)
 hex_id = "F"
 
-[node name="PlayerHexG" parent="Hexes/PlayerHexes" instance=ExtResource("9_vjme2")]
+[node name="PlayerHexG" parent="Hexes/PlayerHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, 0.0716362, 1)
 hex_id = "G"
 
 [node name="EnemyHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="EnemyHex" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.74846e-07, 0, -4)
 hex_id = "A"
 hex_type = "ENEMY"
 
-[node name="EnemyHex2" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex2" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 0, -6)
 hex_id = "C"
 hex_type = "ENEMY"
 
-[node name="EnemyHex3" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex3" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.75, 0, -5)
 hex_id = "B"
 hex_type = "ENEMY"
 
-[node name="EnemyHex4" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex4" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.75, 0, -5)
 hex_id = "D"
 hex_type = "ENEMY"
 
-[node name="EnemyHex5" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex5" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.75, 0, -7)
 hex_id = "E"
 hex_type = "ENEMY"
 
-[node name="EnemyHex6" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex6" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.74846e-07, 0, -8)
 hex_id = "F"
 hex_type = "ENEMY"
 
-[node name="EnemyHex7" parent="Hexes/EnemyHexes" instance=ExtResource("9_vjme2")]
+[node name="EnemyHex7" parent="Hexes/EnemyHexes" instance=ExtResource("5_fw1dp")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.75, 0, -7)
 hex_id = "G"
 hex_type = "ENEMY"

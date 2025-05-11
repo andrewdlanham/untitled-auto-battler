@@ -1,5 +1,3 @@
-# TODO: Add code regions and compress functions
-
 extends Node3D	# Script must be on Node3D to access get_world_3d()
 
 const RAY_LENGTH = 100
