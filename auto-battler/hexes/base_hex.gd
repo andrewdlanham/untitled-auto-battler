@@ -35,9 +35,9 @@ func is_neutral_hex() -> bool:
 	return hex_type == "NEUTRAL"
 
 func connect_to_neighbor_hexes() -> void:
-	var player_hexes = get_tree().root.get_node("CombatScene/Hexes/PlayerHexes").get_children()
-	var enemy_hexes = get_tree().root.get_node("CombatScene/Hexes/EnemyHexes").get_children()
-	var neutral_hexes = get_tree().root.get_node("CombatScene/Hexes/NeutralHexes").get_children()
+	var player_hexes = GameManager.combat_scene.get_node("Hexes/PlayerHexes").get_children()
+	var enemy_hexes = GameManager.combat_scene.get_node("Hexes/EnemyHexes").get_children()
+	var neutral_hexes = GameManager.combat_scene.get_node("Hexes/NeutralHexes").get_children()
 	var possible_neighbor_hexes =  player_hexes + enemy_hexes + neutral_hexes
 	for hex in possible_neighbor_hexes:
 		if hex.name == self.name: continue

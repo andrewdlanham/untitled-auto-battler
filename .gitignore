@@ -26,4 +26,3 @@ auto-battler/sounds/*
 # Documents such as TODO list, asset credits, etc.
 auto-battler/_docs/*
 /auto-battler/images
-auto-battler/project.godot

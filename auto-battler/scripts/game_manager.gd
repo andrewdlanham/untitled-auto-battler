@@ -1,5 +1,7 @@
 extends Node
 
+var prep_scene_resource = preload("res://scenes/prep_scene.tscn")
+var combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 
 var player_units = []
 
@@ -10,23 +12,23 @@ var player_hexes_node
 var combat_scene
 
 func load_prep_scene():
-	var prep_scene = load("res://scenes/prep_scene.tscn")
-	var prep_scene_instance = prep_scene.instantiate()
-	preparation_scene = prep_scene_instance
 	
-	get_tree().root.add_child(prep_scene_instance)
+	preparation_scene = prep_scene_resource.instantiate()
+	get_tree().root.add_child(preparation_scene)
 
 func change_to_combat_scene() -> void:
-	prepare_units_for_combat_phase()
+	prepare_units_for_scene_transition("COMBAT")
 	
 	get_tree().root.remove_child(preparation_scene)
-	combat_scene = preload("res://scenes/combat_scene.tscn").instantiate()
+	
+	combat_scene = combat_scene_resource.instantiate()
 	get_tree().root.add_child(combat_scene)
 
 func change_to_prep_scene() -> void:
-	prepare_units_for_prep_phase()
+	prepare_units_for_scene_transition("PREP")
 	
 	get_tree().root.remove_child(combat_scene)
+	
 	get_tree().root.add_child(preparation_scene)
 	
 	construct_player_team(player_hexes_node.get_children(), player_units_node)
@@ -49,24 +51,21 @@ func construct_enemy_team(unit_array, hexes, enemy_units_node) -> void:
 				new_unit.try_connect_to_hex(hex)
 				new_unit.team = "ENEMY"
 
-func prepare_units_for_prep_phase() -> void:
+func prepare_units_for_scene_transition(destination_scene) -> void:
+	
+	var current_player_units
+	if destination_scene == "PREP":
+		current_player_units = combat_scene.get_node("PlayerUnits").get_children()
+	elif destination_scene == "COMBAT":
+		current_player_units = player_units_node.get_children()
+	
 	player_units = []
-	var current_player_units = get_tree().root.get_node("CombatScene/PlayerUnits").get_children()
 	for unit in current_player_units:
+		
+		if destination_scene == "COMBAT": 
+			unit.connection_hex_id = unit.current_hex_id
 		unit.current_hex.unit_on_hex = null
 		unit.current_hex = null
-		unit.current_hex_id = null
-		unit.target_enemy = null
-		unit.get_parent().remove_child(unit)
-		player_units.append(unit)
-
-func prepare_units_for_combat_phase() -> void:
-	player_units = []
-	var current_player_units = get_tree().root.get_node("PrepScene/PlayerUnits").get_children()
-	for unit in current_player_units:
-		unit.current_hex.unit_on_hex = null
-		unit.current_hex = null
-		unit.connection_hex_id = unit.current_hex_id
 		unit.current_hex_id = null
 		unit.target_enemy = null
 		unit.get_parent().remove_child(unit)
