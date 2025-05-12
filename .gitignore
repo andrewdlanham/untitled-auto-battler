@@ -23,6 +23,13 @@ auto-battler/db/*
 # Sound assets
 auto-battler/sounds/*
 
-# Documents such as TODO list, asset credits, etc.
+# Misc.
 auto-battler/_docs/*
 /auto-battler/images
+
+# No need to track changes to these on public GitHub repo
+auto-battler/project.godot
+auto-battler/scenes/prep_scene.tscn
+auto-battler/scenes/combat_scene.tscn
+auto-battler/icon.svg.import
+auto-battler/scenes/auth.tscn
