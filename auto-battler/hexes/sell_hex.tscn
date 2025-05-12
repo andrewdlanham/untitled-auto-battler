@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://du5snwj5bocsp"]
+
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_dlaeh"]
+
+[node name="SellHex" instance=ExtResource("1_dlaeh")]
+hex_type = "SELL"
+
+[node name="Label3D" type="Label3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.00309354, 0.0714829, -0.000589371)
+text = "SELL"

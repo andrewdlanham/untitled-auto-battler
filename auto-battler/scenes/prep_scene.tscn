@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=13 format=3 uid="uid://csn7bknrr6t3c"]
 
 [ext_resource type="Script" path="res://scripts/prep_scene.gd" id="1_3l7tw"]
 [ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="2_gg317"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="4_h7phi"]
 [ext_resource type="Script" path="res://scripts/merge_manager.gd" id="5_n4nvu"]
 [ext_resource type="PackedScene" uid="uid://dfo7560kmu30t" path="res://hexes/reroll_button.tscn" id="6_1yx5a"]
+[ext_resource type="PackedScene" uid="uid://du5snwj5bocsp" path="res://hexes/sell_hex.tscn" id="6_mpye7"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex.tscn" id="7_wh4ba"]
 [ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes/shop_hex.tscn" id="8_2ern3"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="9_bf3yj"]
@@ -56,6 +57,9 @@ unique_name_in_owner = true
 
 [node name="Hexes" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="SellHex" parent="Hexes" instance=ExtResource("6_mpye7")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 3.5, 0, 0)
 
 [node name="RerollButton" parent="Hexes" instance=ExtResource("6_1yx5a")]
 unique_name_in_owner = true

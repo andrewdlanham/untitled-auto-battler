@@ -34,6 +34,9 @@ func is_enemy_hex() -> bool:
 func is_neutral_hex() -> bool:
 	return hex_type == "NEUTRAL"
 
+func is_sell_hex() -> bool:
+	return hex_type == "SELL"
+
 func connect_to_neighbor_hexes() -> void:
 	var player_hexes = GameManager.combat_scene.get_node("Hexes/PlayerHexes").get_children()
 	var enemy_hexes = GameManager.combat_scene.get_node("Hexes/EnemyHexes").get_children()

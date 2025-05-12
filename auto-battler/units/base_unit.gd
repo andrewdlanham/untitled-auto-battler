@@ -7,7 +7,6 @@ class_name Unit
 
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
 
-
 @export var unit_name: String
 @export var unit_id: String
 
