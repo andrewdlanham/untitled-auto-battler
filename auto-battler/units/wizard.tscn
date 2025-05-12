@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dif8ndi2wg7le"]
+
+[ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_eu62y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_brpuv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cja3c"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xvcnd"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq51y"]
+albedo_color = Color(1, 0.509804, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_o1wlg"]
+material = SubResource("StandardMaterial3D_nq51y")
+size = Vector3(0.8, 1, 0.5)
+
+[node name="Wizard" instance=ExtResource("1_eu62y")]
+unit_name = "Wizard"
+unit_id = "unit_wizard"
+health = 200.0
+attack_range = 6
+attack_speed = 0.7
+attack_damage = 150.0
+
+[node name="Area3D#Eye" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.112497, 0.27385, 0.261608)
+mesh = SubResource("CapsuleMesh_brpuv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cja3c")
+
+[node name="Area3D#Eye2" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.127851, 0.27385, 0.261608)
+mesh = SubResource("CapsuleMesh_brpuv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cja3c")
+
+[node name="HealthBarSprite" parent="HealthBar" index="0"]
+texture = SubResource("ViewportTexture_xvcnd")
+
+[node name="MeshInstance3D" parent="Body" index="1"]
+mesh = SubResource("PrismMesh_o1wlg")
