@@ -1,10 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfo7560kmu30t"]
 
 [ext_resource type="Script" path="res://hexes/reroll_hex.gd" id="1_bxs8n"]
-[ext_resource type="CylinderMesh" uid="uid://es8nqupkl2bd" path="res://hexes/hex_mesh.tres" id="2_ov3v7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j85j"]
-albedo_color = Color(0.622257, 0.593194, 0.215742, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0ix7"]
+albedo_color = Color(0.818746, 0.858958, 0.281485, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3fwpo"]
+material = SubResource("StandardMaterial3D_b0ix7")
+radial_segments = 6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_arpa0"]
 
@@ -22,10 +25,10 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="HexMesh" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.0659266, 0)
 layers = 16
-mesh = ExtResource("2_ov3v7")
+mesh = SubResource("CylinderMesh_3fwpo")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4j85j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.222139, 0)

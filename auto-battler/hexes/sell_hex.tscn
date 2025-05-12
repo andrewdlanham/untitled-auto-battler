@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://du5snwj5bocsp"]
+[gd_scene load_steps=3 format=3 uid="uid://du5snwj5bocsp"]
 
 [ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_dlaeh"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h2o2"]
+albedo_color = Color(1, 0.45098, 1, 1)
+
 [node name="SellHex" instance=ExtResource("1_dlaeh")]
 hex_type = "SELL"
+
+[node name="HexMesh" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7h2o2")
 
 [node name="Label3D" type="Label3D" parent="." index="3"]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.00309354, 0.0714829, -0.000589371)

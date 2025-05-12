@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://csn7bknrr6t3c"]
+[gd_scene load_steps=14 format=3 uid="uid://csn7bknrr6t3c"]
 
 [ext_resource type="Script" path="res://scripts/prep_scene.gd" id="1_3l7tw"]
 [ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="2_gg317"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes/shop_hex.tscn" id="8_2ern3"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="9_bf3yj"]
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="10_tfqdm"]
+[ext_resource type="PackedScene" uid="uid://b2560mmt6gjfc" path="res://hexes/bench_hex.tscn" id="12_m55g8"]
 
 [sub_resource type="Environment" id="Environment_n5egb"]
 ambient_light_source = 3
@@ -55,15 +56,18 @@ unique_name_in_owner = true
 [node name="PlayerUnits" type="Node" parent="."]
 unique_name_in_owner = true
 
+[node name="BenchUnits" type="Node" parent="."]
+unique_name_in_owner = true
+
 [node name="Hexes" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="SellHex" parent="Hexes" instance=ExtResource("6_mpye7")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 3.5, 0, 0)
-
 [node name="RerollButton" parent="Hexes" instance=ExtResource("6_1yx5a")]
 unique_name_in_owner = true
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, -0.100705, 3.963)
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.0205797, -0.0562835, 3.84327)
+
+[node name="SellHex" parent="Hexes" instance=ExtResource("6_mpye7")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 3.5, 0, 0)
 
 [node name="PlayerHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
@@ -110,6 +114,20 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 3.5, -
 
 [node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("8_2ern3")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.75, -0.099467, 3)
+
+[node name="BenchHexes" type="Node" parent="Hexes"]
+
+[node name="Bench Hex" parent="Hexes/BenchHexes" instance=ExtResource("12_m55g8")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3.49193, 0, -2.35883)
+
+[node name="Bench Hex2" parent="Hexes/BenchHexes" instance=ExtResource("12_m55g8")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.81789, 0, -3.50897)
+
+[node name="Bench Hex3" parent="Hexes/BenchHexes" instance=ExtResource("12_m55g8")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1.82825, 0, -3.37452)
+
+[node name="Bench Hex4" parent="Hexes/BenchHexes" instance=ExtResource("12_m55g8")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 3.50815, 0, -2.34322)
 
 [node name="Floor" parent="." instance=ExtResource("9_bf3yj")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.107714, 0)
