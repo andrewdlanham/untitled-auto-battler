@@ -1,7 +1,7 @@
 extends Node
 
-var player_gold = 10
-var reroll_cost = 1
+var player_gold: int = 10
+var reroll_cost: int = 1
 
 #region -- Signals --
 signal shop_roll_approved
@@ -17,6 +17,7 @@ func connect_signals() -> void:
 	%ShopManager.shop_roll_requested.connect(_on_shop_roll_requested)
 	%DragDropManager.unit_purchase_requested.connect(_on_unit_purchase_requested)
 	%DragDropManager.unit_sell_requested.connect(_on_unit_sell_requested)
+
 #region -- Signal Handlers --
 func _on_shop_roll_requested() -> void:
 	if (player_gold >= reroll_cost):
@@ -41,6 +42,10 @@ func _on_unit_sell_requested(unit: Unit) -> void:
 
 func update_gold_label_text() -> void:
 	%GoldCountLabel.text = str(player_gold) + " G"
+
+func set_gold(amount) -> void:
+	player_gold = amount
+	update_gold_label_text()
 
 func add_gold(amount) -> void:
 	player_gold += amount

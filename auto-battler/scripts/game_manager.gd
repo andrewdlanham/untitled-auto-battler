@@ -3,15 +3,19 @@ extends Node
 var prep_scene_resource = preload("res://scenes/prep_scene.tscn")
 var combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 
-var player_units = []
+var player_units: Array = []
 
-var preparation_scene
-var player_units_node
-var player_hexes_node
+var preparation_scene: Node3D
+var player_units_node: Node
+var player_hexes_node: Node
 
-var combat_scene
+var current_round: int
+var round_label: Label
 
-func load_prep_scene() -> void:
+var combat_scene: Node3D
+
+func start_game() -> void:
+	current_round = 1
 	preparation_scene = prep_scene_resource.instantiate()
 	get_tree().root.add_child(preparation_scene)
 
@@ -24,13 +28,17 @@ func change_to_combat_scene() -> void:
 	get_tree().root.add_child(combat_scene)
 
 func change_to_prep_scene() -> void:
+	
 	prepare_units_for_scene_transition("PREP")
 	
 	get_tree().root.remove_child(combat_scene)
-	
 	get_tree().root.add_child(preparation_scene)
 	
+	current_round += 1
+	update_round_label()
+
 	construct_player_team(player_hexes_node.get_children(), player_units_node)
+	preparation_scene.start_new_round()
 
 func construct_player_team(target_hexes, parent_node) -> void:
 	for unit in player_units:
@@ -79,3 +87,6 @@ func get_player_unit_info() -> Array:
 	for unit in player_units_node.get_children():
 		unit_info_array.append(unit.get_info_dict())
 	return unit_info_array
+
+func update_round_label() -> void:
+	round_label.text = "Round: " + str(current_round)
