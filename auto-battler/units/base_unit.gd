@@ -22,6 +22,7 @@ var connection_hex_id
 
 # Combat variables
 @export var combat_enabled: bool = false
+@export var max_health: float
 @export var health: float
 @export var attack_range: int
 @export var attack_speed: float = 0.1
@@ -40,6 +41,7 @@ var is_moving: bool = false
 signal unit_died(unit: Unit, team: String)
 
 func _ready() -> void:
+	health = max_health
 	health_progress_bar.max_value = health
 	update_health_bar()
 	update_level_label_text()
@@ -59,7 +61,7 @@ func _process(delta: float) -> void:
 		if move_timer <= 0:
 			is_moving = false
 		
-		if not is_instance_valid(target_enemy):
+		if target_enemy == null or target_enemy.visible == false:
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
@@ -67,6 +69,21 @@ func _process(delta: float) -> void:
 		elif attack_cooldown <= 0.00:
 				attack_target_enemy()
 				attack_cooldown = 1 / attack_speed
+
+func die() -> void:
+	disable_combat()
+	current_hex.unit_on_hex = null
+	self.visible = false
+	unit_died.emit(self, self.team)
+
+func reset() -> void:
+	health = max_health
+	update_health_bar()
+	self.visible = true
+
+func remove_self() -> void:
+	current_hex.unit_on_hex = null
+	self.queue_free()
 
 func update_health_bar() -> void:
 	health_progress_bar.value = health
@@ -101,14 +118,6 @@ func get_info_dict() -> Dictionary:
 func target_is_in_attack_range() -> bool:
 	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
 
-func die() -> void:
-	unit_died.emit(self, self.team)
-	remove_self()
-
-func remove_self() -> void:
-	current_hex.unit_on_hex = null
-	self.queue_free()
-
 func get_closest_enemy() -> Node3D:
 	var closest_enemy: Node = null
 	var closest_distance: float = INF
@@ -118,6 +127,7 @@ func get_closest_enemy() -> Node3D:
 	elif team == 'ENEMY': 
 		enemies = GameManager.combat_scene.get_node("PlayerUnits").get_children()
 	for enemy in enemies:
+		if enemy.visible == false: continue
 		var distance = self.global_position.distance_to(enemy.global_position)
 		if distance < closest_distance:
 			closest_distance = distance
@@ -127,7 +137,7 @@ func get_closest_enemy() -> Node3D:
 
 func target_closest_enemy() -> void:
 	target_enemy = get_closest_enemy()
-	
+
 func enable_combat() -> void:
 	combat_enabled = true
 	health_progress_bar.visible = true

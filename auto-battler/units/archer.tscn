@@ -16,6 +16,7 @@ albedo_color = Color(1.13107e-06, 0.65146, 0.216506, 1)
 [node name="Archer" instance=ExtResource("1_poik8")]
 unit_name = "Archer"
 unit_id = "unit_archer"
+max_health = 600.0
 health = 600.0
 attack_range = 6
 attack_speed = 0.8

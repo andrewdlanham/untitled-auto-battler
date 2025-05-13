@@ -12,7 +12,6 @@ var player_hexes_node
 var combat_scene
 
 func load_prep_scene() -> void:
-	
 	preparation_scene = prep_scene_resource.instantiate()
 	get_tree().root.add_child(preparation_scene)
 
@@ -52,10 +51,11 @@ func construct_enemy_team(unit_array, hexes, enemy_units_node) -> void:
 				new_unit.team = "ENEMY"
 
 func prepare_units_for_scene_transition(destination_scene) -> void:
-	
+
 	var current_player_units
 	if destination_scene == "PREP":
 		current_player_units = combat_scene.get_node("PlayerUnits").get_children()
+
 	elif destination_scene == "COMBAT":
 		current_player_units = player_units_node.get_children()
 	
@@ -64,6 +64,9 @@ func prepare_units_for_scene_transition(destination_scene) -> void:
 		
 		if destination_scene == "COMBAT": 
 			unit.connection_hex_id = unit.current_hex_id
+
+		unit.reset()
+
 		unit.current_hex.unit_on_hex = null
 		unit.current_hex = null
 		unit.current_hex_id = null

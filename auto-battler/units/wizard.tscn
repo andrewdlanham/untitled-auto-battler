@@ -20,6 +20,7 @@ size = Vector3(0.8, 1, 0.5)
 [node name="Wizard" instance=ExtResource("1_eu62y")]
 unit_name = "Wizard"
 unit_id = "unit_wizard"
+max_health = 200.0
 health = 200.0
 attack_range = 6
 attack_speed = 0.7

@@ -19,6 +19,7 @@ albedo_color = Color(0.383597, 0.383597, 0.383597, 1)
 [node name="Knight" instance=ExtResource("1_jjcwl")]
 unit_name = "Knight"
 unit_id = "unit_knight"
+max_health = 1500.0
 health = 1500.0
 attack_damage = 40.0
 
