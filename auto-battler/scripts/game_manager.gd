@@ -11,7 +11,7 @@ var player_hexes_node
 
 var combat_scene
 
-func load_prep_scene():
+func load_prep_scene() -> void:
 	
 	preparation_scene = prep_scene_resource.instantiate()
 	get_tree().root.add_child(preparation_scene)
@@ -71,9 +71,8 @@ func prepare_units_for_scene_transition(destination_scene) -> void:
 		unit.get_parent().remove_child(unit)
 		player_units.append(unit)
 
-func get_player_unit_info():
+func get_player_unit_info() -> Array:
 	var unit_info_array = []
 	for unit in player_units_node.get_children():
 		unit_info_array.append(unit.get_info_dict())
 	return unit_info_array
-	

@@ -18,10 +18,10 @@ func _ready() -> void:
 	%GoldManager.unit_purchase_approved.connect(_on_unit_purchase_approved)
 	%GoldManager.unit_purchase_denied.connect(_on_unit_purchase_denied)
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if is_dragging: update_dragged_object_position()
 
-func _input(_event):
+func _input(_event) -> void:
 	if Input.is_action_just_pressed("LeftClick"):
 		if is_dragging: return
 		raycast_collision_mask = UNIT_MASK

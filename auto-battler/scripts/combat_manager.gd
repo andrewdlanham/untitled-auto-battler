@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 		if (num_player_units == 0 or num_enemy_units == 0):
 			end_combat()
 
-func start_combat():
+func start_combat() -> void:
 	combat_in_progress = true
 	num_player_units = player_units.get_children().size()
 	num_enemy_units = enemy_units.get_children().size()
@@ -30,7 +30,7 @@ func start_combat():
 		unit.enable_combat()
 		unit.unit_died.connect(_on_unit_died)
 
-func end_combat():
+func end_combat() -> void:
 	get_random_team_requested.disconnect(DataManager._on_get_random_team_requested)
 	DataManager.combat_team_received.disconnect(_on_combat_team_received)
 	combat_in_progress = false
