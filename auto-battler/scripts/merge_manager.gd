@@ -8,7 +8,7 @@ func _ready() -> void:
 func handle_unit_merging(match_name: String, match_level: int) -> void:
 	if (match_level >= LEVEL_CAP): return	# Don't merge above the level cap
 	var matching_units = []
-	for unit: Node3D in %PlayerUnits.get_children():
+	for unit: Node3D in %PlayerUnits.get_children() + %BenchUnits.get_children():
 		if unit.unit_name == match_name and unit.level == match_level:
 			matching_units.append(unit)
 	if matching_units.size() >= 3:
