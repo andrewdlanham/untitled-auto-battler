@@ -1,5 +1,13 @@
 extends Node
 
+var unit_cap_by_round: Array = [
+	{ "rounds": range(1, 4), "cap": 3 },	# Rounds 1-3
+	{ "rounds": range(4, 6), "cap": 4 },	# Rounds 4-5
+	{ "rounds": range(6, 8), "cap": 5 },	# Rounds 6-7
+	{ "rounds": range(8, 10), "cap": 6 },	# Rounds 8-9
+	{ "rounds": range(10, 16), "cap": 7 }	# Rounds 10-15
+]
+
 var prep_scene_resource = preload("res://scenes/prep_scene.tscn")
 var combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 
@@ -90,3 +98,15 @@ func get_player_unit_info() -> Array:
 
 func update_round_label() -> void:
 	round_label.text = "Round: " + str(current_round)
+
+func get_unit_cap(round: int) -> int:
+	for entry in unit_cap_by_round:
+		if round in entry["rounds"]:
+			return entry["cap"]
+	return 7 	# Default if no match found, but this should not occur
+
+func get_current_unit_cap() -> int:
+	return get_unit_cap(current_round)
+
+func is_active_units_full() -> bool:
+	return player_units_node.get_children().size() >= get_current_unit_cap()

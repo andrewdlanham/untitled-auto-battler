@@ -13,6 +13,7 @@ var raycast_collision_mask = UNIT_MASK
 signal unit_purchase_requested(unit: Unit, hex_placed_on: Hex)
 signal unit_sell_requested(unit: Unit)
 signal new_unit_placed(unit: Unit)
+signal unit_placed()
 
 func _ready() -> void:
 	%GoldManager.unit_purchase_approved.connect(_on_unit_purchase_approved)
@@ -40,24 +41,29 @@ func _input(_event) -> void:
 			var origin_hex = dragged_object.current_hex
 			if dragged_object is Unit:
 				var dropped_hex = dragged_object.get_nearest_hex()
-				if (dropped_hex == null or dropped_hex.is_shop_hex()):
+				if (dropped_hex == null or dropped_hex.is_shop_hex() or dropped_hex.is_occupied()):
 					dragged_object.snap_to_current_hex()
 				# Selling units
 				elif (dropped_hex.is_sell_hex() and not origin_hex.is_shop_hex()):
 					unit_sell_requested.emit(dragged_object)
-				# Buying units
-				elif (dropped_hex.is_player_hex() or dropped_hex.is_bench_hex()) and origin_hex.is_shop_hex():
+				# Buying units on player hexes
+				elif (dropped_hex.is_player_hex() and origin_hex.is_shop_hex() and not GameManager.is_active_units_full()):
+					unit_purchase_requested.emit(dragged_object, dropped_hex)
+				# Buying units on bench hexes
+				elif (dropped_hex.is_bench_hex() and origin_hex.is_shop_hex()):
 					unit_purchase_requested.emit(dragged_object, dropped_hex)
 				# Dragging player units to bench
 				elif origin_hex.is_player_hex() and dropped_hex.is_bench_hex():
 					if (dragged_object.try_connect_to_nearest_hex()):
 						%PlayerUnits.remove_child(dragged_object)
 						%BenchUnits.add_child(dragged_object)
+						unit_placed.emit()
 				# Dragging bench units onto player hexes
-				elif origin_hex.is_bench_hex() and dropped_hex.is_player_hex():
+				elif origin_hex.is_bench_hex() and dropped_hex.is_player_hex() and not GameManager.is_active_units_full():
 					if (dragged_object.try_connect_to_nearest_hex()):
 						%BenchUnits.remove_child(dragged_object)
 						%PlayerUnits.add_child(dragged_object)
+						unit_placed.emit()
 				# Other dragging
 				elif dropped_hex.hex_type == origin_hex.hex_type:
 					dragged_object.try_connect_to_nearest_hex()

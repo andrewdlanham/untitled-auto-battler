@@ -2,6 +2,8 @@ extends Node
 
 const LEVEL_CAP = 3
 
+signal unit_merge_success
+
 func _ready() -> void:
 	%DragDropManager.new_unit_placed.connect(_on_new_unit_placed)
 
@@ -21,8 +23,7 @@ func merge_units(units) -> void:
 	units[0].level_up()
 	units[1].remove_self()
 	units[2].remove_self()
+	unit_merge_success.emit()
 
-#region -- Signal Handlers --
 func _on_new_unit_placed(unit: Unit) -> void:
 	handle_unit_merging(unit.unit_name, unit.level)
-#endregion
