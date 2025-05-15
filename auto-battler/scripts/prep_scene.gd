@@ -1,6 +1,7 @@
 extends Node3D
 
 func _ready() -> void:
+	%StoreTeamButton.pressed.connect(DataManager._on_store_team_in_db_pressed)
 	GameManager.player_units_node = %PlayerUnits
 	GameManager.player_hexes_node = %PlayerHexes
 	GameManager.round_label = %RoundLabel
@@ -9,3 +10,6 @@ func _ready() -> void:
 func start_new_round() -> void:
 	%GoldManager.set_gold(10)
 	%ShopManager.roll_shop_units()
+
+func _on_start_combat_button_pressed() -> void:
+	GameManager.change_to_combat_scene()
