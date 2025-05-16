@@ -7,13 +7,14 @@ var reroll_cost: int = 1
 signal shop_roll_approved
 signal unit_purchase_approved(unit: Unit)
 signal unit_purchase_denied(unit: Unit)
+signal unit_sold
 #endregion
 
 func _ready() -> void:
-	connect_signals()
+	_connect_signals()
 	update_gold_label_text()
 
-func connect_signals() -> void:
+func _connect_signals() -> void:
 	%ShopManager.shop_roll_requested.connect(_on_shop_roll_requested)
 	%DragDropManager.unit_purchase_requested.connect(_on_unit_purchase_requested)
 	%DragDropManager.unit_sell_requested.connect(_on_unit_sell_requested)
@@ -38,6 +39,7 @@ func _on_unit_sell_requested(unit: Unit) -> void:
 		2: add_gold(3)
 		3: add_gold(5)
 	unit.queue_free()
+	unit_sold.emit()
 #endregion
 
 func update_gold_label_text() -> void:

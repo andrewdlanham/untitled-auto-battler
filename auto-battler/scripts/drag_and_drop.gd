@@ -85,6 +85,7 @@ func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 		%BenchUnits.add_child(unit)
 	
 	new_unit_placed.emit(unit)
+	unit_placed.emit()
 
 func _on_unit_purchase_denied(unit: Unit) -> void:
 	printerr("Unit purchase denied")
