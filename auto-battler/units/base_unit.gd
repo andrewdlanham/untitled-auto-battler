@@ -65,7 +65,10 @@ func _process(delta: float) -> void:
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
-			try_move_to_hex(open_hex)
+			if open_hex != null:
+				try_move_to_hex(open_hex)
+			else:
+				target_closest_enemy()
 		elif attack_cooldown <= 0.00:
 				attack_target_enemy()
 				attack_cooldown = 1 / attack_speed
@@ -78,6 +81,9 @@ func die() -> void:
 
 func reset() -> void:
 	health = max_health
+	move_timer = move_cooldown
+	attack_cooldown = 1 / attack_speed
+	target_enemy = null
 	update_health_bar()
 	self.visible = true
 
@@ -112,7 +118,6 @@ func get_info_dict() -> Dictionary:
 		"unit_id" : self.unit_id,
 		"hex_id" : self.current_hex.hex_id,
 		"level" : self.level,
-		"cost" : self.cost
 	}
 
 func target_is_in_attack_range() -> bool:
@@ -208,5 +213,8 @@ func get_open_hex_towards_unit(unit: Unit) -> Hex:
 		if distance < shortest_distance:
 			shortest_distance = distance
 			closest_hex = neighborHex
-	return closest_hex
+	if (shortest_distance < self.global_position.distance_to(unit.global_position)):
+		return closest_hex
+	else:
+		return null
 #endregion
