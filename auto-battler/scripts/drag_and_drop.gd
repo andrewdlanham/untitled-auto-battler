@@ -12,7 +12,7 @@ var raycast_collision_mask = UNIT_MASK
 
 signal unit_purchase_requested(unit: Unit, hex_placed_on: Hex)
 signal unit_sell_requested(unit: Unit)
-signal new_unit_placed(unit: Unit)
+
 signal unit_placed()
 
 func _ready() -> void:
@@ -84,7 +84,6 @@ func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 	elif hex_placed_on.is_bench_hex():
 		%BenchUnits.add_child(unit)
 	
-	new_unit_placed.emit(unit)
 	unit_placed.emit()
 
 func _on_unit_purchase_denied(unit: Unit) -> void:

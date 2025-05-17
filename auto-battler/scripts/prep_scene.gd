@@ -8,14 +8,6 @@ func _ready() -> void:
 	GameManager.update_round_label()
 	update_unit_count_label()
 
-func _connect_signals() -> void:
-	%StoreTeamButton.pressed.connect(DataManager._on_store_team_in_db_pressed)
-	
-	# Everything that should trigger update_unit_count_label()
-	%DragDropManager.unit_placed.connect(update_unit_count_label)
-	%MergeManager.unit_merge_success.connect(update_unit_count_label)
-	%GoldManager.unit_sold.connect(update_unit_count_label)
-
 func start_new_round() -> void:
 	%GoldManager.set_gold(10)
 	%ShopManager.roll_shop_units()
@@ -26,3 +18,11 @@ func update_unit_count_label() -> void:
 
 func _on_start_combat_button_pressed() -> void:
 	GameManager.change_to_combat_scene()
+
+func _connect_signals() -> void:
+	%StoreTeamButton.pressed.connect(DataManager._on_store_team_in_db_pressed)
+	
+	# Everything that should trigger update_unit_count_label()
+	%DragDropManager.unit_placed.connect(update_unit_count_label)
+	%MergeManager.unit_merge_success.connect(update_unit_count_label)
+	%GoldManager.unit_sold.connect(update_unit_count_label)

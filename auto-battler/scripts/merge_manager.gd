@@ -5,7 +5,7 @@ const LEVEL_CAP = 3
 signal unit_merge_success
 
 func _ready() -> void:
-	%DragDropManager.new_unit_placed.connect(_on_new_unit_placed)
+	%DragDropManager.unit_placed.connect(_on_unit_placed)
 
 func handle_unit_merging(match_name: String, match_level: int) -> void:
 	if (match_level >= LEVEL_CAP): return	# Don't merge above the level cap
@@ -25,5 +25,6 @@ func merge_units(units) -> void:
 	units[2].remove_self()
 	unit_merge_success.emit()
 
-func _on_new_unit_placed(unit: Unit) -> void:
-	handle_unit_merging(unit.unit_name, unit.level)
+func _on_unit_placed() -> void:
+	for unit: Unit in %PlayerUnits.get_children() + %BenchUnits.get_children():
+		handle_unit_merging(unit.unit_name, unit.level)
