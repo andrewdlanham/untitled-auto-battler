@@ -33,6 +33,9 @@ func _input(_event) -> void:
 			dragged_object_collision_shape.set_disabled(true)
 			raycast_collision_mask = FLOOR_MASK
 			is_dragging = true
+			%UnitStatsPopup.show_stats(dragged_object)
+		else:
+			%UnitStatsPopup.hide_stats()
 	
 	elif Input.is_action_just_released("LeftClick"):
 		if is_dragging: 
