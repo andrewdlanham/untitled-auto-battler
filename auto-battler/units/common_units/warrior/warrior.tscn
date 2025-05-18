@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://4y0is4f1weo2"]
+[gd_scene load_steps=9 format=3 uid="uid://4y0is4f1weo2"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_gq4qk"]
+[ext_resource type="Resource" uid="uid://btbse87j1mbmk" path="res://units/common_units/warrior/warrior.tres" id="2_jmtq2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_shark"]
 
@@ -18,6 +19,7 @@ viewport_path = NodePath("HealthBar/SubViewport")
 albedo_color = Color(0.846389, 0.24647, 0.330911, 1)
 
 [node name="Warrior" instance=ExtResource("1_gq4qk")]
+unit_data = ExtResource("2_jmtq2")
 unit_name = "Warrior"
 unit_id = "unit_warrior"
 

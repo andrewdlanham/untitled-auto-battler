@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dif8ndi2wg7le"]
+[gd_scene load_steps=8 format=3 uid="uid://dif8ndi2wg7le"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_eu62y"]
+[ext_resource type="Resource" uid="uid://21p5mfvkrq2b" path="res://units/common_units/wizard/wizard.tres" id="2_lec63"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_brpuv"]
 
@@ -18,13 +19,14 @@ material = SubResource("StandardMaterial3D_nq51y")
 size = Vector3(0.8, 1, 0.5)
 
 [node name="Wizard" instance=ExtResource("1_eu62y")]
+unit_data = ExtResource("2_lec63")
 unit_name = "Wizard"
 unit_id = "unit_wizard"
 max_health = 200.0
-health = 200.0
-attack_range = 6
 attack_speed = 0.7
 attack_damage = 150.0
+health = 200.0
+attack_range = 6
 
 [node name="Area3D#Eye" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.112497, 0.27385, 0.261608)

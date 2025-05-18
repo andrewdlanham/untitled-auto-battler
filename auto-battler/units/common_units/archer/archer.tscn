@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbkdyuqojlsfs"]
+[gd_scene load_steps=7 format=3 uid="uid://cbkdyuqojlsfs"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_poik8"]
+[ext_resource type="Resource" uid="uid://4bt8njugdluh" path="res://units/common_units/archer/archer.tres" id="2_csh8p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fp8ln"]
 
@@ -14,13 +15,14 @@ viewport_path = NodePath("HealthBar/SubViewport")
 albedo_color = Color(1.13107e-06, 0.65146, 0.216506, 1)
 
 [node name="Archer" instance=ExtResource("1_poik8")]
+unit_data = ExtResource("2_csh8p")
 unit_name = "Archer"
 unit_id = "unit_archer"
 max_health = 600.0
-health = 600.0
-attack_range = 6
 attack_speed = 0.8
 attack_damage = 60.0
+health = 600.0
+attack_range = 6
 
 [node name="Area3D#Eye" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.16599, 0.248896, 0.218416)

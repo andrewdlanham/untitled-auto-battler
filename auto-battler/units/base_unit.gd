@@ -2,15 +2,16 @@ extends Node3D
 
 class_name Unit
 
+@export var unit_data: UnitData
+
 @onready var name_label: Label3D = $Labels/NameLabel
 @onready var level_label: Label3D = $Labels/LevelLabel
-
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
 
 @export var unit_name: String
 @export var unit_id: String
 
-@export var cost: int
+var cost: int = 2
 @export var level: int = 1
 @export var rarity: int = 1
 
@@ -20,35 +21,30 @@ var current_hex_id
 
 var connection_hex_id
 
-# Combat variables
-@export var combat_enabled: bool = false
 @export var max_health: float
-@export var health: float
-@export var attack_range: int
-@export var attack_speed: float = 0.1
-
+@export var attack_speed: float = 1
 @export var attack_damage: float
 
+@export var health: float
+
+@export var attack_range: int
 @export var target_enemy: Unit
+@export var combat_enabled: bool = false
 
 var attack_cooldown: float
-var move_cooldown: float = 1
+var move_cooldown: float = 1.5
 var move_timer: float
 
 var is_moving: bool = false
 
-# Signals
 signal unit_died(unit: Unit, team: String)
 
 func _ready() -> void:
-	health = max_health
-	health_progress_bar.max_value = health
-	update_health_bar()
+	apply_level_stats()
+	reset()
+	combat_enabled = false
 	update_level_label_text()
 	update_name_label_text()
-	attack_cooldown = 1 / attack_speed
-	move_timer = 0.00
-	combat_enabled = false
 
 func _process(delta: float) -> void:
 
@@ -56,7 +52,7 @@ func _process(delta: float) -> void:
 		
 		if health <= 0: die()
 	
-		attack_cooldown -= delta
+		attack_cooldown -= delta 
 		move_timer -= delta
 		if move_timer <= 0:
 			is_moving = false
@@ -73,6 +69,11 @@ func _process(delta: float) -> void:
 				attack_target_enemy()
 				attack_cooldown = 1 / attack_speed
 
+func apply_level_stats() -> void:
+	max_health = unit_data.level_stats[level]["max_health"]
+	attack_damage = unit_data.level_stats[level]["attack_damage"]
+	attack_speed = unit_data.level_stats[level]["attack_speed"]
+
 func die() -> void:
 	disable_combat()
 	current_hex.unit_on_hex = null
@@ -84,6 +85,7 @@ func reset() -> void:
 	move_timer = move_cooldown
 	attack_cooldown = 1 / attack_speed
 	target_enemy = null
+	health_progress_bar.max_value = health
 	update_health_bar()
 	self.visible = true
 
@@ -110,6 +112,8 @@ func subtract_health(amount) -> void:
 
 func level_up() -> void:
 	level += 1
+	apply_level_stats()
+	reset()
 	update_level_label_text()
 
 func get_info_dict() -> Dictionary:

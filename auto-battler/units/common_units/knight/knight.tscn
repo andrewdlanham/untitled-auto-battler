@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://q3c1mxvvqx37"]
+[gd_scene load_steps=8 format=3 uid="uid://q3c1mxvvqx37"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_jjcwl"]
+[ext_resource type="Resource" uid="uid://cx8cogdqe4eow" path="res://units/common_units/knight/knight.tres" id="2_7u73p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lwucu"]
 
@@ -17,11 +18,12 @@ radius = 0.3
 albedo_color = Color(0.383597, 0.383597, 0.383597, 1)
 
 [node name="Knight" instance=ExtResource("1_jjcwl")]
+unit_data = ExtResource("2_7u73p")
 unit_name = "Knight"
 unit_id = "unit_knight"
 max_health = 1500.0
-health = 1500.0
 attack_damage = 40.0
+health = 1500.0
 
 [node name="Area3D#Eye" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.165865, 0.275743, 0.211624)
