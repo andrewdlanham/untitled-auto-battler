@@ -43,7 +43,7 @@ func _on_unit_sell_requested(unit: Unit) -> void:
 #endregion
 
 func update_gold_label_text() -> void:
-	%GoldCountLabel.text = str(player_gold) + " G"
+	%GoldCountLabel.text = "Gold" + "\n" + str(player_gold) + " G"
 
 func set_gold(amount) -> void:
 	player_gold = amount

@@ -8,6 +8,11 @@ albedo_color = Color(0.792291, 0.561691, 0.256414, 1)
 [node name="ShopHex" instance=ExtResource("1_bys4m")]
 hex_type = "SHOP"
 
-[node name="HexMesh" parent="." index="1"]
+[node name="Label3D" type="Label3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.00972033, 0.0591069, 4.24889e-10)
+text = "𐪞"
+font_size = 40
+
+[node name="HexMesh" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000755548, 0.00270018, -3.48091e-05)
 surface_material_override/0 = SubResource("StandardMaterial3D_w16vv")
