@@ -56,9 +56,11 @@ func construct_player_team(target_hexes, parent_node) -> void:
 				unit.try_connect_to_hex(hex)
 
 func construct_enemy_team(unit_array, hexes, enemy_units_node) -> void:
-	for unit in unit_array:
+	for unit: Dictionary in unit_array:
 		var unit_scene = load(UnitRegistry.get_scene_path(unit.unit_id))
-		var new_unit = unit_scene.instantiate()
+		var new_unit: Unit = unit_scene.instantiate()
+		new_unit.level = unit["level"]
+		new_unit.apply_level_stats()
 		for hex in hexes:
 			if hex.hex_id == unit["hex_id"]:
 				enemy_units_node.add_child(new_unit)
@@ -92,16 +94,16 @@ func prepare_units_for_scene_transition(destination_scene) -> void:
 
 func get_player_unit_info() -> Array:
 	var unit_info_array = []
-	for unit in player_units_node.get_children():
+	for unit: Unit in player_units_node.get_children():
 		unit_info_array.append(unit.get_info_dict())
 	return unit_info_array
 
 func update_round_label() -> void:
-	round_label.text = "Round: " + str(current_round)
+	round_label.text = "Round" + "\n" + str(current_round) + " / 15"
 
-func get_unit_cap(round: int) -> int:
-	for entry in unit_cap_by_round:
-		if round in entry["rounds"]:
+func get_unit_cap(round_num: int) -> int:
+	for entry: Dictionary in unit_cap_by_round:
+		if round_num in entry["rounds"]:
 			return entry["cap"]
 	return 7 	# Default if no match found, but this should not occur
 
