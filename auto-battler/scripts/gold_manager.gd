@@ -1,6 +1,6 @@
 extends Node
 
-var player_gold: int = 10
+var player_gold: int = 0
 var reroll_cost: int = 1
 
 #region -- Signals --

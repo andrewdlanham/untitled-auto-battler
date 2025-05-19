@@ -7,10 +7,12 @@ func _ready() -> void:
 	GameManager.round_label = %RoundLabel
 	GameManager.update_round_label()
 	update_unit_count_label()
+	start_new_round()
 
 func start_new_round() -> void:
 	%GoldManager.set_gold(10)
 	%ShopManager.roll_shop_units()
+	update_unit_count_label()	
 
 func update_unit_count_label() -> void:
 	await get_tree().process_frame		# Allows units time to leave scene before updating the unit count label
