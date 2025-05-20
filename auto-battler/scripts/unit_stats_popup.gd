@@ -12,7 +12,7 @@ func _ready() -> void:
 	canvas_layer.visible = false
 
 func show_stats(unit):
-	name_label.text = "Name: " + unit.unit_name
+	name_label.text = unit.unit_name
 	level_label.text = "Level: " + str(unit.level)
 	health_label.text = "HP: " + str(unit.health)
 	attack_damage_label.text = "Attack: " + str(unit.attack_damage)
