@@ -7,11 +7,15 @@ extends Node2D
 @onready var health_label = %HealthLabel
 @onready var attack_damage_label = %AttackDamageLabel
 @onready var attack_speed_label = %AttackSpeedLabel
+@onready var freeze_unit_button: Button = %FreezeUnitButton
+
+var selected_unit: Unit
 
 func _ready() -> void:
 	canvas_layer.visible = false
 
 func show_stats(unit):
+	selected_unit = unit
 	name_label.text = unit.unit_name
 	level_label.text = "Level: " + str(unit.level)
 	health_label.text = "HP: " + str(unit.health)
@@ -22,3 +26,10 @@ func show_stats(unit):
 
 func hide_stats():
 	canvas_layer.visible = false
+	selected_unit = null
+
+func _on_freeze_unit_button_pressed() -> void:
+	if (selected_unit.is_frozen):
+		selected_unit.unfreeze()
+	else:
+		selected_unit.freeze()

@@ -7,6 +7,7 @@ class_name Unit
 @onready var name_label: Label3D = $Labels/NameLabel
 @onready var level_label: Label3D = $Labels/LevelLabel
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
+@onready var frozen_mesh: MeshInstance3D = $FrozenMesh
 
 @export var unit_name: String
 @export var unit_id: String
@@ -36,6 +37,7 @@ var move_cooldown: float = 1.5
 var move_timer: float
 
 var is_moving: bool = false
+var is_frozen: bool = false
 
 signal unit_died(unit: Unit, team: String)
 
@@ -73,6 +75,14 @@ func apply_level_stats() -> void:
 	max_health = unit_data.level_stats[level]["max_health"]
 	attack_damage = unit_data.level_stats[level]["attack_damage"]
 	attack_speed = unit_data.level_stats[level]["attack_speed"]
+
+func freeze() -> void:
+	is_frozen = true
+	frozen_mesh.visible = true
+
+func unfreeze() -> void:
+	is_frozen = false
+	frozen_mesh.visible = false
 
 func die() -> void:
 	disable_combat()

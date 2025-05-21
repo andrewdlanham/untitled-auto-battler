@@ -34,8 +34,6 @@ func _input(_event) -> void:
 			raycast_collision_mask = FLOOR_MASK
 			is_dragging = true
 			%UnitStatsPopup.show_stats(dragged_object)
-		else:
-			%UnitStatsPopup.hide_stats()
 	
 	elif Input.is_action_just_released("LeftClick"):
 		if is_dragging: 
@@ -79,6 +77,7 @@ func _input(_event) -> void:
 
 func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 	unit.try_connect_to_hex(hex_placed_on)
+	unit.unfreeze()
 	unit.team = "PLAYER"
 	%ShopUnits.remove_child(unit)
 	

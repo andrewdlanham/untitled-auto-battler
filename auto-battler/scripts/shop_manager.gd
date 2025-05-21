@@ -19,10 +19,13 @@ func create_random_unit() -> Unit:
 	return random_unit
 
 func roll_shop_units() -> void:
-	for shop_hex in %ShopHexes.get_children():
-		# Remove previous unit if needed
+	for shop_hex: Hex in %ShopHexes.get_children():
+		
 		if shop_hex.unit_on_hex != null:
-			shop_hex.unit_on_hex.remove_self()
+			if shop_hex.unit_on_hex.is_frozen:
+				continue
+			else:
+				shop_hex.unit_on_hex.remove_self()
 
 		var new_unit = create_random_unit()
 		new_unit.try_connect_to_hex(shop_hex)

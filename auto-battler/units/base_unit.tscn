@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b478g6o8tgv7t"]
+[gd_scene load_steps=10 format=3 uid="uid://b478g6o8tgv7t"]
 
 [ext_resource type="Script" path="res://units/base_unit.gd" id="1_p0uky"]
 
@@ -21,16 +21,22 @@ material = SubResource("StandardMaterial3D_txxls")
 radius = 0.25
 height = 1.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_a4cmv"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx4cd"]
+transparency = 1
+albedo_color = Color(0, 0.715256, 0.718173, 0.509804)
+
 [node name="Base Unit" type="Node3D"]
 script = ExtResource("1_p0uky")
 unit_name = "Base Unit"
 unit_id = "base_unit"
-cost = 2
 max_health = 1000.0
-health = 1000.0
-attack_range = 3
 attack_speed = 0.5
 attack_damage = 80.0
+health = 1000.0
+attack_range = 3
 
 [node name="Labels" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -80,3 +86,9 @@ shape = SubResource("CapsuleShape3D_ammrf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("CapsuleMesh_1bk63")
 skeleton = NodePath("../..")
+
+[node name="FrozenMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0311094, 0)
+visible = false
+mesh = SubResource("BoxMesh_a4cmv")
+surface_material_override/0 = SubResource("StandardMaterial3D_kx4cd")
