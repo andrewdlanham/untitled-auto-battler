@@ -26,8 +26,10 @@ func start_game() -> void:
 	current_round = 1
 	preparation_scene = prep_scene_resource.instantiate()
 	get_tree().root.add_child(preparation_scene)
+	SoundManager.play_music("prep_scene_music")
 
 func change_to_combat_scene() -> void:
+	SoundManager.stop_music()
 	prepare_units_for_scene_transition("COMBAT")
 	
 	get_tree().root.remove_child(preparation_scene)
@@ -36,7 +38,7 @@ func change_to_combat_scene() -> void:
 	get_tree().root.add_child(combat_scene)
 
 func change_to_prep_scene() -> void:
-	
+	SoundManager.play_music("prep_scene_music")
 	prepare_units_for_scene_transition("PREP")
 	
 	get_tree().root.remove_child(combat_scene)

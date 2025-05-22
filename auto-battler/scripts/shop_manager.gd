@@ -31,7 +31,6 @@ func roll_shop_units() -> void:
 		new_unit.try_connect_to_hex(shop_hex)
 		%ShopUnits.add_child(new_unit)
 
-#region -- Signal Handlers --
 func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
 	%RerollButton.reroll_requested.connect(_on_roll_shop_pressed)
@@ -41,4 +40,4 @@ func _on_roll_shop_pressed() -> void:
 
 func _on_roll_shop_approved() -> void:
 	roll_shop_units()
-#endregion
+	SoundManager.play_sfx("roll_shop")

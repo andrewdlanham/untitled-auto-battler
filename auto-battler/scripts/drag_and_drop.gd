@@ -74,6 +74,7 @@ func _input(_event) -> void:
 				dragged_object_collision_shape.set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
+				SoundManager.play_sfx("unit_placed")
 
 func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 	unit.try_connect_to_hex(hex_placed_on)

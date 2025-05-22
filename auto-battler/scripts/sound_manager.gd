@@ -1,0 +1,33 @@
+extends Node
+
+@onready var sfx_player = AudioStreamPlayer.new()
+@onready var music_player = AudioStreamPlayer.new()
+
+var sfx: Dictionary = {}
+var music_tracks: Dictionary = {}
+
+func _ready():
+	add_child(sfx_player)
+	add_child(music_player)
+
+	sfx["roll_shop"] = preload("res://sounds/roll_shop.ogg")
+	sfx["unit_placed"] = preload("res://sounds/unit_placed.ogg")
+	
+	music_tracks["prep_scene_music"] = preload("res://sounds/prep_scene_music.mp3")
+
+func play_sfx(name: String):
+	if name in sfx:
+		sfx_player.stream = sfx[name]
+		sfx_player.volume_db = -5	# Static volumne until sound options are added
+		sfx_player.play()
+	else:
+		print("SFX not found:", name)
+
+func play_music(name: String):
+	if name in music_tracks:
+		music_player.stream = music_tracks[name]
+		music_player.volume_db = -20	# Static volume until sound options are added
+		music_player.play()
+
+func stop_music():
+	music_player.stop()
