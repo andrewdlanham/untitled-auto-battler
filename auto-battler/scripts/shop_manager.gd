@@ -4,7 +4,9 @@ var possible_units: Array[Resource] = [
 	load(UnitRegistry.get_scene_path("unit_archer")),
 	load(UnitRegistry.get_scene_path("unit_warrior")),
 	load(UnitRegistry.get_scene_path("unit_knight")),
-	load(UnitRegistry.get_scene_path("unit_wizard"))
+	load(UnitRegistry.get_scene_path("unit_wizard")),
+	load(UnitRegistry.get_scene_path("unit_paladin")),
+	load(UnitRegistry.get_scene_path("unit_witch"))
 ]
 
 signal shop_roll_requested

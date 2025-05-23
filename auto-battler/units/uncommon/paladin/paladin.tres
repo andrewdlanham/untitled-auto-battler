@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://oq8tsq08cg63"]
+
+[ext_resource type="Script" path="res://units/unit_data.gd" id="1_tfgoi"]
+
+[resource]
+script = ExtResource("1_tfgoi")
+level_stats = {
+1: {
+"attack_damage": 5,
+"attack_speed": 1.0,
+"max_health": 300
+},
+2: {
+"attack_damage": 10,
+"attack_speed": 1.0,
+"max_health": 400
+},
+3: {
+"attack_damage": 15,
+"attack_speed": 1.0,
+"max_health": 500
+}
+}
