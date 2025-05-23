@@ -10,5 +10,5 @@ const UNIT_SCENE_PATHS = {
 	"unit_witch" : "res://units/uncommon/witch/witch.tscn"
 }
 
-static func get_scene_path(unit_id: String) -> String:
+func get_scene_path(unit_id: String) -> String:
 	return UNIT_SCENE_PATHS.get(unit_id, "")
