@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://q3c1mxvvqx37"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_jjcwl"]
-[ext_resource type="Resource" uid="uid://cx8cogdqe4eow" path="res://units/common_units/knight/knight.tres" id="2_7u73p"]
+[ext_resource type="Resource" uid="uid://cx8cogdqe4eow" path="res://units/common/knight/knight.tres" id="2_7u73p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lwucu"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://4y0is4f1weo2"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_gq4qk"]
-[ext_resource type="Resource" uid="uid://btbse87j1mbmk" path="res://units/common_units/warrior/warrior.tres" id="2_jmtq2"]
+[ext_resource type="Resource" uid="uid://btbse87j1mbmk" path="res://units/common/warrior/warrior.tres" id="2_jmtq2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_shark"]
 

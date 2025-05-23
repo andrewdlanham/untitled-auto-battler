@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dif8ndi2wg7le"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_eu62y"]
-[ext_resource type="Resource" uid="uid://21p5mfvkrq2b" path="res://units/common_units/wizard/wizard.tres" id="2_lec63"]
+[ext_resource type="Resource" uid="uid://21p5mfvkrq2b" path="res://units/common/wizard/wizard.tres" id="2_lec63"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_brpuv"]
 
