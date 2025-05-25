@@ -13,8 +13,9 @@ var selected_unit: Unit
 
 func _ready() -> void:
 	canvas_layer.visible = false
+	%GoldManager.unit_sold.connect(_on_unit_sold)
 
-func show_stats(unit):
+func show_stats(unit) -> void:
 	selected_unit = unit
 	name_label.text = unit.unit_name
 	level_label.text = "Level: " + str(unit.level)
@@ -24,7 +25,7 @@ func show_stats(unit):
 	
 	canvas_layer.visible = true
 
-func hide_stats():
+func hide_stats() -> void:
 	canvas_layer.visible = false
 	selected_unit = null
 
@@ -33,3 +34,6 @@ func _on_freeze_unit_button_pressed() -> void:
 		selected_unit.unfreeze()
 	else:
 		selected_unit.freeze()
+
+func _on_unit_sold() -> void:
+	hide_stats()

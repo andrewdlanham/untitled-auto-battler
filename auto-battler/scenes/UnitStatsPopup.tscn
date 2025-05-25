@@ -79,7 +79,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = 207.0
-offset_right = 100.0
+offset_right = 200.0
 offset_bottom = 237.0
+text = "FREEZE UNIT"
 
 [connection signal="pressed" from="CanvasLayer/Control/FreezeUnitButton" to="." method="_on_freeze_unit_button_pressed"]
