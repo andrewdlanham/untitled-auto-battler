@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckofwty62inni"]
+[gd_scene load_steps=6 format=3 uid="uid://ckofwty62inni"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_hmh7a"]
 [ext_resource type="Resource" uid="uid://oq8tsq08cg63" path="res://units/uncommon/paladin/paladin.tres" id="2_7b5du"]
@@ -12,11 +12,6 @@ size = Vector3(0.5, 0.9, 0.4)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f78ut"]
 albedo_color = Color(1, 1, 0.470588, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_k4tf0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0qjv"]
-albedo_color = Color(0, 0, 0, 1)
-
 [node name="Paladin" instance=ExtResource("1_hmh7a")]
 unit_data = ExtResource("2_7b5du")
 unit_name = "Paladin"
@@ -29,15 +24,3 @@ texture = SubResource("ViewportTexture_73gvc")
 [node name="MeshInstance3D" parent="Body" index="1"]
 mesh = SubResource("BoxMesh_0hcdg")
 surface_material_override/0 = SubResource("StandardMaterial3D_f78ut")
-
-[node name="Area3D#Eye" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.16599, 0.248896, 0.229189)
-mesh = SubResource("CapsuleMesh_k4tf0")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_n0qjv")
-
-[node name="Area3D#Eye2" type="MeshInstance3D" parent="." index="5"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.155836, 0.248896, 0.229189)
-mesh = SubResource("CapsuleMesh_k4tf0")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_n0qjv")

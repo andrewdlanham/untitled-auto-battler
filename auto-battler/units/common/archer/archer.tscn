@@ -1,12 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbkdyuqojlsfs"]
+[gd_scene load_steps=5 format=3 uid="uid://cbkdyuqojlsfs"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_poik8"]
 [ext_resource type="Resource" uid="uid://4bt8njugdluh" path="res://units/common/archer/archer.tres" id="2_csh8p"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fp8ln"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2avdu"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_234a8"]
 viewport_path = NodePath("HealthBar/SubViewport")
@@ -23,18 +18,6 @@ attack_speed = 0.8
 attack_damage = 60.0
 health = 600.0
 attack_range = 6
-
-[node name="Area3D#Eye" type="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.16599, 0.248896, 0.218416)
-mesh = SubResource("CapsuleMesh_fp8ln")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_2avdu")
-
-[node name="Area3D#Eye2" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.155836, 0.248896, 0.218416)
-mesh = SubResource("CapsuleMesh_fp8ln")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_2avdu")
 
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
 texture = SubResource("ViewportTexture_234a8")

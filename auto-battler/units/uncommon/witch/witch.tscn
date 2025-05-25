@@ -1,17 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dslqlah4wedn2"]
+[gd_scene load_steps=9 format=3 uid="uid://dslqlah4wedn2"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_wi8f1"]
 [ext_resource type="Resource" uid="uid://cyqtogflqtxve" path="res://units/uncommon/witch/witch.tres" id="2_og6mh"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_brpuv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cja3c"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_iihef"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cepe"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xvcnd"]
 viewport_path = NodePath("HealthBar/SubViewport")
@@ -26,33 +16,21 @@ size = Vector3(0.8, 1, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lacey"]
 albedo_color = Color(0.0508008, 0.319301, 0.185593, 1)
 
+[sub_resource type="PrismMesh" id="PrismMesh_iihef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cepe"]
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="Witch" instance=ExtResource("1_wi8f1")]
 unit_data = ExtResource("2_og6mh")
 unit_name = "Witch"
 unit_id = "unit_witch"
+rarity = 2
 max_health = 200.0
 attack_speed = 0.7
 attack_damage = 150.0
 health = 200.0
 attack_range = 6
-
-[node name="Area3D#Eye" type="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.112497, 0.27385, 0.261608)
-mesh = SubResource("CapsuleMesh_brpuv")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_cja3c")
-
-[node name="Area3D#Eye2" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.127851, 0.27385, 0.261608)
-mesh = SubResource("CapsuleMesh_brpuv")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_cja3c")
-
-[node name="Hat2" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.00367665, 0.683105, 0.00236374)
-mesh = SubResource("PrismMesh_iihef")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_0cepe")
 
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
 texture = SubResource("ViewportTexture_xvcnd")
@@ -60,3 +38,15 @@ texture = SubResource("ViewportTexture_xvcnd")
 [node name="MeshInstance3D" parent="Body" index="1"]
 mesh = SubResource("PrismMesh_o1wlg")
 surface_material_override/0 = SubResource("StandardMaterial3D_lacey")
+
+[node name="Area3D#Eye" parent="Body/MeshInstance3D" index="0"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.106143, 0.168795, 0.247086)
+
+[node name="Area3D#Eye2" parent="Body/MeshInstance3D" index="1"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.113854, 0.168795, 0.247086)
+
+[node name="Hat2" type="MeshInstance3D" parent="Body/MeshInstance3D" index="2"]
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -4.65661e-10, 0.683105, 0.00275952)
+mesh = SubResource("PrismMesh_iihef")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_0cepe")
