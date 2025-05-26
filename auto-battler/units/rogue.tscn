@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://voot2t8qkn4m"]
+
+[ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_2bbox"]
+[ext_resource type="Resource" uid="uid://b42dqm7atqb0i" path="res://units/rogue.tres" id="2_qav16"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wvo2k"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfic7"]
+albedo_color = Color(1, 0.509018, 0.373878, 1)
+
+[node name="Rogue" instance=ExtResource("1_2bbox")]
+unit_data = ExtResource("2_qav16")
+unit_name = "Rogue"
+unit_id = "unit_rogue"
+rarity = 2
+
+[node name="HealthBarSprite" parent="HealthBar" index="0"]
+texture = SubResource("ViewportTexture_wvo2k")
+
+[node name="MeshInstance3D" parent="Body" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dfic7")
+
+[node name="Label3D" type="Label3D" parent="Body/MeshInstance3D" index="0"]
+transform = Transform3D(-0.0102274, -0.999948, -4.46638e-06, 0.999948, -0.0102274, 0, -4.56796e-08, -4.46615e-06, 1, -1.30711e-06, 0.093255, 0.292637)
+modulate = Color(0, 0, 0, 1)
+text = "C"
+
+[node name="Area3D#Eye" parent="Body/MeshInstance3D" index="1"]
+transform = Transform3D(-0.00397132, 0.0999211, -4.64375e-07, -0.0999211, -0.00397132, -4.46286e-07, -4.64375e-07, 4.46286e-07, 0.1, -0.16599, 0.262224, 0.200777)
+
+[node name="Area3D#Eye2" parent="Body/MeshInstance3D" index="2"]
+transform = Transform3D(0.00420152, 0.0999117, -4.27872e-07, -0.0999117, 0.00420152, -4.46244e-07, -4.27872e-07, 4.46244e-07, 0.1, 0.155836, 0.262224, 0.200777)

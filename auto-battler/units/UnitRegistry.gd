@@ -5,9 +5,10 @@ const UNIT_SCENE_PATHS = {
 	"unit_archer" : "res://units/common/archer/archer.tscn",
 	"unit_warrior" : "res://units/common/warrior/warrior.tscn",
 	"unit_knight" : "res://units/common/knight/knight.tscn",
-	"unit_wizard" : "res://units/common/wizard/wizard.tscn",
 	"unit_paladin" : "res://units/uncommon/paladin/paladin.tscn",
-	"unit_witch" : "res://units/uncommon/witch/witch.tscn"
+	"unit_witch" : "res://units/uncommon/witch/witch.tscn",
+	"unit_rogue" : "res://units/uncommon/rogue.tscn",
+	"unit_wizard" : "res://units/rare/wizard/wizard.tscn",
 }
 
 func get_scene_path(unit_id: String) -> String:
