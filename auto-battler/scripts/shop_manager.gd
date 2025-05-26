@@ -1,12 +1,37 @@
 extends Node
 
-var possible_units: Array[Resource] = [
+var common_units: Array[Resource] = [
 	load(UnitRegistry.get_scene_path("unit_archer")),
 	load(UnitRegistry.get_scene_path("unit_warrior")),
-	load(UnitRegistry.get_scene_path("unit_knight")),
-	load(UnitRegistry.get_scene_path("unit_wizard")),
+	load(UnitRegistry.get_scene_path("unit_knight"))
+]
+
+var uncommon_units: Array[Resource] = [
 	load(UnitRegistry.get_scene_path("unit_paladin")),
 	load(UnitRegistry.get_scene_path("unit_witch"))
+]
+
+var rare_units: Array[Resource] = [
+	load(UnitRegistry.get_scene_path("unit_wizard"))
+]
+
+# [common, uncommon, rare]
+var shop_odds = [
+	[90, 10, 0],	# Round 1
+	[90, 10, 0],	# Round 2
+	[90, 10, 0],	# Round 3
+	[70, 30, 0],	# Round 4
+	[65, 30, 5],	# Round 5
+	[65, 30, 5],	# Round 6
+	[50, 40, 10],	# Round 7
+	[50, 40, 10],	# Round 8
+	[40, 40, 20],	# Round 9
+	[40, 40, 20],	# Round 10
+	[30, 45, 25],	# Round 11
+	[30, 45, 25],	# Round 12
+	[20, 45, 35],	# Round 13
+	[20, 45, 35],	# Round 14
+	[20, 45, 35],	# Round 15
 ]
 
 signal shop_roll_requested
@@ -16,8 +41,19 @@ func _ready() -> void:
 
 func create_random_unit() -> Unit:
 	var rng = RandomNumberGenerator.new()
-	var random_unit_index = rng.randi_range(0, possible_units.size() - 1)
-	var random_unit = possible_units[random_unit_index].instantiate()
+	var current_odds = get_current_shop_odds()
+
+	var possible_units = []
+	for i in range(current_odds[0]):
+		possible_units.append(common_units[rng.randi_range(0, common_units.size() - 1)])
+	
+	for i in range(current_odds[1]):
+		possible_units.append(uncommon_units[rng.randi_range(0, uncommon_units.size() - 1)])
+	
+	for i in range(current_odds[2]):
+		possible_units.append(rare_units[rng.randi_range(0, rare_units.size() - 1)])
+	
+	var random_unit = possible_units[rng.randi_range(0, 99)].instantiate()
 	return random_unit
 
 func roll_shop_units() -> void:
@@ -32,6 +68,9 @@ func roll_shop_units() -> void:
 		var new_unit = create_random_unit()
 		new_unit.try_connect_to_hex(shop_hex)
 		%ShopUnits.add_child(new_unit)
+
+func get_current_shop_odds() -> Array:
+	return shop_odds[GameManager.current_round - 1]
 
 func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
