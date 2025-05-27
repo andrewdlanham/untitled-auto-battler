@@ -89,6 +89,7 @@ func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 		%BenchUnits.add_child(unit)
 	
 	unit_placed.emit()
+	unit.animation_player.stop()
 
 func _on_unit_purchase_denied(unit: Unit) -> void:
 	printerr("Unit purchase denied")

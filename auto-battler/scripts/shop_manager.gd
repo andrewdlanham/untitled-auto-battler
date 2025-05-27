@@ -69,6 +69,7 @@ func roll_shop_units() -> void:
 		var new_unit = create_random_unit()
 		new_unit.try_connect_to_hex(shop_hex)
 		%ShopUnits.add_child(new_unit)
+		new_unit.play_new_unit_animations()
 
 func get_current_shop_odds() -> Array:
 	return shop_odds[GameManager.current_round - 1]

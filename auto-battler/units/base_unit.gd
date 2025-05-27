@@ -8,6 +8,7 @@ class_name Unit
 @onready var level_label: Label3D = $Labels/LevelLabel
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
 @onready var frozen_mesh: MeshInstance3D = $FrozenMesh
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var unit_name: String
 @export var unit_id: String
@@ -237,3 +238,8 @@ func get_open_hex_towards_unit(unit: Unit) -> Hex:
 	else:
 		return null
 #endregion
+
+func play_new_unit_animations() -> void:
+	animation_player.play("spin")
+	await animation_player.animation_finished
+	animation_player.play("bob")
