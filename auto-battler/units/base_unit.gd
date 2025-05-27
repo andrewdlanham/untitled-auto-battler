@@ -76,9 +76,14 @@ func apply_level_stats() -> void:
 	attack_damage = unit_data.level_stats[level]["attack_damage"]
 	attack_speed = unit_data.level_stats[level]["attack_speed"]
 
-func freeze() -> void:
-	is_frozen = true
-	frozen_mesh.visible = true
+func freeze() -> bool:
+
+	if (is_frozen or self.team == "PLAYER"): 
+		return false	# Freeze unsuccessful
+	else:
+		is_frozen = true
+		frozen_mesh.visible = true
+		return true		# Freeze successful
 
 func unfreeze() -> void:
 	is_frozen = false

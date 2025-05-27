@@ -81,6 +81,7 @@ func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 	unit.unfreeze()
 	unit.team = "PLAYER"
 	%ShopUnits.remove_child(unit)
+	%UnitStatsPopup.show_stats(unit)
 	
 	if hex_placed_on.is_player_hex():
 		%PlayerUnits.add_child(unit)

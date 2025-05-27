@@ -15,7 +15,7 @@ func _ready() -> void:
 	canvas_layer.visible = false
 	%GoldManager.unit_sold.connect(_on_unit_sold)
 
-func show_stats(unit) -> void:
+func show_stats(unit: Unit) -> void:
 	selected_unit = unit
 	name_label.text = unit.unit_name
 	level_label.text = "Level: " + str(unit.level)
@@ -24,10 +24,18 @@ func show_stats(unit) -> void:
 	attack_speed_label.text = "Attack Speed: " + str(unit.attack_speed)
 	
 	canvas_layer.visible = true
+	
+	_set_freeze_button_visibility(unit)
 
 func hide_stats() -> void:
 	canvas_layer.visible = false
 	selected_unit = null
+
+func _set_freeze_button_visibility(unit: Unit) -> void:
+	if (unit.team == "PLAYER"):
+		freeze_unit_button.visible = false
+	else:
+		freeze_unit_button.visible = true
 
 func _on_freeze_unit_button_pressed() -> void:
 	if (selected_unit.is_frozen):
