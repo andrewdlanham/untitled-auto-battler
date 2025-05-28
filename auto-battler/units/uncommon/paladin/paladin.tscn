@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckofwty62inni"]
+[gd_scene load_steps=5 format=3 uid="uid://ckofwty62inni"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_hmh7a"]
 [ext_resource type="Resource" uid="uid://oq8tsq08cg63" path="res://units/uncommon/paladin/paladin.tres" id="2_7b5du"]
+[ext_resource type="PackedScene" uid="uid://jahny8otkipw" path="res://models/paladin.glb" id="3_1r36p"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_73gvc"]
 viewport_path = NodePath("HealthBar/SubViewport")
-
-[sub_resource type="BoxMesh" id="BoxMesh_0hcdg"]
-size = Vector3(0.5, 0.9, 0.4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f78ut"]
-albedo_color = Color(1, 1, 0.470588, 1)
 
 [node name="Paladin" instance=ExtResource("1_hmh7a")]
 unit_data = ExtResource("2_7b5du")
@@ -21,6 +16,5 @@ rarity = 2
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
 texture = SubResource("ViewportTexture_73gvc")
 
-[node name="MeshInstance3D" parent="Body" index="1"]
-mesh = SubResource("BoxMesh_0hcdg")
-surface_material_override/0 = SubResource("StandardMaterial3D_f78ut")
+[node name="UnitBody" parent="Body" index="1" instance=ExtResource("3_1r36p")]
+unique_name_in_owner = true

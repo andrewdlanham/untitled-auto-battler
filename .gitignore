@@ -33,3 +33,4 @@ auto-battler/scenes/prep_scene.tscn
 auto-battler/scenes/combat_scene.tscn
 auto-battler/icon.svg.import
 auto-battler/scenes/auth.tscn
+auto-battler/models/*

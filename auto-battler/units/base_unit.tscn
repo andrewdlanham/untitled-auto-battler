@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b478g6o8tgv7t"]
+[gd_scene load_steps=12 format=3 uid="uid://b478g6o8tgv7t"]
 
 [ext_resource type="Script" path="res://units/base_unit.gd" id="1_p0uky"]
 
@@ -13,39 +13,12 @@ bg_color = Color(0.0319146, 0.72616, 0.145515, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ammrf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txxls"]
-albedo_color = Color(0.369654, 0.380128, 0.384604, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bk63"]
-material = SubResource("StandardMaterial3D_txxls")
-radius = 0.25
-height = 1.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vaf40"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83co0"]
-albedo_color = Color(0, 0, 0, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_a4cmv"]
 size = Vector3(0.7, 0.7, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx4cd"]
 transparency = 1
 albedo_color = Color(0, 0.715256, 0.718173, 0.509804)
-
-[sub_resource type="Animation" id="Animation_1v54j"]
-resource_name = "spin"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/MeshInstance3D:rotation:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="Animation" id="Animation_my3oe"]
 length = 0.001
@@ -56,6 +29,39 @@ tracks/0/path = NodePath("Body:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:rotation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:rotation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
@@ -75,6 +81,42 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_1v54j"]
+resource_name = "spin"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wv110"]
@@ -132,27 +174,12 @@ value = 100.0
 show_percentage = false
 
 [node name="Body" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ammrf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
-mesh = SubResource("CapsuleMesh_1bk63")
-skeleton = NodePath("../..")
-
-[node name="Area3D#Eye" type="MeshInstance3D" parent="Body/MeshInstance3D"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.16599, 0.262224, 0.200777)
-mesh = SubResource("CapsuleMesh_vaf40")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_83co0")
-
-[node name="Area3D#Eye2" type="MeshInstance3D" parent="Body/MeshInstance3D"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.155836, 0.262224, 0.200777)
-mesh = SubResource("CapsuleMesh_vaf40")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_83co0")
 
 [node name="FrozenMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0311094, 0)

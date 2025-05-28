@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://voot2t8qkn4m"]
+
+[ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_2bbox"]
+[ext_resource type="Resource" uid="uid://b42dqm7atqb0i" path="res://units/uncommon/rogue/rogue.tres" id="2_qav16"]
+[ext_resource type="PackedScene" uid="uid://lrpgraxubmal" path="res://models/rogue.glb" id="3_mvsif"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wvo2k"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
+[node name="Rogue" instance=ExtResource("1_2bbox")]
+unit_data = ExtResource("2_qav16")
+unit_name = "Rogue"
+unit_id = "unit_rogue"
+rarity = 2
+
+[node name="HealthBarSprite" parent="HealthBar" index="0"]
+texture = SubResource("ViewportTexture_wvo2k")
+
+[node name="UnitBody" parent="Body" index="1" instance=ExtResource("3_mvsif")]
+unique_name_in_owner = true

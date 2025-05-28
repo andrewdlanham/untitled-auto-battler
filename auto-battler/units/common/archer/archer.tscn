@@ -2,12 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_poik8"]
 [ext_resource type="Resource" uid="uid://4bt8njugdluh" path="res://units/common/archer/archer.tres" id="2_csh8p"]
+[ext_resource type="PackedScene" uid="uid://b20hoqwumcccm" path="res://models/archer.glb" id="3_1qnds"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_234a8"]
 viewport_path = NodePath("HealthBar/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbnpp"]
-albedo_color = Color(1.13107e-06, 0.65146, 0.216506, 1)
 
 [node name="Archer" instance=ExtResource("1_poik8")]
 unit_data = ExtResource("2_csh8p")
@@ -22,5 +20,6 @@ attack_range = 6
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
 texture = SubResource("ViewportTexture_234a8")
 
-[node name="MeshInstance3D" parent="Body" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_bbnpp")
+[node name="UnitBody" parent="Body" index="0" instance=ExtResource("3_1qnds")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0.214222, 0)
