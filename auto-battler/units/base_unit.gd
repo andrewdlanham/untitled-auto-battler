@@ -52,7 +52,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	if(combat_enabled):
-		
+		face_target()
 		if health <= 0: die()
 	
 		attack_cooldown -= delta 
@@ -104,6 +104,7 @@ func reset() -> void:
 	health_progress_bar.max_value = health
 	update_health_bar()
 	self.visible = true
+	self.rotation_degrees.y = 0
 
 func remove_self() -> void:
 	current_hex.unit_on_hex = null
@@ -162,6 +163,7 @@ func get_closest_enemy() -> Node3D:
 
 func target_closest_enemy() -> void:
 	target_enemy = get_closest_enemy()
+	face_target()
 
 func enable_combat() -> void:
 	combat_enabled = true
@@ -243,3 +245,8 @@ func play_new_unit_animations() -> void:
 	animation_player.play("spin")
 	await animation_player.animation_finished
 	animation_player.play("bob")
+
+func face_target():
+	if target_enemy and target_enemy.is_inside_tree():
+		look_at(target_enemy.global_transform.origin, Vector3.UP)
+		rotate_y(deg_to_rad(180))	# Flip because look_at assumes -Z is forwards
