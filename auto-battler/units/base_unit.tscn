@@ -148,6 +148,7 @@ outline_size = 40
 
 [node name="LevelLabel" type="Label3D" parent="Labels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0383576, -0.540825, 0.024584)
+visible = false
 text = "-"
 font_size = 30
 outline_size = 30

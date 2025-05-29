@@ -8,6 +8,8 @@ class_name Unit
 @onready var level_label: Label3D = $Labels/LevelLabel
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
 @onready var frozen_mesh: MeshInstance3D = $FrozenMesh
+
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var unit_name: String
@@ -84,11 +86,14 @@ func freeze() -> bool:
 	else:
 		is_frozen = true
 		frozen_mesh.visible = true
+		animation_player.stop()
 		return true		# Freeze successful
 
 func unfreeze() -> void:
 	is_frozen = false
 	frozen_mesh.visible = false
+	if self.team != "PLAYER":
+		animation_player.play("bob")
 
 func die() -> void:
 	disable_combat()
@@ -132,6 +137,7 @@ func level_up() -> void:
 	apply_level_stats()
 	reset()
 	update_level_label_text()
+	%UnitBody.scale *= 1.25
 
 func get_info_dict() -> Dictionary:
 	return {
