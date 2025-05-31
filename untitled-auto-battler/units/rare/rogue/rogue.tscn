@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://voot2t8qkn4m"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_2bbox"]
-[ext_resource type="Resource" uid="uid://b42dqm7atqb0i" path="res://units/uncommon/rogue/rogue.tres" id="2_qav16"]
+[ext_resource type="Resource" uid="uid://b42dqm7atqb0i" path="res://units/rare/rogue/rogue.tres" id="2_qav16"]
 [ext_resource type="PackedScene" uid="uid://lrpgraxubmal" path="res://models/rogue.glb" id="3_mvsif"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wvo2k"]
