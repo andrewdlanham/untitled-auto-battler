@@ -1,7 +1,9 @@
-# autobattler
+# untitled-auto-battler
 
-An auto battler game that is actively being built in Godot.
+An asynchronous auto battler that is actively being built in Godot.
 
-The current plan is to create a simple version of the game and publish it on itch.io for testing and feedback.
+The game's mechanics are inspired primarily by Teamfight Tactics and Super Auto Pets.
 
-Most of the code is public, though I am excluding some files from this public version of the repo.
+The current plan is to create a simple version of the game and publish it on itch.io for testing, feedback, and gauging interest.
+
+Most of the code is public, though some files such as scripts realting to the PostgreSQL backend are excluded from the public repo.
