@@ -16,9 +16,9 @@ hex_type = "BENCH"
 [node name="Label3D" type="Label3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.00309354, 0.0714829, -0.000589371)
 modulate = Color(0, 0, 0, 1)
-text = "▽"
+text = "o"
 font_size = 30
-outline_size = 5
+outline_size = 0
 
 [node name="HexMesh" parent="." index="2"]
 mesh = SubResource("CylinderMesh_gmqgs")

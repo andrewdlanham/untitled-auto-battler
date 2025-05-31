@@ -18,19 +18,19 @@ mono_crash.*.json
 .DS_Store
 
 # DB
-auto-battler/db/*
+untitled-auto-battler/db/*
 
 # Sound assets
-auto-battler/sounds/*
+untitled-auto-battler/sounds/*
 
 # Misc.
-auto-battler/_docs/*
-/auto-battler/images
+untitled-auto-battler/_docs/*
+/untitled-auto-battler/images
 
 # No need to track changes to these on public GitHub repo
-auto-battler/project.godot
-auto-battler/scenes/prep_scene.tscn
-auto-battler/scenes/combat_scene.tscn
-auto-battler/icon.svg.import
-auto-battler/scenes/auth.tscn
-auto-battler/models/*
+untitled-auto-battler/project.godot
+untitled-auto-battler/scenes/prep_scene.tscn
+untitled-auto-battler/scenes/combat_scene.tscn
+untitled-auto-battler/icon.svg.import
+untitled-auto-battler/scenes/auth.tscn
+untitled-auto-battler/models/*

@@ -1,14 +1,15 @@
 extends Node
 
 var common_units: Array[Resource] = [
-	load(UnitRegistry.get_scene_path("unit_archer")),
+	
 	load(UnitRegistry.get_scene_path("unit_warrior")),
+	load(UnitRegistry.get_scene_path("unit_archer")),
 	load(UnitRegistry.get_scene_path("unit_knight"))
 ]
 
 var uncommon_units: Array[Resource] = [
-	load(UnitRegistry.get_scene_path("unit_paladin")),
 	load(UnitRegistry.get_scene_path("unit_witch")),
+	load(UnitRegistry.get_scene_path("unit_paladin")),
 	load(UnitRegistry.get_scene_path("unit_rogue"))
 ]
 
@@ -18,12 +19,12 @@ var rare_units: Array[Resource] = [
 
 # [common, uncommon, rare]
 var shop_odds = [
-	[90, 10, 0],	# Round 1
-	[90, 10, 0],	# Round 2
-	[90, 10, 0],	# Round 3
-	[70, 30, 0],	# Round 4
-	[65, 30, 5],	# Round 5
-	[65, 30, 5],	# Round 6
+	[75, 20, 5],	# Round 1
+	[75, 20, 5],	# Round 2
+	[75, 20, 5],	# Round 3
+	[50, 35, 15],	# Round 4
+	[50, 35, 15],	# Round 5
+	[50, 35, 15],	# Round 6
 	[50, 40, 10],	# Round 7
 	[50, 40, 10],	# Round 8
 	[40, 40, 20],	# Round 9
