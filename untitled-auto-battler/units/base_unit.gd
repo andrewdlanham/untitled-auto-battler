@@ -54,7 +54,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	if(combat_enabled):
+
 		face_target()
+
 		if health <= 0: die()
 
 		move_timer -= delta
@@ -64,7 +66,7 @@ func _process(delta: float) -> void:
 
 		if is_moving: return
 
-		if target_enemy == null or target_enemy.visible == false:
+		if target_enemy == null or target_enemy.visible == false or get_closest_enemy() != target_enemy:
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
