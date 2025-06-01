@@ -8,9 +8,9 @@ const UNIT_SCENE_PATHS = {
 	"unit_knight" : "res://units/common/knight/knight.tscn",
 	# Uncommon Units
 	"unit_paladin" : "res://units/uncommon/paladin/paladin.tscn",
-	"unit_witch" : "res://units/uncommon/witch/witch.tscn",
+	"unit_wizard" : "res://units/uncommon/wizard/wizard.tscn",
 	# Rare Units
-	"unit_wizard" : "res://units/rare/wizard/wizard.tscn",
+	"unit_witch" : "res://units/rare/witch/witch.tscn",
 	"unit_rogue" : "res://units/rare/rogue/rogue.tscn",
 }
 

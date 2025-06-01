@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b478g6o8tgv7t"]
+[gd_scene load_steps=13 format=3 uid="uid://b478g6o8tgv7t"]
 
 [ext_resource type="Script" path="res://units/base_unit.gd" id="1_p0uky"]
 
@@ -119,9 +119,46 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
+[sub_resource type="Animation" id="Animation_bj726"]
+resource_name = "attack"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.436332, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(6.28319, -0.25, 0, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wv110"]
 _data = {
 "RESET": SubResource("Animation_my3oe"),
+"attack": SubResource("Animation_bj726"),
 "bob": SubResource("Animation_2pihk"),
 "spin": SubResource("Animation_1v54j")
 }

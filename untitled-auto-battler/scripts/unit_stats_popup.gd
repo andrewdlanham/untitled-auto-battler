@@ -21,7 +21,7 @@ func show_stats(unit: Unit) -> void:
 	level_label.text = "Level: " + str(unit.level)
 	health_label.text = "HP: " + str(unit.health)
 	attack_damage_label.text = "Attack: " + str(unit.attack_damage)
-	attack_speed_label.text = "Attack Speed: " + str(snapped(1 / unit.attack_speed, 0.1)) + " APS"
+	attack_speed_label.text = "Attack Speed: " + str(snapped(unit.attack_speed, 0.1)) + " APS"
 	
 	canvas_layer.visible = true
 	

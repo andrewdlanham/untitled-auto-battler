@@ -8,12 +8,12 @@ var common_units: Array[Resource] = [
 ]
 
 var uncommon_units: Array[Resource] = [
-	load(UnitRegistry.get_scene_path("unit_witch")),
+	load(UnitRegistry.get_scene_path("unit_wizard")),
 	load(UnitRegistry.get_scene_path("unit_paladin"))
 ]
 
 var rare_units: Array[Resource] = [
-	load(UnitRegistry.get_scene_path("unit_wizard")),
+	load(UnitRegistry.get_scene_path("unit_witch")),
 	load(UnitRegistry.get_scene_path("unit_rogue"))
 ]
 

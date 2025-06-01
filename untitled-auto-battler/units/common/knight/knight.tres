@@ -6,18 +6,18 @@
 script = ExtResource("1_ysgah")
 level_stats = {
 1: {
-"attack_damage": 10,
-"attack_speed": 1.2,
-"max_health": 250
+"attack_damage": 5,
+"attack_speed": 0.9,
+"max_health": 60
 },
 2: {
-"attack_damage": 15,
+"attack_damage": 6,
 "attack_speed": 1.2,
-"max_health": 400
+"max_health": 100
 },
 3: {
-"attack_damage": 20,
-"attack_speed": 1.1,
-"max_health": 600
+"attack_damage": 8,
+"attack_speed": 1.4,
+"max_health": 170
 }
 }

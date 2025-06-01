@@ -6,18 +6,18 @@
 script = ExtResource("1_tfgoi")
 level_stats = {
 1: {
-"attack_damage": 5,
-"attack_speed": 1.0,
-"max_health": 300
+"attack_damage": 4,
+"attack_speed": 0.7,
+"max_health": 100
 },
 2: {
-"attack_damage": 10,
-"attack_speed": 1.0,
-"max_health": 400
+"attack_damage": 8,
+"attack_speed": 0.9,
+"max_health": 150
 },
 3: {
-"attack_damage": 15,
+"attack_damage": 13,
 "attack_speed": 1.0,
-"max_health": 500
+"max_health": 250
 }
 }

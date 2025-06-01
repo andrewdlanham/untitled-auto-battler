@@ -8,7 +8,7 @@ class_name Unit
 @onready var level_label: Label3D = $Labels/LevelLabel
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
 @onready var frozen_mesh: MeshInstance3D = $FrozenMesh
-
+@onready var body: Area3D = $Body
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -26,7 +26,7 @@ var current_hex_id
 var connection_hex_id
 
 @export var max_health: float
-@export var attack_speed: float = 1
+@export var attack_speed: float
 @export var attack_damage: float
 
 @export var health: float
@@ -35,11 +35,11 @@ var connection_hex_id
 @export var target_enemy: Unit
 @export var combat_enabled: bool = false
 
-var attack_cooldown: float
-var move_cooldown: float = 1.5
+var move_cooldown: float = 1.50
 var move_timer: float
 
 var is_moving: bool = false
+var is_attacking: bool = false
 var is_frozen: bool = false
 
 signal unit_died(unit: Unit, team: String)
@@ -56,12 +56,14 @@ func _process(delta: float) -> void:
 	if(combat_enabled):
 		face_target()
 		if health <= 0: die()
-	
-		attack_cooldown -= delta 
+
 		move_timer -= delta
+
 		if move_timer <= 0:
 			is_moving = false
-		
+
+		if is_moving: return
+
 		if target_enemy == null or target_enemy.visible == false:
 			target_closest_enemy()
 		elif not target_is_in_attack_range():
@@ -70,9 +72,8 @@ func _process(delta: float) -> void:
 				try_move_to_hex(open_hex)
 			else:
 				target_closest_enemy()
-		elif attack_cooldown <= 0.00:
+		elif !is_attacking:
 				attack_target_enemy()
-				attack_cooldown = 1 / attack_speed
 
 func apply_level_stats() -> void:
 	max_health = unit_data.level_stats[level]["max_health"]
@@ -104,7 +105,8 @@ func die() -> void:
 func reset() -> void:
 	health = max_health
 	move_timer = move_cooldown
-	attack_cooldown = 1 / attack_speed
+	is_attacking = false
+	is_moving = false
 	target_enemy = null
 	health_progress_bar.max_value = health
 	update_health_bar()
@@ -137,7 +139,7 @@ func level_up() -> void:
 	apply_level_stats()
 	reset()
 	update_level_label_text()
-	%UnitBody.scale *= 1.25
+	body.scale *= 1.25
 
 func get_info_dict() -> Dictionary:
 	return {
@@ -180,7 +182,23 @@ func disable_combat() -> void:
 	health_progress_bar.visible = false
 
 func attack_target_enemy() -> void:
-	target_enemy.subtract_health(attack_damage)
+
+	is_attacking = true
+
+	var attack_length = 1.00 / attack_speed
+
+	animation_player.speed_scale = attack_speed
+	animation_player.play("attack")
+	animation_player.animation_finished.connect(_on_attack_animation_complete)
+	
+	await get_tree().create_timer(attack_length / 2.00).timeout
+
+	if is_instance_valid(target_enemy):
+		target_enemy.subtract_health(attack_damage)
+
+func _on_attack_animation_complete(_animation_name: String) -> void:
+	animation_player.animation_finished.disconnect(_on_attack_animation_complete)
+	is_attacking = false
 
 #region Hex-Related Functions
 func snap_to_current_hex() -> void:

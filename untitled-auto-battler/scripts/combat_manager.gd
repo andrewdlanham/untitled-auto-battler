@@ -13,7 +13,7 @@ signal get_random_team_requested
 func _ready() -> void:
 	get_random_team_requested.connect(DataManager._on_get_random_team_requested)
 	DataManager.combat_team_received.connect(_on_combat_team_received)
-	
+
 	get_random_team_requested.emit()
 
 func _process(_delta: float) -> void:
@@ -31,9 +31,15 @@ func start_combat() -> void:
 		unit.unit_died.connect(_on_unit_died)
 
 func end_combat() -> void:
-	get_random_team_requested.disconnect(DataManager._on_get_random_team_requested)
-	DataManager.combat_team_received.disconnect(_on_combat_team_received)
+
 	combat_in_progress = false
+
+	# Disconnect signals if needed
+	if get_random_team_requested.is_connected(DataManager._on_get_random_team_completed):
+		get_random_team_requested.disconnect(DataManager._on_get_random_team_requested)
+	if DataManager.combat_team_received.is_connected(_on_combat_team_received):
+		DataManager.combat_team_received.disconnect(_on_combat_team_received)
+
 	var active_units = player_units.get_children() + enemy_units.get_children()
 	for unit in active_units:
 		unit.disable_combat()

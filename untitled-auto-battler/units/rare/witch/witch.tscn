@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dslqlah4wedn2"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_wi8f1"]
-[ext_resource type="Resource" uid="uid://cyqtogflqtxve" path="res://units/uncommon/witch/witch.tres" id="2_og6mh"]
+[ext_resource type="Resource" uid="uid://cyqtogflqtxve" path="res://units/rare/witch/witch.tres" id="2_og6mh"]
 [ext_resource type="PackedScene" uid="uid://c7ypb5xa2sxc5" path="res://models/witch.glb" id="3_36gqh"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xvcnd"]
