@@ -22,8 +22,7 @@ func _on_start_combat_button_pressed() -> void:
 	GameManager.change_to_combat_scene()
 
 func _connect_signals() -> void:
-	%StoreTeamButton.pressed.connect(DataManager._on_store_team_in_db_pressed)
-	
+
 	# Everything that should trigger update_unit_count_label()
 	%DragDropManager.unit_placed.connect(update_unit_count_label)
 	%MergeManager.unit_merge_success.connect(update_unit_count_label)

@@ -29,6 +29,10 @@ func start_game() -> void:
 	SoundManager.play_music("prep_scene_music")
 
 func change_to_combat_scene() -> void:
+	DataManager.store_team_in_db()
+	
+	await DataManager.team_stored_in_db
+	
 	SoundManager.stop_music()
 	prepare_units_for_scene_transition("COMBAT")
 	
