@@ -12,6 +12,8 @@ class_name Unit
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var attack_audio: AudioStreamPlayer3D = $AttackAudio
+
 @export var unit_name: String
 @export var unit_id: String
 
@@ -197,6 +199,9 @@ func attack_target_enemy() -> void:
 
 	if is_instance_valid(target_enemy):
 		target_enemy.subtract_health(attack_damage)
+		attack_audio.pitch_scale = randf_range(0.5, 1.5)
+		attack_audio.volume_db = randf_range(-3.0, -1.0)
+		attack_audio.play()
 
 func _on_attack_animation_complete(_animation_name: String) -> void:
 	animation_player.animation_finished.disconnect(_on_attack_animation_complete)
