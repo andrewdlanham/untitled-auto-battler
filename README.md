@@ -6,4 +6,4 @@ The game's mechanics are inspired primarily by Teamfight Tactics and Super Auto 
 
 The current plan is to create a simple version of the game and publish it on itch.io for testing, feedback, and gauging interest.
 
-Most of the code is public, though some files such as scripts realting to the PostgreSQL backend are excluded from the public repo.
+Most of the code is public, though some files such as scripts relating to the PostgreSQL backend are excluded from the public repo.
