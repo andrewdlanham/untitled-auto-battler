@@ -1,23 +1,26 @@
 [gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://cyqtogflqtxve"]
 
-[ext_resource type="Script" path="res://units/unit_data.gd" id="1_2nnf8"]
+[ext_resource type="Script" path="res://units/unit_data.gd" id="1_2yh5y"]
 
 [resource]
-script = ExtResource("1_2nnf8")
+script = ExtResource("1_2yh5y")
 level_stats = {
 1: {
 "attack_damage": 20,
 "attack_speed": 0.5,
-"max_health": 15
+"max_health": 15,
+"scale": 1.0
 },
 2: {
 "attack_damage": 30,
 "attack_speed": 0.7,
-"max_health": 30
+"max_health": 30,
+"scale": 1.25
 },
 3: {
 "attack_damage": 50,
 "attack_speed": 1.0,
-"max_health": 60
+"max_health": 60,
+"scale": 1.5
 }
 }

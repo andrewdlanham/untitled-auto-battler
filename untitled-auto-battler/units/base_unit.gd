@@ -84,6 +84,8 @@ func apply_level_properties() -> void:
 	max_health = unit_data.level_stats[level]["max_health"]
 	attack_damage = unit_data.level_stats[level]["attack_damage"]
 	attack_speed = unit_data.level_stats[level]["attack_speed"]
+	var new_scale: float = unit_data.level_stats[level]["scale"]
+	body.scale = Vector3(new_scale, new_scale, new_scale)
 	health_bar_sprite.global_position = health_bar_anchor_point.global_position
 	update_level_label_text()
 
@@ -140,7 +142,6 @@ func subtract_health(amount) -> void:
 
 func level_up() -> void:
 	level += 1
-	body.scale *= 1.25
 	apply_level_properties()
 	reset()
 
