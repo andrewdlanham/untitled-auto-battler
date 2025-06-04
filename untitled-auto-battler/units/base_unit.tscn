@@ -177,13 +177,6 @@ attack_range = 3
 [node name="Labels" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
-[node name="NameLabel" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.963844, 0)
-visible = false
-text = "NAME"
-font_size = 30
-outline_size = 40
-
 [node name="LevelLabel" type="Label3D" parent="Labels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0383576, -0.540825, 0.024584)
 visible = false
@@ -192,10 +185,8 @@ font_size = 30
 outline_size = 30
 
 [node name="HealthBar" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841822, 0)
 
 [node name="HealthBarSprite" type="Sprite3D" parent="HealthBar"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0950941, 0)
 texture = SubResource("ViewportTexture_nsxjv")
 
 [node name="SubViewport" type="SubViewport" parent="HealthBar"]
@@ -219,6 +210,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ammrf")
+
+[node name="HealthBarAnchorPoint" type="Node3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="FrozenMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0311094, 0)

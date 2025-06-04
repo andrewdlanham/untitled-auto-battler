@@ -4,9 +4,11 @@ class_name Unit
 
 @export var unit_data: UnitData
 
-@onready var name_label: Label3D = $Labels/NameLabel
 @onready var level_label: Label3D = $Labels/LevelLabel
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
+@onready var health_bar_sprite: Sprite3D = $HealthBar/HealthBarSprite
+@onready var health_bar_anchor_point: Node3D = $Body/HealthBarAnchorPoint
+
 @onready var frozen_mesh: MeshInstance3D = $FrozenMesh
 @onready var body: Area3D = $Body
 
@@ -47,11 +49,10 @@ var is_frozen: bool = false
 signal unit_died(unit: Unit, team: String)
 
 func _ready() -> void:
-	apply_level_stats()
+	apply_level_properties()
 	reset()
 	combat_enabled = false
 	update_level_label_text()
-	update_name_label_text()
 
 func _process(delta: float) -> void:
 
@@ -79,10 +80,12 @@ func _process(delta: float) -> void:
 		elif !is_attacking:
 				attack_target_enemy()
 
-func apply_level_stats() -> void:
+func apply_level_properties() -> void:
 	max_health = unit_data.level_stats[level]["max_health"]
 	attack_damage = unit_data.level_stats[level]["attack_damage"]
 	attack_speed = unit_data.level_stats[level]["attack_speed"]
+	health_bar_sprite.global_position = health_bar_anchor_point.global_position
+	update_level_label_text()
 
 func freeze() -> bool:
 
@@ -127,9 +130,6 @@ func update_health_bar() -> void:
 func update_level_label_text() -> void:
 	level_label.text = str(level)
 
-func update_name_label_text() -> void:
-	name_label.text = self.unit_name
-
 func add_health(amount) -> void:
 	health += amount
 	update_health_bar()
@@ -140,10 +140,9 @@ func subtract_health(amount) -> void:
 
 func level_up() -> void:
 	level += 1
-	apply_level_stats()
-	reset()
-	update_level_label_text()
 	body.scale *= 1.25
+	apply_level_properties()
+	reset()
 
 func get_info_dict() -> Dictionary:
 	return {

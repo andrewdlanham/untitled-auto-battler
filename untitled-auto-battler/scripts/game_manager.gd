@@ -66,13 +66,13 @@ func construct_enemy_team(unit_array, hexes, enemy_units_node) -> void:
 		var unit_scene = load(UnitRegistry.get_scene_path(unit.unit_id))
 		var new_unit: Unit = unit_scene.instantiate()
 		new_unit.level = unit["level"]
-		new_unit.apply_level_stats()
 		for hex in hexes:
 			if hex.hex_id == unit["hex_id"]:
 				enemy_units_node.add_child(new_unit)
 				
 				new_unit.try_connect_to_hex(hex)
 				new_unit.team = "ENEMY"
+				new_unit.apply_level_properties()
 
 func prepare_units_for_scene_transition(destination_scene) -> void:
 

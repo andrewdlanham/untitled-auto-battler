@@ -20,8 +20,5 @@ attack_range = 6
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
 texture = SubResource("ViewportTexture_234a8")
 
-[node name="Body" parent="." index="2"]
-transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
-
 [node name="UnitBody" parent="Body" index="0" instance=ExtResource("3_1qnds")]
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0.214222, 0)

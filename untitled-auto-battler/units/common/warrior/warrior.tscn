@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://btbse87j1mbmk" path="res://units/common/warrior/warrior.tres" id="2_jmtq2"]
 [ext_resource type="PackedScene" uid="uid://dvyq1co70exnm" path="res://models/unit_warrior.glb" id="3_iwcv0"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_oj742"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qrle7"]
 viewport_path = NodePath("HealthBar/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mx8nm"]
@@ -15,10 +15,13 @@ unit_name = "Warrior"
 unit_id = "unit_warrior"
 
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
-texture = SubResource("ViewportTexture_oj742")
+texture = SubResource("ViewportTexture_qrle7")
 
 [node name="CollisionShape3D" parent="Body" index="0"]
 shape = SubResource("BoxShape3D_mx8nm")
 
 [node name="UnitBody" parent="Body" index="1" instance=ExtResource("3_iwcv0")]
 unique_name_in_owner = true
+
+[node name="HealthBarAnchorPoint" parent="Body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

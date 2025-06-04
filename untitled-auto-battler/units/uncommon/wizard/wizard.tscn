@@ -23,3 +23,6 @@ texture = SubResource("ViewportTexture_xvcnd")
 [node name="UnitBody" parent="Body" index="1" instance=ExtResource("3_kd1rk")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
+
+[node name="HealthBarAnchorPoint" parent="Body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17344, 0)

@@ -20,3 +20,6 @@ texture = SubResource("ViewportTexture_3ghyx")
 
 [node name="UnitBody" parent="Body" index="1" instance=ExtResource("3_3oahw")]
 unique_name_in_owner = true
+
+[node name="HealthBarAnchorPoint" parent="Body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
