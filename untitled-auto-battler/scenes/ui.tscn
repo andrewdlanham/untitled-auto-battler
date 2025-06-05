@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgcrbyh2cyb2j"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_a06dh"]
+[ext_resource type="Texture2D" uid="uid://764i5igosps" path="res://images/music_on.png" id="1_mcr3v"]
+
+[node name="UI" type="Node"]
+script = ExtResource("1_a06dh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ToggleMusicButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1272.0
+offset_top = -712.0
+offset_right = -1216.0
+offset_bottom = -664.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"FlatButton"
+icon = ExtResource("1_mcr3v")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="CanvasLayer/ToggleMusicButton" to="." method="_on_toggle_music_button_pressed"]

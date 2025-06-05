@@ -6,7 +6,7 @@ extends Node
 var sfx: Dictionary = {}
 var music_tracks: Dictionary = {}
 
-func _ready():
+func _ready() -> void:
 	add_child(sfx_player)
 	add_child(music_player)
 
@@ -15,7 +15,7 @@ func _ready():
 	
 	music_tracks["prep_scene_music"] = preload("res://sounds/prep_scene_music.mp3")
 
-func play_sfx(sound_name: String):
+func play_sfx(sound_name: String) -> void:
 	if sound_name in sfx:
 		sfx_player.stream = sfx[sound_name]
 		sfx_player.volume_db = -5	# Static volumne until sound options are added
@@ -23,11 +23,11 @@ func play_sfx(sound_name: String):
 	else:
 		print("SFX not found:", name)
 
-func play_music(track_name: String):
+func play_music(track_name: String) -> void:
 	if track_name in music_tracks:
 		music_player.stream = music_tracks[track_name]
 		music_player.volume_db = -20	# Static volume until sound options are added
 		music_player.play()
 
-func stop_music():
-	music_player.stop()
+func toggle_music() -> void:
+	music_player.stream_paused = !music_player.stream_paused

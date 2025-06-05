@@ -22,6 +22,10 @@ var round_label: Label
 
 var combat_scene: Node3D
 
+func _ready() -> void:
+	var cursor = load("res://images/cursors/point.png")
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
+
 func start_game() -> void:
 	current_round = 1
 	preparation_scene = prep_scene_resource.instantiate()
@@ -30,10 +34,9 @@ func start_game() -> void:
 
 func change_to_combat_scene() -> void:
 	DataManager.store_team_in_db()
-	
+
 	await DataManager.team_stored_in_db
-	
-	SoundManager.stop_music()
+
 	prepare_units_for_scene_transition("COMBAT")
 	
 	get_tree().root.remove_child(preparation_scene)
@@ -42,7 +45,6 @@ func change_to_combat_scene() -> void:
 	get_tree().root.add_child(combat_scene)
 
 func change_to_prep_scene() -> void:
-	SoundManager.play_music("prep_scene_music")
 	prepare_units_for_scene_transition("PREP")
 	
 	get_tree().root.remove_child(combat_scene)

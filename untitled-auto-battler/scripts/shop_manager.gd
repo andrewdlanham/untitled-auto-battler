@@ -1,5 +1,8 @@
 extends Node
 
+@onready var shop_roll_audio: AudioStreamPlayer = $ShopRollAudio
+
+
 var common_units: Array[Resource] = [
 	
 	load(UnitRegistry.get_scene_path("unit_warrior")),
@@ -84,4 +87,4 @@ func _on_roll_shop_pressed() -> void:
 
 func _on_roll_shop_approved() -> void:
 	roll_shop_units()
-	SoundManager.play_sfx("roll_shop")
+	shop_roll_audio.play()
