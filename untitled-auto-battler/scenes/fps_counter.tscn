@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf64u7jogr3uc"]
+[gd_scene load_steps=2 format=3 uid="uid://bcccvukw7f23i"]
 
-[ext_resource type="Script" path="res://scripts/fps_counter.gd" id="1_2sf0f"]
+[sub_resource type="GDScript" id="GDScript_kj1q3"]
+script/source = "extends Node2D
+
+@onready var fps_label: Label = $FPS_Label
+
+func _process(_delta: float) -> void:
+	fps_label.text = \"FPS: \" + str(Engine.get_frames_per_second())
+"
 
 [node name="FPS Counter" type="Node2D"]
-script = ExtResource("1_2sf0f")
+script = SubResource("GDScript_kj1q3")
 
 [node name="FPS_Label" type="Label" parent="."]
 anchors_preset = 2

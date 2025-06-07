@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://xmbt05e88gbe"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_8fnhs"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_8fnhs")
+
+[node name="PlayGameButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 444.0
+offset_top = 317.0
+offset_right = 814.0
+offset_bottom = 421.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_button_pressed"]

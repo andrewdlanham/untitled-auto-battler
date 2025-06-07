@@ -10,6 +10,7 @@ var unit_cap_by_round: Array = [
 
 var prep_scene_resource = preload("res://scenes/prep_scene.tscn")
 var combat_scene_resource = preload("res://scenes/combat_scene.tscn")
+const menu_scene_resource = preload("res://scenes/menu.tscn")
 
 var player_units: Array = []
 
@@ -22,6 +23,8 @@ var round_label: Label
 
 var combat_scene: Node3D
 
+var menu_scene: Node2D
+
 func _ready() -> void:
 	var cursor = load("res://images/cursors/point.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
@@ -32,24 +35,29 @@ func start_game() -> void:
 	get_tree().root.add_child(preparation_scene)
 	SoundManager.play_music("prep_scene_music")
 
+func change_to_menu_scene() -> void:
+	get_tree().root.get_node("Auth").queue_free()
+	menu_scene = menu_scene_resource.instantiate()
+	get_tree().root.add_child(menu_scene)
+
 func change_to_combat_scene() -> void:
 	DataManager.store_team_in_db()
 
 	await DataManager.team_stored_in_db
 
 	prepare_units_for_scene_transition("COMBAT")
-	
+
 	get_tree().root.remove_child(preparation_scene)
-	
+
 	combat_scene = combat_scene_resource.instantiate()
 	get_tree().root.add_child(combat_scene)
 
 func change_to_prep_scene() -> void:
 	prepare_units_for_scene_transition("PREP")
-	
+
 	get_tree().root.remove_child(combat_scene)
 	get_tree().root.add_child(preparation_scene)
-	
+
 	current_round += 1
 	update_round_label()
 
@@ -71,7 +79,6 @@ func construct_enemy_team(unit_array, hexes, enemy_units_node) -> void:
 		for hex in hexes:
 			if hex.hex_id == unit["hex_id"]:
 				enemy_units_node.add_child(new_unit)
-				
 				new_unit.try_connect_to_hex(hex)
 				new_unit.team = "ENEMY"
 				new_unit.apply_level_properties()
