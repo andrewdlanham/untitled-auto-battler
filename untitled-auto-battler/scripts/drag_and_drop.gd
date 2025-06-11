@@ -1,18 +1,17 @@
-extends Node3D	# Script must be on Node3D to access get_world_3d()
+extends Node3D
 
-const RAY_LENGTH = 100
-const UNIT_MASK = 1
-const FLOOR_MASK = 2
-const UNIT_FLOOR_MASK = 3	# Enables both layers 1 and 2
+const RAY_LENGTH: int = 100
+const UNIT_MASK: int = 1
+const FLOOR_MASK: int = 2
+const UNIT_FLOOR_MASK: int = 3	# Enables both layers 1 and 2
 
-var is_dragging
-var dragged_object
-var dragged_object_collision_shape
-var raycast_collision_mask = UNIT_MASK
+var is_dragging: bool
+var dragged_object: Node3D
+var dragged_object_collision_shape: CollisionShape3D
+var raycast_collision_mask: int = UNIT_MASK
 
 signal unit_purchase_requested(unit: Unit, hex_placed_on: Hex)
 signal unit_sell_requested(unit: Unit)
-
 signal unit_placed()
 
 func _ready() -> void:
@@ -34,15 +33,21 @@ func _input(_event) -> void:
 			raycast_collision_mask = FLOOR_MASK
 			is_dragging = true
 			%UnitStatsPopup.show_stats(dragged_object)
-	
+
 	elif Input.is_action_just_released("LeftClick"):
 		if is_dragging: 
 			raycast_collision_mask = UNIT_MASK
 			is_dragging = false
 			var origin_hex = dragged_object.current_hex
 			if dragged_object is Unit:
-				var dropped_hex = dragged_object.get_nearest_hex()
-				if (dropped_hex == null or dropped_hex.is_shop_hex() or dropped_hex.is_occupied()):
+				var dropped_hex: Hex = dragged_object.get_nearest_hex()
+				if (dropped_hex == null or dropped_hex.is_shop_hex()):
+					dragged_object.snap_to_current_hex()
+				# Swapping units
+				elif (dropped_hex.is_occupied() and not origin_hex.is_shop_hex() and dropped_hex.unit_on_hex != dragged_object):
+					swap_units(dragged_object, dropped_hex.unit_on_hex)
+				#
+				elif (dropped_hex.is_occupied()):
 					dragged_object.snap_to_current_hex()
 				# Selling units
 				elif (dropped_hex.is_sell_hex() and not origin_hex.is_shop_hex()):
@@ -74,41 +79,23 @@ func _input(_event) -> void:
 				dragged_object_collision_shape.set_disabled(false)
 				dragged_object = null
 				dragged_object_collision_shape = null
+
 				SoundManager.play_sfx("unit_placed")
 
-func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
-	unit.try_connect_to_hex(hex_placed_on)
-	unit.unfreeze()
-	unit.team = "PLAYER"
-	%ShopUnits.remove_child(unit)
-	%UnitStatsPopup.show_stats(unit)
-	
-	if hex_placed_on.is_player_hex():
-		%PlayerUnits.add_child(unit)
-	elif hex_placed_on.is_bench_hex():
-		%BenchUnits.add_child(unit)
-	
-	unit_placed.emit()
-	unit.animation_player.stop()
 
-func _on_unit_purchase_denied(unit: Unit) -> void:
-	printerr("Unit purchase denied")
-	unit.snap_to_current_hex()
 
 func get_raycast_collision_info() -> Dictionary:
-	
 	var space_state = get_world_3d().direct_space_state
 	var mouse_position = get_viewport().get_mouse_position()
-
 	var ray_start_point = %MainCamera.project_ray_origin(mouse_position)
 	var ray_end_point = ray_start_point + %MainCamera.project_ray_normal(mouse_position) * RAY_LENGTH
 	var ray_query = PhysicsRayQueryParameters3D.create(ray_start_point, ray_end_point)
 	ray_query.collide_with_areas = true
 	ray_query.collide_with_bodies = true
 	ray_query.collision_mask = raycast_collision_mask
-	
+
 	var intersect_ray_result = space_state.intersect_ray(ray_query)
-	
+
 	return intersect_ray_result
 
 func update_dragged_object_position() -> void:
@@ -121,3 +108,38 @@ func update_dragged_object_position() -> void:
 			dragged_object.global_position.y,
 			updated_position.z
 		)
+
+func swap_units(unit_1: Unit, unit_2: Unit) -> void:
+	var hex_1 = unit_1.current_hex
+	var hex_2 = unit_2.current_hex
+	unit_1.current_hex = null
+	unit_2.current_hex = null
+	hex_1.unit_on_hex = null
+	hex_2.unit_on_hex = null
+	unit_1.try_connect_to_hex(hex_2)
+	unit_2.try_connect_to_hex(hex_1)
+	var temp = unit_1.get_parent()
+	unit_1.get_parent().remove_child(unit_1)
+	unit_2.get_parent().add_child(unit_1)
+	unit_2.get_parent().remove_child(unit_2)
+	temp.add_child(unit_2)
+
+func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
+	unit.unfreeze()
+	unit.try_connect_to_hex(hex_placed_on)
+	unit.team = "PLAYER"
+	
+	%ShopUnits.remove_child(unit)
+	%UnitStatsPopup.show_stats(unit)
+
+	if hex_placed_on.is_player_hex():
+		%PlayerUnits.add_child(unit)
+	elif hex_placed_on.is_bench_hex():
+		%BenchUnits.add_child(unit)
+
+	unit_placed.emit()
+	unit.animation_player.stop()
+
+func _on_unit_purchase_denied(unit: Unit) -> void:
+	printerr("Unit purchase denied")
+	unit.snap_to_current_hex()
