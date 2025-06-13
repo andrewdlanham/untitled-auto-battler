@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgcrbyh2cyb2j"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_a06dh"]
-[ext_resource type="Texture2D" uid="uid://764i5igosps" path="res://images/music_on.png" id="1_mcr3v"]
+[ext_resource type="Texture2D" uid="uid://764i5igosps" path="res://assets/images/music_on.png" id="1_mcr3v"]
 
 [node name="UI" type="Node"]
 script = ExtResource("1_a06dh")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b478g6o8tgv7t"]
 
 [ext_resource type="Script" path="res://units/base_unit.gd" id="1_p0uky"]
-[ext_resource type="AudioStream" uid="uid://bctcosr8kpib1" path="res://sounds/combat/attack-2.wav" id="2_ru3mt"]
+[ext_resource type="AudioStream" uid="uid://bctcosr8kpib1" path="res://assets/sounds/combat/attack-2.wav" id="2_ru3mt"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_nsxjv"]
 viewport_path = NodePath("HealthBar/SubViewport")

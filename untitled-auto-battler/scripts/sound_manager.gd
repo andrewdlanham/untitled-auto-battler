@@ -10,10 +10,10 @@ func _ready() -> void:
 	add_child(sfx_player)
 	add_child(music_player)
 
-	sfx["roll_shop"] = preload("res://sounds/roll_shop.ogg")
-	sfx["unit_placed"] = preload("res://sounds/unit_placed.ogg")
+	sfx["roll_shop"] = preload("res://assets/sounds/roll_shop.ogg")
+	sfx["unit_placed"] = preload("res://assets/sounds/unit_placed.ogg")
 	
-	music_tracks["prep_scene_music"] = preload("res://sounds/prep_scene_music.mp3")
+	music_tracks["prep_scene_music"] = preload("res://assets/sounds/prep_scene_music.mp3")
 
 func play_sfx(sound_name: String) -> void:
 	if sound_name in sfx:

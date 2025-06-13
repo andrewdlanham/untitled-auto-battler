@@ -26,7 +26,7 @@ var combat_scene: Node3D
 var menu_scene: Node2D
 
 func _ready() -> void:
-	var cursor = load("res://images/cursors/point.png")
+	var cursor = load("res://assets/images/cursors/point.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 
 func start_game() -> void:
