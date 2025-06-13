@@ -1,26 +1,169 @@
-[gd_scene load_steps=3 format=3 uid="uid://dof5pa3myt7la"]
+[gd_scene load_steps=7 format=3 uid="uid://dof5pa3myt7la"]
 
 [ext_resource type="Script" path="res://db/auth.gd" id="1_7tcv5"]
-[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://assets/Exo2-Regular.ttf" id="2_y37gr"]
+[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://assets/fonts/Exo2-Regular.ttf" id="2_y37gr"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://auth_theme.tres" id="3_58357"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoxdc"]
+bg_color = Color(0.270588, 0.482353, 0.615686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgduc"]
+bg_color = Color(1, 0.2, 0.309804, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpw2k"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
 [node name="Auth" type="Node2D"]
 script = ExtResource("1_7tcv5")
 
-[node name="LoginButton" type="Button" parent="."]
-anchors_preset = 7
+[node name="BackgroundPanel" type="Panel" parent="."]
+z_index = -10
+offset_right = 1280.0
+offset_bottom = 728.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eoxdc")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_top = 48.0
+offset_right = 1280.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(0.945098, 0.980392, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("2_y37gr")
+theme_override_font_sizes/font_size = 60
+text = "UNTITLED AUTO BATTLER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoginControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 344.0
-offset_top = 435.0
-offset_right = 587.0
-offset_bottom = 528.0
+anchor_bottom = 0.5
+offset_left = 720.0
+offset_top = 288.0
+offset_right = 760.0
+offset_bottom = 328.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme = ExtResource("3_58357")
+
+[node name="LoginBoxPanel" type="Panel" parent="LoginControl"]
+layout_mode = 0
+offset_left = -272.0
+offset_top = -88.0
+offset_right = 112.0
+offset_bottom = 212.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kgduc")
+
+[node name="Panel" type="Panel" parent="LoginControl/LoginBoxPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -56.0
+offset_right = 128.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpw2k")
+
+[node name="Panel2" type="Panel" parent="LoginControl/LoginBoxPanel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = -56.0
+offset_right = 320.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpw2k")
+
+[node name="LoginButton" type="Button" parent="LoginControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = 108.0
+offset_right = 76.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_y37gr")
 theme_override_font_sizes/font_size = 40
 text = "LOGIN"
+
+[node name="EmailLabel" type="Label" parent="LoginControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -76.0
+offset_right = -201.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Email"
+
+[node name="EmailInput" type="LineEdit" parent="LoginControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter email"
+
+[node name="PasswordLabel" type="Label" parent="LoginControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = 12.0
+offset_right = -182.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Password"
+
+[node name="PasswordInput" type="LineEdit" parent="LoginControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = 44.0
+offset_right = 76.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter password"
+secret = true
 
 [node name="RegisterButton" type="Button" parent="."]
 anchors_preset = 7
@@ -28,98 +171,34 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 624.0
-offset_top = 435.0
-offset_right = 867.0
-offset_bottom = 528.0
+offset_left = 464.0
+offset_top = 528.0
+offset_right = 816.0
+offset_bottom = 587.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_58357")
 theme_override_fonts/font = ExtResource("2_y37gr")
 theme_override_font_sizes/font_size = 40
 text = "REGISTER"
 
-[node name="EmailInput" type="LineEdit" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 344.0
-offset_top = 233.0
-offset_right = 864.0
-offset_bottom = 290.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-
-[node name="EmailLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 344.0
-offset_top = 192.0
-offset_right = 419.0
-offset_bottom = 215.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Email"
-
-[node name="PasswordInput" type="LineEdit" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 344.0
-offset_top = 354.0
-offset_right = 864.0
-offset_bottom = 411.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-secret = true
-
-[node name="PasswordLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 344.0
-offset_top = 309.0
-offset_right = 419.0
-offset_bottom = 332.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Password"
-
 [node name="TestLogin" type="Button" parent="."]
-offset_left = 1056.0
-offset_top = 352.0
-offset_right = 1109.0
-offset_bottom = 396.0
+offset_left = 984.0
+offset_top = 640.0
+offset_right = 1269.0
+offset_bottom = 712.0
+theme = ExtResource("3_58357")
+text = "TEST LOGIN"
 
-[node name="PlayAsGuest" type="Button" parent="."]
-offset_left = 344.0
-offset_top = 555.0
-offset_right = 867.0
-offset_bottom = 607.0
-theme_override_font_sizes/font_size = 30
+[node name="PlayAsGuestButton" type="Button" parent="."]
+offset_left = 464.0
+offset_top = 608.0
+offset_right = 816.0
+offset_bottom = 672.0
+theme = ExtResource("3_58357")
 text = "PLAY AS GUEST"
 
-[node name="TitleLabel" type="Label" parent="."]
-offset_top = 56.0
-offset_right = 1280.0
-offset_bottom = 125.0
-theme_override_fonts/font = ExtResource("2_y37gr")
-theme_override_font_sizes/font_size = 60
-text = "UNTITLED AUTO BATTLER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="LoginControl/LoginButton" to="." method="_on_login_button_pressed"]
 [connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
 [connection signal="pressed" from="TestLogin" to="." method="_on_test_login_pressed"]
-[connection signal="pressed" from="PlayAsGuest" to="." method="_on_play_as_guest_pressed"]
+[connection signal="pressed" from="PlayAsGuestButton" to="." method="_on_play_as_guest_pressed"]
