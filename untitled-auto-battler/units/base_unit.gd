@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 				try_move_to_hex(open_hex)
 			else:
 				target_closest_enemy()
-		elif !is_attacking:
+		elif not is_attacking:
 				attack_target_enemy()
 
 func apply_level_properties() -> void:
@@ -157,13 +157,14 @@ func target_is_in_attack_range() -> bool:
 	return self.global_position.distance_to(target_enemy.global_position) <= self.attack_range
 
 func get_closest_enemy() -> Node3D:
+	# Assumes active_scene is combat scene
 	var closest_enemy: Node = null
 	var closest_distance: float = INF
 	var enemies
 	if team == 'PLAYER': 
-		enemies = GameManager.combat_scene.get_node("EnemyUnits").get_children()
+		enemies = GameManager.active_scene.get_node("EnemyUnits").get_children()
 	elif team == 'ENEMY': 
-		enemies = GameManager.combat_scene.get_node("PlayerUnits").get_children()
+		enemies = GameManager.active_scene.get_node("PlayerUnits").get_children()
 	for enemy in enemies:
 		if enemy.visible == false: continue
 		var distance = self.global_position.distance_to(enemy.global_position)

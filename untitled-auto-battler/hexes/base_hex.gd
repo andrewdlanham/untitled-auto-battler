@@ -40,11 +40,7 @@ func is_sell_hex() -> bool:
 func is_bench_hex() -> bool:
 	return hex_type == "BENCH"
 
-func connect_to_neighbor_hexes() -> void:
-	var player_hexes = GameManager.combat_scene.get_node("Hexes/PlayerHexes").get_children()
-	var enemy_hexes = GameManager.combat_scene.get_node("Hexes/EnemyHexes").get_children()
-	var neutral_hexes = GameManager.combat_scene.get_node("Hexes/NeutralHexes").get_children()
-	var possible_neighbor_hexes =  player_hexes + enemy_hexes + neutral_hexes
+func connect_to_neighbor_hexes(possible_neighbor_hexes) -> void:
 	for hex in possible_neighbor_hexes:
 		if hex.name == self.name: continue
 		var distance = self.position.distance_to(hex.global_position)

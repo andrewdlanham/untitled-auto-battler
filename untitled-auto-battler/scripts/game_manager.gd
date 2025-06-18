@@ -8,8 +8,8 @@ var unit_cap_by_round: Array = [
 	{ "rounds": range(10, 16), "cap": 7 }	# Rounds 10-15
 ]
 
-var prep_scene_resource = preload("res://scenes/prep_scene.tscn")
-var combat_scene_resource = preload("res://scenes/combat_scene.tscn")
+const prep_scene_resource = preload("res://scenes/prep_scene.tscn")
+const combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 const menu_scene_resource = preload("res://scenes/menu.tscn")
 
 var player_units: Array = []
@@ -21,41 +21,46 @@ var player_hexes_node: Node
 var current_round: int
 var round_label: Label
 
-var combat_scene: Node3D
-
-var menu_scene: Node2D
+var active_scene
 
 func _ready() -> void:
 	var cursor = load("res://assets/images/cursors/point.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 
+	active_scene = get_tree().root.get_node("Auth")
+
 func start_game() -> void:
+
 	current_round = 1
+
+	remove_active_scene()
 	preparation_scene = prep_scene_resource.instantiate()
 	get_tree().root.add_child(preparation_scene)
+	active_scene = preparation_scene
 	SoundManager.play_music("prep_scene_music")
 
 func change_to_menu_scene() -> void:
-	get_tree().root.get_node("Auth").queue_free()
-	menu_scene = menu_scene_resource.instantiate()
+	remove_active_scene()
+	var menu_scene = menu_scene_resource.instantiate()
 	get_tree().root.add_child(menu_scene)
+	active_scene = menu_scene
 
 func change_to_combat_scene() -> void:
-	DataManager.store_team_in_db()
-
-	await DataManager.team_stored_in_db
 
 	prepare_units_for_scene_transition("COMBAT")
 
-	get_tree().root.remove_child(preparation_scene)
+	remove_active_scene()
 
-	combat_scene = combat_scene_resource.instantiate()
+	var combat_scene = combat_scene_resource.instantiate()
 	get_tree().root.add_child(combat_scene)
+
+	active_scene = combat_scene
 
 func change_to_prep_scene() -> void:
 	prepare_units_for_scene_transition("PREP")
 
-	get_tree().root.remove_child(combat_scene)
+	remove_active_scene()
+
 	get_tree().root.add_child(preparation_scene)
 
 	current_round += 1
@@ -63,6 +68,8 @@ func change_to_prep_scene() -> void:
 
 	construct_player_team(player_hexes_node.get_children(), player_units_node)
 	preparation_scene.start_new_round()
+
+	active_scene = preparation_scene
 
 func construct_player_team(target_hexes, parent_node) -> void:
 	for unit in player_units:
@@ -87,7 +94,7 @@ func prepare_units_for_scene_transition(destination_scene) -> void:
 
 	var current_player_units
 	if destination_scene == "PREP":
-		current_player_units = combat_scene.get_node("PlayerUnits").get_children()
+		current_player_units = active_scene.get_node("PlayerUnits").get_children()
 
 	elif destination_scene == "COMBAT":
 		current_player_units = player_units_node.get_children()
@@ -127,3 +134,6 @@ func get_current_unit_cap() -> int:
 
 func is_active_units_full() -> bool:
 	return player_units_node.get_children().size() >= get_current_unit_cap()
+
+func remove_active_scene() -> void:
+	get_tree().root.remove_child(active_scene)
