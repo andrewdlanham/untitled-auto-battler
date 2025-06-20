@@ -16,6 +16,7 @@ func _ready() -> void:
 
 	sfx["roll_shop"] = preload("res://assets/sounds/roll_shop.ogg")
 	sfx["unit_placed"] = preload("res://assets/sounds/unit_placed.ogg")
+	sfx["button_click"] = preload("res://assets/sounds/button_click.wav")
 	
 	music_tracks["prep_scene_music"] = preload("res://assets/sounds/music/prep_scene_music.mp3")
 	music_tracks["combat_scene_music"] = preload("res://assets/sounds/music/combat_scene_music.mp3")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dof5pa3myt7la"]
+[gd_scene load_steps=8 format=3 uid="uid://dof5pa3myt7la"]
 
 [ext_resource type="Script" path="res://db/auth.gd" id="1_7tcv5"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://assets/fonts/Exo2-Regular.ttf" id="2_y37gr"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://auth_theme.tres" id="3_58357"]
+[ext_resource type="Script" path="res://scripts/base_button.gd" id="4_vbk7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoxdc"]
 bg_color = Color(0.270588, 0.482353, 0.615686, 1)
@@ -103,6 +104,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_y37gr")
 theme_override_font_sizes/font_size = 40
 text = "LOGIN"
+script = ExtResource("4_vbk7b")
 
 [node name="EmailLabel" type="Label" parent="LoginControl"]
 layout_mode = 1
@@ -181,6 +183,7 @@ theme = ExtResource("3_58357")
 theme_override_fonts/font = ExtResource("2_y37gr")
 theme_override_font_sizes/font_size = 40
 text = "REGISTER"
+script = ExtResource("4_vbk7b")
 
 [node name="TestLogin" type="Button" parent="."]
 offset_left = 984.0
@@ -189,6 +192,7 @@ offset_right = 1269.0
 offset_bottom = 712.0
 theme = ExtResource("3_58357")
 text = "TEST LOGIN"
+script = ExtResource("4_vbk7b")
 
 [node name="PlayAsGuestButton" type="Button" parent="."]
 offset_left = 464.0
@@ -197,6 +201,7 @@ offset_right = 816.0
 offset_bottom = 672.0
 theme = ExtResource("3_58357")
 text = "PLAY AS GUEST"
+script = ExtResource("4_vbk7b")
 
 [connection signal="pressed" from="LoginControl/LoginButton" to="." method="_on_login_button_pressed"]
 [connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
