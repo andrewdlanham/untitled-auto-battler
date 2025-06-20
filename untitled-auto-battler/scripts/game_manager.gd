@@ -37,6 +37,7 @@ func start_game() -> void:
 	preparation_scene = prep_scene_resource.instantiate()
 	get_tree().root.add_child(preparation_scene)
 	active_scene = preparation_scene
+
 	SoundManager.play_music("prep_scene_music")
 
 func change_to_menu_scene() -> void:
@@ -56,6 +57,8 @@ func change_to_combat_scene() -> void:
 
 	active_scene = combat_scene
 
+	SoundManager.play_music("combat_scene_music")
+
 func change_to_prep_scene() -> void:
 	prepare_units_for_scene_transition("PREP")
 
@@ -70,6 +73,8 @@ func change_to_prep_scene() -> void:
 	preparation_scene.start_new_round()
 
 	active_scene = preparation_scene
+
+	SoundManager.play_music("prep_scene_music")
 
 func construct_player_team(target_hexes, parent_node) -> void:
 	for unit in player_units:
