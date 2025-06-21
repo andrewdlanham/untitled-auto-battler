@@ -82,8 +82,6 @@ func _input(_event) -> void:
 
 				SoundManager.play_sfx("unit_placed")
 
-
-
 func get_raycast_collision_info() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var mouse_position = get_viewport().get_mouse_position()
@@ -139,6 +137,7 @@ func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 
 	unit_placed.emit()
 	unit.animation_player.stop()
+	unit.body.rotation = Vector3.ZERO
 
 func _on_unit_purchase_denied(unit: Unit) -> void:
 	printerr("Unit purchase denied")
