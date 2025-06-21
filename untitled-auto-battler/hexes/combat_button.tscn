@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfo7560kmu30t"]
+[gd_scene load_steps=4 format=3 uid="uid://cik4iupcelnqw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0ix7"]
-albedo_color = Color(0.527124, 0.54399, 0.133728, 1)
+albedo_color = Color(0.861652, 0.287429, 0.326567, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3fwpo"]
 material = SubResource("StandardMaterial3D_b0ix7")
@@ -9,11 +9,11 @@ radial_segments = 6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_arpa0"]
 
-[node name="RerollButton" type="Node3D"]
+[node name="CombatButton" type="Node3D"]
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(0.751184, 0.660093, 2.88536e-08, 0, -4.37114e-08, 1, 0.660093, -0.751184, -3.28353e-08, 0.0398877, 0.0227362, -0.0602442)
-text = "↻"
+transform = Transform3D(0.866025, 0.5, 2.18557e-08, 0, -4.37114e-08, 1, 0.5, -0.866025, -3.78552e-08, 0.00318858, 0.0227362, -0.00694618)
+text = "⚔︎"
 font_size = 140
 outline_size = 30
 

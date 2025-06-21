@@ -1,5 +1,7 @@
 extends Node3D
 
+signal reroll_requested
+
 func _ready() -> void:
 	_connect_signals()
 	GameManager.player_units_node = %PlayerUnits
@@ -18,10 +20,15 @@ func update_unit_count_label() -> void:
 	await get_tree().process_frame		# Allows units time to leave scene before updating the unit count label
 	%UnitCountLabel.text = str(%PlayerUnits.get_children().size()) + " / " + str(GameManager.get_current_unit_cap())
 
-func _on_start_combat_button_pressed() -> void:
-	DataManager.store_team_in_db()
-	await DataManager.team_stored_in_db
-	GameManager.change_to_combat_scene()
+func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		DataManager.store_team_in_db()
+		await DataManager.team_stored_in_db
+		GameManager.change_to_combat_scene()
+
+func _on_reroll_button_pressed(_camera: Node, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if Input.is_action_just_pressed("LeftClick"):
+		reroll_requested.emit()
 
 func _connect_signals() -> void:
 
@@ -29,3 +36,7 @@ func _connect_signals() -> void:
 	%DragDropManager.unit_placed.connect(update_unit_count_label)
 	%MergeManager.unit_merge_success.connect(update_unit_count_label)
 	%GoldManager.unit_sold.connect(update_unit_count_label)
+	
+	# Connect signals for hex buttons
+	%CombatButton.get_node("Area3D").input_event.connect(_on_start_combat_button_pressed)
+	%RerollButton.get_node("Area3D").input_event.connect(_on_reroll_button_pressed)
