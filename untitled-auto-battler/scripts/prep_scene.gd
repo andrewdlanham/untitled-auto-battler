@@ -22,9 +22,16 @@ func update_unit_count_label() -> void:
 
 func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		DataManager.store_team_in_db()
-		await DataManager.team_stored_in_db
-		GameManager.change_to_combat_scene()
+		var units = GameManager.get_player_unit_info()
+		# Make sure units is not empty
+		if (units == []):
+			print("No team to store...")
+			GameManager.change_to_combat_scene()
+			return
+		else:
+			DataManager.store_team_in_db(units)
+			await DataManager.team_stored_in_db
+			GameManager.change_to_combat_scene()
 
 func _on_reroll_button_pressed(_camera: Node, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if Input.is_action_just_pressed("LeftClick"):
