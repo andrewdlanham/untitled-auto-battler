@@ -2,7 +2,6 @@ extends Node
 
 @onready var shop_roll_audio: AudioStreamPlayer = $ShopRollAudio
 
-
 var common_units: Array[Resource] = [
 	
 	load(UnitRegistry.get_scene_path("unit_warrior")),
@@ -80,10 +79,12 @@ func get_current_shop_odds() -> Array:
 
 func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
-	%RerollButton.reroll_requested.connect(_on_roll_shop_pressed)
+	%RerollButton.get_node("Area3D").input_event.connect(_on_roll_shop_pressed)
 
-func _on_roll_shop_pressed() -> void:
-	shop_roll_requested.emit()
+func _on_roll_shop_pressed(camera: Camera3D, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if (event.is_action_pressed("LeftClick")):
+		print("on roll shop pressed")
+		shop_roll_requested.emit()
 
 func _on_roll_shop_approved() -> void:
 	roll_shop_units()

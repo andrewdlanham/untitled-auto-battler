@@ -28,7 +28,5 @@ mesh = SubResource("CylinderMesh_3fwpo")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.00263542, 0)
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_arpa0")
-
-[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

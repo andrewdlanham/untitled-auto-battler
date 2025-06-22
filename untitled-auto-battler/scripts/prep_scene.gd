@@ -1,7 +1,5 @@
 extends Node3D
 
-signal reroll_requested
-
 func _ready() -> void:
 	_connect_signals()
 	GameManager.player_units_node = %PlayerUnits
@@ -33,10 +31,6 @@ func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _posi
 			await DataManager.team_stored_in_db
 			GameManager.change_to_combat_scene()
 
-func _on_reroll_button_pressed(_camera: Node, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if Input.is_action_just_pressed("LeftClick"):
-		reroll_requested.emit()
-
 func _connect_signals() -> void:
 
 	# Everything that should trigger update_unit_count_label()
@@ -46,4 +40,3 @@ func _connect_signals() -> void:
 	
 	# Connect signals for hex buttons
 	%CombatButton.get_node("Area3D").input_event.connect(_on_start_combat_button_pressed)
-	%RerollButton.get_node("Area3D").input_event.connect(_on_reroll_button_pressed)
