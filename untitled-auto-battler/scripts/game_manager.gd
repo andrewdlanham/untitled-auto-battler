@@ -12,6 +12,8 @@ const prep_scene_resource = preload("res://scenes/prep_scene.tscn")
 const combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 const menu_scene_resource = preload("res://scenes/menu.tscn")
 
+const WIN_THRESHOLD: int = 3	# Temporary value for testing
+
 var player_units: Array = []
 
 var preparation_scene: Node3D
@@ -19,6 +21,9 @@ var player_units_node: Node
 var player_hexes_node: Node
 
 var current_round: int
+var number_of_wins: int
+var number_of_lives: int
+
 var round_label: Label
 
 var active_scene
@@ -32,6 +37,8 @@ func _ready() -> void:
 func start_game() -> void:
 
 	current_round = 1
+	number_of_wins = 0
+	number_of_lives = 1		# Temporary value for testing
 
 	remove_active_scene()
 	preparation_scene = prep_scene_resource.instantiate()
@@ -45,6 +52,8 @@ func change_to_menu_scene() -> void:
 	var menu_scene = menu_scene_resource.instantiate()
 	get_tree().root.add_child(menu_scene)
 	active_scene = menu_scene
+
+	SoundManager.stop_music()
 
 func change_to_combat_scene() -> void:
 

@@ -35,6 +35,9 @@ func play_music(track_name: String) -> void:
 	if !is_muted:
 		music_player.play(0.0)
 
+func stop_music() -> void:
+	music_player.stop()
+
 func toggle_music() -> void:
 	is_muted = !is_muted
 	if is_muted:
