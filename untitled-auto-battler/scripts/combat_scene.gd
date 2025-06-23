@@ -33,6 +33,7 @@ func _process(_delta: float) -> void:
 			if (GameManager.number_of_wins >= GameManager.WIN_THRESHOLD):
 				%RunResultLabel.text = "You Win!"
 				run_summary.visible = true
+				DataManager.increment_user_wins()
 			elif (GameManager.number_of_lives <= 0):
 				%RunResultLabel.text = "You Lost..."
 				run_summary.visible = true
