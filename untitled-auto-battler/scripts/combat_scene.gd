@@ -27,16 +27,16 @@ func _process(_delta: float) -> void:
 			end_combat()
 			if (num_enemy_units == 0):
 				GameManager.number_of_wins += 1
+				update_wins_label()
 			else:
 				GameManager.number_of_lives -= 1
-			# Handle player winning
+				update_lives_label()
+			# Player reaches win threshold
 			if (GameManager.number_of_wins >= GameManager.WIN_THRESHOLD):
-				%RunResultLabel.text = "You Win!"
-				run_summary.visible = true
-				DataManager.increment_user_wins()
+				handle_end_of_run(true)
+			# Player runs out of lives
 			elif (GameManager.number_of_lives <= 0):
-				%RunResultLabel.text = "You Lost..."
-				run_summary.visible = true
+				handle_end_of_run(false)
 			# Keep playing
 			else:
 				continue_button.visible = true
@@ -86,3 +86,14 @@ func update_wins_label() -> void:
 
 func update_lives_label() -> void:
 	lives_label.text = "LIVES: " + str(GameManager.number_of_lives) + " / 5" 
+
+func handle_end_of_run(player_won: bool) -> void:
+	%RunResultLabel.text = "You Win!" if player_won else "You Lost..."
+	var stats_to_add = {
+		"wins": 1 if player_won else 0,
+		"losses": 1 if !player_won else 0,
+		"round_wins": GameManager.number_of_wins,
+		"round_losses": GameManager.MAX_LIVES - GameManager.number_of_lives
+	}
+	DataManager.increment_stats(stats_to_add)
+	run_summary.visible = true

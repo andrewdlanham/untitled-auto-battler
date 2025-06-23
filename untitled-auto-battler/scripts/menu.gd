@@ -12,11 +12,6 @@ func _on_play_game_button_pressed() -> void:
 	print("Starting game...")
 	GameManager.start_game()
 
-
-func _on_increment_user_wins_button_pressed() -> void:
-	print("id: " + str(DataManager.user_id))
-	DataManager.increment_user_wins()
-
 func _on_get_leaderboard_pressed() -> void:
 	DataManager.get_leaderboard()
 

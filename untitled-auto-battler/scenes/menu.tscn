@@ -63,13 +63,6 @@ text = "UNTITLED AUTO BATTLER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IncrementUserWinsButton" type="Button" parent="."]
-offset_left = 1024.0
-offset_top = 568.0
-offset_right = 1153.0
-offset_bottom = 599.0
-text = "ADD WIN (TEST)"
-
 [node name="GetLeaderboard" type="Button" parent="."]
 offset_left = 960.0
 offset_top = 192.0
@@ -84,5 +77,4 @@ offset_right = 1216.0
 offset_bottom = 512.0
 
 [connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_button_pressed"]
-[connection signal="pressed" from="IncrementUserWinsButton" to="." method="_on_increment_user_wins_button_pressed"]
 [connection signal="pressed" from="GetLeaderboard" to="." method="_on_get_leaderboard_pressed"]
