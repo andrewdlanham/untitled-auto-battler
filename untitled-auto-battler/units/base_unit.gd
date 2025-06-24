@@ -199,10 +199,10 @@ func attack_target_enemy() -> void:
 	await get_tree().create_timer(attack_length / 2.00).timeout
 
 	if is_instance_valid(target_enemy):
-		target_enemy.subtract_health(attack_damage)
 		attack_audio.pitch_scale = randf_range(0.5, 1.5)
 		attack_audio.volume_db = randf_range(-3.0, -1.0)
 		attack_audio.play()
+		target_enemy.subtract_health(attack_damage)
 
 func _on_attack_animation_complete(_animation_name: String) -> void:
 	animation_player.animation_finished.disconnect(_on_attack_animation_complete)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3sbmceqmha5y"]
+[gd_scene load_steps=4 format=3 uid="uid://b3sbmceqmha5y"]
 
 [ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_bys4m"]
+[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://assets/fonts/noto-emoji.ttf" id="2_y2ly1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w16vv"]
 albedo_color = Color(0.792291, 0.561691, 0.256414, 1)
@@ -10,7 +11,8 @@ hex_type = "SHOP"
 
 [node name="Label3D" type="Label3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.00972033, 0.0591069, 4.24889e-10)
-text = "𐪞"
+text = "🔸"
+font = ExtResource("2_y2ly1")
 font_size = 40
 
 [node name="HexMesh" parent="." index="2"]

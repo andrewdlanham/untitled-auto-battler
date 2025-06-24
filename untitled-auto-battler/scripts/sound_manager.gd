@@ -12,7 +12,7 @@ var current_track: String
 func _ready() -> void:
 	add_child(sfx_player)
 	add_child(music_player)
-	music_player.volume_db = -20	# Static volume until sound options are added
+	music_player.volume_db = -10	# Static volume until sound options are added
 
 	sfx["roll_shop"] = preload("res://assets/sounds/roll_shop.ogg")
 	sfx["unit_placed"] = preload("res://assets/sounds/unit_placed.ogg")
@@ -32,8 +32,9 @@ func play_sfx(sound_name: String) -> void:
 func play_music(track_name: String) -> void:
 	music_player.stream = music_tracks[track_name]
 	current_track = track_name
-	if !is_muted:
-		music_player.play(0.0)
+	music_player.play(0.0)
+	if is_muted:
+		music_player.stream_paused = true
 
 func stop_music() -> void:
 	music_player.stop()
@@ -41,7 +42,6 @@ func stop_music() -> void:
 func toggle_music() -> void:
 	is_muted = !is_muted
 	if is_muted:
-		current_track_position = music_player.get_playback_position()
-		music_player.stop()
+		music_player.stream_paused = true
 	if !is_muted:
-		music_player.play(current_track_position)
+		music_player.stream_paused = false
