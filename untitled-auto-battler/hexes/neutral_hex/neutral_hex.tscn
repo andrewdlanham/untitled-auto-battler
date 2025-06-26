@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ban0igh0lgmrq"]
+
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_03nmm"]
+[ext_resource type="Material" uid="uid://bqp6mpqaejcd2" path="res://hexes/neutral_hex/neutral_hex_mat.tres" id="2_wqnex"]
+
+[node name="NeutralHex" instance=ExtResource("1_03nmm")]
+hex_type = "NEUTRAL"
+
+[node name="HexMesh" parent="Area3D" index="0"]
+surface_material_override/0 = ExtResource("2_wqnex")

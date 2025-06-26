@@ -214,6 +214,10 @@ shape = SubResource("BoxShape3D_ieagd")
 [node name="HealthBarAnchorPoint" type="Node3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
+[node name="BodyMesh" type="MeshInstance3D" parent="Body"]
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="Body"]
+
 [node name="FrozenMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0311094, 0)
 visible = false

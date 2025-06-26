@@ -3,7 +3,7 @@ extends Node3D
 class_name Hex
 
 @onready var snap_point: Node3D = $SnapPoint
-@onready var hex_mesh: MeshInstance3D = $HexMesh
+@onready var hex_mesh: MeshInstance3D = $Area3D/HexMesh
 @onready var hex_id_label: Label3D = $HexIDLabel
 
 @export var hex_id: String

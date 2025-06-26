@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cro3t078pm8e7"]
+
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_lk4sb"]
+[ext_resource type="Material" uid="uid://bjy5yqaqspsif" path="res://hexes/bench_hex/bench_hex_mat.tres" id="2_2238a"]
+
+[node name="BenchHex" instance=ExtResource("1_lk4sb")]
+hex_type = "BENCH"
+
+[node name="HexMesh" parent="Area3D" index="0"]
+surface_material_override/0 = ExtResource("2_2238a")
+
+[node name="SymbolLabel" parent="." index="3"]
+visible = true
+text = "o"
+font_size = 10
+outline_size = 20

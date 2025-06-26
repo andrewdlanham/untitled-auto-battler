@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dir1eth63qjck"]
+
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_uvvls"]
+[ext_resource type="Material" uid="uid://bp2gyqgabrfxs" path="res://hexes/reroll_button/reroll_button_mat.tres" id="2_cc65t"]
+
+[node name="RerollButton" instance=ExtResource("1_uvvls")]
+
+[node name="HexMesh" parent="Area3D" index="0"]
+surface_material_override/0 = ExtResource("2_cc65t")
+
+[node name="SymbolLabel" parent="." index="3"]
+transform = Transform3D(-0.946424, -0.322926, -4.36539e-08, -4.20391e-08, -1.19751e-08, 1, -0.322926, 0.946424, -2.24196e-09, -0.0152462, 0.0367567, 0.051746)
+visible = true
+text = "↻"
+font_size = 100

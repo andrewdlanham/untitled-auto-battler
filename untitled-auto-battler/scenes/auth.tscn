@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dof5pa3myt7la"]
 
 [ext_resource type="Script" path="res://db/auth.gd" id="1_7tcv5"]
-[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://assets/fonts/Exo2-Regular.ttf" id="2_y37gr"]
-[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://auth_theme.tres" id="3_58357"]
+[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_y37gr"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/auth_theme.tres" id="3_58357"]
 [ext_resource type="Script" path="res://scripts/base_button.gd" id="4_vbk7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoxdc"]

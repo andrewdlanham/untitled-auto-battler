@@ -1,29 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://qex5mycnoe1"]
+[gd_scene load_steps=7 format=4 uid="uid://qex5mycnoe1"]
 
 [ext_resource type="Script" path="res://hexes/base_hex.gd" id="1_nb18b"]
-[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://assets/fonts/noto-emoji.ttf" id="2_v3lst"]
+[ext_resource type="ArrayMesh" uid="uid://0gcac2cgt007" path="res://hexes/base_hex_mesh.res" id="2_jcq8f"]
+[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="2_v3lst"]
+[ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="3_8m3ec"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eexbn"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6h2pe"]
+_surfaces = [{
+"aabb": AABB(-0.274883, -0.0370605, -0.315667, 0.549766, 0.0741211, 0.631334),
+"attribute_data": PackedByteArray("wP8/P+yNAj8AAIA/Ef3/PgAAgLcR/f8+AP1/PuyNAj8AAIA/pHB9twAAgLekcH231lNVPxH9/z72M3U/mUYhP9ZTVT8R/f8+1lNVP6RwfbfsZuo+mUYhP9ZTVT+kcH23qqkqPxH9/z6qqSo/Ef3/PvYzdT/1t14/7GbqPvW3Xj+qqSo/pHB9t6qpKj+kcH23AP//PhH9/z7A/z8/pHB9PwD9fz6kcH0/AP//PqRwfbespqo+Ef3/PorJCj/1t14/rKaqPhH9/z6spqo+pHB9t6CQLD31t14/rKaqPqRwfbeopCo+Ef3/PqikKj4R/f8+iskKP5lGIT+gkCw9mUYhP6ikKj6kcH23qKQqPqRwfbcAAIA/Ef3/PgAAgD8R/f8+AACAtxH9/z4AAIA/pHB9twAAgLekcH23AACAt6RwfbcA//8+Ef3/PgD//z4R/f8+AP//PhH9/z4A//8+pHB9twD//z6kcH23AP//PqRwfbfA/z8/7I0CPwAAgD8R/f8+AACAtxH9/z4A/X8+7I0CPwAAgD+kcH23AACAt6RwfbfWU1U/pHB9t9ZTVT+kcH237GbqPplGIT8A//8+Ef3/PgD//z4R/f8+wP8/P6RwfT8A/X8+pHB9PwD//z6kcH23AP//PqRwfbeopCo+Ef3/PqikKj4R/f8+iskKP5lGIT8="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AQAEAAsAAQALAAgABgAJABAABgAQAAwADQARABUADQAVABIAEgAVABsAEgAbABgADwAKAAMAAwAfABoAGgAUAA8AAwAaAA8AFgAZACAAFgAgABwAHQAhAAUAHQAFAAIAHgAAAAcABwAOABMAEwAXAB4ABwATAB4A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("B1dFO8jMF70Zn6G+B1dFO8jMF70Zn6G+B1dFO8jMF70Zn6G+AldFO8jMFz0Zn6G+AldFO8jMFz0Zn6G+AldFO8jMFz0Zn6G+STKLPqbMF71wTSS+STKLPqbMF71wTSS+STKLPqbMF71wTSS+STKLPqbMFz1wTSS+STKLPqbMFz1wTSS+STKLPqbMFz1wTSS+fb2MPrTMF70B8h4+fb2MPrTMF70B8h4+fb2MPrTMF70B8h4+fb2MPrTMFz0B8h4+fb2MPrTMFz0B8h4+fb2MPrTMFz0B8h4+RlRFO63MF70cn6E+RlRFO63MF70cn6E+RlRFO63MFz0cn6E+RlRFO63MFz0cn6E+TDKLvrrMF739SiQ+TDKLvrrMF739SiQ+TDKLvrrMF739SiQ+TDKLvrrMFz39SiQ+TDKLvrrMFz39SiQ+TDKLvrrMFz39SiQ+fL2Mvq3MF71y9B6+fL2Mvq3MF71y9B6+fL2Mvq3MF71y9B6+fL2Mvq3MFz1y9B6+fL2Mvq3MFz1y9B6+fL2Mvq3MFz1y9B6+B1dFO8jMF70Zn6G+B1dFO8jMF70Zn6G+B1dFO8jMF70Zn6G+AldFO8jMFz0Zn6G+AldFO8jMFz0Zn6G+AldFO8jMFz0Zn6G+RlRFO63MF70cn6E+RlRFO63MF70cn6E+RlRFO63MF70cn6E+RlRFO63MFz0cn6E+RlRFO63MFz0cn6E+RlRFO63MFz0cn6E+B1dFO8jMF70Zn6G+B1dFO8jMF70Zn6G+B1dFO8jMF70Zn6G+AldFO8jMFz0Zn6G+AldFO8jMFz0Zn6G+AldFO8jMFz0Zn6G+STKLPqbMFz1wTSS+STKLPqbMFz1wTSS+STKLPqbMFz1wTSS+RlRFO63MF70cn6E+RlRFO63MF70cn6E+RlRFO63MF70cn6E+RlRFO63MFz0cn6E+RlRFO63MFz0cn6E+RlRFO63MFz0cn6E+fL2Mvq3MF71y9B6+fL2Mvq3MF71y9B6+fL2Mvq3MF71y9B6+U8gAAP3//z9TyAIA6Bco1as3AQBTKgq0rDf+//7//79UyPz/5xfWqq43/P9QKvLL3dHnM84WLPPd0eczhbcIKt7R6DO5FHeZ3NEXzM0W0ozc0RjMhrcGqt3RFsy6FIfm5rPdUTPp04zms95RROuG5uez3VEN1MIb5bMhrhDUw5vlsyGuMOkr8+azIa5F63iZ/39TSP7//7//f1FI/v//P/9/q7f+//+//3+rt/7//r8aTNxRp5lmyxlM3FGHt/dVGEzdUfCyorUZTCGuppmXtBhMIq6Gt/bVGEwhrvCyW8ojLuYzWmaYtCIu5zMPTVzKIS7lMxDUO2QjLhrMD9Q65CMuGMxYZmXLIi4WzBBNobXL9Iwvyhz344n/oUSXFNeYXg0gN5xDPLvx8i3KXBszmWwEILzAS225jgL3zPNJ09Hto8xL8O3d3AxNeIeVyELB5FQKNTO8OLEuuFPM/NrTl42yOmwZ+EbfhWjGq4LaesRbW5gSStjHSnT8HeWbGt/XlhE8E3AwurJDscPzG+vQrmrqcei6GrekrAqR68QtzczW0mfW7BAKl7bYhpuL6T+JWsEJ09+7lLC3n1+RUfyfrKNsXlUR4YW8a27lG+/fjEdvkLPplPEWsQOQIKcF+4SzOmTPaMDbur1LLz1cypPLuDQjOi+YSpG6rT9pL6Tdr2I=")
+}]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_smw0l"]
-material = SubResource("StandardMaterial3D_eexbn")
-height = 0.1
-radial_segments = 6
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cg0n2"]
 
 [node name="BaseHex" type="Node3D"]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0, 0)
 script = ExtResource("1_nb18b")
 hex_id = "X"
 hex_type = "BASE"
 
 [node name="SnapPoint" type="Node3D" parent="." groups=["Snap Points"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
-[node name="HexMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_smw0l")
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="HexMesh" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.000168681, -0.00156403, 5.32865e-05)
+mesh = ExtResource("2_jcq8f")
+skeleton = NodePath("../..")
+
+[node name="OutlineMesh" type="MeshInstance3D" parent="Area3D/HexMesh"]
+mesh = SubResource("ArrayMesh_6h2pe")
+surface_material_override/0 = ExtResource("3_8m3ec")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.6, 0, -6.35858e-09, 0, 0.05, 0, 6.35858e-09, 0, 0.6, -4.24056e-19, 1.5522e-10, 9.70128e-12)
+shape = SubResource("CylinderShape3D_cg0n2")
 
 [node name="HexIDLabel" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -3.82137e-15, 4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -0.359193, 0.0564748, 0.206741)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -3.82137e-15, 4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -0.207915, 0.0298143, 0.120752)
 visible = false
+text = "-"
 font = ExtResource("2_v3lst")
 font_size = 20
+
+[node name="SymbolLabel" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.0367567, 0)
+visible = false
+text = "-"
+font = ExtResource("2_v3lst")
+font_size = 40

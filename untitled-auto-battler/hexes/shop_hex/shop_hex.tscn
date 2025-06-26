@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3sbmceqmha5y"]
+
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_bys4m"]
+[ext_resource type="Material" uid="uid://kmb2ibjdgtrl" path="res://hexes/shop_hex/shop_hex_mat.tres" id="2_vdxi8"]
+
+[node name="ShopHex" instance=ExtResource("1_bys4m")]
+hex_type = "SHOP"
+
+[node name="HexMesh" parent="Area3D" index="0"]
+surface_material_override/0 = ExtResource("2_vdxi8")
+
+[node name="SymbolLabel" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.0353262, 0)
+visible = true
+text = "🔸"

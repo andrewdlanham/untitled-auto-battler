@@ -29,3 +29,9 @@ untitled-auto-battler/icon.svg.import
 untitled-auto-battler/models/*
 untitled-auto-battler/_docs/*
 /untitled-auto-battler/assets/*
+*.blend
+
+**/meshes
+**/*.blend.*
+**/fonts/*
+**/units/*

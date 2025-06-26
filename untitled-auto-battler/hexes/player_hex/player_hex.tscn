@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2fosvrk6p20p"]
+
+[ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_b8ep1"]
+[ext_resource type="Material" uid="uid://cg6v1ip2w3fu2" path="res://hexes/player_hex/player_hex_mat.tres" id="2_7ckuh"]
+
+[node name="PlayerHex" instance=ExtResource("1_b8ep1")]
+hex_type = "PLAYER"
+
+[node name="HexMesh" parent="Area3D" index="0"]
+surface_material_override/0 = ExtResource("2_7ckuh")
+
+[node name="HexIDLabel" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -3.82137e-15, 4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -0.359193, 0.108459, 0.206741)

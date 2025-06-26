@@ -12,7 +12,7 @@ const prep_scene_resource = preload("res://scenes/prep_scene.tscn")
 const combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 const menu_scene_resource = preload("res://scenes/menu.tscn")
 
-const WIN_THRESHOLD: int = 1
+const WIN_THRESHOLD: int = 10
 const MAX_LIVES: int = 5
 
 var player_units: Array = []
@@ -39,7 +39,7 @@ func start_game() -> void:
 
 	current_round = 1
 	number_of_wins = 0
-	number_of_lives = 1
+	number_of_lives = 5
 
 	remove_active_scene()
 	preparation_scene = prep_scene_resource.instantiate()

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://bt21n7e5vhsxq"]
 
-[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://assets/fonts/Exo2-Regular.ttf" id="1_xgmpd"]
+[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="1_xgmpd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbgcj"]
 content_margin_left = 4.0
