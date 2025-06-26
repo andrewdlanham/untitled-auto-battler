@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://21p5mfvkrq2b"]
+
+[ext_resource type="Script" path="res://units/unit_data.gd" id="1_n083r"]
+
+[resource]
+script = ExtResource("1_n083r")
+level_stats = {
+1: {
+"attack_damage": 15,
+"attack_speed": 0.6,
+"max_health": 25,
+"scale": 1.0
+},
+2: {
+"attack_damage": 25,
+"attack_speed": 0.9,
+"max_health": 50,
+"scale": 1.25
+},
+3: {
+"attack_damage": 40,
+"attack_speed": 1.2,
+"max_health": 75,
+"scale": 1.5
+}
+}

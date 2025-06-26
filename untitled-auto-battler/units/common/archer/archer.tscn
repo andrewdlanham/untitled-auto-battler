@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_poik8"]
 [ext_resource type="Resource" uid="uid://4bt8njugdluh" path="res://units/common/archer/archer_stats.tres" id="2_csh8p"]
-[ext_resource type="ArrayMesh" uid="uid://0n50dtp6llc7" path="res://units/common/archer/meshes/archer_Cylinder.res" id="3_5aavn"]
+[ext_resource type="ArrayMesh" uid="uid://0n50dtp6llc7" path="res://units/common/archer/meshes/archer_body.res" id="3_5aavn"]
 [ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="4_hkp45"]
-[ext_resource type="ArrayMesh" uid="uid://5uevrpsyl1nj" path="res://units/common/archer/meshes/archer_Cube_042.res" id="5_vs60f"]
-[ext_resource type="ArrayMesh" uid="uid://b82au4pw4vhys" path="res://units/common/archer/meshes/archer_Sphere_002.res" id="6_gss41"]
+[ext_resource type="ArrayMesh" uid="uid://5uevrpsyl1nj" path="res://units/common/archer/meshes/archer_bow.res" id="5_vs60f"]
+[ext_resource type="ArrayMesh" uid="uid://b82au4pw4vhys" path="res://units/common/archer/meshes/archer_eyes.res" id="6_gss41"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_234a8"]
 viewport_path = NodePath("HealthBar/SubViewport")
@@ -66,6 +66,6 @@ mesh = ExtResource("5_vs60f")
 mesh = SubResource("ArrayMesh_182r7")
 surface_material_override/0 = ExtResource("4_hkp45")
 
-[node name="ArcherSphere002" type="MeshInstance3D" parent="Body" index="4"]
+[node name="ArcherSphere003" type="MeshInstance3D" parent="Body" index="4"]
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
 mesh = ExtResource("6_gss41")
