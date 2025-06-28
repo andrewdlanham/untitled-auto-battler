@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://bjy5yqaqspsif" path="res://hexes/bench_hex/bench_hex_mat.tres" id="2_2238a"]
 
 [node name="BenchHex" instance=ExtResource("1_lk4sb")]
+hex_id = "BENCH_X"
 hex_type = "BENCH"
 
 [node name="HexMesh" parent="Area3D" index="0"]

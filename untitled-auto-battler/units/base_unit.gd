@@ -151,6 +151,7 @@ func get_info_dict() -> Dictionary:
 		"unit_id" : self.unit_id,
 		"hex_id" : self.current_hex.hex_id,
 		"level" : self.level,
+		"frozen": self.is_frozen,
 	}
 
 func target_is_in_attack_range() -> bool:
@@ -162,9 +163,9 @@ func get_closest_enemy() -> Node3D:
 	var closest_distance: float = INF
 	var enemies
 	if team == 'PLAYER': 
-		enemies = GameManager.active_scene.get_node("EnemyUnits").get_children()
+		enemies = SceneManager.active_scene.get_node("EnemyUnits").get_children()
 	elif team == 'ENEMY': 
-		enemies = GameManager.active_scene.get_node("PlayerUnits").get_children()
+		enemies = SceneManager.active_scene.get_node("PlayerUnits").get_children()
 	for enemy in enemies:
 		if enemy.visible == false: continue
 		var distance = self.global_position.distance_to(enemy.global_position)

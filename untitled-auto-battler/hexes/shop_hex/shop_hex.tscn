@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://kmb2ibjdgtrl" path="res://hexes/shop_hex/shop_hex_mat.tres" id="2_vdxi8"]
 
 [node name="ShopHex" instance=ExtResource("1_bys4m")]
+hex_id = "SHOP_X"
 hex_type = "SHOP"
 
 [node name="HexMesh" parent="Area3D" index="0"]

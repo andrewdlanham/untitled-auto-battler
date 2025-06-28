@@ -70,16 +70,18 @@ func _on_unit_died(_unit: Unit, team: String) -> void:
 	if (team == "PLAYER"): num_player_units -= 1
 	if (team == "ENEMY"): num_enemy_units -= 1
 
-func _on_combat_team_received(unit_array) -> void:
-	GameManager.construct_enemy_team(unit_array, %EnemyHexes.get_children(), %EnemyUnits)
-	GameManager.construct_player_team(%PlayerHexes.get_children(), %PlayerUnits)
+func _on_combat_team_received(enemy_unit_info_array) -> void:
+	GameManager.construct_team(enemy_unit_info_array, %EnemyHexes.get_children(), %EnemyUnits)
+	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
 	start_combat()
 
 func _on_menu_button_pressed() -> void:
-	GameManager.change_to_menu_scene()
+	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
+	SoundManager.stop_music()
 
 func _on_continue_button_pressed() -> void:
-	GameManager.change_to_prep_scene()
+	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
+	SoundManager.play_music("prep_scene_music")
 
 func update_wins_label() -> void:
 	wins_label.text = "WINS: " + str(GameManager.number_of_wins) + " / " + str(GameManager.WIN_THRESHOLD)
