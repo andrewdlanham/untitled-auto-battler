@@ -122,6 +122,7 @@ grow_vertical = 2
 text = "Email"
 
 [node name="EmailInput" type="LineEdit" parent="LoginControl"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,6 +153,7 @@ grow_vertical = 2
 text = "Password"
 
 [node name="PasswordInput" type="LineEdit" parent="LoginControl"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,24 +169,6 @@ grow_vertical = 2
 placeholder_text = "Enter password"
 secret = true
 
-[node name="RegisterButton" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 464.0
-offset_top = 552.0
-offset_right = 816.0
-offset_bottom = 611.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("3_58357")
-theme_override_fonts/font = ExtResource("2_y37gr")
-theme_override_font_sizes/font_size = 40
-text = "REGISTER"
-script = ExtResource("4_vbk7b")
-
 [node name="TestLogin" type="Button" parent="."]
 offset_left = 984.0
 offset_top = 640.0
@@ -196,11 +180,36 @@ script = ExtResource("4_vbk7b")
 
 [node name="PlayAsGuestButton" type="Button" parent="."]
 offset_left = 464.0
-offset_top = 632.0
+offset_top = 568.0
 offset_right = 816.0
-offset_bottom = 696.0
+offset_bottom = 632.0
 theme = ExtResource("3_58357")
 text = "PLAY AS GUEST"
+script = ExtResource("4_vbk7b")
+
+[node name="NoAccountLabel" type="Label" parent="."]
+offset_left = 432.0
+offset_top = 512.0
+offset_right = 657.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 20
+text = "Don't have an account?"
+
+[node name="GoToRegister" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 680.0
+offset_top = 512.0
+offset_right = 848.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_y37gr")
+theme_override_font_sizes/font_size = 20
+text = "REGISTER"
 script = ExtResource("4_vbk7b")
 
 [node name="ErrorLabel" type="Label" parent="."]
@@ -216,6 +225,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="LoginControl/LoginButton" to="." method="_on_login_button_pressed"]
-[connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
 [connection signal="pressed" from="TestLogin" to="." method="_on_test_login_pressed"]
 [connection signal="pressed" from="PlayAsGuestButton" to="." method="_on_play_as_guest_pressed"]
+[connection signal="pressed" from="GoToRegister" to="." method="_on_go_to_register_pressed"]

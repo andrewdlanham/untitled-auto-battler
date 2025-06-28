@@ -19,7 +19,7 @@ class_name Unit
 @export var unit_name: String
 @export var unit_id: String
 
-var cost: int = 2
+var cost: int = 3
 @export var level: int = 1
 @export var rarity: int = 1
 

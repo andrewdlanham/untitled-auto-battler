@@ -1,7 +1,8 @@
 extends Node
 
 var unit_cap_by_round: Array = [
-	{ "rounds": range(1, 4), "cap": 3 },	# Rounds 1-3
+	{ "rounds": range(1, 2), "cap": 2 },	# Round 1
+	{ "rounds": range(2, 4), "cap": 3 },	# Rounds 2-3
 	{ "rounds": range(4, 6), "cap": 4 },	# Rounds 4-5
 	{ "rounds": range(6, 8), "cap": 5 },	# Rounds 6-7
 	{ "rounds": range(8, 10), "cap": 6 },	# Rounds 8-9
@@ -11,6 +12,8 @@ var unit_cap_by_round: Array = [
 const prep_scene_resource = preload("res://scenes/prep_scene.tscn")
 const combat_scene_resource = preload("res://scenes/combat_scene.tscn")
 const menu_scene_resource = preload("res://scenes/menu.tscn")
+const register_scene_resource = preload("res://scenes/register.tscn")
+const login_scene_resource = preload("res://scenes/auth.tscn")
 
 const WIN_THRESHOLD: int = 10
 const MAX_LIVES: int = 5
@@ -47,6 +50,18 @@ func start_game() -> void:
 	active_scene = preparation_scene
 
 	SoundManager.play_music("prep_scene_music")
+
+func change_to_register_scene() -> void:
+	remove_active_scene()
+	var register_scene = register_scene_resource.instantiate()
+	get_tree().root.add_child(register_scene)
+	active_scene = register_scene
+
+func change_to_login_scene() -> void:
+	remove_active_scene()
+	var login_scene = login_scene_resource.instantiate()
+	get_tree().root.add_child(login_scene)
+	active_scene = login_scene
 
 func change_to_menu_scene() -> void:
 	remove_active_scene()

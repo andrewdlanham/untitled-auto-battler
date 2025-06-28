@@ -81,7 +81,7 @@ func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
 	%RerollButton.get_node("Area3D").input_event.connect(_on_roll_shop_pressed)
 
-func _on_roll_shop_pressed(camera: Camera3D, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_roll_shop_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if (event.is_action_pressed("LeftClick")):
 		print("on roll shop pressed")
 		shop_roll_requested.emit()
