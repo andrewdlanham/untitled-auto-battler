@@ -54,7 +54,7 @@ font = ExtResource("2_v3lst")
 font_size = 20
 
 [node name="SymbolLabel" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.0367567, 0)
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.0367567, 0)
 visible = false
 text = "-"
 font = ExtResource("2_v3lst")

@@ -27,7 +27,7 @@ func play_sfx(sound_name: String) -> void:
 		sfx_player.volume_db = -5	# Static volume until sound options are added
 		sfx_player.play()
 	else:
-		print("SFX not found:", name)
+		printerr("SFX not found:", name)
 
 func play_music(track_name: String) -> void:
 	music_player.stream = music_tracks[track_name]

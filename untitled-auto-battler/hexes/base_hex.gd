@@ -42,7 +42,7 @@ func is_bench_hex() -> bool:
 
 func connect_to_neighbor_hexes(possible_neighbor_hexes) -> void:
 	for hex in possible_neighbor_hexes:
-		if hex.name == self.name: continue
+		if (hex.hex_id == self.hex_id) and (hex.hex_type == self.hex_type): continue
 		var distance = self.position.distance_to(hex.global_position)
 		if distance < 3:	# 3 is a temporary value for the range to check
 			neighbors.append(hex)

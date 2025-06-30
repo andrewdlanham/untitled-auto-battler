@@ -24,9 +24,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 456.0
-offset_top = 344.0
+offset_top = 568.0
 offset_right = 826.0
-offset_bottom = 448.0
+offset_bottom = 672.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_tbxqa")
@@ -40,12 +40,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 528.0
-offset_top = 648.0
-offset_right = 1216.0
+offset_left = 832.0
+offset_top = 680.0
+offset_right = 1240.0
 offset_bottom = 728.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 20
 text = "Logged in as: ..."
 horizontal_alignment = 2
@@ -64,21 +66,18 @@ text = "UNTITLED AUTO BATTLER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GetLeaderboard" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 264.0
-offset_right = 325.0
-offset_bottom = 320.0
-theme = ExtResource("2_tbxqa")
-theme_override_font_sizes/font_size = 20
-text = "VIEW LEADERBOARD"
-
 [node name="LeaderboardLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 64.0
-offset_top = 344.0
-offset_right = 384.0
-offset_bottom = 640.0
+offset_left = 448.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 560.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_8lf7a")
+theme_override_font_sizes/font_size = 20
+text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_button_pressed"]
-[connection signal="pressed" from="GetLeaderboard" to="." method="_on_get_leaderboard_pressed"]

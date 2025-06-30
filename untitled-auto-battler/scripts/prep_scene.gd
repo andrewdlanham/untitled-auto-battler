@@ -21,7 +21,7 @@ func start_new_round() -> void:
 
 func update_unit_count_label() -> void:
 	await get_tree().process_frame		# Allows units time to leave scene before updating the unit count label
-	%UnitCountLabel.text = str(%PlayerUnits.get_children().size()) + " / " + str(GameManager.get_current_unit_cap())
+	%UnitCountLabel.text = "Units:   " + str(%PlayerUnits.get_children().size()) + " / " + str(GameManager.get_current_unit_cap())
 
 func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -31,7 +31,6 @@ func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _posi
 		GameManager.shop_units = get_unit_info(%ShopUnits)
 
 		if (GameManager.player_units == []):
-			print("No team to store...")
 			SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
 			SoundManager.play_music("combat_scene_music")
 		else:
@@ -51,7 +50,7 @@ func _connect_signals() -> void:
 	%CombatButton.get_node("Area3D").input_event.connect(_on_start_combat_button_pressed)
 
 func update_round_label() -> void:
-	round_label.text = "Round" + "\n" + str(GameManager.current_round) + " / 15"
+	round_label.text = "Round   " + str(GameManager.current_round)
 
 func get_unit_info(parent_node: Node) -> Array:
 	var unit_info_array = []

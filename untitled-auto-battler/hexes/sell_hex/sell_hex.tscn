@@ -10,7 +10,9 @@ hex_type = "SELL"
 surface_material_override/0 = ExtResource("2_17hmg")
 
 [node name="SymbolLabel" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0.0367567, 0)
 visible = true
 modulate = Color(0, 0, 0, 1)
-text = "❌"
-font_size = 30
+text = "🗑︎"
+font_size = 60
+outline_size = 0

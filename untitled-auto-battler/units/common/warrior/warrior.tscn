@@ -11,6 +11,7 @@
 viewport_path = NodePath("HealthBar/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mx8nm"]
+size = Vector3(1, 1.24634, 1.72839)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rgmig"]
 _surfaces = [{
@@ -47,6 +48,7 @@ unit_id = "unit_warrior"
 texture = SubResource("ViewportTexture_qrle7")
 
 [node name="CollisionShape3D" parent="Body" index="0"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2.43389e-07, 0.0760986, 0.162855)
 shape = SubResource("BoxShape3D_mx8nm")
 
 [node name="HealthBarAnchorPoint" parent="Body" index="1"]

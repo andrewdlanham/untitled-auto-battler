@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dir1eth63qjck"]
+[gd_scene load_steps=4 format=3 uid="uid://dir1eth63qjck"]
 
 [ext_resource type="PackedScene" uid="uid://qex5mycnoe1" path="res://hexes/base_hex.tscn" id="1_uvvls"]
 [ext_resource type="Material" uid="uid://bp2gyqgabrfxs" path="res://hexes/reroll_button/reroll_button_mat.tres" id="2_cc65t"]
+[ext_resource type="Texture2D" uid="uid://ccvjpwuv34wnh" path="res://assets/images/Refresh--Streamline-Rounded-Material-Symbols (1).png" id="3_xr6bd"]
 
 [node name="RerollButton" instance=ExtResource("1_uvvls")]
 
@@ -10,6 +11,9 @@ surface_material_override/0 = ExtResource("2_cc65t")
 
 [node name="SymbolLabel" parent="." index="3"]
 transform = Transform3D(-0.946424, -0.322926, -4.36539e-08, -4.20391e-08, -1.19751e-08, 1, -0.322926, 0.946424, -2.24196e-09, -0.0152462, 0.0367567, 0.051746)
-visible = true
 text = "↻"
 font_size = 100
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(-0.0518422, 0.172373, 7.53465e-09, 0, -7.86805e-09, 0.18, 0.172373, 0.0518422, 2.2661e-09, 0, 0.0452267, 0)
+texture = ExtResource("3_xr6bd")

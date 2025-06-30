@@ -11,7 +11,13 @@ func _process(_delta: float) -> void:
 
 func _on_toggle_music_button_pressed() -> void:
 	SoundManager.toggle_music()
-	if %ToggleMusicButton.icon == MUSIC_ON:
-		%ToggleMusicButton.icon = MUSIC_OFF
+	if toggle_music_button.icon == MUSIC_ON:
+		toggle_music_button.icon = MUSIC_OFF
 	else:
-		%ToggleMusicButton.icon = MUSIC_ON
+		toggle_music_button.icon = MUSIC_ON
+
+func hide_toggle_music_button() -> void:
+	toggle_music_button.visible = false
+
+func unhide_toggle_music_button() -> void:
+	toggle_music_button.visible = true

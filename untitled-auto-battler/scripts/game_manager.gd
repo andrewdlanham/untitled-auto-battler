@@ -26,6 +26,7 @@ func start_game() -> void:
 	number_of_wins = 0
 	number_of_lives = 5
 
+	UI.unhide_toggle_music_button()
 	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
 	SoundManager.play_music("prep_scene_music")
 

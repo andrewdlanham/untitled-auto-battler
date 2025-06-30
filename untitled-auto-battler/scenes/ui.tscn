@@ -10,6 +10,7 @@ script = ExtResource("1_a06dh")
 
 [node name="FPS_Label" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -23,6 +24,7 @@ vertical_alignment = 1
 
 [node name="ToggleMusicButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -35,6 +37,12 @@ offset_bottom = -664.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"FlatButton"
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
 icon = ExtResource("1_mcr3v")
 icon_alignment = 1
 expand_icon = true

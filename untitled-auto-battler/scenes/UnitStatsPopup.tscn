@@ -1,86 +1,155 @@
-[gd_scene load_steps=2 format=3 uid="uid://dckldltq0oyfg"]
+[gd_scene load_steps=4 format=3 uid="uid://dckldltq0oyfg"]
 
 [ext_resource type="Script" path="res://scripts/unit_stats_popup.gd" id="1_7o1im"]
+[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_p4imh"]
+
+[sub_resource type="Theme" id="Theme_7jyr5"]
 
 [node name="UnitStatsPopup" type="Node2D"]
 script = ExtResource("1_7o1im")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 111.0
-offset_right = 300.0
-offset_bottom = 411.0
+[node name="Node" type="Node" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 200.0
-color = Color(0.253843, 0.253843, 0.253843, 1)
+[node name="ColorRect" type="ColorRect" parent="Node"]
+anchors_preset = -1
+anchor_left = 0.339583
+anchor_top = 0.333333
+anchor_right = 0.333333
+anchor_bottom = 0.288889
+offset_left = 613.333
+offset_top = -176.0
+offset_right = 813.333
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.344076, 0.344076, 0.344076, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="NameLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="NameLabel" type="Label" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 44.0
-offset_top = 7.0
-offset_right = 144.0
-offset_bottom = 32.0
+anchors_preset = -1
+anchor_left = 0.300521
+anchor_top = 0.0552778
+anchor_right = 0.372396
+anchor_bottom = 0.065
+offset_left = 663.333
+offset_top = 24.2
+offset_right = 763.333
+offset_bottom = 49.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_p4imh")
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="LevelLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="LevelLabel" type="Label" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 22.0
-offset_top = 50.0
-offset_right = 182.0
-offset_bottom = 75.0
+anchors_preset = -1
+anchor_left = 0.330208
+anchor_top = 0.171667
+anchor_right = 0.342708
+anchor_bottom = 0.171667
+offset_left = 633.333
+offset_top = -20.6
+offset_right = 793.333
+offset_bottom = 4.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 15
 text = "Level"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="HealthLabel" type="Label" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 22.0
-offset_top = 75.0
-offset_right = 182.0
-offset_bottom = 100.0
+anchors_preset = -1
+anchor_left = 0.330208
+anchor_top = 0.268333
+anchor_right = 0.342708
+anchor_bottom = 0.268333
+offset_left = 633.333
+offset_top = -61.2
+offset_right = 793.333
+offset_bottom = -36.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 15
 text = "Health"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="AttackDamageLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="AttackDamageLabel" type="Label" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 22.0
-offset_top = 100.0
-offset_right = 182.0
-offset_bottom = 125.0
+anchors_preset = -1
+anchor_left = 0.330208
+anchor_top = 0.381667
+anchor_right = 0.342708
+anchor_bottom = 0.381667
+offset_left = 633.333
+offset_top = -108.8
+offset_right = 793.333
+offset_bottom = -83.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 15
-text = "Att Dam"
+text = "Attack"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="AttackSpeedLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="AttackSpeedLabel" type="Label" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 22.0
-offset_top = 125.0
-offset_right = 182.0
-offset_bottom = 150.0
+anchors_preset = -1
+anchor_left = 0.330208
+anchor_top = 0.488333
+anchor_right = 0.342708
+anchor_bottom = 0.488333
+offset_left = 633.333
+offset_top = -153.6
+offset_right = 793.333
+offset_bottom = -128.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 15
 text = "Att Speed"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="FreezeUnitButton" type="Button" parent="CanvasLayer/Control"]
+[node name="FreezeUnitButton" type="Button" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = 207.0
-offset_right = 200.0
-offset_bottom = 237.0
+anchors_preset = -1
+anchor_left = 0.339583
+anchor_top = 0.75
+anchor_right = 0.333333
+anchor_bottom = 0.75
+offset_left = 613.333
+offset_top = -300.0
+offset_right = 813.333
+offset_bottom = -270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7jyr5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_p4imh")
 text = "FREEZE UNIT"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer/Control/FreezeUnitButton" to="." method="_on_freeze_unit_button_pressed"]
+[connection signal="pressed" from="Node/FreezeUnitButton" to="." method="_on_freeze_unit_button_pressed"]

@@ -77,6 +77,7 @@ func _on_combat_team_received(enemy_unit_info_array) -> void:
 
 func _on_menu_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
+	UI.hide_toggle_music_button()
 	SoundManager.stop_music()
 
 func _on_continue_button_pressed() -> void:
