@@ -14,6 +14,7 @@ const UNIT_SCENE_PATHS = {
 	# Rare Units
 	"unit_witch" : "res://units/rare/witch/witch.tscn",
 	"unit_rogue" : "res://units/rare/rogue/rogue.tscn",
+	"unit_crossbowman" : "res://units/rare/crossbowman/crossbowman.tscn"
 }
 
 func get_scene_path(unit_id: String) -> String:
