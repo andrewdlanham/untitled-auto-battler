@@ -6,7 +6,8 @@ var common_units: Array[Resource] = [
 	
 	load(UnitRegistry.get_scene_path("unit_warrior")),
 	load(UnitRegistry.get_scene_path("unit_archer")),
-	load(UnitRegistry.get_scene_path("unit_knight"))
+	load(UnitRegistry.get_scene_path("unit_knight")),
+	load(UnitRegistry.get_scene_path("unit_farmer"))
 ]
 
 var uncommon_units: Array[Resource] = [
