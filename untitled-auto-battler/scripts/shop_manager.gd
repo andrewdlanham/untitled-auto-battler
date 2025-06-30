@@ -11,7 +11,8 @@ var common_units: Array[Resource] = [
 
 var uncommon_units: Array[Resource] = [
 	load(UnitRegistry.get_scene_path("unit_wizard")),
-	load(UnitRegistry.get_scene_path("unit_paladin"))
+	load(UnitRegistry.get_scene_path("unit_paladin")),
+	load(UnitRegistry.get_scene_path("unit_brute"))
 ]
 
 var rare_units: Array[Resource] = [
@@ -83,7 +84,6 @@ func _connect_signals() -> void:
 
 func _on_roll_shop_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if (event.is_action_pressed("LeftClick")):
-		print("on roll shop pressed")
 		shop_roll_requested.emit()
 
 func _on_roll_shop_approved() -> void:

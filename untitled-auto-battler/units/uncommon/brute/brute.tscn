@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=4 uid="uid://daewnm2yscg35"]
+
+[ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_yjvva"]
+[ext_resource type="Resource" uid="uid://b31m3wonidr68" path="res://units/uncommon/brute/brute_stats.tres" id="2_qgwo3"]
+[ext_resource type="ArrayMesh" uid="uid://dx01vfmdd2te" path="res://units/uncommon/brute/meshes/brute_Cube.res" id="2_qlnjw"]
+[ext_resource type="ArrayMesh" uid="uid://cqyqxwcsbwoll" path="res://units/uncommon/brute/meshes/brute_Cube_001.res" id="3_p5mee"]
+[ext_resource type="ArrayMesh" uid="uid://cltqtqtcxcdc1" path="res://units/uncommon/brute/meshes/brute_Cube_003.res" id="4_ms0u8"]
+[ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="4_xg7bt"]
+[ext_resource type="ArrayMesh" uid="uid://cyy01oavbog4t" path="res://units/uncommon/brute/meshes/brute_Sphere_002.res" id="5_a03a1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cyasg"]
+viewport_path = NodePath("HealthBar/SubViewport")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hg76t"]
+_surfaces = [{
+"aabb": AABB(-0.388868, -0.478868, -0.328868, 0.777735, 0.957735, 0.657735),
+"attribute_data": PackedByteArray("/////6D/Hz8A//8+/////6D/Hz8A//8+/////6D/Hz8A//8+/////8D+vz4A//8+/////8D+vz4A//8+/////8D+vz4A//8+/////6D/Hz8A/X8+/////6D/Hz8A/X8+/////6D/Hz8A/X8+/////8D+vz4A/X8+/////8D+vz4A/X8+/////8D+vz4A/X8+/////6D/Hz/A/z8//////+D/Xz8A//8+/////6D/Hz/A/z8//////8D+vz7A/z8//////wD5/z0A//8+/////8D+vz7A/z8//////6D/Hz8AAAAA/////+D/Xz8A/X8+/////6D/Hz8AAIA//////8D+vz4AAAAA/////wD5/z0A/X8+/////8D+vz4AAIA/"),
+"format": 34359742495,
+"index_count": 36,
+"index_data": PackedByteArray("AQANABMAAQATAAcACQAGABIACQASABUAFwAUAA4AFwAOABEAEAAEAAoAEAAKABYABQACAAgABQAIAAsADwAMAAAADwAAAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("pRnHPiAu9T5TYai+pRnHPiAu9T5TYai+pRnHPiAu9T5TYai+pRnHPiAu9b5TYai+pRnHPiAu9b5TYai+pRnHPiAu9b5TYai+pRnHPiAu9T5TYag+pRnHPiAu9T5TYag+pRnHPiAu9T5TYag+pRnHPiAu9b5TYag+pRnHPiAu9b5TYag+pRnHPiAu9b5TYag+pRnHviAu9T5TYai+pRnHviAu9T5TYai+pRnHviAu9T5TYai+pRnHviAu9b5TYai+pRnHviAu9b5TYai+pRnHviAu9b5TYai+pRnHviAu9T5TYag+pRnHviAu9T5TYag+pRnHviAu9T5TYag+pRnHviAu9b5TYag+pRnHviAu9b5TYag+pRnHviAu9b5TYag+/v/+//9//v/+f/7/AAD+v/r/AID+f/7//v/+//9//v8AgAEA/v//v/r/AID+f/7//3//fwCA/v/+f/7/AAD+v/r/AID+f/7//3//fwCA/v8AgAEA/v//v/r/AID+f/7//v/+//9//v/+f/7/AAD+vwIABIABgPz//v/+//9//v8AgAEA/v//vwIABIABgPz//3//fwCA/v/+f/7/AAD+vwIABIABgPz//3//fwCA/v8AgAEA/v//vwIABIABgPz/")
+}]
+
+[node name="Brute" instance=ExtResource("1_yjvva")]
+unit_data = ExtResource("2_qgwo3")
+unit_name = "Brute"
+unit_id = "unit_brute"
+
+[node name="HealthBarSprite" parent="HealthBar" index="0"]
+texture = SubResource("ViewportTexture_cyasg")
+
+[node name="BodyMesh" parent="Body" index="2"]
+mesh = ExtResource("2_qlnjw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/BodyMesh" index="0"]
+mesh = SubResource("ArrayMesh_hg76t")
+surface_material_override/0 = ExtResource("4_xg7bt")
+
+[node name="BruteCube001" type="MeshInstance3D" parent="Body" index="4"]
+transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
+mesh = ExtResource("3_p5mee")
+
+[node name="BruteCube003" type="MeshInstance3D" parent="Body" index="5"]
+transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
+mesh = ExtResource("4_ms0u8")
+
+[node name="BruteSphere002" type="MeshInstance3D" parent="Body" index="6"]
+transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
+mesh = ExtResource("5_a03a1")
