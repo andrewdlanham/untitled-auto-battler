@@ -25,6 +25,9 @@ func start_game() -> void:
 	current_round = 0
 	number_of_wins = 0
 	number_of_lives = 5
+	player_units = []
+	bench_units = []
+	shop_units = []
 
 	UI.unhide_toggle_music_button()
 	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
