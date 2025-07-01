@@ -24,21 +24,21 @@ var rare_units: Array[Resource] = [
 
 # [common, uncommon, rare]
 var shop_odds = [
-	[75, 20, 5],	# Round 1
-	[75, 20, 5],	# Round 2
-	[75, 20, 5],	# Round 3
-	[50, 35, 15],	# Round 4
-	[50, 35, 15],	# Round 5
-	[50, 35, 15],	# Round 6
-	[50, 40, 10],	# Round 7
-	[50, 40, 10],	# Round 8
-	[40, 40, 20],	# Round 9
-	[40, 40, 20],	# Round 10
-	[30, 45, 25],	# Round 11
-	[30, 45, 25],	# Round 12
-	[20, 45, 35],	# Round 13
-	[20, 45, 35],	# Round 14
-	[20, 45, 35],	# Round 15
+	[100, 0, 0],	# Round 1
+	[90, 10, 0],	# Round 2
+	[90, 10, 0],	# Round 3
+	[73, 25, 2],	# Round 4
+	[73, 25, 2],	# Round 5
+	[55, 40, 5],	# Round 6
+	[55, 40, 5],	# Round 7
+	[35, 50, 15],	# Round 8
+	[35, 50, 15],	# Round 9
+	[30, 50, 20],	# Round 10
+	[30, 50, 20],	# Round 11
+	[25, 50, 25],	# Round 12
+	[20, 40, 40],	# Round 13
+	[20, 40, 40],	# Round 14
+	[20, 40, 40],	# Round 15
 ]
 
 signal shop_roll_requested
@@ -78,7 +78,10 @@ func roll_shop_units() -> void:
 		new_unit.play_new_unit_animations()
 
 func get_current_shop_odds() -> Array:
-	return shop_odds[GameManager.current_round - 1]
+	if (GameManager.current_round - 1 < 15):
+		return shop_odds[GameManager.current_round - 1]
+	else:
+		return [20, 40, 40]		# Odds past Round 15
 
 func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)

@@ -9,7 +9,7 @@ var unit_cap_by_round: Array = [
 	{ "rounds": range(10, 16), "cap": 7 }	# Rounds 10-15
 ]
 
-const WIN_THRESHOLD: int = 10
+const WIN_THRESHOLD: int = 5
 const MAX_LIVES: int = 5
 
 var player_units: Array = []

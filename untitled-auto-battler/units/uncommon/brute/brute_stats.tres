@@ -6,21 +6,21 @@
 script = ExtResource("1_erjm5")
 level_stats = {
 1: {
-"attack_damage": 5,
-"attack_speed": 1.1,
-"max_health": 55,
+"attack_damage": 30,
+"attack_speed": 0.5,
+"max_health": 125,
 "scale": 1.0
 },
 2: {
-"attack_damage": 6,
-"attack_speed": 1.3,
-"max_health": 80,
+"attack_damage": 50,
+"attack_speed": 0.6,
+"max_health": 160,
 "scale": 1.25
 },
 3: {
-"attack_damage": 8,
-"attack_speed": 1.5,
-"max_health": 140,
+"attack_damage": 70,
+"attack_speed": 0.7,
+"max_health": 230,
 "scale": 1.5
 }
 }

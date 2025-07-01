@@ -7,20 +7,20 @@ script = ExtResource("1_1okg5")
 level_stats = {
 1: {
 "attack_damage": 20,
-"attack_speed": 0.5,
-"max_health": 15,
+"attack_speed": 0.9,
+"max_health": 60,
 "scale": 1.0
 },
 2: {
-"attack_damage": 30,
-"attack_speed": 0.7,
-"max_health": 30,
+"attack_damage": 35,
+"attack_speed": 1.0,
+"max_health": 95,
 "scale": 1.25
 },
 3: {
 "attack_damage": 50,
-"attack_speed": 1.0,
-"max_health": 60,
+"attack_speed": 1.4,
+"max_health": 150,
 "scale": 1.5
 }
 }
