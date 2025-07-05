@@ -4,7 +4,7 @@ var active_scene: Node
 var preparation_scene: Node3D
 
 const REGISTER_SCENE_PATH: String = "res://scenes/register.tscn"
-const LOGIN_SCENE_PATH: String = "res://scenes/auth.tscn"
+const LOGIN_SCENE_PATH: String = "res://scenes/login.tscn"
 const MENU_SCENE_PATH: String = "res://scenes/menu.tscn"
 const COMBAT_SCENE_PATH: String = "res://scenes/combat.tscn"
 const PREP_SCENE_PATH: String = "res://scenes/prep_scene.tscn"
@@ -13,7 +13,7 @@ func _ready() -> void:
 	var cursor = load("res://assets/images/cursors/point.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 
-	active_scene = get_tree().root.get_node("Auth")
+	active_scene = get_tree().root.get_node("Login")
 
 func switch_to_scene(scene_path: String) -> void:
 

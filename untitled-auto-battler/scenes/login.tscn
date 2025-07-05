@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://dof5pa3myt7la"]
 
-[ext_resource type="Script" path="res://db/auth.gd" id="1_7tcv5"]
-[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_y37gr"]
-[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/auth_theme.tres" id="3_58357"]
-[ext_resource type="Script" path="res://scripts/base_button.gd" id="4_vbk7b"]
-[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="5_nmufn"]
-[ext_resource type="Theme" uid="uid://bu11rtwbbe1g0" path="res://shared/auth_link.tres" id="5_t3y7h"]
-[ext_resource type="Texture2D" uid="uid://de3jpqctuaymx" path="res://assets/images/not_visible.png" id="6_6xrrn"]
-[ext_resource type="Theme" uid="uid://bbcgiygilksxf" path="res://shared/password_visible_button.tres" id="6_ljl81"]
+[ext_resource type="Script" path="res://scripts/login.gd" id="1_da2p2"]
+[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_gjsc2"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/auth_theme.tres" id="3_g03hs"]
+[ext_resource type="Script" path="res://scripts/base_button.gd" id="4_35gp3"]
+[ext_resource type="Theme" uid="uid://bu11rtwbbe1g0" path="res://shared/auth_link.tres" id="5_f15ht"]
+[ext_resource type="Theme" uid="uid://bbcgiygilksxf" path="res://shared/password_visible_button.tres" id="6_ok4uh"]
+[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="7_d47c7"]
+[ext_resource type="Texture2D" uid="uid://de3jpqctuaymx" path="res://assets/images/not_visible.png" id="8_2jysl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoxdc"]
 bg_color = Color(0.270588, 0.482353, 0.615686, 1)
@@ -31,8 +31,8 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
-[node name="Auth" type="Node2D"]
-script = ExtResource("1_7tcv5")
+[node name="Login" type="Node2D"]
+script = ExtResource("1_da2p2")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 z_index = -10
@@ -47,7 +47,7 @@ offset_bottom = 121.0
 theme_override_colors/font_color = Color(0.945098, 0.980392, 0.933333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
-theme_override_fonts/font = ExtResource("2_y37gr")
+theme_override_fonts/font = ExtResource("2_gjsc2")
 theme_override_font_sizes/font_size = 60
 text = "UNTITLED AUTO BATTLER"
 horizontal_alignment = 1
@@ -66,7 +66,7 @@ offset_right = 760.0
 offset_bottom = 328.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_58357")
+theme = ExtResource("3_g03hs")
 
 [node name="LoginBoxPanel" type="Panel" parent="LoginControl"]
 layout_mode = 0
@@ -105,10 +105,10 @@ offset_right = 76.0
 offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_y37gr")
+theme_override_fonts/font = ExtResource("2_gjsc2")
 theme_override_font_sizes/font_size = 40
-text = "LOGIN"
-script = ExtResource("4_vbk7b")
+text = "LOG IN"
+script = ExtResource("4_35gp3")
 
 [node name="EmailLabel" type="Label" parent="LoginControl"]
 layout_mode = 1
@@ -174,22 +174,22 @@ placeholder_text = "Enter password"
 secret = true
 
 [node name="TestLogin" type="Button" parent="."]
-offset_left = 984.0
-offset_top = 640.0
-offset_right = 1269.0
-offset_bottom = 712.0
-theme = ExtResource("3_58357")
-text = "TEST LOGIN"
-script = ExtResource("4_vbk7b")
+offset_left = 944.0
+offset_top = 328.0
+offset_right = 1229.0
+offset_bottom = 400.0
+theme = ExtResource("3_g03hs")
+text = "TEST LOG IN"
+script = ExtResource("4_35gp3")
 
 [node name="PlayAsGuestButton" type="Button" parent="."]
 offset_left = 464.0
 offset_top = 600.0
 offset_right = 816.0
 offset_bottom = 664.0
-theme = ExtResource("3_58357")
+theme = ExtResource("3_g03hs")
 text = "PLAY AS GUEST"
-script = ExtResource("4_vbk7b")
+script = ExtResource("4_35gp3")
 
 [node name="NoAccountLabel" type="Label" parent="."]
 offset_left = 464.0
@@ -211,11 +211,11 @@ offset_right = 808.0
 offset_bottom = 564.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("5_t3y7h")
-theme_override_fonts/font = ExtResource("2_y37gr")
+theme = ExtResource("5_f15ht")
+theme_override_fonts/font = ExtResource("2_gjsc2")
 theme_override_font_sizes/font_size = 20
 text = "Register"
-script = ExtResource("4_vbk7b")
+script = ExtResource("4_35gp3")
 
 [node name="ErrorLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -236,14 +236,14 @@ offset_left = 768.0
 offset_top = 352.0
 offset_right = 816.0
 offset_bottom = 400.0
-theme = ExtResource("6_ljl81")
-theme_override_fonts/font = ExtResource("5_nmufn")
+theme = ExtResource("6_ok4uh")
+theme_override_fonts/font = ExtResource("7_d47c7")
 theme_override_font_sizes/font_size = 20
-icon = ExtResource("6_6xrrn")
+icon = ExtResource("8_2jysl")
 icon_alignment = 1
 
 [connection signal="pressed" from="LoginControl/LoginButton" to="." method="_on_login_button_pressed"]
 [connection signal="pressed" from="TestLogin" to="." method="_on_test_login_pressed"]
-[connection signal="pressed" from="PlayAsGuestButton" to="." method="_on_play_as_guest_pressed"]
+[connection signal="pressed" from="PlayAsGuestButton" to="." method="_on_play_as_guest_button_pressed"]
 [connection signal="pressed" from="GoToRegister" to="." method="_on_go_to_register_pressed"]
 [connection signal="pressed" from="ShowPasswordButton" to="." method="_on_show_password_button_pressed"]

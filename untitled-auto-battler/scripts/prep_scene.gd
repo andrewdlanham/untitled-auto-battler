@@ -4,8 +4,7 @@ extends Node3D
 
 func _ready() -> void:
 	_connect_signals()
-	
-	await get_tree().create_timer(1)
+
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
 	GameManager.construct_team(GameManager.bench_units, %BenchHexes.get_children(), %BenchUnits)
 	GameManager.construct_team(GameManager.shop_units, %ShopHexes.get_children(), %ShopUnits)
