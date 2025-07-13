@@ -42,7 +42,7 @@ func construct_team(unit_info_array, hexes_to_populate, target_parent_node) -> v
 			if hex.hex_id == unit_info["hex_id"]:
 				target_parent_node.add_child(new_unit)
 				new_unit.try_connect_to_hex(hex)
-				new_unit.apply_level_properties()
+				new_unit.set_unit_stats()
 				if (target_parent_node.name == "PlayerUnits"):
 					new_unit.team = "PLAYER"
 				else:

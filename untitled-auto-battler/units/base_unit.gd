@@ -2,65 +2,55 @@ extends Node3D
 
 class_name Unit
 
-@export var unit_data: UnitData
-
 @onready var level_label: Label3D = $Labels/LevelLabel
 @onready var health_progress_bar: ProgressBar = $HealthBar/SubViewport/HealthProgressBar
 @onready var health_bar_sprite: Sprite3D = $HealthBar/HealthBarSprite
 @onready var health_bar_anchor_point: Node3D = $Body/HealthBarAnchorPoint
-
 @onready var frozen_mesh: MeshInstance3D = $FrozenMesh
 @onready var body: Area3D = $Body
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var attack_audio: AudioStreamPlayer3D = $AttackAudio
+
+@export var unit_data: UnitData
 
 @export var unit_name: String
 @export var unit_id: String
 
-var cost: int = 3
+@export var cost: int = 3
 @export var level: int = 1
-@export var rarity: int = 1
 
-var team: String
-var current_hex: Hex
-var current_hex_id
-
-var connection_hex_id
+@export var team: String
+@export var current_hex: Hex
+@export var current_hex_id: String
 
 @export var max_health: float
+@export var health: float
 @export var attack_speed: float
 @export var attack_damage: float
-
-@export var health: float
-
 @export var attack_range: int
-@export var target_enemy: Unit
+
+@export var move_cooldown: float = 1.50
+@export var move_timer: float
+
+@export var is_moving: bool = false
+@export var is_attacking: bool = false
+@export var is_frozen: bool = false
+
+@export var target_enemy: Unit = null
 @export var combat_enabled: bool = false
-
-var move_cooldown: float = 1.50
-var move_timer: float
-
-var is_moving: bool = false
-var is_attacking: bool = false
-var is_frozen: bool = false
 
 signal unit_died(unit: Unit, team: String)
 
 func _ready() -> void:
-	apply_level_properties()
-	reset()
-	combat_enabled = false
-	update_level_label_text()
+	set_unit_stats()
 
 func _process(delta: float) -> void:
 
 	if(combat_enabled):
 
-		face_target()
-
 		if health <= 0: die()
+
+		face_target()
 
 		move_timer -= delta
 
@@ -70,7 +60,7 @@ func _process(delta: float) -> void:
 		if is_moving: return
 
 		if target_enemy == null or target_enemy.visible == false or get_closest_enemy() != target_enemy:
-			target_closest_enemy()
+			target_closest_enemy()	# Switch target
 		elif not target_is_in_attack_range():
 			var open_hex = get_open_hex_towards_unit(target_enemy)
 			if open_hex != null:
@@ -80,14 +70,14 @@ func _process(delta: float) -> void:
 		elif not is_attacking:
 				attack_target_enemy()
 
-func apply_level_properties() -> void:
+func set_unit_stats() -> void:
 	max_health = unit_data.level_stats[level]["max_health"]
 	attack_damage = unit_data.level_stats[level]["attack_damage"]
 	attack_speed = unit_data.level_stats[level]["attack_speed"]
 	var new_scale: float = unit_data.level_stats[level]["scale"]
 	body.scale = Vector3(new_scale, new_scale, new_scale)
 	health_bar_sprite.global_position = health_bar_anchor_point.global_position
-	update_level_label_text()
+	_update_level_label_text()
 
 func freeze() -> bool:
 
@@ -111,39 +101,27 @@ func die() -> void:
 	self.visible = false
 	unit_died.emit(self, self.team)
 
-func reset() -> void:
-	health = max_health
-	move_timer = move_cooldown
-	is_attacking = false
-	is_moving = false
-	target_enemy = null
-	health_progress_bar.max_value = health
-	update_health_bar()
-	self.visible = true
-	self.rotation_degrees.y = 0
-
 func remove_self() -> void:
 	current_hex.unit_on_hex = null
 	self.queue_free()
 
-func update_health_bar() -> void:
+func _update_health_bar() -> void:
 	health_progress_bar.value = health
 
-func update_level_label_text() -> void:
+func _update_level_label_text() -> void:
 	level_label.text = str(level)
 
 func add_health(amount) -> void:
 	health += amount
-	update_health_bar()
+	_update_health_bar()
 
 func subtract_health(amount) -> void:
 	health -= amount
-	update_health_bar()
+	_update_health_bar()
 
 func level_up() -> void:
 	level += 1
-	apply_level_properties()
-	reset()
+	set_unit_stats()
 
 func get_info_dict() -> Dictionary:
 	return {
@@ -181,11 +159,16 @@ func target_closest_enemy() -> void:
 
 func enable_combat() -> void:
 	combat_enabled = true
+	health = max_health
+	health_progress_bar.max_value = health
 	health_progress_bar.visible = true
 
 func disable_combat() -> void:
 	combat_enabled = false
+	is_attacking = false
 	health_progress_bar.visible = false
+	is_moving = false
+	target_enemy = null
 
 func attack_target_enemy() -> void:
 
