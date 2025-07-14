@@ -11,8 +11,6 @@ class_name Unit
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_audio: AudioStreamPlayer3D = $AttackAudio
 
-@export var unit_data: UnitData
-
 @export var unit_name: String
 @export var unit_id: String
 
@@ -71,10 +69,12 @@ func _process(delta: float) -> void:
 				attack_target_enemy()
 
 func set_unit_stats() -> void:
-	max_health = unit_data.level_stats[level]["max_health"]
-	attack_damage = unit_data.level_stats[level]["attack_damage"]
-	attack_speed = unit_data.level_stats[level]["attack_speed"]
-	var new_scale: float = unit_data.level_stats[level]["scale"]
+	max_health = UnitRegistry.get_stat(unit_id, level, "hp")
+	health = max_health
+	attack_damage = UnitRegistry.get_stat(unit_id, level, "att_dmg")
+	attack_speed = UnitRegistry.get_stat(unit_id, level, "att_spd")
+	
+	var new_scale: float = UnitRegistry.get_stat(unit_id, level, "scale")
 	body.scale = Vector3(new_scale, new_scale, new_scale)
 	health_bar_sprite.global_position = health_bar_anchor_point.global_position
 	_update_level_label_text()

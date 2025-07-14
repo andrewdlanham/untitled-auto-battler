@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://dif8ndi2wg7le"]
+[gd_scene load_steps=9 format=4 uid="uid://dif8ndi2wg7le"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_eu62y"]
-[ext_resource type="Resource" uid="uid://21p5mfvkrq2b" path="res://units/uncommon/wizard/wizard_stats.tres" id="2_lec63"]
 [ext_resource type="ArrayMesh" uid="uid://c6orapv6aft4w" path="res://units/uncommon/wizard/meshes/wizard_Cylinder.res" id="3_caxbl"]
 [ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="4_1gehv"]
 [ext_resource type="ArrayMesh" uid="uid://dtxrj6clpmut2" path="res://units/uncommon/wizard/meshes/wizard_Cylinder_023.res" id="5_t4dit"]
@@ -25,13 +24,12 @@ _surfaces = [{
 }]
 
 [node name="Wizard" instance=ExtResource("1_eu62y")]
-unit_data = ExtResource("2_lec63")
 unit_name = "Wizard"
 unit_id = "unit_wizard"
 max_health = 200.0
+health = 200.0
 attack_speed = 0.7
 attack_damage = 150.0
-health = 200.0
 attack_range = 6
 
 [node name="HealthBarSprite" parent="HealthBar" index="0"]

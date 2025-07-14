@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://ckofwty62inni"]
+[gd_scene load_steps=10 format=4 uid="uid://ckofwty62inni"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_hmh7a"]
-[ext_resource type="Resource" uid="uid://oq8tsq08cg63" path="res://units/uncommon/paladin/paladin_stats.tres" id="2_7b5du"]
 [ext_resource type="ArrayMesh" uid="uid://8eqrfsl0v4sy" path="res://units/uncommon/paladin/meshes/paladin_Cube_001.res" id="3_lehbn"]
 [ext_resource type="ArrayMesh" uid="uid://cx5nnjobes0dg" path="res://units/uncommon/paladin/meshes/paladin_Sphere_002.res" id="5_pted5"]
 [ext_resource type="ArrayMesh" uid="uid://l34lcm1od31l" path="res://units/uncommon/paladin/meshes/paladin_Sphere_003.res" id="6_0y1hq"]
@@ -38,10 +37,8 @@ _surfaces = [{
 }]
 
 [node name="Paladin" instance=ExtResource("1_hmh7a")]
-unit_data = ExtResource("2_7b5du")
 unit_name = "Paladin"
 unit_id = "unit_paladin"
-rarity = 2
 
 [node name="HealthBarSprite" parent="HealthBar" index="0"]
 texture = SubResource("ViewportTexture_73gvc")

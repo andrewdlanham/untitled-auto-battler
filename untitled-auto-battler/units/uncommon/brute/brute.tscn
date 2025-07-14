@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://daewnm2yscg35"]
+[gd_scene load_steps=9 format=4 uid="uid://daewnm2yscg35"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_yjvva"]
-[ext_resource type="Resource" uid="uid://b31m3wonidr68" path="res://units/uncommon/brute/brute_stats.tres" id="2_qgwo3"]
 [ext_resource type="ArrayMesh" uid="uid://dx01vfmdd2te" path="res://units/uncommon/brute/meshes/brute_Cube.res" id="2_qlnjw"]
 [ext_resource type="ArrayMesh" uid="uid://cqyqxwcsbwoll" path="res://units/uncommon/brute/meshes/brute_Cube_001.res" id="3_p5mee"]
 [ext_resource type="ArrayMesh" uid="uid://cltqtqtcxcdc1" path="res://units/uncommon/brute/meshes/brute_Cube_003.res" id="4_ms0u8"]
@@ -25,7 +24,6 @@ _surfaces = [{
 }]
 
 [node name="Brute" instance=ExtResource("1_yjvva")]
-unit_data = ExtResource("2_qgwo3")
 unit_name = "Brute"
 unit_id = "unit_brute"
 

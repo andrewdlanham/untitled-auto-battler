@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://bnk2ourxry21q"]
+[gd_scene load_steps=9 format=4 uid="uid://bnk2ourxry21q"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_njsw2"]
 [ext_resource type="ArrayMesh" uid="uid://dl6euvlcy4ac7" path="res://units/rare/crossbowman/meshes/crossbowman_Cylinder.res" id="2_3otb2"]
-[ext_resource type="Resource" uid="uid://diyvqe30uw5sw" path="res://units/rare/crossbowman/crossbowman_stats.tres" id="2_su28b"]
 [ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="3_xuq0b"]
 [ext_resource type="ArrayMesh" uid="uid://c0ahkqsjfaxrx" path="res://units/rare/crossbowman/meshes/crossbowman_Cube_030.res" id="4_gydbf"]
 [ext_resource type="ArrayMesh" uid="uid://cvy6yegl28gy8" path="res://units/rare/crossbowman/meshes/crossbowman_Sphere_002.res" id="5_ufbo0"]
@@ -37,7 +36,6 @@ _surfaces = [{
 }]
 
 [node name="Crossbowman" instance=ExtResource("1_njsw2")]
-unit_data = ExtResource("2_su28b")
 unit_name = "Crossbowman"
 unit_id = "unit_crossbowman"
 attack_range = 6

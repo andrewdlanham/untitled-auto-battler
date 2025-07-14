@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://5aq02dg64fuv"]
+[gd_scene load_steps=9 format=4 uid="uid://5aq02dg64fuv"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_qrgvj"]
 [ext_resource type="ArrayMesh" uid="uid://dntqfoov1u71i" path="res://units/common/farmer/meshes/farmer_Cube.res" id="2_3ilip"]
-[ext_resource type="Resource" uid="uid://dj6ehe3cdxxbx" path="res://units/common/farmer/farmer_stats.tres" id="2_hvipr"]
 [ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="3_oklyt"]
 [ext_resource type="ArrayMesh" uid="uid://dkeb70yyj6oiv" path="res://units/common/farmer/meshes/farmer_Cube_035.res" id="4_ovo6f"]
 [ext_resource type="ArrayMesh" uid="uid://ct67dfd8pyky4" path="res://units/common/farmer/meshes/farmer_Sphere_002.res" id="5_t6apl"]
@@ -37,7 +36,6 @@ _surfaces = [{
 }]
 
 [node name="Farmer" instance=ExtResource("1_qrgvj")]
-unit_data = ExtResource("2_hvipr")
 unit_name = "Farmer"
 unit_id = "unit_farmer"
 

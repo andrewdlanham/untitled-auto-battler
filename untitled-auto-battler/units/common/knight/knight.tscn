@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://bbtiq0yjrexdn"]
+[gd_scene load_steps=11 format=4 uid="uid://bbtiq0yjrexdn"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_4gbjo"]
-[ext_resource type="Resource" uid="uid://cx8cogdqe4eow" path="res://units/common/knight/knight_stats.tres" id="2_jvjyu"]
 [ext_resource type="ArrayMesh" uid="uid://nwp37wnlf5fg" path="res://units/common/knight/meshes/knight_Cube.res" id="3_v62ah"]
 [ext_resource type="Material" uid="uid://cdxhgphdp8hjm" path="res://shared/materials/outline_material.tres" id="4_moytm"]
 [ext_resource type="ArrayMesh" uid="uid://chd3lfkn7su4x" path="res://units/common/knight/meshes/knight_Cylinder_002.res" id="5_moldc"]
@@ -43,7 +42,6 @@ _surfaces = [{
 }]
 
 [node name="Knight" instance=ExtResource("1_4gbjo")]
-unit_data = ExtResource("2_jvjyu")
 unit_name = "Knight"
 unit_id = "unit_knight"
 
