@@ -30,8 +30,6 @@ const COLUMN_TYPES = {
 
 func _ready() -> void:
 	_load_stats_from_csv("res://data/unit-stats.txt")
-	print(unit_stats)
-	print(get_stat("unit_knight", 2, "hp"))
 
 func _load_stats_from_csv(path: String) -> void:
 
