@@ -34,9 +34,6 @@ func is_enemy_hex() -> bool:
 func is_neutral_hex() -> bool:
 	return hex_type == "NEUTRAL"
 
-func is_sell_hex() -> bool:
-	return hex_type == "SELL"
-
 func is_bench_hex() -> bool:
 	return hex_type == "BENCH"
 

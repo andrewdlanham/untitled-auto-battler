@@ -43,7 +43,7 @@ func _connect_signals() -> void:
 	# Everything that should trigger update_unit_count_label()
 	%DragDropManager.unit_placed.connect(update_unit_count_label)
 	%MergeManager.unit_merge_success.connect(update_unit_count_label)
-	%GoldManager.unit_sold.connect(update_unit_count_label)
+	%UnitStatsPopup.unit_sold.connect(update_unit_count_label)
 	
 	# Connect signals for hex buttons
 	%CombatButton.get_node("Area3D").input_event.connect(_on_start_combat_button_pressed)

@@ -11,7 +11,6 @@ var dragged_object_collision_shape: CollisionShape3D
 var raycast_collision_mask: int = UNIT_MASK
 
 signal unit_purchase_requested(unit: Unit, hex_placed_on: Hex)
-signal unit_sell_requested(unit: Unit)
 signal unit_placed()
 
 func _ready() -> void:
@@ -49,9 +48,6 @@ func _input(_event) -> void:
 				#
 				elif (dropped_hex.is_occupied()):
 					dragged_object.snap_to_current_hex()
-				# Selling units
-				elif (dropped_hex.is_sell_hex() and not origin_hex.is_shop_hex()):
-					unit_sell_requested.emit(dragged_object)
 				# Buying units on player hexes
 				elif (dropped_hex.is_player_hex() and origin_hex.is_shop_hex() and not GameManager.is_active_units_full()):
 					unit_purchase_requested.emit(dragged_object, dropped_hex)

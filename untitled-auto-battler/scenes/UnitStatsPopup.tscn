@@ -1,155 +1,220 @@
-[gd_scene load_steps=4 format=3 uid="uid://dckldltq0oyfg"]
+[gd_scene load_steps=12 format=3 uid="uid://dckldltq0oyfg"]
 
 [ext_resource type="Script" path="res://scripts/unit_stats_popup.gd" id="1_7o1im"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_p4imh"]
+[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="3_hw1sl"]
+[ext_resource type="Texture2D" uid="uid://llj2jrwel177" path="res://assets/images/attack_speed.png" id="4_cao60"]
+[ext_resource type="Texture2D" uid="uid://c477m5und1sif" path="res://assets/images/freeze.png" id="5_b1r6j"]
+[ext_resource type="StyleBox" uid="uid://dy1kqsvb1byv3" path="res://shared/freeze_style.tres" id="5_ii8xd"]
+[ext_resource type="StyleBox" uid="uid://dewu5dkm304ug" path="res://shared/sell_button.tres" id="7_me36n"]
 
-[sub_resource type="Theme" id="Theme_7jyr5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb7vd"]
+bg_color = Color(0.733333, 0.733333, 0.85098, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_eh5jo"]
+Panel/styles/panel = SubResource("StyleBoxFlat_vb7vd")
+
+[sub_resource type="Theme" id="Theme_gbovo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpm1h"]
 
 [node name="UnitStatsPopup" type="Node2D"]
 script = ExtResource("1_7o1im")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Node" type="Node" parent="."]
+[node name="PopupPanel" type="Panel" parent="CanvasLayer"]
+offset_left = 1008.0
+offset_top = 80.0
+offset_right = 1272.0
+offset_bottom = 192.0
+theme = SubResource("Theme_eh5jo")
 
-[node name="ColorRect" type="ColorRect" parent="Node"]
-anchors_preset = -1
-anchor_left = 0.339583
-anchor_top = 0.333333
-anchor_right = 0.333333
-anchor_bottom = 0.288889
-offset_left = 613.333
-offset_top = -176.0
-offset_right = 813.333
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.344076, 0.344076, 0.344076, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="NameLabel" type="Label" parent="Node"]
+[node name="NameLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.300521
-anchor_top = 0.0552778
-anchor_right = 0.372396
-anchor_bottom = 0.065
-offset_left = 663.333
-offset_top = 24.2
-offset_right = 763.333
-offset_bottom = 49.2
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.75625
+anchor_top = 0.122222
+anchor_right = 0.897656
+anchor_bottom = 0.133333
+offset_left = 51.0
+offset_top = -2.00001
+offset_right = 94.0
+offset_bottom = 18.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
+theme_override_font_sizes/font_size = 20
 text = "Name"
-horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="LevelLabel" type="Label" parent="Node"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.330208
-anchor_top = 0.171667
-anchor_right = 0.342708
-anchor_bottom = 0.171667
-offset_left = 633.333
-offset_top = -20.6
-offset_right = 793.333
-offset_bottom = 4.4
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.73125
+anchor_top = 0.155556
+anchor_right = 0.758594
+anchor_bottom = 0.166667
+offset_left = 253.0
+offset_top = -26.0
+offset_right = 290.0
+offset_bottom = -7.00001
+theme_override_colors/font_color = Color(0.843888, 0.837814, 0.809245, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_hw1sl")
+theme_override_font_sizes/font_size = 15
+text = "⭐"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.75625
+anchor_top = 0.211111
+anchor_right = 0.75625
+anchor_bottom = 0.211111
+offset_left = 75.0
+offset_top = -30.0
+offset_right = 121.0
+offset_bottom = -8.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_p4imh")
+theme_override_font_sizes/font_size = 18
+text = "XXX"
+vertical_alignment = 1
+
+[node name="AttackDamageLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.85625
+anchor_top = 0.177778
+anchor_right = 0.85625
+anchor_bottom = 0.177778
+offset_left = -53.0
+offset_top = 19.0
+offset_right = -9.0
+offset_bottom = 41.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_p4imh")
+theme_override_font_sizes/font_size = 18
+text = "XXX"
+vertical_alignment = 1
+
+[node name="AttackSpeedLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.85625
+anchor_top = 0.177778
+anchor_right = 0.85625
+anchor_bottom = 0.177778
+offset_left = 49.0
+offset_top = 19.0
+offset_right = 93.0
+offset_bottom = 41.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_p4imh")
+theme_override_font_sizes/font_size = 18
+text = "XXX"
+vertical_alignment = 1
+
+[node name="HeartIconLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1019.0
+offset_top = 126.0
+offset_right = 1035.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(1, 0.411947, 0.343303, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "♥︎"
+
+[node name="SwordIconLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1019.0
+offset_top = 150.0
+offset_right = 1039.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(0.886262, 0.886261, 0.886262, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_hw1sl")
+theme_override_font_sizes/font_size = 15
+text = "⚔︎"
+
+[node name="AttackSpeedIcon" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1126, 158.75)
+scale = Vector2(0.0486487, 0.0483606)
+texture = ExtResource("4_cao60")
+
+[node name="CostLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+anchor_left = 0.75625
+anchor_top = 0.211111
+anchor_right = 0.75625
+anchor_bottom = 0.229167
+offset_left = 265.0
+offset_top = -1.0
+offset_right = 311.0
+offset_bottom = 18.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 15
-text = "Level"
+text = "3G"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthLabel" type="Label" parent="Node"]
+[node name="FreezeUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.330208
-anchor_top = 0.268333
-anchor_right = 0.342708
-anchor_bottom = 0.268333
-offset_left = 633.333
-offset_top = -61.2
-offset_right = 793.333
-offset_bottom = -36.2
-grow_horizontal = 2
-grow_vertical = 2
+z_index = -1
+offset_left = 952.0
+offset_top = 80.0
+offset_right = 1002.0
+offset_bottom = 192.0
+theme = SubResource("Theme_gbovo")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_p4imh")
-theme_override_font_sizes/font_size = 15
-text = "Health"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bpm1h")
+theme_override_styles/hover_pressed = ExtResource("5_ii8xd")
+theme_override_styles/hover = ExtResource("5_ii8xd")
+theme_override_styles/pressed = ExtResource("5_ii8xd")
+theme_override_styles/normal = ExtResource("5_ii8xd")
 
-[node name="AttackDamageLabel" type="Label" parent="Node"]
+[node name="FreezeIcon" type="Sprite2D" parent="CanvasLayer/FreezeUnitButton"]
+position = Vector2(24, 56)
+scale = Vector2(0.14507, 0.145082)
+texture = ExtResource("5_b1r6j")
+
+[node name="SellUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.330208
-anchor_top = 0.381667
-anchor_right = 0.342708
-anchor_bottom = 0.381667
-offset_left = 633.333
-offset_top = -108.8
-offset_right = 793.333
-offset_bottom = -83.8
-grow_horizontal = 2
-grow_vertical = 2
+z_index = -1
+offset_left = 952.0
+offset_top = 80.0
+offset_right = 1002.0
+offset_bottom = 192.0
+theme = SubResource("Theme_gbovo")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bpm1h")
+theme_override_styles/normal = ExtResource("7_me36n")
+text = "$"
 
-[node name="AttackSpeedLabel" type="Label" parent="Node"]
-unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.330208
-anchor_top = 0.488333
-anchor_right = 0.342708
-anchor_bottom = 0.488333
-offset_left = 633.333
-offset_top = -153.6
-offset_right = 793.333
-offset_bottom = -128.6
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("2_p4imh")
-theme_override_font_sizes/font_size = 15
-text = "Att Speed"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="FreezeUnitButton" type="Button" parent="Node"]
-unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.339583
-anchor_top = 0.75
-anchor_right = 0.333333
-anchor_bottom = 0.75
-offset_left = 613.333
-offset_top = -300.0
-offset_right = 813.333
-offset_bottom = -270.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_7jyr5")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("2_p4imh")
-text = "FREEZE UNIT"
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Node/FreezeUnitButton" to="." method="_on_freeze_unit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/FreezeUnitButton" to="." method="_on_freeze_unit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SellUnitButton" to="." method="_on_sell_unit_button_pressed"]
