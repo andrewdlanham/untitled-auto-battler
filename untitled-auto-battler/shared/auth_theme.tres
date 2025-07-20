@@ -1,46 +1,13 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bt21n7e5vhsxq"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bt21n7e5vhsxq"]
 
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="1_xgmpd"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbgcj"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj50t"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 1)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25mie"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.895413, 0.894765, 0.846784, 1)
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -53,7 +20,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dqwd"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.875456, 0.875457, 0.875456, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -70,7 +37,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.87451, 0.87451, 0.87451, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -117,8 +84,6 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_xgmpd")
-Button/styles/disabled = SubResource("StyleBoxFlat_mbgcj")
-Button/styles/focus = SubResource("StyleBoxFlat_dj50t")
 Button/styles/hover = SubResource("StyleBoxFlat_25mie")
 Button/styles/normal = SubResource("StyleBoxFlat_8dqwd")
 Button/styles/pressed = SubResource("StyleBoxFlat_csooo")

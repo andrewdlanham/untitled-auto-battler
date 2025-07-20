@@ -17,23 +17,6 @@ offset_right = 1280.0
 offset_bottom = 728.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxxrr")
 
-[node name="PlayGameButton" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 456.0
-offset_top = 552.0
-offset_right = 826.0
-offset_bottom = 635.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_tbxqa")
-theme_override_font_sizes/font_size = 60
-text = "PLAY"
-script = ExtResource("3_x0yqu")
-
 [node name="LoggedInAsLabel" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,12 +62,31 @@ text = "LEADERBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PlayGameButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 456.0
+offset_top = 552.0
+offset_right = 826.0
+offset_bottom = 635.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_tbxqa")
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+script = ExtResource("3_x0yqu")
+
 [node name="LogOutButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 16.0
 offset_top = 648.0
 offset_right = 200.0
 offset_bottom = 707.0
+focus_mode = 0
 theme = ExtResource("2_tbxqa")
 text = "LOG OUT"
 script = ExtResource("3_x0yqu")
