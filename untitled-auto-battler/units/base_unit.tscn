@@ -170,9 +170,9 @@ script = ExtResource("1_p0uky")
 unit_name = "Base Unit"
 unit_id = "base_unit"
 max_health = 1000.0
+health = 1000.0
 attack_speed = 0.5
 attack_damage = 80.0
-health = 1000.0
 attack_range = 3
 
 [node name="Labels" type="Node3D" parent="."]

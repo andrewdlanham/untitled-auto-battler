@@ -6,7 +6,6 @@ var reroll_cost: int = 1
 signal shop_roll_approved
 signal unit_purchase_approved(unit: Unit)
 signal unit_purchase_denied(unit: Unit)
-signal unit_sold
 
 func _ready() -> void:
 	_connect_signals()

@@ -14,7 +14,8 @@ class_name Unit
 @export var unit_name: String
 @export var unit_id: String
 
-@export var cost: int = 3
+@export var cost: int
+@export var rarity: String
 @export var level: int = 1
 
 @export var team: String
@@ -71,13 +72,19 @@ func _process(delta: float) -> void:
 func set_unit_stats() -> void:
 	max_health = UnitRegistry.get_stat(unit_id, level, "hp")
 	health = max_health
+	health_progress_bar.max_value = health
 	attack_damage = UnitRegistry.get_stat(unit_id, level, "att_dmg")
 	attack_speed = UnitRegistry.get_stat(unit_id, level, "att_spd")
+	
+	cost = UnitRegistry.get_stat(unit_id, level, "cost")
+	rarity = UnitRegistry.get_stat(unit_id, level, "rarity")
 	
 	var new_scale: float = UnitRegistry.get_stat(unit_id, level, "scale")
 	body.scale = Vector3(new_scale, new_scale, new_scale)
 	health_bar_sprite.global_position = health_bar_anchor_point.global_position
+	
 	_update_level_label_text()
+	_update_health_bar()
 
 func freeze() -> bool:
 

@@ -22,6 +22,8 @@ var unit_stats := {}  # unit_type -> lvl_x -> stat_name -> value
 const COLUMN_TYPES = {
 	"unit_name": "string",
 	"type": "string",
+	"rarity": "string",
+	"cost": "int",
 	"att_dmg": "float",
 	"att_spd": "float",
 	"hp": "float",
@@ -57,19 +59,19 @@ func _load_stats_from_csv(path: String) -> void:
 			var key = headers[j]
 
 			var parts = key.split("_lvl_")
-			if parts.size() != 2:
-				continue  # Skip malformed headers
 
 			var stat = parts[0]
-			var level_string = "lvl_" + parts[1]
-
-			if !unit_stats[unit_id].has(level_string):
-				unit_stats[unit_id][level_string] = {}
-			
 			var value = row[j]
 			var stat_type = COLUMN_TYPES[stat]
 			var converted_value = _convert_value(value, stat_type)
-			unit_stats[unit_id][level_string][stat] = converted_value
+			
+			if parts.size() != 2:	# Stat is not linked to level
+				unit_stats[unit_id][stat] = converted_value
+			else:
+				var level_string = "lvl_" + parts[1]
+				if !unit_stats[unit_id].has(level_string):
+					unit_stats[unit_id][level_string] = {}
+				unit_stats[unit_id][level_string][stat] = converted_value
 
 func _convert_value(value: String, value_type: String):
 	match value_type:
@@ -86,10 +88,10 @@ func _convert_value(value: String, value_type: String):
 
 func get_stat(unit_id: String, level: int, stat_name: String):
 	var level_string = "lvl_" + str(level)
-	if unit_stats.has(unit_id) and unit_stats[unit_id].has(level_string):
+	if unit_stats.has(unit_id) and unit_stats[unit_id].has(level_string) and unit_stats[unit_id][level_string].has(stat_name):
 		return unit_stats[unit_id][level_string].get(stat_name)
-	else:
-		return ""
+	elif unit_stats.has(unit_id) and unit_stats[unit_id].has(stat_name):
+		return unit_stats[unit_id][stat_name]
 
 func get_scene_path(unit_id: String) -> String:
 	return UNIT_SCENE_PATHS.get(unit_id, "")
