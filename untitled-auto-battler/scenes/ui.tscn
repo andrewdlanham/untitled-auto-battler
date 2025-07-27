@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgcrbyh2cyb2j"]
 
-[ext_resource type="Script" path="res://scripts/ui.gd" id="1_a06dh"]
+[ext_resource type="Script" path="res://scripts/global/ui.gd" id="1_a06dh"]
 [ext_resource type="Texture2D" uid="uid://764i5igosps" path="res://assets/images/music_on.png" id="1_mcr3v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l83p8"]

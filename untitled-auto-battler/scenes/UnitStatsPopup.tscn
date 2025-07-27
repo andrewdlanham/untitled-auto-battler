@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dckldltq0oyfg"]
 
-[ext_resource type="Script" path="res://scripts/unit_stats_popup.gd" id="1_7o1im"]
+[ext_resource type="Script" path="res://scripts/prep_scene/unit_stats_popup.gd" id="1_7o1im"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_p4imh"]
 [ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="3_hw1sl"]
 [ext_resource type="Texture2D" uid="uid://llj2jrwel177" path="res://assets/images/attack_speed.png" id="4_cao60"]
 [ext_resource type="Texture2D" uid="uid://c477m5und1sif" path="res://assets/images/freeze.png" id="5_b1r6j"]
-[ext_resource type="Theme" uid="uid://c70ldg4dltp0" path="res://shared/freeze_button_theme.tres" id="5_c280x"]
-[ext_resource type="Theme" uid="uid://b7mx8d4n2vjui" path="res://shared/sell_button_theme.tres" id="7_2mp3g"]
+[ext_resource type="Theme" uid="uid://c70ldg4dltp0" path="res://shared/themes/freeze_button_theme.tres" id="5_c280x"]
+[ext_resource type="Theme" uid="uid://b7mx8d4n2vjui" path="res://shared/themes/sell_button_theme.tres" id="7_2mp3g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb7vd"]
 bg_color = Color(0.733333, 0.733333, 0.85098, 1)
@@ -149,11 +149,13 @@ vertical_alignment = 1
 [node name="HeartIconLabel" type="Label" parent="CanvasLayer"]
 offset_left = 1019.0
 offset_top = 126.0
-offset_right = 1035.0
-offset_bottom = 149.0
+offset_right = 1040.0
+offset_bottom = 145.0
 theme_override_colors/font_color = Color(1, 0.411947, 0.343303, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_hw1sl")
+theme_override_font_sizes/font_size = 15
 text = "♥︎"
 
 [node name="SwordIconLabel" type="Label" parent="CanvasLayer"]

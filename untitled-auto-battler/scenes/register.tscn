@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/register.gd" id="1_7cv0k"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_gujem"]
-[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/auth_theme.tres" id="3_l2b3a"]
-[ext_resource type="Theme" uid="uid://bu11rtwbbe1g0" path="res://shared/auth_link.tres" id="3_mv4k7"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="3_l2b3a"]
+[ext_resource type="Theme" uid="uid://bu11rtwbbe1g0" path="res://shared/themes/auth_link.tres" id="3_mv4k7"]
 [ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="3_pocua"]
-[ext_resource type="Theme" uid="uid://bbcgiygilksxf" path="res://shared/password_visible_button.tres" id="3_pplsg"]
+[ext_resource type="Theme" uid="uid://bbcgiygilksxf" path="res://shared/themes/password_visible_button.tres" id="3_pplsg"]
 [ext_resource type="Script" path="res://scripts/base_button.gd" id="4_hnp24"]
 [ext_resource type="Texture2D" uid="uid://de3jpqctuaymx" path="res://assets/images/not_visible.png" id="4_yn6tx"]
 

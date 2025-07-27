@@ -1,25 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://8mdmou5bvqyh"]
+[gd_scene load_steps=11 format=3 uid="uid://8mdmou5bvqyh"]
 
-[ext_resource type="Texture2D" uid="uid://c7m1h5n5jv7cl" path="res://assets/images/sky.jpg" id="1_71bu6"]
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="2_djnry"]
-[ext_resource type="Script" path="res://scripts/hex_manager.gd" id="3_b8f1b"]
 [ext_resource type="PackedScene" uid="uid://ban0igh0lgmrq" path="res://hexes/neutral_hex/neutral_hex.tscn" id="4_f6l8m"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex/player_hex.tscn" id="5_fw1dp"]
-[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/auth_theme.tres" id="6_svwd4"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="6_svwd4"]
 [ext_resource type="Script" path="res://scripts/base_button.gd" id="7_1chdg"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="8_ontds"]
 [ext_resource type="PackedScene" uid="uid://brbw2cba4h0kc" path="res://scenes/combat_floor.tscn" id="9_b31gn"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8mkin"]
-panorama = ExtResource("1_71bu6")
-energy_multiplier = 0.9
-
-[sub_resource type="Sky" id="Sky_wjo7w"]
-sky_material = SubResource("PanoramaSkyMaterial_8mkin")
-
-[sub_resource type="Environment" id="Environment_n5egb"]
-background_mode = 2
-sky = SubResource("Sky_wjo7w")
+[sub_resource type="Environment" id="Environment_pkdcy"]
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 
@@ -42,11 +31,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
 script = ExtResource("2_djnry")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_n5egb")
+environment = SubResource("Environment_pkdcy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.68562, -0.0221087)
-light_energy = 1.2
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
+light_energy = 1.4
 
 [node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -61,7 +50,6 @@ unique_name_in_owner = true
 
 [node name="Hexes" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_b8f1b")
 
 [node name="PlayerHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true

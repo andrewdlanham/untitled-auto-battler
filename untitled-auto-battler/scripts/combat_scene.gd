@@ -15,6 +15,7 @@ var num_enemy_units
 signal get_random_team_requested
 
 func _ready() -> void:
+	_connect_all_hexes()
 	update_wins_label()
 	update_lives_label()
 	get_random_team_requested.connect(DataManager._on_get_random_team_requested)
@@ -100,3 +101,8 @@ func handle_end_of_run(player_won: bool) -> void:
 	}
 	DataManager.increment_stats(stats_to_add)
 	run_summary.visible = true
+
+func _connect_all_hexes() -> void:
+	var all_hexes = %PlayerHexes.get_children() + %EnemyHexes.get_children() + %NeutralHexes.get_children()
+	for hex: Hex in all_hexes:
+		hex.connect_to_neighbor_hexes(all_hexes)

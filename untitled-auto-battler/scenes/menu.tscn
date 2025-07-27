@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://xmbt05e88gbe"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_8fnhs"]
-[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/auth_theme.tres" id="2_tbxqa"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="2_tbxqa"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="3_8lf7a"]
 [ext_resource type="Script" path="res://scripts/base_button.gd" id="3_x0yqu"]
 

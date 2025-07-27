@@ -34,7 +34,7 @@ func _input(_event) -> void:
 			%UnitStatsPopup.show_stats(dragged_object)
 
 	elif Input.is_action_just_released("LeftClick"):
-		if is_dragging: 
+		if is_dragging:
 			raycast_collision_mask = UNIT_MASK
 			is_dragging = false
 			var origin_hex = dragged_object.current_hex
