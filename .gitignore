@@ -34,3 +34,4 @@ untitled-auto-battler/_docs/*
 **/meshes
 **/*.blend.*
 **/fonts/*
+untitled-auto-battler/units/**/*.res

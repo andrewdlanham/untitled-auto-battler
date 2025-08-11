@@ -3,11 +3,11 @@ extends Node
 var active_scene: Node
 var preparation_scene: Node3D
 
-const REGISTER_SCENE_PATH: String = "res://scenes/register.tscn"
-const LOGIN_SCENE_PATH: String = "res://scenes/login.tscn"
-const MENU_SCENE_PATH: String = "res://scenes/menu.tscn"
-const COMBAT_SCENE_PATH: String = "res://scenes/combat.tscn"
-const PREP_SCENE_PATH: String = "res://scenes/prep_scene.tscn"
+const REGISTER_SCENE_PATH: String = "res://scenes/screens/register.tscn"
+const LOGIN_SCENE_PATH: String = "res://scenes/screens/login.tscn"
+const MENU_SCENE_PATH: String = "res://scenes/screens/menu.tscn"
+const COMBAT_SCENE_PATH: String = "res://scenes/screens/combat.tscn"
+const PREP_SCENE_PATH: String = "res://scenes/screens/prep_scene.tscn"
 
 func _ready() -> void:
 	var cursor = load("res://assets/images/cursors/point.png")
