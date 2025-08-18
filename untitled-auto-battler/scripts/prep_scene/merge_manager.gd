@@ -21,9 +21,16 @@ func _handle_unit_merging(match_name: String, match_level: int) -> void:
 		return
 
 func _merge_units(units) -> void:
-	units[0].level_up()
-	units[1].remove_self()
-	units[2].remove_self()
+	var unit_to_keep = units[0]
+	for unit: Node3D in units:
+		if unit.current_hex.is_bench_hex():
+			unit_to_keep = unit
+	unit_to_keep.level_up()
+	for unit: Node3D in units:
+		if unit == unit_to_keep:
+			continue
+		else:
+			unit.remove_self()
 	unit_merge_success.emit()
 
 func _on_unit_placed() -> void:

@@ -45,9 +45,12 @@ func _input(_event) -> void:
 				# Swapping units
 				elif (dropped_hex.is_occupied() and not origin_hex.is_shop_hex() and dropped_hex.unit_on_hex != dragged_object):
 					swap_units(dragged_object, dropped_hex.unit_on_hex)
-				#
+				# Prevent drop if hex is occupied
 				elif (dropped_hex.is_occupied()):
 					dragged_object.snap_to_current_hex()
+				# Buying units with no available space
+				elif ((dropped_hex.is_player_hex() or dropped_hex.is_bench_hex()) and origin_hex.is_shop_hex() and GameManager.is_active_units_full() and %MergeManager.unit_would_trigger_merge(dragged_object)):
+					unit_purchase_requested.emit(dragged_object, dropped_hex)
 				# Buying units on player hexes
 				elif (dropped_hex.is_player_hex() and origin_hex.is_shop_hex() and not GameManager.is_active_units_full()):
 					unit_purchase_requested.emit(dragged_object, dropped_hex)
