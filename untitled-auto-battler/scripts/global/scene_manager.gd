@@ -8,6 +8,7 @@ const LOGIN_SCENE_PATH: String = "res://scenes/screens/login.tscn"
 const MENU_SCENE_PATH: String = "res://scenes/screens/menu.tscn"
 const COMBAT_SCENE_PATH: String = "res://scenes/screens/combat.tscn"
 const PREP_SCENE_PATH: String = "res://scenes/screens/prep_scene.tscn"
+const FORGOT_PASSWORD_SCENE_PATH = "res://scenes/screens/forgot_password.tscn"
 
 func _ready() -> void:
 	var cursor = load("res://assets/images/cursors/point.png")

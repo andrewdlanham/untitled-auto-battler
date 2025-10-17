@@ -23,3 +23,6 @@ func _on_show_password_button_pressed() -> void:
 		%ShowPasswordButton.icon = FIELD_VISIBLE_ICON
 	else:
 		%ShowPasswordButton.icon = FIELD_HIDDEN_ICON
+
+func _on_go_to_forgot_password_pressed() -> void:
+	SceneManager.switch_to_scene(SceneManager.FORGOT_PASSWORD_SCENE_PATH)

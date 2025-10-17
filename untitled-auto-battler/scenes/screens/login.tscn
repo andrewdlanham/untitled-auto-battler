@@ -176,9 +176,9 @@ secret = true
 
 [node name="NoAccountLabel" type="Label" parent="."]
 offset_left = 464.0
-offset_top = 536.0
+offset_top = 520.0
 offset_right = 689.0
-offset_bottom = 564.0
+offset_bottom = 548.0
 theme_override_font_sizes/font_size = 20
 text = "Don't have an account?"
 
@@ -223,9 +223,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 696.0
-offset_top = 536.0
+offset_top = 520.0
 offset_right = 808.0
-offset_bottom = 564.0
+offset_bottom = 548.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
@@ -233,6 +233,26 @@ theme = ExtResource("5_f15ht")
 theme_override_fonts/font = ExtResource("2_gjsc2")
 theme_override_font_sizes/font_size = 20
 text = "Register"
+script = ExtResource("4_35gp3")
+
+[node name="GoToForgotPassword" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 560.0
+offset_top = 552.0
+offset_right = 715.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("5_f15ht")
+theme_override_fonts/font = ExtResource("2_gjsc2")
+theme_override_font_sizes/font_size = 20
+text = "Forgot password
+"
 script = ExtResource("4_35gp3")
 
 [node name="ShowPasswordButton" type="Button" parent="."]
@@ -252,4 +272,5 @@ icon_alignment = 1
 [connection signal="pressed" from="TestLogin" to="." method="_on_test_login_pressed"]
 [connection signal="pressed" from="PlayAsGuestButton" to="." method="_on_play_as_guest_button_pressed"]
 [connection signal="pressed" from="GoToRegister" to="." method="_on_go_to_register_pressed"]
+[connection signal="pressed" from="GoToForgotPassword" to="." method="_on_go_to_forgot_password_pressed"]
 [connection signal="pressed" from="ShowPasswordButton" to="." method="_on_show_password_button_pressed"]
