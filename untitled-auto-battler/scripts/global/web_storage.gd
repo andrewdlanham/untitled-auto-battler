@@ -2,7 +2,7 @@ extends Node
 
 func _ready() -> void:
 	if not OS.has_feature("web"):
-		push_warning("Web feature not detected!")
+		print("Web feature not detected!")
 
 func set_item(key: String, value: String) -> void:
 	if OS.has_feature("web"):
