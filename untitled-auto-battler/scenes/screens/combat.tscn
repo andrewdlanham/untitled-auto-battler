@@ -200,6 +200,20 @@ theme_override_font_sizes/font_size = 35
 text = "BACK TO MENU"
 script = ExtResource("5_drmuy")
 
+[node name="EnemyNameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 880.0
+offset_top = 136.0
+offset_right = 1272.0
+offset_bottom = 191.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 30
+text = "ENEMY NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WinsLabel" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = 24.0

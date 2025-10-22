@@ -6,6 +6,7 @@ extends Node
 @onready var wins_label: Label = %WinsLabel
 @onready var lives_label: Label = %LivesLabel
 @onready var run_summary: Control = %RunSummary
+@onready var enemy_name_label: Label = %EnemyNameLabel
 
 var combat_in_progress: bool = false
 
@@ -16,8 +17,8 @@ signal get_random_team_requested
 
 func _ready() -> void:
 	_connect_all_hexes()
-	update_wins_label()
-	update_lives_label()
+	_update_wins_label()
+	_update_lives_label()
 	get_random_team_requested.connect(DataManager._on_get_random_team_requested)
 	DataManager.combat_team_received.connect(_on_combat_team_received)
 	get_random_team_requested.emit()
@@ -25,24 +26,24 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if (combat_in_progress):
 		if (num_player_units == 0 or num_enemy_units == 0):
-			end_combat()
+			_end_combat()
 			if (num_enemy_units == 0):
 				GameManager.number_of_wins += 1
-				update_wins_label()
+				_update_wins_label()
 			else:
 				GameManager.number_of_lives -= 1
-				update_lives_label()
+				_update_lives_label()
 			# Player reaches win threshold
 			if (GameManager.number_of_wins >= GameManager.WIN_THRESHOLD):
-				handle_end_of_run(true)
+				_handle_end_of_run(true)
 			# Player runs out of lives
 			elif (GameManager.number_of_lives <= 0):
-				handle_end_of_run(false)
+				_handle_end_of_run(false)
 			# Keep playing
 			else:
 				continue_button.visible = true
 
-func start_combat() -> void:
+func _start_combat() -> void:
 	combat_in_progress = true
 	num_player_units = player_units.get_children().size()
 	num_enemy_units = enemy_units.get_children().size()
@@ -51,7 +52,7 @@ func start_combat() -> void:
 		unit.enable_combat()
 		unit.unit_died.connect(_on_unit_died)
 
-func end_combat() -> void:
+func _end_combat() -> void:
 
 	combat_in_progress = false
 
@@ -71,10 +72,13 @@ func _on_unit_died(_unit: Unit, team: String) -> void:
 	if (team == "PLAYER"): num_player_units -= 1
 	if (team == "ENEMY"): num_enemy_units -= 1
 
-func _on_combat_team_received(enemy_unit_info_array) -> void:
+func _on_combat_team_received(enemy_unit_info_array, enemy_user_id) -> void:
 	GameManager.construct_team(enemy_unit_info_array, %EnemyHexes.get_children(), %EnemyUnits)
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
-	start_combat()
+	DataManager.get_display_name_from_id(enemy_user_id)
+	var enemy_display_name: String = await DataManager.display_name_received
+	enemy_name_label.text = enemy_display_name
+	_start_combat()
 
 func _on_menu_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
@@ -85,13 +89,13 @@ func _on_continue_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
 	SoundManager.play_music("prep_scene_music")
 
-func update_wins_label() -> void:
+func _update_wins_label() -> void:
 	wins_label.text = "WINS: " + str(GameManager.number_of_wins) + " / " + str(GameManager.WIN_THRESHOLD)
 
-func update_lives_label() -> void:
+func _update_lives_label() -> void:
 	lives_label.text = "LIVES: " + str(GameManager.number_of_lives) + " / 5" 
 
-func handle_end_of_run(player_won: bool) -> void:
+func _handle_end_of_run(player_won: bool) -> void:
 	%RunResultLabel.text = "You Win!" if player_won else "You Lost..."
 	var stats_to_add = {
 		"wins": 1 if player_won else 0,
