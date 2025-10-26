@@ -8,10 +8,9 @@ extends Node
 @onready var run_summary: Control = %RunSummary
 @onready var enemy_name_label: Label = %EnemyNameLabel
 
-var combat_in_progress: bool = false
-
-var num_player_units
-var num_enemy_units
+var _combat_in_progress: bool = false
+var _num_player_units
+var _num_enemy_units
 
 signal get_random_team_requested
 
@@ -24,10 +23,10 @@ func _ready() -> void:
 	get_random_team_requested.emit()
 
 func _process(_delta: float) -> void:
-	if (combat_in_progress):
-		if (num_player_units == 0 or num_enemy_units == 0):
+	if (_combat_in_progress):
+		if (_num_player_units == 0 or _num_enemy_units == 0):
 			_end_combat()
-			if (num_enemy_units == 0):
+			if (_num_enemy_units == 0):
 				GameManager.number_of_wins += 1
 				_update_wins_label()
 			else:
@@ -44,9 +43,9 @@ func _process(_delta: float) -> void:
 				continue_button.visible = true
 
 func _start_combat() -> void:
-	combat_in_progress = true
-	num_player_units = player_units.get_children().size()
-	num_enemy_units = enemy_units.get_children().size()
+	_combat_in_progress = true
+	_num_player_units = player_units.get_children().size()
+	_num_enemy_units = enemy_units.get_children().size()
 	var active_units = player_units.get_children() + enemy_units.get_children()
 	for unit in active_units:
 		unit.enable_combat()
@@ -54,7 +53,7 @@ func _start_combat() -> void:
 
 func _end_combat() -> void:
 
-	combat_in_progress = false
+	_combat_in_progress = false
 
 	# Disconnect signals if needed
 	if get_random_team_requested.is_connected(DataManager._on_get_random_team_completed):
@@ -69,15 +68,27 @@ func _end_combat() -> void:
 			unit.unit_died.disconnect(_on_unit_died)
 
 func _on_unit_died(_unit: Unit, team: String) -> void:
-	if (team == "PLAYER"): num_player_units -= 1
-	if (team == "ENEMY"): num_enemy_units -= 1
+	if (team == "PLAYER"): _num_player_units -= 1
+	if (team == "ENEMY"): _num_enemy_units -= 1
 
 func _on_combat_team_received(enemy_unit_info_array, enemy_user_id) -> void:
-	GameManager.construct_team(enemy_unit_info_array, %EnemyHexes.get_children(), %EnemyUnits)
-	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
+
+	# Construct enemy team if valid team exists
+	if enemy_unit_info_array != []:
+		GameManager.construct_team(enemy_unit_info_array, %EnemyHexes.get_children(), %EnemyUnits)
+	# Construct a mirror match if no valid team exists
+	else:
+		GameManager.construct_team(GameManager.player_units, %EnemyHexes.get_children(), %EnemyUnits)
+
+	# Set up enemy name label
 	DataManager.get_display_name_from_id(enemy_user_id)
 	var enemy_display_name: String = await DataManager.display_name_received
-	enemy_name_label.text = enemy_display_name
+	if enemy_display_name == "null": enemy_display_name = "Guest"
+	enemy_name_label.text = enemy_display_name.replace('"', "") + "'s Team"
+
+	# Construct player's team
+	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
+
 	_start_combat()
 
 func _on_menu_button_pressed() -> void:
