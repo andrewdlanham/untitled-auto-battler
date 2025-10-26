@@ -7,10 +7,13 @@ extends Node
 @onready var lives_label: Label = %LivesLabel
 @onready var run_summary: Control = %RunSummary
 @onready var enemy_name_label: Label = %EnemyNameLabel
+@onready var enemy_wins_label: Label = %EnemyWinsLabel
+@onready var enemy_losses_label: Label = %EnemyLossesLabel
+
 
 var _combat_in_progress: bool = false
-var _num_player_units
-var _num_enemy_units
+var _num_player_units: int
+var _num_enemy_units: int
 
 signal get_random_team_requested
 
@@ -19,7 +22,7 @@ func _ready() -> void:
 	_update_wins_label()
 	_update_lives_label()
 	get_random_team_requested.connect(DataManager._on_get_random_team_requested)
-	DataManager.combat_team_received.connect(_on_combat_team_received)
+	DataManager.enemy_team_received.connect(_on_enemy_team_received)
 	get_random_team_requested.emit()
 
 func _process(_delta: float) -> void:
@@ -30,6 +33,7 @@ func _process(_delta: float) -> void:
 				GameManager.number_of_wins += 1
 				_update_wins_label()
 			else:
+				GameManager.number_of_losses += 1
 				GameManager.number_of_lives -= 1
 				_update_lives_label()
 			# Player reaches win threshold
@@ -58,8 +62,8 @@ func _end_combat() -> void:
 	# Disconnect signals if needed
 	if get_random_team_requested.is_connected(DataManager._on_get_random_team_completed):
 		get_random_team_requested.disconnect(DataManager._on_get_random_team_requested)
-	if DataManager.combat_team_received.is_connected(_on_combat_team_received):
-		DataManager.combat_team_received.disconnect(_on_combat_team_received)
+	if DataManager.enemy_team_received.is_connected(_on_enemy_team_received):
+		DataManager.enemy_team_received.disconnect(_on_enemy_team_received)
 
 	var active_units = player_units.get_children() + enemy_units.get_children()
 	for unit in active_units:
@@ -71,7 +75,7 @@ func _on_unit_died(_unit: Unit, team: String) -> void:
 	if (team == "PLAYER"): _num_player_units -= 1
 	if (team == "ENEMY"): _num_enemy_units -= 1
 
-func _on_combat_team_received(enemy_unit_info_array, enemy_user_id) -> void:
+func _on_enemy_team_received(enemy_unit_info_array, enemy_user_id, enemy_wins, enemy_losses) -> void:
 
 	# Construct enemy team if valid team exists
 	if enemy_unit_info_array != []:
@@ -85,6 +89,10 @@ func _on_combat_team_received(enemy_unit_info_array, enemy_user_id) -> void:
 	var enemy_display_name: String = await DataManager.display_name_received
 	if enemy_display_name == "null": enemy_display_name = "Guest"
 	enemy_name_label.text = enemy_display_name.replace('"', "") + "'s Team"
+
+	# Set up enemy wins / losses
+	enemy_wins_label.text = "W : " + str(enemy_wins) if (enemy_wins != -1) else 'W : ?'
+	enemy_losses_label.text = "L : " + str(enemy_losses) if (enemy_losses != -1) else 'L " ?'
 
 	# Construct player's team
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
@@ -104,7 +112,7 @@ func _update_wins_label() -> void:
 	wins_label.text = "WINS: " + str(GameManager.number_of_wins) + " / " + str(GameManager.WIN_THRESHOLD)
 
 func _update_lives_label() -> void:
-	lives_label.text = "LIVES: " + str(GameManager.number_of_lives) + " / 5" 
+	lives_label.text = "LIVES: " + str(GameManager.number_of_lives) + " / " + str(GameManager.MAX_LIVES) 
 
 func _handle_end_of_run(player_won: bool) -> void:
 	%RunResultLabel.text = "You Win!" if player_won else "You Lost..."
@@ -112,7 +120,7 @@ func _handle_end_of_run(player_won: bool) -> void:
 		"wins": 1 if player_won else 0,
 		"losses": 1 if !player_won else 0,
 		"round_wins": GameManager.number_of_wins,
-		"round_losses": GameManager.MAX_LIVES - GameManager.number_of_lives
+		"round_losses": GameManager.number_of_losses
 	}
 	DataManager.increment_stats(stats_to_add)
 	run_summary.visible = true

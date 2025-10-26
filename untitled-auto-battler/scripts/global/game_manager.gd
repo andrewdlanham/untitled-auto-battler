@@ -18,6 +18,7 @@ var shop_units: Array = []
 
 var current_round: int
 var number_of_wins: int
+var number_of_losses: int
 var number_of_lives: int
 
 func start_game() -> void:
