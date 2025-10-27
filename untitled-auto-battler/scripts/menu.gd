@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var logged_in_as_label: Label = $LoggedInAsLabel
+@onready var patch_notes_label: Label = %PatchNotesLabel
 
 func _ready() -> void:
 	DataManager.leaderboard_received.connect(update_leaderboard_label)
@@ -19,3 +20,6 @@ func update_leaderboard_label(data: Array):
 
 func _on_log_out_button_pressed() -> void:
 	DataManager.log_out_current_user()
+
+func _on_patch_notes_button_pressed() -> void:
+	patch_notes_label.visible = !patch_notes_label.visible

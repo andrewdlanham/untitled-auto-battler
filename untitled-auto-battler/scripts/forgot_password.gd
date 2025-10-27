@@ -4,7 +4,6 @@ extends Node2D
 @onready var forgot_password_button: Button = %ForgotPasswordButton
 @onready var alert_label: Label = %AlertLabel
 
-
 func _ready() -> void:
 	alert_label.visible = false
 

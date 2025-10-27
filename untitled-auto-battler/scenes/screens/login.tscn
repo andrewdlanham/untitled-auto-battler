@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://de3jpqctuaymx" path="res://assets/images/not_visible.png" id="8_2jysl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoxdc"]
-bg_color = Color(0.270588, 0.482353, 0.615686, 1)
+bg_color = Color(0.270588, 0.482353, 0.768627, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgduc"]
 bg_color = Color(1, 0.2, 0.309804, 1)
@@ -190,17 +190,18 @@ offset_top = 208.0
 offset_right = 1280.0
 offset_bottom = 496.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 text = "ERROR"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TestLogin" type="Button" parent="."]
-offset_left = 928.0
+visible = false
+offset_left = 904.0
 offset_top = 600.0
-offset_right = 1213.0
-offset_bottom = 672.0
+offset_right = 1189.0
+offset_bottom = 664.0
 focus_mode = 0
 theme = ExtResource("3_g03hs")
 text = "TEST LOG IN"

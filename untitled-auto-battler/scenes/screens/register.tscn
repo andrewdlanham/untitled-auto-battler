@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://scripts/base_button.gd" id="4_hnp24"]
 [ext_resource type="Texture2D" uid="uid://de3jpqctuaymx" path="res://assets/images/not_visible.png" id="4_yn6tx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoxdc"]
-bg_color = Color(0.270588, 0.482353, 0.615686, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofuiy"]
+bg_color = Color(0.270588, 0.482353, 0.768627, 1)
 
 [node name="Register" type="Node2D"]
 script = ExtResource("1_7cv0k")
@@ -19,7 +19,7 @@ script = ExtResource("1_7cv0k")
 z_index = -10
 offset_right = 1280.0
 offset_bottom = 728.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eoxdc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ofuiy")
 
 [node name="TitleLabel" type="Label" parent="."]
 offset_top = 48.0

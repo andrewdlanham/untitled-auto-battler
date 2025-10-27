@@ -1,5 +1,6 @@
 extends Node3D
 
+const STARTING_GOLD: int = 10
 @onready var round_label: Label = %RoundLabel
 
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _ready() -> void:
 
 func start_new_round() -> void:
 	GameManager.current_round += 1
-	%GoldManager.set_gold(10)
+	%GoldManager.set_gold(STARTING_GOLD)
 	%ShopManager.roll_shop_units()
 	update_unit_count_label()
 	update_round_label()
@@ -25,9 +26,9 @@ func update_unit_count_label() -> void:
 func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 
-		GameManager.player_units = get_unit_info(%PlayerUnits)
-		GameManager.bench_units = get_unit_info(%BenchUnits)
-		GameManager.shop_units = get_unit_info(%ShopUnits)
+		GameManager.player_units = get_unit_info_array(%PlayerUnits)
+		GameManager.bench_units = get_unit_info_array(%BenchUnits)
+		GameManager.shop_units = get_unit_info_array(%ShopUnits)
 
 		if (GameManager.player_units == []):
 			SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
@@ -51,7 +52,7 @@ func _connect_signals() -> void:
 func update_round_label() -> void:
 	round_label.text = "Round   " + str(GameManager.current_round)
 
-func get_unit_info(parent_node: Node) -> Array:
+func get_unit_info_array(parent_node: Node) -> Array:
 	var unit_info_array = []
 	for unit: Unit in parent_node.get_children():
 		unit_info_array.append(unit.get_info_dict())

@@ -92,7 +92,7 @@ func _on_enemy_team_received(enemy_unit_info_array, enemy_user_id, enemy_wins, e
 
 	# Set up enemy wins / losses
 	enemy_wins_label.text = "W : " + str(enemy_wins) if (enemy_wins != -1) else 'W : ?'
-	enemy_losses_label.text = "L : " + str(enemy_losses) if (enemy_losses != -1) else 'L " ?'
+	enemy_losses_label.text = "L : " + str(enemy_losses) if (enemy_losses != -1) else 'L : ?'
 
 	# Construct player's team
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)

@@ -199,7 +199,6 @@ func _on_attack_animation_complete(_animation_name: String) -> void:
 	animation_player.animation_finished.disconnect(_on_attack_animation_complete)
 	is_attacking = false
 
-#region Hex-Related Functions
 func snap_to_current_hex() -> void:
 	self.position = current_hex.snap_point.global_position
 
@@ -218,7 +217,6 @@ func try_connect_to_hex(hex: Hex, snap_to_hex: bool = true) -> bool:
 	return true		# Connection successful
 
 func try_connect_to_nearest_hex() -> bool:
-
 	return try_connect_to_hex(get_nearest_hex())
 
 func get_nearest_hex() -> Hex:
@@ -262,7 +260,6 @@ func get_open_hex_towards_unit(unit: Unit) -> Hex:
 		return closest_hex
 	else:
 		return null
-#endregion
 
 func play_new_unit_animations() -> void:
 	animation_player.play("spin")

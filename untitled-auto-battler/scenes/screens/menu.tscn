@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="3_8lf7a"]
 [ext_resource type="Script" path="res://scripts/base_button.gd" id="3_x0yqu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxxrr"]
-bg_color = Color(0.270588, 0.482353, 0.615686, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jvos"]
+bg_color = Color(0.270588, 0.482353, 0.768627, 1)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_8fnhs")
@@ -15,7 +15,7 @@ script = ExtResource("1_8fnhs")
 z_index = -10
 offset_right = 1280.0
 offset_bottom = 728.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bxxrr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jvos")
 
 [node name="LoggedInAsLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -68,15 +68,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 456.0
-offset_top = 552.0
-offset_right = 826.0
-offset_bottom = 635.0
+offset_left = 512.0
+offset_top = 568.0
+offset_right = 768.0
+offset_bottom = 639.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 theme = ExtResource("2_tbxqa")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "PLAY"
 script = ExtResource("3_x0yqu")
 
@@ -91,5 +91,36 @@ theme = ExtResource("2_tbxqa")
 text = "LOG OUT"
 script = ExtResource("3_x0yqu")
 
+[node name="PatchNotesButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1080.0
+offset_top = 640.0
+offset_right = 1264.0
+offset_bottom = 680.0
+focus_mode = 0
+theme = ExtResource("2_tbxqa")
+theme_override_font_sizes/font_size = 20
+text = "Show patch notes"
+script = ExtResource("3_x0yqu")
+
+[node name="PatchNotesLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 832.0
+offset_top = 272.0
+offset_right = 1225.0
+offset_bottom = 472.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "Version 0.2.2 Patch Notes
+- Merging units is now possible 
+when there is no space to place units
+- Added password reset
+- Opponent's name appears in combat
+- Each team's W / L record appears in combat
+- Players cannot fight their own teams"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="LogOutButton" to="." method="_on_log_out_button_pressed"]
+[connection signal="pressed" from="PatchNotesButton" to="." method="_on_patch_notes_button_pressed"]
