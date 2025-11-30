@@ -15,9 +15,9 @@ script = ExtResource("1_a06dh")
 
 [node name="VersionLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 1136.0
+offset_left = 16.0
 offset_top = 680.0
-offset_right = 1260.0
+offset_right = 140.0
 offset_bottom = 708.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8

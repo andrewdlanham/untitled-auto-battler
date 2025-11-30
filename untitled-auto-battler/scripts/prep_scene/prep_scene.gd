@@ -21,7 +21,7 @@ func start_new_round() -> void:
 
 func update_unit_count_label() -> void:
 	await get_tree().process_frame		# Allows units time to leave scene before updating the unit count label
-	%UnitCountLabel.text = "Units:   " + str(%PlayerUnits.get_children().size()) + " / " + str(GameManager.get_current_unit_cap())
+	%UnitCountLabel.text = "Units: " + str(%PlayerUnits.get_children().size()) + " / " + str(GameManager.get_current_unit_cap())
 
 func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

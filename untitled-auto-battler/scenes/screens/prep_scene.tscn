@@ -34,7 +34,7 @@ light_energy = 1.4
 
 [node name="MainCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642787, 0, -0.642787, 0.766044, 0, 6.3, 8)
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, -0.00614119, 6.5, 7.60623)
 fov = 60.0
 
 [node name="DragDropManager" type="Node3D" parent="."]
@@ -52,7 +52,8 @@ script = ExtResource("4_s6xcp")
 
 [node name="RerollButton" parent="ShopManager" instance=ExtResource("5_qen00")]
 unique_name_in_owner = true
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 1.75, 0, 4)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.36575, 0, 2.98002)
+visible = false
 
 [node name="ShopRollAudio" type="AudioStreamPlayer" parent="ShopManager"]
 stream = ExtResource("6_gnufo")
@@ -108,48 +109,73 @@ hex_id = "G"
 [node name="ShopHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="ShopHex3" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, 1)
+[node name="ShopHexA" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, -2)
 hex_id = "SHOP_A"
 
-[node name="ShopHex4" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, 2.99)
+[node name="ShopHexB" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, -1)
 hex_id = "SHOP_B"
 
-[node name="ShopHex7" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+[node name="ShopHexC" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 0)
 hex_id = "SHOP_C"
 
-[node name="ShopHex8" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 2)
+[node name="ShopHexD" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 7, 0, -1)
 hex_id = "SHOP_D"
+
+[node name="ShopHexE" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, 1)
+hex_id = "SHOP_E"
+
+[node name="ShopHexF" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 2)
+hex_id = "SHOP_F"
+
+[node name="ShopHexG" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 7, 0, 1)
+hex_id = "SHOP_G"
 
 [node name="BenchHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
 [node name="BenchHex" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5, 0, 1)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5, 0, -1)
 hex_id = "BENCH_A"
 
 [node name="BenchHex2" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 0)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, -2)
 hex_id = "BENCH_B"
 
 [node name="BenchHex3" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 2)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 0)
 hex_id = "BENCH_C"
 
 [node name="BenchHex4" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5, 0, 3)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.49342, 5.24521e-06, 0.993217)
 hex_id = "BENCH_D"
+
+[node name="BenchHex5" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 2)
+hex_id = "BENCH_E"
+
+[node name="BenchHex6" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -7.00668, 4.76837e-07, 1.0001)
+hex_id = "BENCH_F"
+
+[node name="BenchHex7" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -7, 0, -1)
+hex_id = "BENCH_Gss"
 
 [node name="UI" type="Node" parent="."]
 
 [node name="RoundLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
-offset_left = 128.0
-offset_right = 383.0
-offset_bottom = 64.0
+offset_left = 512.0
+offset_top = 16.0
+offset_right = 767.0
+offset_bottom = 59.0
 theme = SubResource("Theme_o3uem")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -157,42 +183,61 @@ theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("11_0q8k3")
 theme_override_font_sizes/font_size = 35
 text = "Round   0"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GoldCountLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
-offset_left = 128.0
+offset_left = 512.0
 offset_top = 64.0
-offset_right = 384.0
-offset_bottom = 128.0
+offset_right = 768.0
+offset_bottom = 112.0
 theme_override_colors/font_color = Color(0.992157, 0.764706, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("11_0q8k3")
-theme_override_font_sizes/font_size = 40
-text = "Gold:"
+theme_override_font_sizes/font_size = 35
+text = "X G
+"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UnitCountLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
 offset_left = 512.0
-offset_top = 152.0
+offset_top = 176.0
 offset_right = 767.0
-offset_bottom = 194.0
+offset_bottom = 219.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 30
-text = "Units:   0 / 1"
+theme_override_fonts/font = ExtResource("11_0q8k3")
+theme_override_font_sizes/font_size = 35
+text = "Units:  0 / 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.079638, -0.428106, 0.0564203)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
 
 [node name="CombatButton" parent="." instance=ExtResource("13_3yfd5")]
 unique_name_in_owner = true
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.75, 0, 4)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.35771, 0, 2.93156)
+visible = false
 
 [node name="UnitStatsPopup" parent="." instance=ExtResource("14_5i252")]
 unique_name_in_owner = true
 position = Vector2(816, 360)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1067.0
+offset_top = 584.0
+offset_right = 1276.0
+offset_bottom = 639.0
+text = "REROLL"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1067.0
+offset_top = 646.0
+offset_right = 1276.0
+offset_bottom = 701.0
+text = "FIGHT!"

@@ -28,7 +28,7 @@ func _on_unit_purchase_requested(unit: Unit, hex_placed_on: Hex) -> void:
 		unit_purchase_denied.emit(unit)
 
 func update_gold_label_text() -> void:
-	%GoldCountLabel.text = "Gold: " + str(player_gold)
+	%GoldCountLabel.text = str(player_gold) + " G"
 
 func set_gold(amount) -> void:
 	player_gold = amount
