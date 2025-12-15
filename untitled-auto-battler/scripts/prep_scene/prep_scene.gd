@@ -23,21 +23,20 @@ func update_unit_count_label() -> void:
 	await get_tree().process_frame		# Allows units time to leave scene before updating the unit count label
 	%UnitCountLabel.text = "Units: " + str(%PlayerUnits.get_children().size()) + " / " + str(GameManager.get_current_unit_cap())
 
-func _on_start_combat_button_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+func _on_start_combat_button_pressed() -> void:
 
-		GameManager.player_units = get_unit_info_array(%PlayerUnits)
-		GameManager.bench_units = get_unit_info_array(%BenchUnits)
-		GameManager.shop_units = get_unit_info_array(%ShopUnits)
+	GameManager.player_units = get_unit_info_array(%PlayerUnits)
+	GameManager.bench_units = get_unit_info_array(%BenchUnits)
+	GameManager.shop_units = get_unit_info_array(%ShopUnits)
 
-		if (GameManager.player_units == []):
-			SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
-			SoundManager.play_music("combat_scene_music")
-		else:
-			DataManager.store_team_in_db(GameManager.player_units)
-			await DataManager.team_stored_in_db
-			SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
-			SoundManager.play_music("combat_scene_music")
+	if (GameManager.player_units == []):
+		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
+		SoundManager.play_music("combat_scene_music")
+	else:
+		DataManager.store_team_in_db(GameManager.player_units)
+		await DataManager.team_stored_in_db
+		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
+		SoundManager.play_music("combat_scene_music")
 
 func _connect_signals() -> void:
 
@@ -46,8 +45,9 @@ func _connect_signals() -> void:
 	%MergeManager.unit_merge_success.connect(update_unit_count_label)
 	%UnitStatsPopup.unit_sold.connect(update_unit_count_label)
 	
-	# Connect signals for hex buttons
-	%CombatButton.get_node("Area3D").input_event.connect(_on_start_combat_button_pressed)
+	# Connect signals for UI buttons
+	%CombatButton.pressed.connect(_on_start_combat_button_pressed)
+	# TODO: Connect reroll button logic here
 
 func update_round_label() -> void:
 	round_label.text = "Round   " + str(GameManager.current_round)

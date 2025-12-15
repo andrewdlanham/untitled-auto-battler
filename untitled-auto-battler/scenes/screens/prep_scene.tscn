@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://u83thaig7l0b"]
+[gd_scene load_steps=18 format=3 uid="uid://u83thaig7l0b"]
 
 [ext_resource type="Script" path="res://scripts/prep_scene/prep_scene.gd" id="1_8bpcq"]
 [ext_resource type="Script" path="res://scripts/prep_scene/drag_and_drop.gd" id="2_51slr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="12_bfl3o"]
 [ext_resource type="PackedScene" uid="uid://cik4iupcelnqw" path="res://hexes/combat_button/combat_button.tscn" id="13_3yfd5"]
 [ext_resource type="PackedScene" uid="uid://dckldltq0oyfg" path="res://scenes/ui/UnitStatsPopup.tscn" id="14_5i252"]
+[ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="15_y644e"]
 
 [sub_resource type="Environment" id="Environment_n5egb"]
 ambient_light_source = 3
@@ -219,7 +220,7 @@ vertical_alignment = 1
 [node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
 
-[node name="CombatButton" parent="." instance=ExtResource("13_3yfd5")]
+[node name="CombatButtonOLD" parent="." instance=ExtResource("13_3yfd5")]
 unique_name_in_owner = true
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.35771, 0, 2.93156)
 visible = false
@@ -229,15 +230,20 @@ unique_name_in_owner = true
 position = Vector2(816, 360)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1067.0
-offset_top = 584.0
-offset_right = 1276.0
-offset_bottom = 639.0
+offset_left = 1056.0
+offset_top = 576.0
+offset_right = 1265.0
+offset_bottom = 635.0
+theme = ExtResource("15_y644e")
 text = "REROLL"
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 1067.0
-offset_top = 646.0
-offset_right = 1276.0
-offset_bottom = 701.0
+[node name="CombatButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1056.0
+offset_top = 640.0
+offset_right = 1265.0
+offset_bottom = 699.0
+theme = ExtResource("15_y644e")
 text = "FIGHT!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -197,7 +197,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TestLogin" type="Button" parent="."]
-visible = false
 offset_left = 904.0
 offset_top = 600.0
 offset_right = 1189.0
