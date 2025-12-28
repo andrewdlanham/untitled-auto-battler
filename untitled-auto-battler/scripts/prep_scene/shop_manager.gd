@@ -85,11 +85,9 @@ func get_current_shop_odds() -> Array:
 
 func _connect_signals() -> void:
 	%GoldManager.shop_roll_approved.connect(_on_roll_shop_approved)
-	%RerollButton.get_node("Area3D").input_event.connect(_on_roll_shop_pressed)
 
-func _on_roll_shop_pressed(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if (event.is_action_pressed("LeftClick")):
-		shop_roll_requested.emit()
+func request_shop_roll() -> void:
+	shop_roll_requested.emit()
 
 func _on_roll_shop_approved() -> void:
 	roll_shop_units()

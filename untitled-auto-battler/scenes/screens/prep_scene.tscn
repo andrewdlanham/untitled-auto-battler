@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://u83thaig7l0b"]
+[gd_scene load_steps=17 format=3 uid="uid://u83thaig7l0b"]
 
 [ext_resource type="Script" path="res://scripts/prep_scene/prep_scene.gd" id="1_8bpcq"]
 [ext_resource type="Script" path="res://scripts/prep_scene/drag_and_drop.gd" id="2_51slr"]
 [ext_resource type="Script" path="res://scripts/prep_scene/gold_manager.gd" id="3_cpm5m"]
 [ext_resource type="Script" path="res://scripts/prep_scene/shop_manager.gd" id="4_s6xcp"]
-[ext_resource type="PackedScene" uid="uid://dir1eth63qjck" path="res://hexes/reroll_button/reroll_button.tscn" id="5_qen00"]
 [ext_resource type="AudioStream" uid="uid://dge0di5ywdpn3" path="res://assets/sounds/roll_shop.ogg" id="6_gnufo"]
 [ext_resource type="Script" path="res://scripts/prep_scene/merge_manager.gd" id="7_bmo8c"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex/player_hex.tscn" id="8_t4t78"]
@@ -50,11 +49,6 @@ script = ExtResource("3_cpm5m")
 [node name="ShopManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_s6xcp")
-
-[node name="RerollButton" parent="ShopManager" instance=ExtResource("5_qen00")]
-unique_name_in_owner = true
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.36575, 0, 2.98002)
-visible = false
 
 [node name="ShopRollAudio" type="AudioStreamPlayer" parent="ShopManager"]
 stream = ExtResource("6_gnufo")
@@ -229,7 +223,8 @@ visible = false
 unique_name_in_owner = true
 position = Vector2(816, 360)
 
-[node name="Button" type="Button" parent="."]
+[node name="RerollButton" type="Button" parent="."]
+unique_name_in_owner = true
 offset_left = 1056.0
 offset_top = 576.0
 offset_right = 1265.0
@@ -246,4 +241,4 @@ offset_bottom = 699.0
 theme = ExtResource("15_y644e")
 text = "FIGHT!"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="RerollButton" to="." method="_on_button_pressed"]

@@ -47,7 +47,7 @@ func _connect_signals() -> void:
 	
 	# Connect signals for UI buttons
 	%CombatButton.pressed.connect(_on_start_combat_button_pressed)
-	# TODO: Connect reroll button logic here
+	%RerollButton.pressed.connect(%ShopManager.request_shop_roll)
 
 func update_round_label() -> void:
 	round_label.text = "Round   " + str(GameManager.current_round)
