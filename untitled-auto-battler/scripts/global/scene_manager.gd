@@ -11,9 +11,6 @@ const PREP_SCENE_PATH: String = "res://scenes/screens/prep_scene.tscn"
 const FORGOT_PASSWORD_SCENE_PATH = "res://scenes/screens/forgot_password.tscn"
 
 func _ready() -> void:
-	var cursor = load("res://assets/images/cursors/point.png")
-	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
-
 	active_scene = get_tree().root.get_node("Login")
 
 func switch_to_scene(scene_path: String) -> void:
