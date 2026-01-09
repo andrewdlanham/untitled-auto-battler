@@ -20,6 +20,9 @@ mono_crash.*.json
 # DB
 untitled-auto-battler/db/*
 
+# Addons
+untitled-auto-battler/addons/*
+
 # No need to track changes to these on public GitHub repo
 untitled-auto-battler/project.godot
 untitled-auto-battler/scenes/prep_scene.tscn
@@ -35,3 +38,4 @@ untitled-auto-battler/_docs/*
 **/*.blend.*
 **/fonts/*
 untitled-auto-battler/units/**/*.res
+*.uid
