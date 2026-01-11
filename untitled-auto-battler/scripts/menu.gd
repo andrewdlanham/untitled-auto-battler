@@ -15,7 +15,7 @@ func update_leaderboard_label(data: Array):
 	var leaderboard_text = "LEADERBOARD\n\n"
 	for i in data.size():
 		var entry = data[i]
-		leaderboard_text += str(i + 1) + ". " + entry["display_name"].substr(0, 16) + " - " + str(entry["wins"]) + " W\n"
+		leaderboard_text += str(i + 1) + ". " + entry["display_name"].substr(0, 16) + " - " + str(int(entry["wins"])) + " W\n"
 	%LeaderboardLabel.text = leaderboard_text
 
 func _on_log_out_button_pressed() -> void:
