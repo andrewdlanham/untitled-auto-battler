@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dckldltq0oyfg"]
 
-[ext_resource type="Script" path="res://scripts/prep_scene/unit_stats_popup.gd" id="1_7o1im"]
+[ext_resource type="Script" uid="uid://d2basxg3cn2rf" path="res://scripts/prep_scene/unit_stats_popup.gd" id="1_7o1im"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_p4imh"]
 [ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="3_hw1sl"]
 [ext_resource type="Texture2D" uid="uid://llj2jrwel177" path="res://assets/images/attack_speed.png" id="4_cao60"]
@@ -29,23 +29,24 @@ script = ExtResource("1_7o1im")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PopupPanel" type="Panel" parent="CanvasLayer"]
-offset_left = 1008.0
-offset_top = 80.0
-offset_right = 1272.0
-offset_bottom = 192.0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 280.0
+offset_bottom = 200.0
 theme = SubResource("Theme_eh5jo")
 
-[node name="RarityLabel" type="Label" parent="CanvasLayer"]
+[node name="RarityLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75625
 anchor_top = 0.122222
 anchor_right = 0.897656
 anchor_bottom = 0.133333
-offset_left = 208.0
-offset_top = 84.0002
-offset_right = 115.0
-offset_bottom = 91.0002
+offset_left = -31.65001
+offset_top = 78.311165
+offset_right = -15.981186
+offset_bottom = 92.066734
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -54,17 +55,18 @@ text = "COMMON"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="NameLabel" type="Label" parent="CanvasLayer"]
+[node name="NameLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75625
 anchor_top = 0.122222
 anchor_right = 0.897656
 anchor_bottom = 0.133333
-offset_left = 51.0
-offset_top = -2.00001
-offset_right = 94.0
-offset_bottom = 18.0
+offset_left = -188.65001
+offset_top = -7.6890316
+offset_right = -145.65
+offset_bottom = 16.066536
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -72,17 +74,18 @@ theme_override_font_sizes/font_size = 20
 text = "Name"
 vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="CanvasLayer"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.73125
 anchor_top = 0.155556
 anchor_right = 0.758594
 anchor_bottom = 0.166667
-offset_left = 253.0
-offset_top = -26.0
-offset_right = 290.0
-offset_bottom = -7.00001
+offset_left = -12.050003
+offset_top = -11.421959
+offset_right = 24.949997
+offset_bottom = 7.5780315
 theme_override_colors/font_color = Color(0.843888, 0.837814, 0.809245, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
@@ -92,17 +95,18 @@ text = "⭐"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75625
 anchor_top = 0.211111
 anchor_right = 0.75625
 anchor_bottom = 0.211111
-offset_left = 75.0
-offset_top = -30.0
-offset_right = 121.0
-offset_bottom = -8.0
+offset_left = -164.65001
+offset_top = 18.355476
+offset_right = -118.65001
+offset_bottom = 40.355476
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -110,17 +114,18 @@ theme_override_font_sizes/font_size = 18
 text = "XXX"
 vertical_alignment = 1
 
-[node name="AttackDamageLabel" type="Label" parent="CanvasLayer"]
+[node name="AttackDamageLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.85625
 anchor_top = 0.177778
 anchor_right = 0.85625
 anchor_bottom = 0.177778
-offset_left = -53.0
-offset_top = 19.0
-offset_right = -9.0
-offset_bottom = 41.0
+offset_left = -191.05
+offset_top = 47.08903
+offset_right = -147.05
+offset_bottom = 69.089035
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -128,17 +133,18 @@ theme_override_font_sizes/font_size = 18
 text = "XXX"
 vertical_alignment = 1
 
-[node name="AttackSpeedLabel" type="Label" parent="CanvasLayer"]
+[node name="AttackSpeedLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.85625
 anchor_top = 0.177778
 anchor_right = 0.85625
 anchor_bottom = 0.177778
-offset_left = 32.0
-offset_top = 18.9998
-offset_right = 76.0
-offset_bottom = 40.9998
+offset_left = -106.05
+offset_top = 47.088833
+offset_right = -62.050003
+offset_bottom = 69.08884
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -146,11 +152,12 @@ theme_override_font_sizes/font_size = 18
 text = "XXX"
 vertical_alignment = 1
 
-[node name="HeartIconLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1019.0
-offset_top = 126.0
-offset_right = 1040.0
-offset_bottom = 145.0
+[node name="HeartIconLabel" type="Label" parent="CanvasLayer/PopupPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 46.0
+offset_right = 32.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 0.411947, 0.343303, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -158,11 +165,12 @@ theme_override_fonts/font = ExtResource("3_hw1sl")
 theme_override_font_sizes/font_size = 15
 text = "♥︎"
 
-[node name="SwordIconLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1019.0
-offset_top = 150.0
-offset_right = 1039.0
-offset_bottom = 181.0
+[node name="SwordIconLabel" type="Label" parent="CanvasLayer/PopupPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 70.0
+offset_right = 31.0
+offset_bottom = 101.0
 theme_override_colors/font_color = Color(0.886262, 0.886261, 0.886262, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
@@ -170,22 +178,23 @@ theme_override_fonts/font = ExtResource("3_hw1sl")
 theme_override_font_sizes/font_size = 15
 text = "⚔︎"
 
-[node name="AttackSpeedIcon" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1109, 159)
+[node name="AttackSpeedIcon" type="Sprite2D" parent="CanvasLayer/PopupPanel"]
+position = Vector2(101, 79)
 scale = Vector2(0.0486487, 0.0483606)
 texture = ExtResource("4_cao60")
 
-[node name="CostLabel" type="Label" parent="CanvasLayer"]
+[node name="CostLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.735156
 anchor_top = 0.220833
 anchor_right = 0.752344
 anchor_bottom = 0.223611
-offset_left = 254.0
-offset_top = -11.9999
-offset_right = 300.0
-offset_bottom = 7.00009
+offset_left = -7.081421
+offset_top = 42.266567
+offset_right = 38.918594
+offset_bottom = 61.266556
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -198,10 +207,10 @@ metadata/_edit_use_anchors_ = true
 [node name="FreezeUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = -1
-offset_left = 952.0
-offset_top = 80.0
-offset_right = 1002.0
-offset_bottom = 192.0
+offset_left = 288.0
+offset_top = 88.0
+offset_right = 338.0
+offset_bottom = 200.0
 focus_mode = 0
 theme = ExtResource("5_c280x")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -216,10 +225,10 @@ texture = ExtResource("5_b1r6j")
 [node name="SellUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = -1
-offset_left = 952.0
-offset_top = 80.0
-offset_right = 1002.0
-offset_bottom = 192.0
+offset_left = 288.0
+offset_top = 88.0
+offset_right = 338.0
+offset_bottom = 200.0
 focus_mode = 0
 theme = ExtResource("7_2mp3g")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

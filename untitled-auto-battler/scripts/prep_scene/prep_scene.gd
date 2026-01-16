@@ -38,6 +38,11 @@ func _on_start_combat_button_pressed() -> void:
 		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
 		SoundManager.play_music("combat_scene_music")
 
+func _on_menu_button_pressed() -> void:
+	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
+	UI.hide_toggle_music_button()
+	SoundManager.stop_music()
+
 func _connect_signals() -> void:
 
 	# Everything that should trigger update_unit_count_label()

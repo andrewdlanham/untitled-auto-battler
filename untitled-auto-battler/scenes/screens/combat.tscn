@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://8mdmou5bvqyh"]
+[gd_scene load_steps=16 format=3 uid="uid://8mdmou5bvqyh"]
 
-[ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_qlgcp"]
+[ext_resource type="Script" uid="uid://cyry673hp14wk" path="res://scripts/combat_scene.gd" id="1_qlgcp"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex/player_hex.tscn" id="2_m8oqa"]
 [ext_resource type="PackedScene" uid="uid://ban0igh0lgmrq" path="res://hexes/neutral_hex/neutral_hex.tscn" id="3_ganim"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="4_u1d1c"]
-[ext_resource type="Script" path="res://scripts/base_button.gd" id="5_drmuy"]
+[ext_resource type="Script" uid="uid://ddy4sg10mqqlk" path="res://scripts/base_button.gd" id="5_drmuy"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="6_2fy00"]
 [ext_resource type="PackedScene" uid="uid://brbw2cba4h0kc" path="res://scenes/screens/combat_floor.tscn" id="7_wu2g8"]
+[ext_resource type="Texture2D" uid="uid://c12bulj24fskt" path="res://assets/images/menu.png" id="8_s8je6"]
 
 [sub_resource type="Environment" id="Environment_pkdcy"]
 ambient_light_source = 3
@@ -25,6 +26,14 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_joh7u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d43cm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3rti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bdlt"]
 
 [node name="CombatScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
@@ -181,8 +190,7 @@ offset_right = 896.0
 offset_bottom = 508.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ctqtl")
 
-[node name="MenuButton" type="Button" parent="RunSummary"]
-unique_name_in_owner = true
+[node name="EndRunButton" type="Button" parent="RunSummary"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -269,5 +277,23 @@ text = "LIVES: 5 / 5"
 [node name="Floor" parent="." instance=ExtResource("7_wu2g8")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.00944, -2, 1.00554)
 
+[node name="MenuButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1216.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 64.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_joh7u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d43cm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f3rti")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bdlt")
+
+[node name="MenuIcon" type="Sprite2D" parent="MenuButton"]
+z_index = -1
+position = Vector2(24.000122, 24.00003)
+scale = Vector2(0.078124925, 0.078125)
+texture = ExtResource("8_s8je6")
+
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="RunSummary/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="RunSummary/EndRunButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
