@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b478g6o8tgv7t"]
 
-[ext_resource type="Script" path="res://units/base_unit.gd" id="1_p0uky"]
+[ext_resource type="Script" uid="uid://wwmujmiupa4o" path="res://units/base_unit.gd" id="1_p0uky"]
 [ext_resource type="AudioStream" uid="uid://bctcosr8kpib1" path="res://assets/sounds/combat/attack-2.wav" id="2_ru3mt"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_nsxjv"]
@@ -13,7 +13,7 @@ bg_color = Color(0.894118, 0.239216, 0.282353, 1)
 bg_color = Color(0.0319146, 0.72616, 0.145515, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ieagd"]
-size = Vector3(1.6, 1.6, 1.6)
+size = Vector3(1.45, 1.4, 1.45)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a4cmv"]
 size = Vector3(0.7, 0.7, 0.7)
@@ -159,10 +159,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wv110"]
 _data = {
-"RESET": SubResource("Animation_my3oe"),
-"attack": SubResource("Animation_bj726"),
-"bob": SubResource("Animation_2pihk"),
-"spin": SubResource("Animation_1v54j")
+&"RESET": SubResource("Animation_my3oe"),
+&"attack": SubResource("Animation_bj726"),
+&"bob": SubResource("Animation_2pihk"),
+&"spin": SubResource("Animation_1v54j")
 }
 
 [node name="Base Unit" type="Node3D"]
@@ -227,7 +227,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kx4cd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wv110")
+&"": SubResource("AnimationLibrary_wv110")
 }
 
 [node name="AttackAudio" type="AudioStreamPlayer3D" parent="."]

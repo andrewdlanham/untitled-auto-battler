@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bbtiq0yjrexdn"]
+[gd_scene load_steps=10 format=4 uid="uid://bbtiq0yjrexdn"]
 
 [ext_resource type="PackedScene" uid="uid://b478g6o8tgv7t" path="res://units/base_unit.tscn" id="1_4gbjo"]
 [ext_resource type="ArrayMesh" uid="uid://nwp37wnlf5fg" path="res://units/common/knight/meshes/knight_Cube.res" id="3_v62ah"]
@@ -8,9 +8,6 @@
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qrle7"]
 viewport_path = NodePath("HealthBar/SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mx8nm"]
-size = Vector3(1, 1.34814, 1.58789)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvol"]
 albedo_color = Color(0.533037, 0.533037, 0.533037, 1)
@@ -52,10 +49,6 @@ texture = SubResource("ViewportTexture_qrle7")
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
 mesh = ExtResource("6_n7iyd")
 skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" parent="Body" index="1"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.91534e-07, 0.0455566, 0.0836849)
-shape = SubResource("BoxShape3D_mx8nm")
 
 [node name="HealthBarAnchorPoint" parent="Body" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
