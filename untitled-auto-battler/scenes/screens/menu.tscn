@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://xmbt05e88gbe"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_8fnhs"]
+[ext_resource type="Script" uid="uid://d4cw2q5wobkes" path="res://scripts/menu.gd" id="1_8fnhs"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="2_tbxqa"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="3_8lf7a"]
-[ext_resource type="Script" path="res://scripts/base_button.gd" id="3_x0yqu"]
+[ext_resource type="Script" uid="uid://ddy4sg10mqqlk" path="res://scripts/base_button.gd" id="3_x0yqu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jvos"]
 bg_color = Color(0.270588, 0.482353, 0.768627, 1)
@@ -24,9 +24,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 16.0
-offset_top = 600.0
+offset_top = 560.0
 offset_right = 432.0
-offset_bottom = 648.0
+offset_bottom = 608.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -83,9 +83,9 @@ script = ExtResource("3_x0yqu")
 [node name="LogOutButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 16.0
-offset_top = 648.0
+offset_top = 608.0
 offset_right = 200.0
-offset_bottom = 707.0
+offset_bottom = 667.0
 focus_mode = 0
 theme = ExtResource("2_tbxqa")
 text = "LOG OUT"

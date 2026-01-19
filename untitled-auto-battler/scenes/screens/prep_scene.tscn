@@ -1,18 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://u83thaig7l0b"]
+[gd_scene load_steps=24 format=3 uid="uid://u83thaig7l0b"]
 
-[ext_resource type="Script" path="res://scripts/prep_scene/prep_scene.gd" id="1_8bpcq"]
-[ext_resource type="Script" path="res://scripts/prep_scene/drag_and_drop.gd" id="2_51slr"]
-[ext_resource type="Script" path="res://scripts/prep_scene/gold_manager.gd" id="3_cpm5m"]
-[ext_resource type="Script" path="res://scripts/prep_scene/shop_manager.gd" id="4_s6xcp"]
+[ext_resource type="Script" uid="uid://dxhdsxnud5af1" path="res://scripts/prep_scene/prep_scene.gd" id="1_8bpcq"]
+[ext_resource type="Script" uid="uid://cnyceoyjfbqn7" path="res://scripts/prep_scene/drag_and_drop.gd" id="2_51slr"]
+[ext_resource type="Script" uid="uid://cgaely1vjor7c" path="res://scripts/prep_scene/gold_manager.gd" id="3_cpm5m"]
+[ext_resource type="Script" uid="uid://dxone0qcviphr" path="res://scripts/prep_scene/shop_manager.gd" id="4_s6xcp"]
 [ext_resource type="AudioStream" uid="uid://dge0di5ywdpn3" path="res://assets/sounds/roll_shop.ogg" id="6_gnufo"]
-[ext_resource type="Script" path="res://scripts/prep_scene/merge_manager.gd" id="7_bmo8c"]
+[ext_resource type="Script" uid="uid://bj4waaj8y1sdd" path="res://scripts/prep_scene/merge_manager.gd" id="7_bmo8c"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex/player_hex.tscn" id="8_t4t78"]
 [ext_resource type="PackedScene" uid="uid://b3sbmceqmha5y" path="res://hexes/shop_hex/shop_hex.tscn" id="9_1i74a"]
 [ext_resource type="PackedScene" uid="uid://cro3t078pm8e7" path="res://hexes/bench_hex/bench_hex.tscn" id="10_apqxs"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="11_0q8k3"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="12_bfl3o"]
-[ext_resource type="PackedScene" uid="uid://cik4iupcelnqw" path="res://hexes/combat_button/combat_button.tscn" id="13_3yfd5"]
 [ext_resource type="PackedScene" uid="uid://dckldltq0oyfg" path="res://scenes/ui/UnitStatsPopup.tscn" id="14_5i252"]
+[ext_resource type="Texture2D" uid="uid://c12bulj24fskt" path="res://assets/images/menu.png" id="14_ivhim"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="15_y644e"]
 
 [sub_resource type="Environment" id="Environment_n5egb"]
@@ -21,8 +21,24 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_o3uem"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wrcl"]
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 0.88235295)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivhim"]
+bg_color = Color(0, 0.7079321, 0.50237024, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k87m"]
+bg_color = Color(0.9293538, 0.4003344, 0.48981416, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wrcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivhim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1k87m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ikqkm"]
+
 [node name="PrepScene" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
 script = ExtResource("1_8bpcq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -165,12 +181,14 @@ hex_id = "BENCH_Gss"
 
 [node name="UI" type="Node" parent="."]
 
-[node name="RoundLabel" type="Label" parent="UI"]
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+layer = 2
+
+[node name="RoundLabel" type="Label" parent="UI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 512.0
-offset_top = 16.0
 offset_right = 767.0
-offset_bottom = 59.0
+offset_bottom = 64.0
 theme = SubResource("Theme_o3uem")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -181,12 +199,12 @@ text = "Round   0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoldCountLabel" type="Label" parent="UI"]
+[node name="GoldCountLabel" type="Label" parent="UI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 512.0
 offset_top = 64.0
 offset_right = 768.0
-offset_bottom = 112.0
+offset_bottom = 153.0
 theme_override_colors/font_color = Color(0.992157, 0.764706, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
@@ -197,12 +215,12 @@ text = "X G
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnitCountLabel" type="Label" parent="UI"]
+[node name="UnitCountLabel" type="Label" parent="UI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 512.0
-offset_top = 176.0
+offset_top = 128.0
 offset_right = 767.0
-offset_bottom = 219.0
+offset_bottom = 192.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("11_0q8k3")
@@ -211,17 +229,66 @@ text = "Units:  0 / 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UnitStatsPopup" parent="UI/CanvasLayer" instance=ExtResource("14_5i252")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(816, 360)
+
+[node name="ConfirmReturnMenuPanel" type="Panel" parent="UI/CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+offset_right = 1280.0
+offset_bottom = 728.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0wrcl")
+
+[node name="ReturnToMenuLabel" type="Label" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 832.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 32
+text = "Return to menu?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WillNotSaveLabel" type="Label" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 320.0
+offset_right = 832.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0.81500036, 0.45933247, 0.46643114, 1)
+theme_override_font_sizes/font_size = 24
+text = "(Your run will not be saved)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmReturnMenuButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 488.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 448.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ivhim")
+text = "YES"
+
+[node name="ReturnToGameButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 672.0
+offset_top = 384.0
+offset_right = 792.0
+offset_bottom = 448.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1k87m")
+text = "NO"
+
 [node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
-
-[node name="CombatButtonOLD" parent="." instance=ExtResource("13_3yfd5")]
-unique_name_in_owner = true
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.35771, 0, 2.93156)
-visible = false
-
-[node name="UnitStatsPopup" parent="." instance=ExtResource("14_5i252")]
-unique_name_in_owner = true
-position = Vector2(816, 360)
 
 [node name="RerollButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -241,4 +308,24 @@ offset_bottom = 699.0
 theme = ExtResource("15_y644e")
 text = "FIGHT!"
 
+[node name="MenuButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1216.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 64.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0wrcl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ivhim")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1k87m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ikqkm")
+
+[node name="MenuIcon" type="Sprite2D" parent="MenuButton"]
+z_index = -1
+position = Vector2(24.000122, 24.00003)
+scale = Vector2(0.078124925, 0.078125)
+texture = ExtResource("14_ivhim")
+
+[connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ConfirmReturnMenuButton" to="." method="_on_confirm_return_menu_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
 [connection signal="pressed" from="RerollButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

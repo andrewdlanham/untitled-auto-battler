@@ -38,11 +38,6 @@ func _on_start_combat_button_pressed() -> void:
 		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
 		SoundManager.play_music("combat_scene_music")
 
-func _on_menu_button_pressed() -> void:
-	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
-	UI.hide_toggle_music_button()
-	SoundManager.stop_music()
-
 func _connect_signals() -> void:
 
 	# Everything that should trigger update_unit_count_label()
@@ -62,3 +57,16 @@ func get_unit_info_array(parent_node: Node) -> Array:
 	for unit: Unit in parent_node.get_children():
 		unit_info_array.append(unit.get_info_dict())
 	return unit_info_array
+
+func _on_menu_button_pressed() -> void:
+	%ConfirmReturnMenuPanel.visible = true
+	%DragDropManager.disable()
+
+func _on_confirm_return_menu_button_pressed() -> void:
+	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
+	UI.hide_toggle_music_button()
+	SoundManager.stop_music()
+
+func _on_return_to_game_button_pressed() -> void:
+	%ConfirmReturnMenuPanel.visible = false
+	%DragDropManager.enable()

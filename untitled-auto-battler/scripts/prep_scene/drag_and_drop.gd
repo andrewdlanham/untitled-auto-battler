@@ -83,7 +83,7 @@ func _input(_event) -> void:
 
 func get_raycast_collision_info() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
-	var mouse_position = get_viewport().get_mouse_position()
+	var mouse_position = %MainCamera.get_viewport().get_mouse_position()
 	var ray_start_point = %MainCamera.project_ray_origin(mouse_position)
 	var ray_end_point = ray_start_point + %MainCamera.project_ray_normal(mouse_position) * RAY_LENGTH
 	var ray_query = PhysicsRayQueryParameters3D.create(ray_start_point, ray_end_point)
@@ -141,3 +141,11 @@ func _on_unit_purchase_approved(unit: Unit, hex_placed_on: Hex) -> void:
 func _on_unit_purchase_denied(unit: Unit) -> void:
 	printerr("Unit purchase denied")
 	unit.snap_to_current_hex()
+
+func enable() -> void:
+	set_process(true)
+	set_process_input(true)
+
+func disable() -> void:
+	set_process(false)
+	set_process_input(false)
