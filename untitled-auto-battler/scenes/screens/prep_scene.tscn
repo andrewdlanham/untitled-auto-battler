@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://u83thaig7l0b"]
+[gd_scene load_steps=29 format=3 uid="uid://u83thaig7l0b"]
 
 [ext_resource type="Script" uid="uid://dxhdsxnud5af1" path="res://scripts/prep_scene/prep_scene.gd" id="1_8bpcq"]
 [ext_resource type="Script" uid="uid://cnyceoyjfbqn7" path="res://scripts/prep_scene/drag_and_drop.gd" id="2_51slr"]
@@ -22,13 +22,91 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="Theme" id="Theme_o3uem"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wrcl"]
-bg_color = Color(0.11372549, 0.11372549, 0.11372549, 0.88235295)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivhim"]
-bg_color = Color(0, 0.7079321, 0.50237024, 1)
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 0.75686276)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k87m"]
-bg_color = Color(0.9293538, 0.4003344, 0.48981416, 1)
+bg_color = Color(0.9460345, 5.1499906e-06, 0.438719, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikqkm"]
+bg_color = Color(0.79993814, 0, 0.367482, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nqeb"]
+bg_color = Color(0.79993814, 0, 0.367482, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivhim"]
+bg_color = Color(1.347661e-06, 0.69061834, 0.4887153, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptkwy"]
+bg_color = Color(1.347661e-06, 0.5497412, 0.3874373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwkub"]
+bg_color = Color(1.347661e-06, 0.5497412, 0.3874373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ggf4"]
+bg_color = Color(1.347661e-06, 0.69061834, 0.4887153, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wrcl"]
 
@@ -265,17 +343,6 @@ text = "(Your run will not be saved)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmReturnMenuButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
-unique_name_in_owner = true
-z_index = 11
-layout_mode = 0
-offset_left = 488.0
-offset_top = 384.0
-offset_right = 608.0
-offset_bottom = 448.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ivhim")
-text = "YES"
-
 [node name="ReturnToGameButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
 unique_name_in_owner = true
 z_index = 11
@@ -284,8 +351,33 @@ offset_left = 672.0
 offset_top = 384.0
 offset_right = 792.0
 offset_bottom = 448.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("11_0q8k3")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_1k87m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ikqkm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6nqeb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1k87m")
 text = "NO"
+
+[node name="ConfirmReturnMenuButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 488.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 448.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("11_0q8k3")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ivhim")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ptkwy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dwkub")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0ggf4")
+text = "YES"
 
 [node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
@@ -325,7 +417,7 @@ position = Vector2(24.000122, 24.00003)
 scale = Vector2(0.078124925, 0.078125)
 texture = ExtResource("14_ivhim")
 
-[connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ConfirmReturnMenuButton" to="." method="_on_confirm_return_menu_button_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ConfirmReturnMenuButton" to="." method="_on_confirm_return_menu_button_pressed"]
 [connection signal="pressed" from="RerollButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
