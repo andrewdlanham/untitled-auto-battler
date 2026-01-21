@@ -384,28 +384,28 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.05
 
 [node name="RerollButton" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 1056.0
-offset_top = 576.0
-offset_right = 1265.0
-offset_bottom = 635.0
+offset_left = 1040.0
+offset_top = 560.0
+offset_right = 1249.0
+offset_bottom = 619.0
 theme = ExtResource("15_y644e")
 text = "REROLL"
 
 [node name="CombatButton" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 1056.0
-offset_top = 640.0
-offset_right = 1265.0
-offset_bottom = 699.0
+offset_left = 1040.0
+offset_top = 632.0
+offset_right = 1249.0
+offset_bottom = 691.0
 theme = ExtResource("15_y644e")
-text = "FIGHT!"
+text = "END TURN"
 
 [node name="MenuButton" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 1216.0
-offset_top = 16.0
-offset_right = 1264.0
-offset_bottom = 64.0
+offset_left = 1200.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 80.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0wrcl")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ivhim")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1k87m")
@@ -413,8 +413,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ikqkm")
 
 [node name="MenuIcon" type="Sprite2D" parent="MenuButton"]
 z_index = -1
-position = Vector2(24.000122, 24.00003)
-scale = Vector2(0.078124925, 0.078125)
+position = Vector2(23.999945, 24)
+scale = Vector2(0.10156264, 0.10156244)
 texture = ExtResource("14_ivhim")
 
 [connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
