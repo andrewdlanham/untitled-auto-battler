@@ -24,16 +24,18 @@ corner_radius_bottom_left = 3
 Panel/styles/panel = SubResource("StyleBoxFlat_vb7vd")
 
 [node name="UnitStatsPopup" type="Node2D"]
+position = Vector2(40, -32)
 script = ExtResource("1_7o1im")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PopupPanel" type="Panel" parent="CanvasLayer"]
-offset_left = 16.0
+offset_left = 56.0
 offset_top = 88.0
-offset_right = 280.0
+offset_right = 320.0
 offset_bottom = 200.0
 theme = SubResource("Theme_eh5jo")
+metadata/_edit_use_anchors_ = true
 
 [node name="RarityLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
@@ -54,6 +56,7 @@ theme_override_font_sizes/font_size = 12
 text = "COMMON"
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="NameLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
@@ -73,6 +76,7 @@ theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 20
 text = "Name"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
@@ -94,6 +98,7 @@ theme_override_font_sizes/font_size = 15
 text = "⭐"
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
@@ -113,6 +118,7 @@ theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 18
 text = "XXX"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AttackDamageLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
@@ -132,6 +138,7 @@ theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 18
 text = "XXX"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AttackSpeedLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
@@ -151,6 +158,7 @@ theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 18
 text = "XXX"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HeartIconLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 layout_mode = 0
@@ -164,6 +172,7 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_hw1sl")
 theme_override_font_sizes/font_size = 15
 text = "♥︎"
+metadata/_edit_use_anchors_ = true
 
 [node name="SwordIconLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 layout_mode = 0
@@ -177,6 +186,7 @@ theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_hw1sl")
 theme_override_font_sizes/font_size = 15
 text = "⚔︎"
+metadata/_edit_use_anchors_ = true
 
 [node name="AttackSpeedIcon" type="Sprite2D" parent="CanvasLayer/PopupPanel"]
 position = Vector2(101, 79)
@@ -207,15 +217,16 @@ metadata/_edit_use_anchors_ = true
 [node name="FreezeUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = -1
-offset_left = 288.0
+offset_left = 328.0
 offset_top = 88.0
-offset_right = 338.0
+offset_right = 378.0
 offset_bottom = 200.0
 focus_mode = 0
 theme = ExtResource("5_c280x")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_p4imh")
+metadata/_edit_use_anchors_ = true
 
 [node name="FreezeIcon" type="Sprite2D" parent="CanvasLayer/FreezeUnitButton"]
 position = Vector2(24, 56)
@@ -225,9 +236,9 @@ texture = ExtResource("5_b1r6j")
 [node name="SellUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = -1
-offset_left = 288.0
+offset_left = 328.0
 offset_top = 88.0
-offset_right = 338.0
+offset_right = 378.0
 offset_bottom = 200.0
 focus_mode = 0
 theme = ExtResource("7_2mp3g")
@@ -236,6 +247,7 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
 theme_override_font_sizes/font_size = 26
 text = "$"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/FreezeUnitButton" to="." method="_on_freeze_unit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SellUnitButton" to="." method="_on_sell_unit_button_pressed"]

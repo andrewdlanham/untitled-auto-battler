@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8mdmou5bvqyh"]
+[gd_scene load_steps=12 format=3 uid="uid://8mdmou5bvqyh"]
 
 [ext_resource type="Script" uid="uid://cyry673hp14wk" path="res://scripts/combat_scene.gd" id="1_qlgcp"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex/player_hex.tscn" id="2_m8oqa"]
@@ -6,8 +6,8 @@
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="4_u1d1c"]
 [ext_resource type="Script" uid="uid://ddy4sg10mqqlk" path="res://scripts/base_button.gd" id="5_drmuy"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="6_2fy00"]
+[ext_resource type="FontFile" uid="uid://jiq52sqvwg3t" path="res://shared/fonts/NotoColorEmoji-Regular.ttf" id="7_joh7u"]
 [ext_resource type="PackedScene" uid="uid://brbw2cba4h0kc" path="res://scenes/screens/combat_floor.tscn" id="7_wu2g8"]
-[ext_resource type="Texture2D" uid="uid://c12bulj24fskt" path="res://assets/images/menu.png" id="8_s8je6"]
 
 [sub_resource type="Environment" id="Environment_pkdcy"]
 ambient_light_source = 3
@@ -26,14 +26,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_joh7u"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d43cm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3rti"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bdlt"]
 
 [node name="CombatScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
@@ -137,17 +129,8 @@ transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 1.75, 
 [node name="NeutralHex2" parent="Hexes/NeutralHexes" instance=ExtResource("3_ganim")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.75, 0, -1)
 
-[node name="ContinueButton" type="Button" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = 16.0
-offset_top = 496.0
-offset_right = 256.0
-offset_bottom = 560.0
-theme = ExtResource("4_u1d1c")
-theme_override_font_sizes/font_size = 35
-text = "CONTINUE"
-script = ExtResource("5_drmuy")
+[node name="Floor" parent="." instance=ExtResource("7_wu2g8")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.00944, -2, 1.00554)
 
 [node name="RunSummary" type="Control" parent="."]
 unique_name_in_owner = true
@@ -208,12 +191,28 @@ theme_override_font_sizes/font_size = 35
 text = "BACK TO MENU"
 script = ExtResource("5_drmuy")
 
-[node name="EnemyNameLabel" type="Label" parent="."]
+[node name="EnemyInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 928.0
+offset_top = 128.0
+offset_right = 1184.0
+offset_bottom = 256.0
+
+[node name="EnemyNameLabel" type="Label" parent="EnemyInfo"]
 unique_name_in_owner = true
-offset_left = 888.0
-offset_top = 136.0
-offset_right = 1280.0
-offset_bottom = 191.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -48.0
+offset_right = 192.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
@@ -222,78 +221,81 @@ text = "ENEMY NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemyWinsLabel" type="Label" parent="."]
+[node name="EnemyWinsIconLabel" type="Label" parent="EnemyInfo"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 77.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("7_joh7u")
+theme_override_font_sizes/font_size = 30
+text = "🏆"
+
+[node name="EnemyWinsLabel" type="Label" parent="EnemyInfo"]
 unique_name_in_owner = true
-offset_left = 984.0
-offset_top = 191.0
-offset_right = 1088.0
-offset_bottom = 246.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 24.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 23
-text = "W : ?"
+text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemyLossesLabel" type="Label" parent="."]
+[node name="EnemyLivesIconLabel" type="Label" parent="EnemyInfo"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 80.0
+offset_right = 173.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("7_joh7u")
+theme_override_font_sizes/font_size = 30
+text = "❤️"
+
+[node name="EnemyLivesLabel" type="Label" parent="EnemyInfo"]
 unique_name_in_owner = true
-offset_left = 1088.0
-offset_top = 191.0
-offset_right = 1192.0
-offset_bottom = 246.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 23
-text = "L : ?"
+text = "L"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WinsLabel" type="Label" parent="."]
+[node name="ContinueButton" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 24.0
-offset_top = 584.0
-offset_right = 254.0
-offset_bottom = 639.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 24
-theme_override_font_sizes/font_size = 40
-text = "WINS: 0 / 10"
+visible = false
+offset_left = 16.0
+offset_top = 496.0
+offset_right = 256.0
+offset_bottom = 560.0
+theme = ExtResource("4_u1d1c")
+theme_override_font_sizes/font_size = 35
+text = "CONTINUE"
+script = ExtResource("5_drmuy")
 
-[node name="LivesLabel" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = 24.0
-offset_top = 648.0
-offset_right = 231.0
-offset_bottom = 703.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 24
-theme_override_font_sizes/font_size = 40
-text = "LIVES: 5 / 5"
-
-[node name="Floor" parent="." instance=ExtResource("7_wu2g8")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.00944, -2, 1.00554)
-
-[node name="MenuButton" type="Button" parent="."]
-unique_name_in_owner = true
-offset_left = 1216.0
-offset_top = 16.0
-offset_right = 1264.0
-offset_bottom = 64.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_joh7u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_d43cm")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_f3rti")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0bdlt")
-
-[node name="MenuIcon" type="Sprite2D" parent="MenuButton"]
-z_index = -1
-position = Vector2(24.000122, 24.00003)
-scale = Vector2(0.078124925, 0.078125)
-texture = ExtResource("8_s8je6")
-
-[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="RunSummary/EndRunButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

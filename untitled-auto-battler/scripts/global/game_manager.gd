@@ -30,7 +30,7 @@ func start_game() -> void:
 	bench_units = []
 	shop_units = []
 
-	UI.unhide_toggle_music_button()
+	UI.show_game_ui()
 	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
 	SoundManager.play_music("prep_scene_music")
 

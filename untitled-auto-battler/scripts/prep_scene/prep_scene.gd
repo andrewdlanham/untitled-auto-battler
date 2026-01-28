@@ -3,8 +3,9 @@ extends Node3D
 const STARTING_GOLD: int = 10
 
 func _ready() -> void:
+	
 	_connect_signals()
-
+	
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
 	GameManager.construct_team(GameManager.bench_units, %BenchHexes.get_children(), %BenchUnits)
 	GameManager.construct_team(GameManager.shop_units, %ShopHexes.get_children(), %ShopUnits)
@@ -42,6 +43,12 @@ func _get_unit_info_array(parent_node: Node) -> Array:
 		unit_info_array.append(unit.get_info_dict())
 	return unit_info_array
 
+func enable_drag_drop() -> void:
+	%DragDropManager.enable()
+
+func disable_drag_drop() -> void:
+	%DragDropManager.disable()
+
 #region Buttons
 
 func _on_start_combat_button_pressed() -> void:
@@ -58,18 +65,5 @@ func _on_start_combat_button_pressed() -> void:
 		await DataManager.team_stored_in_db
 		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
 		SoundManager.play_music("combat_scene_music")
-
-func _on_menu_button_pressed() -> void:
-	%ConfirmReturnMenuPanel.visible = true
-	%DragDropManager.disable()
-
-func _on_confirm_return_menu_button_pressed() -> void:
-	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
-	UI.hide_toggle_music_button()
-	SoundManager.stop_music()
-
-func _on_return_to_game_button_pressed() -> void:
-	%ConfirmReturnMenuPanel.visible = false
-	%DragDropManager.enable()
 
 #endregion

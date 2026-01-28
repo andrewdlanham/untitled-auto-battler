@@ -1,7 +1,7 @@
 extends Node
 
 var active_scene: Node
-var preparation_scene: Node3D
+var active_scene_path: String
 
 const REGISTER_SCENE_PATH: String = "res://scenes/screens/register.tscn"
 const LOGIN_SCENE_PATH: String = "res://scenes/screens/login.tscn"
@@ -29,3 +29,4 @@ func switch_to_scene(scene_path: String) -> void:
 	var new_scene = scene_resource.instantiate()
 	get_tree().root.add_child(new_scene)
 	active_scene = new_scene
+	active_scene_path = scene_path

@@ -3,13 +3,10 @@ extends Node
 @onready var player_units: Node = %PlayerUnits
 @onready var enemy_units: Node = %EnemyUnits
 @onready var continue_button: Button = %ContinueButton
-@onready var wins_label: Label = %WinsLabel
-@onready var lives_label: Label = %LivesLabel
 @onready var run_summary: Control = %RunSummary
 @onready var enemy_name_label: Label = %EnemyNameLabel
 @onready var enemy_wins_label: Label = %EnemyWinsLabel
-@onready var enemy_losses_label: Label = %EnemyLossesLabel
-
+@onready var enemy_lives_label: Label = %EnemyLivesLabel
 
 var _combat_in_progress: bool = false
 var _num_player_units: int
@@ -19,8 +16,8 @@ signal get_random_team_requested
 
 func _ready() -> void:
 	_connect_all_hexes()
-	_update_wins_label()
-	_update_lives_label()
+	UI.update_wins_label()
+	UI.update_lives_label()
 	get_random_team_requested.connect(DataManager._on_get_random_team_requested)
 	DataManager.enemy_team_received.connect(_on_enemy_team_received)
 	get_random_team_requested.emit()
@@ -31,11 +28,11 @@ func _process(_delta: float) -> void:
 			_end_combat()
 			if (_num_enemy_units == 0):
 				GameManager.number_of_wins += 1
-				_update_wins_label()
+				UI.update_wins_label()
 			else:
 				GameManager.number_of_losses += 1
 				GameManager.number_of_lives -= 1
-				_update_lives_label()
+				UI.update_lives_label()
 			# Player reaches win threshold
 			if (GameManager.number_of_wins >= GameManager.WIN_THRESHOLD):
 				_handle_end_of_run(true)
@@ -91,28 +88,17 @@ func _on_enemy_team_received(enemy_unit_info_array, enemy_user_id, enemy_wins, e
 	enemy_name_label.text = enemy_display_name.replace('"', "") + "'s Team"
 
 	# Set up enemy wins / losses
-	enemy_wins_label.text = "W : " + str(enemy_wins) if (enemy_wins != -1) else 'W : ?'
-	enemy_losses_label.text = "L : " + str(enemy_losses) if (enemy_losses != -1) else 'L : ?'
+	enemy_wins_label.text = str(enemy_wins) if (enemy_wins != -1) else '?'
+	enemy_lives_label.text = str(GameManager.MAX_LIVES - enemy_losses) if (enemy_losses != -1) else '?'
 
 	# Construct player's team
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
 
 	_start_combat()
 
-func _on_menu_button_pressed() -> void:
-	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
-	UI.hide_toggle_music_button()
-	SoundManager.stop_music()
-
 func _on_continue_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
 	SoundManager.play_music("prep_scene_music")
-
-func _update_wins_label() -> void:
-	wins_label.text = "WINS: " + str(GameManager.number_of_wins) + " / " + str(GameManager.WIN_THRESHOLD)
-
-func _update_lives_label() -> void:
-	lives_label.text = "LIVES: " + str(GameManager.number_of_lives) + " / " + str(GameManager.MAX_LIVES) 
 
 func _handle_end_of_run(player_won: bool) -> void:
 	%RunResultLabel.text = "You Win!" if player_won else "You Lost..."

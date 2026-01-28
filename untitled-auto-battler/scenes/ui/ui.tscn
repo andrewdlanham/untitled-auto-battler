@@ -1,12 +1,110 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgcrbyh2cyb2j"]
+[gd_scene load_steps=20 format=3 uid="uid://cgcrbyh2cyb2j"]
 
-[ext_resource type="Script" path="res://scripts/global/ui.gd" id="1_a06dh"]
+[ext_resource type="Script" uid="uid://cvicyb77710k5" path="res://scripts/global/ui.gd" id="1_a06dh"]
 [ext_resource type="Texture2D" uid="uid://764i5igosps" path="res://assets/images/music_on.png" id="1_mcr3v"]
+[ext_resource type="Texture2D" uid="uid://c12bulj24fskt" path="res://assets/images/menu.png" id="3_g5kmx"]
+[ext_resource type="FontFile" uid="uid://jiq52sqvwg3t" path="res://shared/fonts/NotoColorEmoji-Regular.ttf" id="4_0dwhk"]
+[ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="5_0dwhk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l83p8"]
 
 [sub_resource type="Theme" id="Theme_k5lhf"]
 Button/styles/pressed = SubResource("StyleBoxEmpty_l83p8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfayw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vp6q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jcn1r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uegxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfayw"]
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 0.75686276)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vp6q"]
+bg_color = Color(0.9460345, 5.1499906e-06, 0.438719, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcn1r"]
+bg_color = Color(0.79993814, 0, 0.367482, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uegxj"]
+bg_color = Color(0.79993814, 0, 0.367482, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y220t"]
+bg_color = Color(1.347661e-06, 0.69061834, 0.4887153, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kltc"]
+bg_color = Color(1.347661e-06, 0.5497412, 0.3874373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl07w"]
+bg_color = Color(1.347661e-06, 0.5497412, 0.3874373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swkix"]
+bg_color = Color(1.347661e-06, 0.69061834, 0.4887153, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="UI" type="Node"]
 script = ExtResource("1_a06dh")
@@ -30,8 +128,9 @@ visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -80.0
+offset_top = -120.0
 offset_right = 176.0
+offset_bottom = -40.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "-"
@@ -40,16 +139,15 @@ vertical_alignment = 1
 
 [node name="ToggleMusicButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1272.0
-offset_top = -712.0
+offset_top = -704.0
 offset_right = -1216.0
-offset_bottom = -664.0
+offset_bottom = -656.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
@@ -65,4 +163,133 @@ icon = ExtResource("1_mcr3v")
 icon_alignment = 1
 expand_icon = true
 
+[node name="MenuButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1200.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 80.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pfayw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7vp6q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jcn1r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uegxj")
+
+[node name="MenuIcon" type="Sprite2D" parent="CanvasLayer/MenuButton"]
+z_index = -1
+position = Vector2(23.999945, 24)
+scale = Vector2(0.10156264, 0.10156244)
+texture = ExtResource("3_g5kmx")
+
+[node name="WinsIconLabel" type="Label" parent="CanvasLayer"]
+offset_left = 96.0
+offset_top = 16.0
+offset_right = 146.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_0dwhk")
+theme_override_font_sizes/font_size = 40
+text = "🏆"
+
+[node name="LivesIconLabel" type="Label" parent="CanvasLayer"]
+offset_left = 264.0
+offset_top = 16.0
+offset_right = 314.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_0dwhk")
+theme_override_font_sizes/font_size = 40
+text = "❤️"
+
+[node name="WinsLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 152.0
+offset_top = 20.0
+offset_right = 264.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 32
+text = "0 / 10"
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 328.0
+offset_top = 20.0
+offset_right = 368.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 32
+text = "5"
+
+[node name="ConfirmReturnMenuPanel" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+offset_right = 1280.0
+offset_bottom = 728.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfayw")
+
+[node name="ReturnToMenuLabel" type="Label" parent="CanvasLayer/ConfirmReturnMenuPanel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 832.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 32
+text = "Return to menu?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WillNotSaveLabel" type="Label" parent="CanvasLayer/ConfirmReturnMenuPanel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 320.0
+offset_right = 832.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0.81500036, 0.45933247, 0.46643114, 1)
+theme_override_font_sizes/font_size = 24
+text = "(Your run will not be saved)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnToGameButton" type="Button" parent="CanvasLayer/ConfirmReturnMenuPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 672.0
+offset_top = 384.0
+offset_right = 792.0
+offset_bottom = 448.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_0dwhk")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vp6q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jcn1r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uegxj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7vp6q")
+text = "NO"
+
+[node name="ConfirmReturnMenuButton" type="Button" parent="CanvasLayer/ConfirmReturnMenuPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 488.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 448.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_0dwhk")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_y220t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kltc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hl07w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_swkix")
+text = "YES"
+
 [connection signal="pressed" from="CanvasLayer/ToggleMusicButton" to="." method="_on_toggle_music_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ConfirmReturnMenuPanel/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ConfirmReturnMenuPanel/ConfirmReturnMenuButton" to="." method="_on_confirm_return_menu_button_pressed"]
