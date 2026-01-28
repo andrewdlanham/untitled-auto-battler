@@ -5,11 +5,21 @@ func _ready() -> void:
 	DataManager.get_leaderboard()
 	%LoggedInAsLabel.text = "Logged in as " + Auth.user_profile["display_name"]
 
-func _update_leaderboard_label(data: Array):
-	var leaderboard_text = "LEADERBOARD\n\n"
+func _update_leaderboard_label(data: Array) -> void:
+	var current_user_id = Auth.get_current_user_id()
+	var leaderboard_text := "[center][b]LEADERBOARD[/b][/center]\n\n"
+
 	for i in data.size():
 		var entry = data[i]
-		leaderboard_text += str(i + 1) + ". " + entry["display_name"].substr(0, 16) + " - " + str(int(entry["wins"])) + " W\n"
+		var display_name = entry["display_name"].substr(0, 16)
+		var wins = int(entry["wins"])
+		var line = str(i + 1) + ". " + display_name + " - " + str(wins) + " W"
+
+		if entry["user_id"] == current_user_id:
+			line = "[color=#FFD700]" + line + "[/color]" # Highlight current user
+
+		leaderboard_text += line + "\n"
+
 	%LeaderboardLabel.text = leaderboard_text
 
 #region Buttons
