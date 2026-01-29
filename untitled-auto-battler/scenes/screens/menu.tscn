@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://xmbt05e88gbe"]
+[gd_scene load_steps=7 format=3 uid="uid://xmbt05e88gbe"]
 
 [ext_resource type="Script" uid="uid://d4cw2q5wobkes" path="res://scripts/menu.gd" id="1_8fnhs"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="2_tbxqa"]
@@ -7,6 +7,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jvos"]
 bg_color = Color(0.270588, 0.482353, 0.768627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh0hy"]
+bg_color = Color(0.25021347, 0.25021347, 0.25021335, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_8fnhs")
@@ -24,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = 560.0
-offset_right = 432.0
-offset_bottom = 608.0
+offset_left = 40.0
+offset_top = 592.0
+offset_right = 456.0
+offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -36,44 +44,63 @@ theme_override_font_sizes/font_size = 20
 text = "Logged in as: ..."
 vertical_alignment = 1
 
-[node name="PatchNotesLabel" type="Label" parent="."]
+[node name="PatchNotesBackground" type="Panel" parent="."]
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 360.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh0hy")
+
+[node name="PatchNotesLabel" type="Label" parent="PatchNotesBackground"]
 unique_name_in_owner = true
-visible = false
-offset_left = 832.0
-offset_top = 272.0
-offset_right = 1225.0
-offset_bottom = 472.0
+layout_mode = 0
+offset_top = 16.0
+offset_right = 321.0
+offset_bottom = 432.0
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 18
-text = "Version 0.2.2 Patch Notes
-- Merging units is now possible 
-when there is no space to place units
-- Added password reset
-- Opponent's name appears in combat
-- Each team's W / L record appears in combat
-- Players cannot fight their own teams"
+theme_override_fonts/font = ExtResource("3_8lf7a")
+theme_override_font_sizes/font_size = 24
+text = "PATCH NOTES
+---------------------------
+- Added menu button
+- Changed menu layout
+- Extended in-game UI
+- Buffed Farmer stats
+- Nerfed Knight stats
+- Updated leaderboard
+"
 horizontal_alignment = 1
 
 [node name="MenuTitleLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_top = 48.0
-offset_right = 1280.0
-offset_bottom = 121.0
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 896.0
+offset_bottom = 277.0
 theme_override_colors/font_color = Color(0.945098, 0.980392, 0.933333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("3_8lf7a")
 theme_override_font_sizes/font_size = 60
-text = "UNTITLED AUTO BATTLER"
+text = "UNTITLED
+AUTO BATTLER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LeaderboardLabel" type="RichTextLabel" parent="."]
+[node name="LeaderboardBackground" type="Panel" parent="."]
+offset_left = 920.0
+offset_top = 136.0
+offset_right = 1240.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh0hy")
+
+[node name="LeaderboardLabel" type="RichTextLabel" parent="LeaderboardBackground"]
 unique_name_in_owner = true
-offset_left = 448.0
-offset_top = 128.0
-offset_right = 832.0
-offset_bottom = 552.0
+layout_mode = 0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 432.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("3_8lf7a")
@@ -81,7 +108,6 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "LEADERBOARD"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PlayGameButton" type="Button" parent="."]
 anchors_preset = 8
@@ -90,9 +116,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 512.0
-offset_top = 568.0
+offset_top = 352.0
 offset_right = 768.0
-offset_bottom = 639.0
+offset_bottom = 423.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -103,27 +129,14 @@ script = ExtResource("3_x0yqu")
 
 [node name="LogOutButton" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 16.0
-offset_top = 608.0
-offset_right = 200.0
-offset_bottom = 667.0
+offset_left = 40.0
+offset_top = 648.0
+offset_right = 224.0
+offset_bottom = 707.0
 focus_mode = 0
 theme = ExtResource("2_tbxqa")
 text = "LOG OUT"
 script = ExtResource("3_x0yqu")
 
-[node name="PatchNotesButton" type="Button" parent="."]
-unique_name_in_owner = true
-offset_left = 1080.0
-offset_top = 640.0
-offset_right = 1264.0
-offset_bottom = 680.0
-focus_mode = 0
-theme = ExtResource("2_tbxqa")
-theme_override_font_sizes/font_size = 20
-text = "Show patch notes"
-script = ExtResource("3_x0yqu")
-
 [connection signal="pressed" from="PlayGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="LogOutButton" to="." method="_on_log_out_button_pressed"]
-[connection signal="pressed" from="PatchNotesButton" to="." method="_on_patch_notes_button_pressed"]

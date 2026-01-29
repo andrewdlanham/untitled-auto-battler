@@ -110,6 +110,7 @@ corner_radius_bottom_left = 5
 script = ExtResource("1_a06dh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="VersionLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true

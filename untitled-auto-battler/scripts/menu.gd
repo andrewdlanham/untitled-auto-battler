@@ -7,13 +7,13 @@ func _ready() -> void:
 
 func _update_leaderboard_label(data: Array) -> void:
 	var current_user_id = Auth.get_current_user_id()
-	var leaderboard_text := "[center][b]LEADERBOARD[/b][/center]\n\n"
+	var leaderboard_text := "[center]LEADERBOARD (TOP 10)[/center]\n---------------------------\n"
 
 	for i in data.size():
 		var entry = data[i]
 		var display_name = entry["display_name"].substr(0, 16)
 		var wins = int(entry["wins"])
-		var line = str(i + 1) + ". " + display_name + " - " + str(wins) + " W"
+		var line = "#" + str(i + 1) + " " + display_name + " - " + str(wins) + " W"
 
 		if entry["user_id"] == current_user_id:
 			line = "[color=#FFD700]" + line + "[/color]" # Highlight current user
@@ -29,8 +29,5 @@ func _on_play_game_button_pressed() -> void:
 
 func _on_log_out_button_pressed() -> void:
 	DataManager.log_out_current_user()
-
-func _on_patch_notes_button_pressed() -> void:
-	%PatchNotesLabel.visible = !%PatchNotesLabel.visible
 
 #endregion
