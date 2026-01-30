@@ -2,7 +2,7 @@ extends Node
 
 @onready var player_units: Node = %PlayerUnits
 @onready var enemy_units: Node = %EnemyUnits
-@onready var continue_button: Button = %ContinueButton
+@onready var continue_modal: Control = %ContinueModal
 @onready var run_summary: Control = %RunSummary
 @onready var enemy_name_label: Label = %EnemyNameLabel
 @onready var enemy_wins_label: Label = %EnemyWinsLabel
@@ -29,10 +29,12 @@ func _process(_delta: float) -> void:
 			if (_num_enemy_units == 0):
 				GameManager.number_of_wins += 1
 				UI.update_wins_label()
+				%RoundResultLabel.text = "🏆"
 			else:
 				GameManager.number_of_losses += 1
 				GameManager.number_of_lives -= 1
 				UI.update_lives_label()
+				%RoundResultLabel.text = "❤️‍🩹"
 			# Player reaches win threshold
 			if (GameManager.number_of_wins >= GameManager.WIN_THRESHOLD):
 				_handle_end_of_run(true)
@@ -41,7 +43,7 @@ func _process(_delta: float) -> void:
 				_handle_end_of_run(false)
 			# Keep playing
 			else:
-				continue_button.visible = true
+				continue_modal.visible = true
 
 func _start_combat() -> void:
 	_combat_in_progress = true

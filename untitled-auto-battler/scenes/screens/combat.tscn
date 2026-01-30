@@ -132,65 +132,6 @@ transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.75,
 [node name="Floor" parent="." instance=ExtResource("7_wu2g8")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.00944, -2, 1.00554)
 
-[node name="RunSummary" type="Control" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -356.0
-offset_right = 640.0
-offset_bottom = 356.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RunResultLabel" type="Label" parent="RunSummary"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 448.0
-offset_top = 260.0
-offset_right = 832.0
-offset_bottom = 388.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("6_2fy00")
-theme_override_font_sizes/font_size = 50
-text = "YOU WIN!!!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="RunSummary"]
-z_index = -10
-material = SubResource("ShaderMaterial_30dds")
-layout_mode = 0
-offset_left = 384.0
-offset_top = 252.0
-offset_right = 896.0
-offset_bottom = 508.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ctqtl")
-
-[node name="EndRunButton" type="Button" parent="RunSummary"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = 64.0
-offset_right = 128.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_u1d1c")
-theme_override_font_sizes/font_size = 35
-text = "BACK TO MENU"
-script = ExtResource("5_drmuy")
-
 [node name="EnemyInfo" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -285,17 +226,103 @@ text = "L"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="."]
+[node name="RunSummary" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 16.0
-offset_top = 496.0
-offset_right = 256.0
-offset_bottom = 560.0
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -356.0
+offset_right = 640.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RunResultLabel" type="Label" parent="RunSummary"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 448.0
+offset_top = 260.0
+offset_right = 832.0
+offset_bottom = 388.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("6_2fy00")
+theme_override_font_sizes/font_size = 50
+text = "YOU WIN!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="RunSummary"]
+z_index = -10
+material = SubResource("ShaderMaterial_30dds")
+layout_mode = 0
+offset_left = 384.0
+offset_top = 252.0
+offset_right = 896.0
+offset_bottom = 508.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctqtl")
+
+[node name="EndRunButton" type="Button" parent="RunSummary"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_u1d1c")
+theme_override_font_sizes/font_size = 35
+text = "BACK TO MENU"
+script = ExtResource("5_drmuy")
+
+[node name="ContinueModal" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="RoundResultLabel" type="Label" parent="ContinueModal"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = 512.0
+offset_top = 192.0
+offset_right = 768.0
+offset_bottom = 384.0
+theme_override_fonts/font = ExtResource("7_joh7u")
+theme_override_font_sizes/font_size = 100
+text = "🏆"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueModalScrim" type="Panel" parent="ContinueModal"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ContinueButton" type="Button" parent="ContinueModal"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 768.0
+offset_bottom = 448.0
 theme = ExtResource("4_u1d1c")
 theme_override_font_sizes/font_size = 35
 text = "CONTINUE"
 script = ExtResource("5_drmuy")
 
 [connection signal="pressed" from="RunSummary/EndRunButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ContinueModal/ContinueButton" to="." method="_on_continue_button_pressed"]
