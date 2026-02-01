@@ -15,6 +15,7 @@ var _num_enemy_units: int
 signal get_random_team_requested
 
 func _ready() -> void:
+	SoundManager.play_music("combat_scene_music")
 	_connect_all_hexes()
 	UI.update_wins_label()
 	UI.update_lives_label()
@@ -117,3 +118,6 @@ func _connect_all_hexes() -> void:
 	var all_hexes = %PlayerHexes.get_children() + %EnemyHexes.get_children() + %NeutralHexes.get_children()
 	for hex: Hex in all_hexes:
 		hex.connect_to_neighbor_hexes(all_hexes)
+
+func _on_end_run_button_pressed() -> void:
+	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)

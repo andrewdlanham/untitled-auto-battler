@@ -20,7 +20,7 @@ func _connect_signals() -> void:
 	%UnitStatsPopup.unit_sold.connect(_update_unit_count_label)
 	
 	# Connect signals for UI buttons
-	%CombatButton.pressed.connect(_on_start_combat_button_pressed)
+	%EndTurnButton.pressed.connect(_on_end_turn_button_pressed)
 	%RerollButton.pressed.connect(%ShopManager.request_shop_roll)
 
 func _start_new_round() -> void:
@@ -49,21 +49,32 @@ func enable_drag_drop() -> void:
 func disable_drag_drop() -> void:
 	%DragDropManager.disable()
 
-#region Buttons
-
-func _on_start_combat_button_pressed() -> void:
-
+func _end_turn() -> void:
 	GameManager.player_units = _get_unit_info_array(%PlayerUnits)
 	GameManager.bench_units = _get_unit_info_array(%BenchUnits)
 	GameManager.shop_units = _get_unit_info_array(%ShopUnits)
 
-	if (GameManager.player_units == []):
-		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
-		SoundManager.play_music("combat_scene_music")
-	else:
+	if (GameManager.player_units != []):
 		DataManager.store_team_in_db(GameManager.player_units)
 		await DataManager.team_stored_in_db
-		SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
-		SoundManager.play_music("combat_scene_music")
+	
+	SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
+
+#region Buttons
+
+func _on_end_turn_button_pressed() -> void:
+
+	if %GoldManager.get_current_gold() > 0:
+		disable_drag_drop()
+		%ConfirmEndTurnCanvasLayer.visible = true
+	else:
+		_end_turn()
+
+func _on_confirm_end_turn_button_pressed() -> void:
+	_end_turn()
+
+func _on_return_to_prep_scene_button_pressed() -> void:
+	enable_drag_drop()
+	%ConfirmEndTurnCanvasLayer.visible = false
 
 #endregion

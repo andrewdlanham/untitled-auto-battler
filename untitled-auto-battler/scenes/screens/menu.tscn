@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xmbt05e88gbe"]
+[gd_scene load_steps=11 format=3 uid="uid://xmbt05e88gbe"]
 
 [ext_resource type="Script" uid="uid://d4cw2q5wobkes" path="res://scripts/menu.gd" id="1_8fnhs"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="2_tbxqa"]
@@ -16,6 +16,77 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrbkl"]
+bg_color = Color(0.81523764, 0.17273554, 0.4202524, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opkxt"]
+bg_color = Color(0.9557546, 0.38415167, 0.56298405, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sejkr"]
+bg_color = Color(0.945098, 0.980392, 0.933333, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_hrbkl"]
+Button/colors/border_color = Color(0, 0, 0, 1)
+Button/colors/border_color_hover = Color(0, 0, 0, 1)
+Button/colors/border_color_pressed = Color(0, 0, 0, 1)
+Button/colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("3_8lf7a")
+Button/styles/hover = SubResource("StyleBoxFlat_hrbkl")
+Button/styles/normal = SubResource("StyleBoxFlat_opkxt")
+Label/colors/font_color = Color(0.945098, 0.980392, 0.933333, 1)
+Label/font_sizes/font_size = 17
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+LineEdit/font_sizes/font_size = 20
+LineEdit/styles/normal = SubResource("StyleBoxFlat_sejkr")
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_8fnhs")
 
@@ -32,10 +103,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = 592.0
-offset_right = 456.0
-offset_bottom = 640.0
+offset_left = 48.0
+offset_top = 576.0
+offset_right = 560.0
+offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -74,9 +145,9 @@ horizontal_alignment = 1
 [node name="MenuTitleLabel" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = 384.0
-offset_top = 128.0
+offset_top = 88.0
 offset_right = 896.0
-offset_bottom = 277.0
+offset_bottom = 237.0
 theme_override_colors/font_color = Color(0.945098, 0.980392, 0.933333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -116,9 +187,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 512.0
-offset_top = 352.0
+offset_top = 360.0
 offset_right = 768.0
-offset_bottom = 423.0
+offset_bottom = 431.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -130,11 +201,12 @@ script = ExtResource("3_x0yqu")
 [node name="LogOutButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 40.0
-offset_top = 648.0
-offset_right = 224.0
-offset_bottom = 707.0
+offset_top = 632.0
+offset_right = 296.0
+offset_bottom = 704.0
 focus_mode = 0
-theme = ExtResource("2_tbxqa")
+theme = SubResource("Theme_hrbkl")
+theme_override_font_sizes/font_size = 50
 text = "LOG OUT"
 script = ExtResource("3_x0yqu")
 

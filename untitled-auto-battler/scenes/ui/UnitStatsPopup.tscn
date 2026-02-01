@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dckldltq0oyfg"]
+[gd_scene load_steps=11 format=3 uid="uid://dckldltq0oyfg"]
 
 [ext_resource type="Script" uid="uid://d2basxg3cn2rf" path="res://scripts/prep_scene/unit_stats_popup.gd" id="1_7o1im"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_p4imh"]
+[ext_resource type="FontFile" uid="uid://jiq52sqvwg3t" path="res://shared/fonts/NotoColorEmoji-Regular.ttf" id="3_7ml38"]
 [ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="3_hw1sl"]
 [ext_resource type="Texture2D" uid="uid://llj2jrwel177" path="res://assets/images/attack_speed.png" id="4_cao60"]
 [ext_resource type="Texture2D" uid="uid://c477m5und1sif" path="res://assets/images/freeze.png" id="5_b1r6j"]
@@ -24,31 +25,32 @@ corner_radius_bottom_left = 3
 Panel/styles/panel = SubResource("StyleBoxFlat_vb7vd")
 
 [node name="UnitStatsPopup" type="Node2D"]
-position = Vector2(40, -32)
 script = ExtResource("1_7o1im")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PopupPanel" type="Panel" parent="CanvasLayer"]
-offset_left = 56.0
-offset_top = 88.0
-offset_right = 320.0
-offset_bottom = 200.0
+offset_left = 992.0
+offset_top = 96.0
+offset_right = 1256.0
+offset_bottom = 208.0
 theme = SubResource("Theme_eh5jo")
 metadata/_edit_use_anchors_ = true
 
 [node name="RarityLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.75625
-anchor_top = 0.122222
-anchor_right = 0.897656
-anchor_bottom = 0.133333
-offset_left = -31.65001
-offset_top = 78.311165
-offset_right = -15.981186
-offset_bottom = 92.066734
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 32.0
+offset_right = 121.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
@@ -82,10 +84,10 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.73125
-anchor_top = 0.155556
-anchor_right = 0.758594
-anchor_bottom = 0.166667
+anchor_left = 0.83352274
+anchor_top = 0.17341034
+anchor_right = 0.8608667
+anchor_bottom = 0.18452135
 offset_left = -12.050003
 offset_top = -11.421959
 offset_right = 24.949997
@@ -93,7 +95,7 @@ offset_bottom = 7.5780315
 theme_override_colors/font_color = Color(0.843888, 0.837814, 0.809245, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("3_hw1sl")
+theme_override_fonts/font = ExtResource("3_7ml38")
 theme_override_font_sizes/font_size = 15
 text = "⭐"
 horizontal_alignment = 2
@@ -144,10 +146,10 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.85625
-anchor_top = 0.177778
-anchor_right = 0.85625
-anchor_bottom = 0.177778
+anchor_left = 0.8448864
+anchor_top = 0.17554569
+anchor_right = 0.8448864
+anchor_bottom = 0.17554569
 offset_left = -106.05
 offset_top = 47.088833
 offset_right = -62.050003
@@ -195,6 +197,7 @@ texture = ExtResource("4_cao60")
 
 [node name="CostLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.735156
@@ -217,10 +220,10 @@ metadata/_edit_use_anchors_ = true
 [node name="FreezeUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = -1
-offset_left = 328.0
-offset_top = 88.0
-offset_right = 378.0
-offset_bottom = 200.0
+offset_left = 936.0
+offset_top = 96.0
+offset_right = 986.0
+offset_bottom = 208.0
 focus_mode = 0
 theme = ExtResource("5_c280x")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -236,10 +239,10 @@ texture = ExtResource("5_b1r6j")
 [node name="SellUnitButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = -1
-offset_left = 328.0
-offset_top = 88.0
-offset_right = 378.0
-offset_bottom = 200.0
+offset_left = 936.0
+offset_top = 96.0
+offset_right = 986.0
+offset_bottom = 208.0
 focus_mode = 0
 theme = ExtResource("7_2mp3g")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

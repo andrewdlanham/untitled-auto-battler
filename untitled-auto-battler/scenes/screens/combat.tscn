@@ -28,7 +28,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="CombatScene" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00943851, 0, -0.00553703)
 script = ExtResource("1_qlgcp")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -324,5 +323,5 @@ theme_override_font_sizes/font_size = 35
 text = "CONTINUE"
 script = ExtResource("5_drmuy")
 
-[connection signal="pressed" from="RunSummary/EndRunButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="RunSummary/EndRunButton" to="." method="_on_end_run_button_pressed"]
 [connection signal="pressed" from="ContinueModal/ContinueButton" to="." method="_on_continue_button_pressed"]

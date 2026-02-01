@@ -18,48 +18,10 @@
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Theme" id="Theme_o3uem"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wrcl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq8tc"]
 bg_color = Color(0.11372549, 0.11372549, 0.11372549, 0.75686276)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k87m"]
-bg_color = Color(0.9460345, 5.1499906e-06, 0.438719, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikqkm"]
-bg_color = Color(0.79993814, 0, 0.367482, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nqeb"]
-bg_color = Color(0.79993814, 0, 0.367482, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivhim"]
 bg_color = Color(1.347661e-06, 0.69061834, 0.4887153, 1)
 border_width_left = 2
 border_width_top = 2
@@ -83,7 +45,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwkub"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nqeb"]
 bg_color = Color(1.347661e-06, 0.5497412, 0.3874373, 1)
 border_width_left = 2
 border_width_top = 2
@@ -95,7 +57,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ggf4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwkub"]
 bg_color = Color(1.347661e-06, 0.69061834, 0.4887153, 1)
 border_width_left = 2
 border_width_top = 2
@@ -106,6 +68,44 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivhim"]
+bg_color = Color(0.9460345, 5.1499906e-06, 0.438719, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k87m"]
+bg_color = Color(0.79993814, 0, 0.367482, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wrcl"]
+bg_color = Color(0.79993814, 0, 0.367482, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_o3uem"]
 
 [node name="PrepScene" type="Node3D"]
 script = ExtResource("1_8bpcq")
@@ -248,12 +248,81 @@ hex_id = "BENCH_F"
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -7, 0, -1)
 hex_id = "BENCH_Gss"
 
-[node name="UI" type="Node" parent="."]
+[node name="PrepSceneUI" type="Node" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+[node name="ConfirmEndTurnCanvasLayer" type="CanvasLayer" parent="PrepSceneUI"]
+unique_name_in_owner = true
+layer = 10
+visible = false
+
+[node name="ConfirmEndTurnPanel" type="Panel" parent="PrepSceneUI/ConfirmEndTurnCanvasLayer"]
+unique_name_in_owner = true
+z_index = 10
+offset_right = 1280.0
+offset_bottom = 728.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gq8tc")
+
+[node name="EndTurnLabel" type="Label" parent="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel"]
+layout_mode = 0
+offset_top = 256.0
+offset_right = 1280.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 32
+text = "Are you sure you want to end your turn?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnspentGoldLabel" type="Label" parent="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 1280.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0.88529116, 0.7517403, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "(You have unspent gold that will not carry over)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmEndTurnButton" type="Button" parent="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 488.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 448.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("11_0q8k3")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ikqkm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ptkwy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6nqeb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dwkub")
+text = "YES"
+
+[node name="ReturnToPrepSceneButton" type="Button" parent="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel"]
+unique_name_in_owner = true
+z_index = 11
+layout_mode = 0
+offset_left = 672.0
+offset_top = 384.0
+offset_right = 792.0
+offset_bottom = 448.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("11_0q8k3")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ivhim")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1k87m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0wrcl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ivhim")
+text = "NO"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PrepSceneUI"]
 layer = 2
 
-[node name="RoundLabel" type="Label" parent="UI/CanvasLayer"]
+[node name="RoundLabel" type="Label" parent="PrepSceneUI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 512.0
 offset_right = 767.0
@@ -268,7 +337,7 @@ text = "Round   0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoldCountLabel" type="Label" parent="UI/CanvasLayer"]
+[node name="GoldCountLabel" type="Label" parent="PrepSceneUI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 512.0
 offset_top = 64.0
@@ -284,7 +353,7 @@ text = "X G
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnitCountLabel" type="Label" parent="UI/CanvasLayer"]
+[node name="UnitCountLabel" type="Label" parent="PrepSceneUI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 512.0
 offset_top = 128.0
@@ -298,82 +367,21 @@ text = "Units:  0 / 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnitStatsPopup" parent="UI/CanvasLayer" instance=ExtResource("14_5i252")]
+[node name="UnitStatsPopup" parent="PrepSceneUI/CanvasLayer" instance=ExtResource("14_5i252")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(816, 360)
 
-[node name="ConfirmReturnMenuPanel" type="Panel" parent="UI/CanvasLayer"]
+[node name="EndTurnButton" type="Button" parent="PrepSceneUI/CanvasLayer"]
 unique_name_in_owner = true
-visible = false
-z_index = 10
-offset_right = 1280.0
-offset_bottom = 728.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0wrcl")
+offset_left = 1040.0
+offset_top = 632.0
+offset_right = 1249.0
+offset_bottom = 691.0
+theme = ExtResource("15_y644e")
+text = "END TURN"
 
-[node name="ReturnToMenuLabel" type="Label" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 256.0
-offset_right = 832.0
-offset_bottom = 328.0
-theme_override_font_sizes/font_size = 32
-text = "Return to menu?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="WillNotSaveLabel" type="Label" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 320.0
-offset_right = 832.0
-offset_bottom = 368.0
-theme_override_colors/font_color = Color(0.81500036, 0.45933247, 0.46643114, 1)
-theme_override_font_sizes/font_size = 24
-text = "(Your run will not be saved)"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ReturnToGameButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
-unique_name_in_owner = true
-z_index = 11
-layout_mode = 0
-offset_left = 672.0
-offset_top = 384.0
-offset_right = 792.0
-offset_bottom = 448.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("11_0q8k3")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_1k87m")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ikqkm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6nqeb")
-theme_override_styles/focus = SubResource("StyleBoxFlat_1k87m")
-text = "NO"
-
-[node name="ConfirmReturnMenuButton" type="Button" parent="UI/CanvasLayer/ConfirmReturnMenuPanel"]
-unique_name_in_owner = true
-z_index = 11
-layout_mode = 0
-offset_left = 488.0
-offset_top = 384.0
-offset_right = 608.0
-offset_bottom = 448.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("11_0q8k3")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_ivhim")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ptkwy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dwkub")
-theme_override_styles/focus = SubResource("StyleBoxFlat_0ggf4")
-text = "YES"
-
-[node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
-
-[node name="RerollButton" type="Button" parent="."]
+[node name="RerollButton" type="Button" parent="PrepSceneUI/CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 1040.0
 offset_top = 560.0
@@ -383,15 +391,9 @@ focus_mode = 0
 theme = ExtResource("15_y644e")
 text = "REROLL"
 
-[node name="CombatButton" type="Button" parent="."]
-unique_name_in_owner = true
-offset_left = 1040.0
-offset_top = 632.0
-offset_right = 1249.0
-offset_bottom = 691.0
-theme = ExtResource("15_y644e")
-text = "END TURN"
+[node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
 
-[connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
-[connection signal="pressed" from="UI/CanvasLayer/ConfirmReturnMenuPanel/ConfirmReturnMenuButton" to="." method="_on_confirm_return_menu_button_pressed"]
-[connection signal="pressed" from="RerollButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel/ConfirmEndTurnButton" to="." method="_on_confirm_end_turn_button_pressed"]
+[connection signal="pressed" from="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel/ReturnToPrepSceneButton" to="." method="_on_return_to_prep_scene_button_pressed"]
+[connection signal="pressed" from="PrepSceneUI/CanvasLayer/RerollButton" to="." method="_on_button_pressed"]

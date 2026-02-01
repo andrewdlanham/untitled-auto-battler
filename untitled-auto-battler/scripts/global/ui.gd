@@ -9,7 +9,7 @@ const MUSIC_ON = preload("res://assets/images/music_on.png")
 const MUSIC_OFF = preload("res://assets/images/music_off.png")
 
 func _ready() -> void:
-	_hide_game_ui()
+	hide_game_ui()
 
 func _process(_delta: float) -> void:
 	fps_label.text = "FPS: " + str(Engine.get_frames_per_second())
@@ -21,7 +21,7 @@ func _on_toggle_music_button_pressed() -> void:
 	else:
 		toggle_music_button.icon = MUSIC_ON
 
-func _hide_game_ui() -> void:
+func hide_game_ui() -> void:
 	$CanvasLayer.hide()
 
 func show_game_ui() -> void:
@@ -36,7 +36,6 @@ func _on_confirm_return_menu_button_pressed() -> void:
 	%ConfirmReturnMenuPanel.visible = false
 	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
 	SoundManager.stop_music()
-	_hide_game_ui()
 
 func _on_return_to_game_button_pressed() -> void:
 	%ConfirmReturnMenuPanel.visible = false

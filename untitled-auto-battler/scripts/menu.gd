@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready() -> void:
+	UI.hide_game_ui()
+	SoundManager.stop_music()
 	DataManager.leaderboard_received.connect(_update_leaderboard_label)
 	DataManager.get_leaderboard()
 	%LoggedInAsLabel.text = "Logged in as " + Auth.user_profile["display_name"]

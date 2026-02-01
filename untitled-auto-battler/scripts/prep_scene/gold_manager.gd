@@ -37,7 +37,10 @@ func set_gold(amount) -> void:
 func add_gold(amount) -> void:
 	player_gold += amount
 	update_gold_label_text()
-	
+
 func subtract_gold(amount) -> void:
 	player_gold -= amount
 	update_gold_label_text()
+
+func get_current_gold() -> int:
+	return player_gold
