@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dof5pa3myt7la"]
 
-[ext_resource type="Script" path="res://scripts/login.gd" id="1_da2p2"]
+[ext_resource type="Script" uid="uid://ddfedav3d2i2i" path="res://scripts/login.gd" id="1_da2p2"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_gjsc2"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="3_g03hs"]
-[ext_resource type="Script" path="res://scripts/base_button.gd" id="4_35gp3"]
+[ext_resource type="Script" uid="uid://ddy4sg10mqqlk" path="res://scripts/base_button.gd" id="4_35gp3"]
 [ext_resource type="Theme" uid="uid://bu11rtwbbe1g0" path="res://shared/themes/auth_link.tres" id="5_f15ht"]
 [ext_resource type="Theme" uid="uid://bbcgiygilksxf" path="res://shared/themes/password_visible_button.tres" id="6_ok4uh"]
 [ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="7_d47c7"]
@@ -197,10 +197,11 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TestLogin" type="Button" parent="."]
-offset_left = 904.0
-offset_top = 600.0
-offset_right = 1189.0
-offset_bottom = 664.0
+visible = false
+offset_left = 464.0
+offset_top = 664.0
+offset_right = 816.0
+offset_bottom = 723.0
 focus_mode = 0
 theme = ExtResource("3_g03hs")
 text = "TEST LOG IN"

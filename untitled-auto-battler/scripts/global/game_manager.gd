@@ -6,10 +6,10 @@ var unit_cap_by_round: Array = [
 	{ "rounds": range(4, 6), "cap": 4 },	# Rounds 4-5
 	{ "rounds": range(6, 8), "cap": 5 },	# Rounds 6-7
 	{ "rounds": range(8, 10), "cap": 6 },	# Rounds 8-9
-	{ "rounds": range(10, 16), "cap": 7 }	# Rounds 10-15
+	{ "rounds": range(10, 101), "cap": 7 }	# Rounds 10-100
 ]
 
-const WIN_THRESHOLD: int = 5
+const WIN_THRESHOLD: int = 8
 const MAX_LIVES: int = 5
 
 var player_units: Array = []
@@ -55,7 +55,7 @@ func get_unit_cap(round_num: int) -> int:
 	for entry: Dictionary in unit_cap_by_round:
 		if round_num in entry["rounds"]:
 			return entry["cap"]
-	return 7 	# Default if no match found, but this should not occur
+	return 7 	# Default if no match found
 
 func get_current_unit_cap() -> int:
 	return get_unit_cap(current_round)

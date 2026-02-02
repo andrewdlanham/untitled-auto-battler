@@ -1,7 +1,7 @@
 unit_id,unit_name,type,rarity,cost,att_dmg_lvl_1,att_dmg_lvl_2,att_dmg_lvl_3,att_spd_lvl_1,att_spd_lvl_2,att_spd_lvl_3,hp_lvl_1,hp_lvl_2,hp_lvl_3,scale_lvl_1,scale_lvl_2,scale_lvl_3
 unit_archer,Archer,ranged_dps,COMMON,3,7,12,20,0.9,1,1.2,25,40,70,1,1.25,1.5
-unit_farmer,Farmer,melee_dps,COMMON,3,6,11,18,0.8,0.9,1.1,40,70,130,1,1.25,1.5
-unit_knight,Knight,melee_tank,COMMON,3,6,12,22,0.6,0.6,0.6,60,100,200,1,1.25,1.5
+unit_farmer,Farmer,melee_dps,COMMON,3,6,11,18,0.9,1,1.2,40,80,150,1,1.25,1.5
+unit_knight,Knight,melee_tank,COMMON,3,6,12,22,0.6,0.6,0.6,60,100,190,1,1.25,1.5
 unit_warrior,Warrior,melee_dps,COMMON,3,7,11,18,0.7,0.8,0.9,50,85,150,1,1.25,1.5
 unit_brute,Brute,melee_tank,UNCOMMON,3,10,15,25,0.7,0.7,0.7,70,100,150,1,1.25,1.5
 unit_paladin,Paladin,melee_tank,UNCOMMON,3,9,12,25,0.6,0.6,0.6,90,140,250,1,1.25,1.5

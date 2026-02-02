@@ -17,8 +17,7 @@ signal get_random_team_requested
 func _ready() -> void:
 	SoundManager.play_music("combat_scene_music")
 	_connect_all_hexes()
-	UI.update_wins_label()
-	UI.update_lives_label()
+	UI.update_game_ui()
 	get_random_team_requested.connect(DataManager._on_get_random_team_requested)
 	DataManager.enemy_team_received.connect(_on_enemy_team_received)
 	get_random_team_requested.emit()
@@ -29,12 +28,12 @@ func _process(_delta: float) -> void:
 			_end_combat()
 			if (_num_enemy_units == 0):
 				GameManager.number_of_wins += 1
-				UI.update_wins_label()
+				UI.update_game_ui()
 				%RoundResultLabel.text = "🏆"
 			else:
 				GameManager.number_of_losses += 1
 				GameManager.number_of_lives -= 1
-				UI.update_lives_label()
+				UI.update_game_ui()
 				%RoundResultLabel.text = "❤️‍🩹"
 			# Player reaches win threshold
 			if (GameManager.number_of_wins >= GameManager.WIN_THRESHOLD):

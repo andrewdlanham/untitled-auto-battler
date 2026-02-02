@@ -28,8 +28,8 @@ func show_stats(unit: Unit) -> void:
 		starString += "⭐"
 	name_label.text = unit.unit_name
 	level_label.text = starString
-	health_label.text = str(unit.health)
-	attack_damage_label.text = str(unit.attack_damage)
+	health_label.text = str(int(unit.health))
+	attack_damage_label.text = str(int(unit.attack_damage))
 	attack_speed_label.text = str(snapped(unit.attack_speed, 0.1)) + " APS"
 	rarity_label.text = str(unit.rarity)
 	cost_label.text = "Cost: " + str(unit.cost)
