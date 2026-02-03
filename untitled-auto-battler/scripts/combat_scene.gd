@@ -100,7 +100,6 @@ func _on_enemy_team_received(enemy_unit_info_array, enemy_user_id, enemy_wins, e
 
 func _on_continue_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.PREP_SCENE_PATH)
-	SoundManager.play_music("prep_scene_music")
 
 func _handle_end_of_run(player_won: bool) -> void:
 	%RunResultLabel.text = "You Win!" if player_won else "You Lost..."

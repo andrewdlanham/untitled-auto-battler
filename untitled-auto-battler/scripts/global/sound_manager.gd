@@ -1,47 +1,47 @@
 extends Node
 
-@onready var sfx_player = AudioStreamPlayer.new()
-@onready var music_player = AudioStreamPlayer.new()
+@onready var sfx_player := AudioStreamPlayer.new()
+@onready var music_player := AudioStreamPlayer.new()
 
 var sfx: Dictionary = {}
 var music_tracks: Dictionary = {}
-var is_muted: bool = false
-var current_track_position: float = 0.0
-var current_track: String
+var current_track: String = ""
 
 func _ready() -> void:
 	add_child(sfx_player)
 	add_child(music_player)
-	music_player.volume_db = -10	# Static volume until sound options are added
+
+	# Route players to buses
+	sfx_player.bus = "SFX"
+	music_player.bus = "Music"
+
+	music_player.volume_db = -10
 
 	sfx["roll_shop"] = preload("res://assets/sounds/roll_shop.ogg")
 	sfx["unit_placed"] = preload("res://assets/sounds/unit_placed.ogg")
 	sfx["button_click"] = preload("res://assets/sounds/button_click.wav")
-	
+
 	music_tracks["prep_scene_music"] = preload("res://assets/sounds/music/prep_scene_music.mp3")
 	music_tracks["combat_scene_music"] = preload("res://assets/sounds/music/combat_scene_music.mp3")
 
 func play_sfx(sound_name: String) -> void:
 	if sound_name in sfx:
 		sfx_player.stream = sfx[sound_name]
-		sfx_player.volume_db = -5	# Static volume until sound options are added
+		sfx_player.volume_db = -5
 		sfx_player.play()
-	else:
-		printerr("SFX not found:", name)
 
 func play_music(track_name: String) -> void:
-	music_player.stream = music_tracks[track_name]
+	if track_name == current_track:
+		return
+
 	current_track = track_name
-	music_player.play(0.0)
-	if is_muted:
-		music_player.stream_paused = true
+	music_player.stream = music_tracks[track_name]
+	music_player.play()
 
 func stop_music() -> void:
 	music_player.stop()
+	current_track = ""
 
 func toggle_music() -> void:
-	is_muted = !is_muted
-	if is_muted:
-		music_player.stream_paused = true
-	if !is_muted:
-		music_player.stream_paused = false
+	var bus := AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(bus, !AudioServer.is_bus_mute(bus))

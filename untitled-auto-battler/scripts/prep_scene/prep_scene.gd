@@ -4,6 +4,7 @@ const STARTING_GOLD: int = 10
 
 func _ready() -> void:
 	
+	SoundManager.play_music("prep_scene_music")
 	_connect_signals()
 	
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
