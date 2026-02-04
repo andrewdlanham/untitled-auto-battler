@@ -1,5 +1,7 @@
 # untitled-auto-battler
 
+Link to play: https://andrewdlanham.itch.io/untitled-auto-battler
+
 An asynchronous auto battler that is actively being built in Godot.
 
 The game's mechanics are inspired primarily by Teamfight Tactics and Super Auto Pets.
