@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8mdmou5bvqyh"]
+[gd_scene load_steps=16 format=3 uid="uid://8mdmou5bvqyh"]
 
 [ext_resource type="Script" uid="uid://cyry673hp14wk" path="res://scripts/combat_scene.gd" id="1_qlgcp"]
 [ext_resource type="PackedScene" uid="uid://d2fosvrk6p20p" path="res://hexes/player_hex/player_hex.tscn" id="2_m8oqa"]
@@ -12,6 +12,36 @@
 [sub_resource type="Environment" id="Environment_pkdcy"]
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8je6"]
+bg_color = Color(0.18678316, 0.65438074, 0.8276277, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joh7u"]
+bg_color = Color(0.26886114, 0.7305292, 0.9098265, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d43cm"]
+bg_color = Color(0.11584938, 0.5060969, 0.64623034, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_joh7u"]
+Button/styles/focus = SubResource("StyleBoxFlat_s8je6")
+Button/styles/hover = SubResource("StyleBoxFlat_joh7u")
+Button/styles/normal = SubResource("StyleBoxFlat_s8je6")
+Button/styles/pressed = SubResource("StyleBoxFlat_d43cm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_30dds"]
 
@@ -131,7 +161,21 @@ transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.75,
 [node name="Floor" parent="." instance=ExtResource("7_wu2g8")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.00944, -2, 1.00554)
 
+[node name="CombatSpeedButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 88.0
+offset_top = 152.0
+offset_right = 144.0
+offset_bottom = 192.0
+focus_mode = 0
+theme = SubResource("Theme_joh7u")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_2fy00")
+theme_override_font_sizes/font_size = 20
+text = "1x"
+
 [node name="EnemyInfo" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 928.0
@@ -284,15 +328,29 @@ theme_override_font_sizes/font_size = 35
 text = "BACK TO MENU"
 script = ExtResource("5_drmuy")
 
-[node name="ContinueModal" type="Control" parent="."]
+[node name="SpeedLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 160.0
+offset_right = 80.0
+offset_bottom = 185.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_2fy00")
+theme_override_font_sizes/font_size = 20
+text = "SPEED:"
+
+[node name="ContinueModalCanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="ContinueModal" type="Control" parent="ContinueModalCanvasLayer"]
 unique_name_in_owner = true
 visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="RoundResultLabel" type="Label" parent="ContinueModal"]
+[node name="RoundResultLabel" type="Label" parent="ContinueModalCanvasLayer/ContinueModal"]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
@@ -306,12 +364,12 @@ text = "🏆"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueModalScrim" type="Panel" parent="ContinueModal"]
+[node name="ContinueModalScrim" type="Panel" parent="ContinueModalCanvasLayer/ContinueModal"]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="ContinueButton" type="Button" parent="ContinueModal"]
+[node name="ContinueButton" type="Button" parent="ContinueModalCanvasLayer/ContinueModal"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 512.0
@@ -323,5 +381,6 @@ theme_override_font_sizes/font_size = 35
 text = "CONTINUE"
 script = ExtResource("5_drmuy")
 
+[connection signal="pressed" from="CombatSpeedButton" to="." method="cycle_game_speed"]
 [connection signal="pressed" from="RunSummary/EndRunButton" to="." method="_on_end_run_button_pressed"]
-[connection signal="pressed" from="ContinueModal/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ContinueModalCanvasLayer/ContinueModal/ContinueButton" to="." method="_on_continue_button_pressed"]

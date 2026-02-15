@@ -25,6 +25,7 @@ func start_game() -> void:
 
 	current_round = 0
 	number_of_wins = 0
+	number_of_losses = 0
 	number_of_lives = 5
 	player_units = []
 	bench_units = []

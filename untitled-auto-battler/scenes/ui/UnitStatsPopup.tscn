@@ -1,16 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dckldltq0oyfg"]
+[gd_scene load_steps=10 format=3 uid="uid://dckldltq0oyfg"]
 
 [ext_resource type="Script" uid="uid://d2basxg3cn2rf" path="res://scripts/prep_scene/unit_stats_popup.gd" id="1_7o1im"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="2_p4imh"]
 [ext_resource type="FontFile" uid="uid://jiq52sqvwg3t" path="res://shared/fonts/NotoColorEmoji-Regular.ttf" id="3_7ml38"]
-[ext_resource type="FontFile" uid="uid://bkyagj15rlibl" path="res://shared/fonts/noto-emoji.ttf" id="3_hw1sl"]
 [ext_resource type="Texture2D" uid="uid://llj2jrwel177" path="res://assets/images/attack_speed.png" id="4_cao60"]
 [ext_resource type="Texture2D" uid="uid://c477m5und1sif" path="res://assets/images/freeze.png" id="5_b1r6j"]
 [ext_resource type="Theme" uid="uid://c70ldg4dltp0" path="res://shared/themes/freeze_button_theme.tres" id="5_c280x"]
 [ext_resource type="Theme" uid="uid://b7mx8d4n2vjui" path="res://shared/themes/sell_button_theme.tres" id="7_2mp3g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb7vd"]
-bg_color = Color(0.733333, 0.733333, 0.85098, 1)
+bg_color = Color(0.5509728, 0.5476808, 0.7154739, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -40,9 +39,9 @@ metadata/_edit_use_anchors_ = true
 [node name="RarityLabel" type="Label" parent="CanvasLayer/PopupPanel"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
+anchors_preset = -1
+anchor_left = 0.46969697
+anchor_top = 0.42857143
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 36.0
@@ -54,7 +53,7 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p4imh")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "COMMON"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -171,7 +170,7 @@ offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 0.411947, 0.343303, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_hw1sl")
+theme_override_fonts/font = ExtResource("3_7ml38")
 theme_override_font_sizes/font_size = 15
 text = "♥︎"
 metadata/_edit_use_anchors_ = true
@@ -185,7 +184,7 @@ offset_bottom = 101.0
 theme_override_colors/font_color = Color(0.886262, 0.886261, 0.886262, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("3_hw1sl")
+theme_override_fonts/font = ExtResource("3_7ml38")
 theme_override_font_sizes/font_size = 15
 text = "⚔︎"
 metadata/_edit_use_anchors_ = true

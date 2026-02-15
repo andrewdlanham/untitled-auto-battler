@@ -4,6 +4,7 @@ const STARTING_GOLD: int = 10
 
 func _ready() -> void:
 
+	Engine.time_scale = 1.0
 	SoundManager.play_music("prep_scene_music")
 	_connect_signals()
 	GameManager.current_round += 1

@@ -8,6 +8,9 @@ extends Node
 @onready var enemy_wins_label: Label = %EnemyWinsLabel
 @onready var enemy_lives_label: Label = %EnemyLivesLabel
 
+var speed_levels = [1, 2, 3]
+var current_speed_index = 0
+
 var _combat_in_progress: bool = false
 var _num_player_units: int
 var _num_enemy_units: int
@@ -69,6 +72,8 @@ func _end_combat() -> void:
 		unit.disable_combat()
 		if unit.unit_died.is_connected(_on_unit_died):
 			unit.unit_died.disconnect(_on_unit_died)
+	
+	Engine.time_scale = speed_levels[0]
 
 func _on_unit_died(_unit: Unit, team: String) -> void:
 	if (team == "PLAYER"): _num_player_units -= 1
@@ -96,6 +101,8 @@ func _on_enemy_team_received(enemy_unit_info_array, enemy_user_id, enemy_wins, e
 	# Construct player's team
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
 
+	%EnemyInfo.visible = true
+
 	_start_combat()
 
 func _on_continue_button_pressed() -> void:
@@ -119,3 +126,11 @@ func _connect_all_hexes() -> void:
 
 func _on_end_run_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.MENU_SCENE_PATH)
+
+func cycle_game_speed() -> void:
+	current_speed_index += 1
+	if current_speed_index >= speed_levels.size():
+		current_speed_index = 0
+	
+	%CombatSpeedButton.text = str(speed_levels[current_speed_index]) + "x"
+	Engine.time_scale = speed_levels[current_speed_index]
