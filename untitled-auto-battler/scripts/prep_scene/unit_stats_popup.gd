@@ -11,6 +11,8 @@ extends Node2D
 @onready var sell_unit_button: Button = %SellUnitButton
 @onready var rarity_label: Label = %RarityLabel
 @onready var cost_label: Label = %CostLabel
+@onready var sell_price_label: Label = %SellPriceLabel
+
 
 signal unit_sold
 
@@ -33,6 +35,10 @@ func show_stats(unit: Unit) -> void:
 	attack_speed_label.text = str(snapped(unit.attack_speed, 0.1)) + " APS"
 	rarity_label.text = str(unit.rarity)
 	cost_label.text = "Cost: " + str(unit.cost)
+	match selected_unit.level:
+		1: sell_price_label.text = "1G"
+		2: sell_price_label.text = "3G"
+		3: sell_price_label.text = "5G"
 	
 	canvas_layer.visible = true
 	
