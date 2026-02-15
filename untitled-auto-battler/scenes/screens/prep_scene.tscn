@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://u83thaig7l0b"]
+[gd_scene load_steps=26 format=3 uid="uid://u83thaig7l0b"]
 
 [ext_resource type="Script" uid="uid://dxhdsxnud5af1" path="res://scripts/prep_scene/prep_scene.gd" id="1_8bpcq"]
 [ext_resource type="Script" uid="uid://cnyceoyjfbqn7" path="res://scripts/prep_scene/drag_and_drop.gd" id="2_51slr"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cro3t078pm8e7" path="res://hexes/bench_hex/bench_hex.tscn" id="10_apqxs"]
 [ext_resource type="FontFile" uid="uid://b4pkdf5nfix06" path="res://shared/fonts/Exo2-Regular.ttf" id="11_0q8k3"]
 [ext_resource type="PackedScene" uid="uid://b285dydi2tsbn" path="res://scenes/floor.tscn" id="12_bfl3o"]
+[ext_resource type="PackedScene" uid="uid://b6va8p36au1pd" path="res://assets/props/bench_sign.tscn" id="13_ivhim"]
 [ext_resource type="PackedScene" uid="uid://dckldltq0oyfg" path="res://scenes/ui/UnitStatsPopup.tscn" id="14_5i252"]
+[ext_resource type="PackedScene" uid="uid://ccgk0oa8mmde4" path="res://assets/props/shop_sign.tscn" id="15_1k87m"]
 [ext_resource type="Theme" uid="uid://bt21n7e5vhsxq" path="res://shared/themes/auth_theme.tres" id="15_y644e"]
 
 [sub_resource type="Environment" id="Environment_n5egb"]
@@ -190,63 +192,67 @@ hex_id = "G"
 unique_name_in_owner = true
 
 [node name="ShopHexA" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, -2)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, 1)
 hex_id = "SHOP_A"
 
 [node name="ShopHexB" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, -1)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 0)
 hex_id = "SHOP_B"
 
 [node name="ShopHexC" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 0)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 2)
 hex_id = "SHOP_C"
 
 [node name="ShopHexD" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 7, 0, -1)
+unique_name_in_owner = true
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, 3)
+visible = false
 hex_id = "SHOP_D"
 
 [node name="ShopHexE" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, 1)
+unique_name_in_owner = true
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 7, 0, 1)
+visible = false
 hex_id = "SHOP_E"
 
 [node name="ShopHexF" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 5.25, 0, 2)
+unique_name_in_owner = true
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 3.5, 0, -1)
+visible = false
 hex_id = "SHOP_F"
-
-[node name="ShopHexG" parent="Hexes/ShopHexes" instance=ExtResource("9_1i74a")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 7, 0, 1)
-hex_id = "SHOP_G"
 
 [node name="BenchHexes" type="Node" parent="Hexes"]
 unique_name_in_owner = true
 
-[node name="BenchHex" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5, 0, -1)
+[node name="BenchHexA" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5539145, 0, 0.9828944)
 hex_id = "BENCH_A"
 
-[node name="BenchHex2" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, -2)
+[node name="BenchHexB" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 2)
 hex_id = "BENCH_B"
 
-[node name="BenchHex3" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+[node name="BenchHexC" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 0)
 hex_id = "BENCH_C"
 
-[node name="BenchHex4" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.49342, 5.24521e-06, 0.993217)
+[node name="BenchHexD" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+unique_name_in_owner = true
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5, 0, 3)
+visible = false
 hex_id = "BENCH_D"
 
-[node name="BenchHex5" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -5.25, 0, 2)
+[node name="BenchHexE" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+unique_name_in_owner = true
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -7, 0, 1)
+visible = false
 hex_id = "BENCH_E"
 
-[node name="BenchHex6" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -7.00668, 4.76837e-07, 1.0001)
+[node name="BenchHexF" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
+unique_name_in_owner = true
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.5, 0, -1)
+visible = false
 hex_id = "BENCH_F"
-
-[node name="BenchHex7" parent="Hexes/BenchHexes" instance=ExtResource("10_apqxs")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -7, 0, -1)
-hex_id = "BENCH_Gss"
 
 [node name="PrepSceneUI" type="Node" parent="."]
 
@@ -391,8 +397,14 @@ focus_mode = 0
 theme = ExtResource("15_y644e")
 text = "REROLL"
 
+[node name="Bench Sign" parent="." instance=ExtResource("13_ivhim")]
+transform = Transform3D(0.56086934, 0, 0.21313268, 0, 0.59999996, 0, -0.21313268, 0, 0.56086934, -5.659269, 0.47538972, -1.7706788)
+
 [node name="Floor" parent="." instance=ExtResource("12_bfl3o")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.079638, -0.428106, 0.0564203)
+
+[node name="ShopSign" parent="." instance=ExtResource("15_1k87m")]
+transform = Transform3D(0.5719302, 0, -0.181372, 0, 0.59999996, 0, 0.181372, 0, 0.5719302, 5.154935, 0.4764037, -1.7063999)
 
 [connection signal="pressed" from="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel/ConfirmEndTurnButton" to="." method="_on_confirm_end_turn_button_pressed"]
 [connection signal="pressed" from="PrepSceneUI/ConfirmEndTurnCanvasLayer/ConfirmEndTurnPanel/ReturnToPrepSceneButton" to="." method="_on_return_to_prep_scene_button_pressed"]

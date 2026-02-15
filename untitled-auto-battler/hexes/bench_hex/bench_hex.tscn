@@ -12,7 +12,6 @@ hex_type = "BENCH"
 surface_material_override/0 = ExtResource("2_2238a")
 
 [node name="SymbolLabel" parent="." index="3"]
-visible = true
 text = "o"
 font = ExtResource("3_nyjjd")
 font_size = 10

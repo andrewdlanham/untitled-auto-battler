@@ -3,15 +3,21 @@ extends Node3D
 const STARTING_GOLD: int = 10
 
 func _ready() -> void:
-	
+
 	SoundManager.play_music("prep_scene_music")
 	_connect_signals()
-	
+	GameManager.current_round += 1
+
+	_set_hex_visibilities(GameManager.current_round)
+
 	GameManager.construct_team(GameManager.player_units, %PlayerHexes.get_children(), %PlayerUnits)
 	GameManager.construct_team(GameManager.bench_units, %BenchHexes.get_children(), %BenchUnits)
 	GameManager.construct_team(GameManager.shop_units, %ShopHexes.get_children(), %ShopUnits)
 
-	_start_new_round()
+	%GoldManager.set_gold(STARTING_GOLD)
+	%ShopManager.roll_shop_units()
+	_update_unit_count_label()
+	_update_round_label()
 
 func _connect_signals() -> void:
 
@@ -23,13 +29,6 @@ func _connect_signals() -> void:
 	# Connect signals for UI buttons
 	%EndTurnButton.pressed.connect(_on_end_turn_button_pressed)
 	%RerollButton.pressed.connect(%ShopManager.request_shop_roll)
-
-func _start_new_round() -> void:
-	GameManager.current_round += 1
-	%GoldManager.set_gold(STARTING_GOLD)
-	%ShopManager.roll_shop_units()
-	_update_unit_count_label()
-	_update_round_label()
 
 func _update_unit_count_label() -> void:
 	await get_tree().process_frame		# Allows units time to leave scene before updating the unit count label
@@ -60,6 +59,17 @@ func _end_turn() -> void:
 		await DataManager.team_stored_in_db
 	
 	SceneManager.switch_to_scene(SceneManager.COMBAT_SCENE_PATH)
+
+func _set_hex_visibilities(round_num: int) -> void:
+	if round_num >= 3:
+		%ShopHexD.visible = true
+		%BenchHexD.visible = true
+	if round_num >= 5:
+		%ShopHexE.visible = true
+		%BenchHexE.visible = true
+	if round_num >= 7:
+		%ShopHexF.visible = true
+		%BenchHexF.visible = true
 
 #region Buttons
 

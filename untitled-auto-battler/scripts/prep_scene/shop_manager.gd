@@ -66,6 +66,9 @@ func create_random_unit() -> Unit:
 func roll_shop_units() -> void:
 	for shop_hex: Hex in %ShopHexes.get_children():
 		
+		if shop_hex.visible == false:
+			continue
+		
 		if shop_hex.unit_on_hex != null:
 			if shop_hex.unit_on_hex.is_frozen:
 				continue

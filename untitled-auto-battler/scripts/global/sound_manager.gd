@@ -11,7 +11,7 @@ func _ready() -> void:
 	add_child(sfx_player)
 	add_child(music_player)
 
-	# Route players to buses
+	# Route AudioStreamPlayers to buses
 	sfx_player.bus = "SFX"
 	music_player.bus = "Music"
 
